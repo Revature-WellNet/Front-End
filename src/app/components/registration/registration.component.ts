@@ -11,6 +11,7 @@ export class RegistrationComponent implements OnInit {
   public firstName : string = "";
   public lastName : string = "";
   public role : string = "";
+  public email : string = "";
   
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
@@ -55,6 +56,12 @@ export class RegistrationComponent implements OnInit {
   updateRole(role : string) {
 
     this.role = role;
+
+  }
+
+  updateEmail(email : string) {
+
+    this.email = email;
 
   }
 

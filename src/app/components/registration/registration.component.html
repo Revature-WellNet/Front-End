@@ -1,6 +1,6 @@
 
 
-<div>
+<div id = "RegistrationDiv">
   <form>
 
     <label for="RegistrationFirstName">
@@ -12,6 +12,7 @@
       (blur)="updateFirstName(RegistrationFirstName.value);"
       onkeydown="return event.key != 'Enter';">
   
+    <br>
     <label for="RegistrationLastName">
       Last Name
     </label>
@@ -21,6 +22,7 @@
       (blur)="updateLastName(RegistrationLastName.value);"
       onkeydown="return event.key != 'Enter';">
 
+    <br>
     <label for="RegistrationUsername">
       New Username
     </label>
@@ -30,6 +32,7 @@
       (blur)="updateUsername(RegistrationUsername.value)"
       onkeydown="return event.key != 'Enter';">
 
+    <br>
     <label for="RegistrationPassword">
       New Password
     </label>
@@ -39,6 +42,7 @@
       (blur)="updatePassword(RegistrationPassword.value)"
       onkeydown="return event.key != 'Enter';">
 
+    <br>
     <label for="RegistrationRole">
       Company Role
     </label>
@@ -46,6 +50,16 @@
       #RegistrationRole
       (keyup.enter)="updateRole(RegistrationRole.value)"
       (blur)="updateRole(RegistrationRole.value)"
+      onkeydown="return event.key != 'Enter';">
+
+    <br>
+    <label for="RegistrationEmail">
+      Email
+    </label>
+    <input type="text" id="RegistrationEmail"
+      #RegistrationEmail
+      (keyup.enter)="updateEmail(RegistrationEmail.value)"
+      (blur)="updateEmail(RegistrationEmail.value)"
       onkeydown="return event.key != 'Enter';">
 
     <button (click)="updateValues()">
@@ -62,6 +76,7 @@
   <p> Entered Username : {{username}} </p>
   <p> Entered Password : {{password}} </p>
   <p> Entered Role : {{role}} </p>
+  <p> Entered Email : {{email}} </p>
 
 
 </div>
