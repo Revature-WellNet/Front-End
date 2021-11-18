@@ -1,0 +1,69 @@
+
+
+<div>
+  <form>
+
+    <label for="RegistrationFirstName">
+      First Name
+    </label>  
+    <input type="text" id="RegistrationFirstName" 
+      #RegistrationFirstName 
+      (keyup.enter)="updateFirstName(RegistrationFirstName.value)"
+      (blur)="updateFirstName(RegistrationFirstName.value);"
+      onkeydown="return event.key != 'Enter';">
+  
+    <label for="RegistrationLastName">
+      Last Name
+    </label>
+    <input type="text" id="RegistrationLastName"
+      #RegistrationLastName
+      (keyup.enter)="updateLastName(RegistrationLastName.value)"
+      (blur)="updateLastName(RegistrationLastName.value);"
+      onkeydown="return event.key != 'Enter';">
+
+    <label for="RegistrationUsername">
+      New Username
+    </label>
+    <input type="text" id="RegistrationUsername"
+      #RegistrationUsername
+      (keyup.enter)="updateUsername(RegistrationUsername.value)"
+      (blur)="updateUsername(RegistrationUsername.value)"
+      onkeydown="return event.key != 'Enter';">
+
+    <label for="RegistrationPassword">
+      New Password
+    </label>
+    <input type="text" id="RegistrationPassword"
+      #RegistrationPassword
+      (keyup.enter)="updatePassword(RegistrationPassword.value)"
+      (blur)="updatePassword(RegistrationPassword.value)"
+      onkeydown="return event.key != 'Enter';">
+
+    <label for="RegistrationRole">
+      Company Role
+    </label>
+    <input type="text" id="RegistrationRole"
+      #RegistrationRole
+      (keyup.enter)="updateRole(RegistrationRole.value)"
+      (blur)="updateRole(RegistrationRole.value)"
+      onkeydown="return event.key != 'Enter';">
+
+    <button (click)="updateValues()">
+      Register User
+    </button>
+
+  </form>
+
+  <!-- Validate Entry -->
+
+  <h3> VV For Debugging VV </h3>
+  <p> Entered First Name : {{firstName}} </p>
+  <p> Entered Last Name : {{lastName}} </p>
+  <p> Entered Username : {{username}} </p>
+  <p> Entered Password : {{password}} </p>
+  <p> Entered Role : {{role}} </p>
+
+
+</div>
+
+
