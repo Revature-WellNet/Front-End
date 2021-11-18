@@ -13,7 +13,7 @@ import { ButtonComponent } from './components/button/button.component';
     AppComponent,
     ProfileComponent,
     RegistrationComponent,
-    NurseComponent,
+    //NurseComponent,
     ButtonComponent
   ],
   imports: [
