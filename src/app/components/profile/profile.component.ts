@@ -10,6 +10,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService : UserService) { }
 
+  public firstName = "";
+  public lastName = "";
+  public specialty = "";
+  public email = "";
+
   ngOnInit(): void {
     this.generateProfile();
   }
