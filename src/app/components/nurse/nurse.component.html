@@ -1,0 +1,21 @@
+<h1>Nurse</h1>
+
+<app-button (btnClick)="viewUserInfo()" text="View User Information"></app-button>
+<app-button (btnClick)="logout()" text="Logout"></app-button>
+<app-button (btnClick)="addPatient()" text="Add Patient"></app-button>
+
+
+<form>
+    <input type="text" name="searchPatient" id="searchPatient">
+    <app-button (btnClick)="searchPatient()" text="Search Patients"></app-button>
+</form>
+
+<h2>Results</h2>
+<table>
+    <div class="container">
+        <thead>
+            <tr><th *ngFor="let head of headers"><h2>{{head.name}}</h2></th></tr>
+        </thead>
+        <tr *ngFor="let patient of patients.name"><td>{{patient}}</td></tr>
+    </div>
+</table>
