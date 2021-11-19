@@ -26,6 +26,5 @@ let user = new User(fName, lName, role, email);
     console.log(user);
     //this.registrationService.postRegistration(this.user);
   
-
 }
 }
