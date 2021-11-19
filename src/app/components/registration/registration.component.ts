@@ -16,6 +16,8 @@ export class RegistrationComponent implements OnInit {
   public role : string = "";
   public email : string = "";
 
+  public covidStatus : boolean = false;
+
   public emailValidated : boolean | null = null;
   public roleValidated : boolean | null = null;
 
@@ -73,6 +75,8 @@ export class RegistrationComponent implements OnInit {
 
   updateRole(role : string) {
 
+    console.log(role);
+
     this.role = role;
 
     this.roleValidated = this.roleValidator.validateRole(this.role);
@@ -88,6 +92,25 @@ export class RegistrationComponent implements OnInit {
     this.emailValidated = this.emailValidator.validateEmailFormat(this.email);
 
     this.buttonActivator();
+
+  }
+
+  updateCovidStatus(status : string) {
+
+    switch (status) {
+      case "Yes" :
+        this.covidStatus = true;
+        break;
+      case "No" :
+        this.covidStatus = false;
+        break;
+      default :
+        this.covidStatus = false;
+        break;
+
+    }
+    
+    console.log(this.covidStatus);
 
   }
 

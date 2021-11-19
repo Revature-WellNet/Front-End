@@ -58,6 +58,26 @@
 
 }
 
+#RegistrationRoleTitle, #RegistrationCovidTitle {
+
+  margin : 0;
+
+  padding-bottom : 4px;
+
+  color : rgb(0, 38, 74);
+
+}
+#RegistrationRole1, #RegistrationRole2,
+#RegistrationCovidStatus1, #RegistrationCovidStatus2 {
+
+  margin : 0;
+
+  margin-left : 10px;
+
+  color : rgb(0, 38, 74);
+
+}
+
 #RegistrationValidationMessage {
 
   margin : 0;
@@ -126,5 +146,16 @@
   height : 14px;
 
   font-size : 14px;
+
+}
+
+#RegistrationCovidNotice {
+
+  color : red;
+  font-weight : 700;
+
+  
+  text-align : center;
+
 
 }

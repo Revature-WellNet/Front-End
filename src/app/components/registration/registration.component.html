@@ -52,8 +52,9 @@
       (blur)="updatePassword(RegistrationPassword.value)"
       onkeydown="return event.key != 'Enter';"
       autocomplete = "off">
-
     <br>
+    <br>
+<!-- 
     <label for="RegistrationRole">
       Company Role
     </label>
@@ -66,9 +67,31 @@
     <p *ngIf="roleValidated == false" id="RegistrationValidationMessage">
       Please Enter A Valid Role : Nurse or Doctor
     </p>
-
     <p id="RegistrationSpacer"></p>
-    <p id="RegistrationSpacer" *ngIf="roleValidated == true || roleValidated === null"></p>
+    <p id="RegistrationSpacer" *ngIf="roleValidated == true || roleValidated === null"></p> -->
+    
+    <div id="RegistrationRoleRadios">
+      <p for="RoleValidation" id="RegistrationRoleTitle">
+        Hospital Role
+      </p>
+      <input type = "radio" id="RegistrationRole1"
+        #RegistrationRole1
+        name="Role" value="nurse"
+        (click)="updateRole(RegistrationRole1.value)">
+      <label for="RegistrationRole1">
+        Nurse
+      </label>
+
+      <input type = "radio" id="RegistrationRole2"
+        #RegistrationRole2
+        name="Role" value="doctor"
+        (click)="updateRole(RegistrationRole2.value)">
+      <label for="RegistrationRole2">
+        Doctor
+      </label>
+    </div>
+    <br>
+
     <label for="RegistrationEmail">
       Email
     </label>
@@ -81,17 +104,42 @@
     <p *ngIf="emailValidated == false" id="RegistrationValidationMessage"> 
       Please enter a valid email
     </p>
-
-    
-
     <p id="RegistrationSpacer"></p>
     <p id="RegistrationSpacer" *ngIf="emailValidated == true || emailValidated === null"></p>
 
+    <div id="RegistrationCovidRadios">
+      <p for="CovidValidation" id="RegistrationCovidTitle">
+        Do you currently have Covid-19 Symptoms?
+      </p>
+      <input type = "radio" id="RegistrationCovidStatus1"
+        #RegistrationCovidStatus1
+        name="Covid" value="Yes"
+        (click)="updateCovidStatus(RegistrationCovidStatus1.value)">
+      <label for="RegistrationCovidStatus1">
+        Yes
+      </label>
+
+      <input type = "radio" id="RegistrationCovidStatus2"
+        #RegistrationCovidStatus2
+        name="Covid" value="No"
+        (click)="updateCovidStatus(RegistrationCovidStatus2.value)">
+      <label for="RegistrationCovidStatus2">
+        No
+      </label>
+    </div>
+
     <div id="CenterContainerContent">
     <button type="button" (click)="updateValues()" 
-      id="RegisterButton" [disabled] = "registrationButtonSetting">
+      id="RegisterButton" [disabled] = "registrationButtonSetting"
+      *ngIf="covidStatus == false">
       Register User
     </button>
+
+    <p id="RegistrationCovidNotice"
+      *ngIf="covidStatus == true">
+      You Have Covid <br> Go Home!! <br> Login Denied
+    </p>
+
     </div>
 
   </form>
