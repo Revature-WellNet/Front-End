@@ -8,9 +8,9 @@ export class User {
     public email : string;
     public role : Role;
   
-    constructor( firstName : string, lastName : string, email : string, role : Role) {
+    constructor(userId :string, firstName : string, lastName : string, email : string, role : Role) {
   
-      
+      this.userId = userId;
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
