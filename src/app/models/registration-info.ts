@@ -1,19 +1,21 @@
+import { Role } from './role';
+
 export class RegistrationInfo {
 
-  public firstName : string;
-  public lastName : string;
-  public username : string;
-  public password : string;
+  public firstname : string;
+  public lastname : string;
+  // public username : string;
+  // public password : string;
   public email : string;
-  public role : string;
+  public role : Role;
 
-  constructor( firstName : string, lastName : string, email :string, username : string,
-    password : string, role : string) {
+  constructor( firstname : string, lastname : string, email :string, role : Role 
+    /*username : string, password : string,*/) {
 
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.username = username;
-    this.password = password;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    // this.username = username;
+    // this.password = password;
     this.email = email;
     this.role = role;
 

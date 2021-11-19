@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/models/role';
+import { User } from 'src/app/models/user';
 import { RegistrationInfo } from '../../models/registration-info';
 import { EmailValidationService } from '../../services/email-validation.service';
 import { RoleValidationService } from '../../services/role-validation.service';
+
+import { RegistrationService } from '../../services/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -35,7 +39,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private emailValidator : EmailValidationService,
     private roleValidator : RoleValidationService,
-    private router : Router
+    private router : Router,
+    private registrationSender : RegistrationService
   ) { }
 
   ngOnInit(): void {
@@ -134,19 +139,57 @@ export class RegistrationComponent implements OnInit {
     console.log(this.emailValidated);
     console.log(this.roleValidated);
 
-    if (this.emailValidated && this.roleValidated) {
+    // if (this.emailValidated && this.roleValidated) {
 
-      this.registrationButtonSetting = false;
+    //   this.registrationButtonSetting = false;
 
-      console.log("Successful Button Press");
-      if(this.role.toLowerCase() == "nurse"){
-        this.router.navigate(["/nurse"]);
-      } else if (this.role.toLowerCase() == "doctor")
-      {
-        this.router.navigate(["/doctor"]);
-      }
+    //   console.log("Successful Button Press");
+    //   if(this.role.toLowerCase() == "nurse"){
+    //     this.router.navigate(["/nurse"]);
+    //   } else if (this.role.toLowerCase() == "doctor")
+    //   {
+    //     this.router.navigate(["/doctor"]);
+    //   }
+
+    // }
+
+
+    // public firstName : string = "";
+    // public lastName : string = "";
+    // public role : string = "";
+    // public email : string = "";
+
+
+    // public userId : string;
+    // public firstName : string;
+    // public lastName : string;
+    // public email : string;
+    // public role : Role;
+  
+    let user! : User;
+
+    console.error("Creating User");
+
+    if (this.role == "nurse") {
+
+      user = new User("d", this.firstName, 
+      this.lastName, this.email, new Role(1, this.role));
 
     }
+    if (this.role == "doctor") {
+      
+      user = new User("d", this.firstName, 
+      this.lastName, this.email, new Role(2, this.role));
+
+    }
+
+    console.log("User Created : ");
+    console.log (user);
+
+    this.registrationSender.postRegistration(user).subscribe(
+      data => {
+        console.log(data);
+      });
 
   }
   

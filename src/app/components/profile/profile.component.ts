@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   constructor(private userService : UserService, private router : Router) { }
 
   public role : Role = new Role(12, "dsaf");
-  public user : User = new User("Sam", "Z", "ZZZZ", this.role);
+  public user : User = new User("StringID", "Sam", "Z", "ZZZZ", this.role);
   public email = this.user.email;
  // public role = this.user.role;
 
