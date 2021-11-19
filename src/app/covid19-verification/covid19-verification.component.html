@@ -1,42 +1,127 @@
+<div *ngIf='symptomQuestions'>
 <div>
     Have you experienced any of the following symptoms:
 </div>
 
 <label for='feverChills'>Fever or chills</label>
-<input type='radio'  [(ngModel)]='feverChills' value='yes' name='feverChills' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='feverChills' value='no' checked name='feverChills' value='false'> No </input>
+<input for='feverChills' type='radio'  [(ngModel)]='feverChills'  name='feverChills' value=true [checked]="feverChills == false">    
+<label for='yes'>yes</label>   
+<input for='feverChills' type='radio'  [(ngModel)]='feverChills'   name='feverChills' value=false [checked]="feverChills == true"> 
+<label for='no'>no</label>
+<br>
+
 
 <label for='cough'>Cough</label>
-<input type='radio' [(ngModel)]='cough' value='yes' name='cough' value='true'> Yes </input>            
-<input type='radio' [(ngModel)]='cough' value='no' checked name='cough' value='false'> No </input>
+<input type='radio' [(ngModel)]='cough' value='yes' name='cough' value='true' [checked]='cough == true'>   
+<label for='yes'>yes</label>           
+<input type='radio' [(ngModel)]='cough' value='no' checked name='cough' value='false' [checked]='cough == true'> 
+<label for='no'>no</label>
+<br>
 
 <label for='shortnessOfBreath'>Shortness of breathe or difficulty breathing</label>
-<input type='radio'  [(ngModel)]='shortnessOfBreath' value='yes' name='shortnessOfBreath' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='shortnessOfBreath' checked name='shortnessOfBreath' value='false'> No </input>
+<input type='radio'  [(ngModel)]='shortnessOfBreath' value='yes' name='shortnessOfBreath' value='true' [checked]='shortnessOfBreath == true'>    
+<label for='yes'>yes</label>           
+<input type='radio'  [(ngModel)]='shortnessOfBreath' checked name='shortnessOfBreath' value='false' [checked]='shortnessOfBreath == false'> 
+<label for='no'>no</label>
+<br>
 
 <label for='fatigue'>Fatigue</label>
-<input type='radio'  [(ngModel)]='fatigue' value='yes' name='fatigue' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='fatigue' value='no' checked name='fatigue' value='false'> No </input>
+<input type='radio'  [(ngModel)]='fatigue' value='yes' name='fatigue' value='true' [checked]='fatigue == true'>     
+<label for='yes'>yes</label>          
+<input type='radio'  [(ngModel)]='fatigue' value='no' checked name='fatigue' value='false' [checked]='fatigue == false'> 
+<label for='no'>no</label>
+<br>
 
 <label for='muscleOrBodyAches'>Muscle or body aches</label>
-<input type='radio'  [(ngModel)]='muscleOrBodyAches' value='yes' name='muscleOrBodyAches' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='muscleOrBodyAches' value='no' checked name='muscleOrBodyAches' value='false'> No </input>
+<input type='radio'  [(ngModel)]='muscleOrBodyAches' value='yes' name='muscleOrBodyAches' value='true' [checked]='muscleOrBodyAches == true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='muscleOrBodyAches' value='no' checked name='muscleOrBodyAches' value='false' [checked]='muscleOrBodyAches == false'> 
+<label for='no'>no</label>
+<br>
 
 <label for='lossOfTasteSmell'>New loss of taste or smell</label>
-<input type='radio'  [(ngModel)]='lossOfTasteSmell' value='yes' name='lossOfTasteSmell' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='lossOfTasteSmell' value='no' checked name='lossOfTasteSmell' value='false'> No </input>
+<input type='radio'  [(ngModel)]='lossOfTasteSmell' value='yes' name='lossOfTasteSmell' value='true' [checked]='lossOfTasteSmell == true'>   
+<label for='yes'>yes</label>            
+<input type='radio'  [(ngModel)]='lossOfTasteSmell' value='no' checked name='lossOfTasteSmell' value='false' [checked]='lossOfTasteSmell == false'> 
+<label for='no'>no</label>
+<br>
 
 <label for='soreThroat'>Sore throat</label>
-<input type='radio'  [(ngModel)]='soreThroat' value='yes' name='soreThroat' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='soreThroat' value='no' checked name='soreThroat' value='false'> No </input>
+<input type='radio'  [(ngModel)]='soreThroat' value='yes' name='soreThroat' value='true' [checked]='soreThroat == true'>    
+<label for='yes'>yes</label>            
+<input type='radio'  [(ngModel)]='soreThroat' value='no' checked name='soreThroat' value='false' [checked]='soreThroat == false'> 
+<label for='no'>no</label>
+<br>
 
 <label for='nauseaVomiting'>Nausea</label>
-<input type='radio'  [(ngModel)]='nauseaVomiting' value='yes' name='nauseaVomiting' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='nauseaVomiting' value='no' checked name='nauseaVomiting' value='false'> No </input>
+<input type='radio'  [(ngModel)]='nauseaVomiting' value='yes' name='nauseaVomiting' value='true' [checked]='nauseaVomiting == true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='nauseaVomiting' value='no' checked name='nauseaVomiting' value='false' [checked]='nauseaVomiting == false'> 
+<label for='no'>no</label>
+<br>
 
-<label for='diarrhea'>diarrhea</label>
-<input type='radio'  [(ngModel)]='diarrhea' value='yes' name='diarrhea' value='true'> Yes </input>            
-<input type='radio'  [(ngModel)]='diarrhea' value='no' checked name='diarrhea' value='false'> No </input>
+<label for='diarrhea'>Diarrhea</label>
+<input type='radio'  [(ngModel)]='diarrhea' value='yes' name='diarrhea' value='true' [checked]='diarrhea == true'> 
+<label for='yes'>yes</label>             
+<input type='radio'  [(ngModel)]='diarrhea' value='no' checked name='diarrhea' value='false' [checked]='diarrhea == false'> 
+<label for='no'>no</label>
+<br>
+
+<button type='button' (click)='symptomSubmit()'>Next question</button>
+</div>
+
+<div *ngIf='testedPositiveQuestions'>
+    <label for='testedPositive'>Have you tested positive for Covid-19 in the past 10 days?</label>
+    <br>
+<input type='radio'  [(ngModel)]='testedPositive' value='yes' name='testedPositive' value='true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='testedPositive' value='no' checked name='testedPositive' value='false'> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='testedPositiveSubmit()'>Next question</button>
+</div>
+
+<div *ngIf='awaitingTestQuestions'>
+<label for='awaitingTestResults'>Are you currently awaiting the results from a Covid-19 test?</label>
+<br>
+<input type='radio'  [(ngModel)]='awaitingTestResults' value='yes' name='awaitingTestResults' value='true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='awaitingTestResults' value='no' checked name='awaitingTestResults' value='false'> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='awaitingTestSubmit()'>Next question</button>
+</div>
+
+<div *ngIf='diagnosedQuestions'>
+<label for='diagnosedQuestions'>Have you been diagnosed with COVID-19 by a licensed healthcare provider (for example, a doctor, nurse, 
+pharmacist, or other) in the past 10 days?
+    </label>
+    <br>
+<input type='radio'  [(ngModel)]='diagnosedResults' value='yes' name='diagnosedQuetions' value='true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='diagnosedResults' value='no' checked name='diagnosedQuestions' value='false'> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='diagnosedSubmit()'>Next question</button>
+</div>
+
+<div *ngIf='suspectedQuestions'>
+    <label for='suspectedQuestions'> Have you been told that you are suspected to have COVID-19 by a
+        licensed healthcare provider in the past 10 days?
+        </label>
+        <br>
+<input type='radio'  [(ngModel)]='suspectedQuestions' value='yes' name='suspectedQuestions' value='true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='suspectedQuestions' value='no' checked name='suspectedQuestions' value='false'> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='symptomSubmit()'>Next question</button>
+</div>
+
+
+
+
+
 
 
             
