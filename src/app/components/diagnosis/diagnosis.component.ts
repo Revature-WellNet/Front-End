@@ -8,8 +8,8 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class DiagnosisComponent implements OnInit {
 
-
-
+  diagnosis: string = ' ';
+  symptoms: string = ' ';
   constructor(private patientService:PatientService) { 
 
   }
@@ -17,4 +17,8 @@ export class DiagnosisComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(diagnosis: string, symptoms: string){
+    console.log(symptoms, ' ', diagnosis);
+
+  }
 }
