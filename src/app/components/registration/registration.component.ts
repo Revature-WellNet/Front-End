@@ -116,7 +116,12 @@ export class RegistrationComponent implements OnInit {
       this.registrationButtonSetting = false;
 
       console.log("Successful Button Press");
-      this.router.navigate(["/nurse"]);
+      if(this.role.toLowerCase() == "nurse"){
+        this.router.navigate(["/nurse"]);
+      } else if (this.role.toLowerCase() == "doctor")
+      {
+        this.router.navigate(["/doctor"]);
+      }
 
     }
 
