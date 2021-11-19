@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   constructor(private userService : UserService, private router : Router) { }
 
 
-
   ngOnInit(): void {
   //  this.generateProfile();
   }
@@ -31,8 +30,8 @@ export class ProfileComponent implements OnInit {
         let lastName = document.createElement("span");
         let role = document.createElement("span");
         let email = document.createElement("span");
-        firstName.innerHTML = response.firstName
-        lastName.innerHTML = response.lastName
+        firstName.innerHTML = response.firstname
+        lastName.innerHTML = response.lastname
         role.innerHTML = response.role.role
         email.innerHTML = response.email
 
