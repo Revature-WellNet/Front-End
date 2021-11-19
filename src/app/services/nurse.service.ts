@@ -1,5 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocationStrategy } from '@angular/common';
+import { Observable } from 'rxjs';
 
 
 const APIURL="http://localHost:8081/"
@@ -8,17 +11,36 @@ const APIURL="http://localHost:8081/"
 })
 export class NurseService {
 
-  constructor(private http: HttpClient) { }
+  // private patientAPI = "URL for Patients";
 
-  // getPatients(){
-  //   this.http.get(APIURL + "wellnet/user");
+  constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
+
+  // Will turn into observable once have patient table created in database
+  // getPatients(): Observable:any[]{
+  //   console.log("This will return patients");
+  //   return this.http.http.get<any[]>(this.api)
   // }
 
-  // addPatients(){
-  //   this.http.post(apiUrl + "wellnet/user", body);
-  // }
+  // Will turn into observable once have patient table created in database
+  getPatientsById(){
+    console.log("This will return patients");
+    // return this.http.http.get<any[]>(this.api)
+  }
+
+  addPatients(){
+    console.log("This will create a patient");
+    // this.http.post(patientAPI, body possible HTTPHeaders);
+  }
 
   getUserInfo(){
-    this.http.get(APIURL + "wellnet/user");
+    this.router.navigate(["profile"]);
+  }
+
+  logout(){
+    this.router.navigate(["registration"]);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
