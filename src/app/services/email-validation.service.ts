@@ -9,7 +9,7 @@ export class EmailValidationService {
 
   validateEmailFormat(email : string) : boolean {
 
-    let regularExpression : RegExp = new RegExp('^[.\\w]*[@]{1,1}[\\w]+[.]{1,1}[\\w]{3,3}$', 'i');
+    let regularExpression : RegExp = new RegExp('^[.\\w]*[@]{1,1}[\\w]+[.]{1,1}[\\w]{2,}$', 'i');
 
     let result : boolean = regularExpression.test(email);
 
