@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteConfigLoadEnd } from '@angular/router';
 import { Router } from '@angular/router';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
