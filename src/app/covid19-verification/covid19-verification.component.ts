@@ -24,13 +24,11 @@ export class Covid19VerificationComponent implements OnInit {
   public diagnosedResults:string = 'false';
   public suspectedCovid:string = 'false';
   public vaccinatedOrRecovered:string = 'false';
-  public covidArray:any = [this.feverChills, this.cough, this.shortnessOfBreath, this.fatigue, this.muscleOrBodyAches,
-  this.headache, this.lossOfTasteSmell, this.soreThroat, this.congestionRunnyNose, this.nauseaVomiting, this.diarrhea]
+  public covidArray:any = [];
   
   public lastTest:Date = new Date(1970, 1, 1, 0, 0, 0);
   public symptomQuestions:string = 'true';
   public testedPositiveQuestions:string = 'false';
-  public awaitingTestQuestions:string = 'false';
   public diagnosedQuestions:string = 'false';
   public suspectedQuestions:string = 'false';
   
@@ -42,31 +40,28 @@ export class Covid19VerificationComponent implements OnInit {
 
   symptomSubmit(){
     console.log(this.diarrhea);
+    this.covidCheck();
     this.symptomQuestions='false';
     this.testedPositiveQuestions='true';
   }
 
   testedPositiveSubmit() {
     this.testedPositiveQuestions='false';
-    this.awaitingTestQuestions='true';
-  }
-
-  awaitingTestSubmit(){
-    this.awaitingTestQuestions='false';
     this.diagnosedQuestions='true';
   }
+
+
 
   diagnosedSubmit(){
     this.diagnosedQuestions='false';
     this.suspectedQuestions='true';
   }
 
-  suspectedSubmit(){
-    this.suspectedQuestions='false';
 
-  }
   covidCheck(){
     let count=0;
+    this.covidArray = [this.feverChills, this.cough, this.shortnessOfBreath, this.fatigue, this.muscleOrBodyAches,
+      this.headache, this.lossOfTasteSmell, this.soreThroat, this.congestionRunnyNose, this.nauseaVomiting, this.diarrhea]
     for(let i=0; i<this.covidArray.length;i++){
       console.log(this.covidArray[i]);
       console.log(this.covidArray);

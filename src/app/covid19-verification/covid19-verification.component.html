@@ -136,17 +136,6 @@
 <button type='button' (click)='testedPositiveSubmit()'>Next question</button>
 </div>
 
-<div *ngIf="awaitingTestQuestions =='true'">
-<label for='awaitingTestResults'>Are you currently awaiting the results from a Covid-19 test?</label>
-<br>
-<input type='radio'  [(ngModel)]='awaitingTestResults'  name='awaitingTestResults' value='true'>  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='awaitingTestResults' checked=checked name='awaitingTestResults' value='false'> 
-<label for='no'>no</label>
-<br>
-<button type='button' (click)='awaitingTestSubmit()'>Next question</button>
-</div>
-
 <div *ngIf="diagnosedQuestions == 'true'">
 <label for='diagnosedQuestions'>Have you been diagnosed with COVID-19 by a licensed healthcare provider (for example, a doctor, nurse, 
 pharmacist, or other) in the past 10 days?
@@ -160,18 +149,6 @@ pharmacist, or other) in the past 10 days?
 <button type='button' (click)='diagnosedSubmit()'>Next question</button>
 </div>
 
-<div *ngIf="suspectedQuestions == 'true'">
-    <label for='suspectedQuestions'> Have you been told that you are suspected to have COVID-19 by a
-        licensed healthcare provider in the past 10 days?
-        </label>
-        <br>
-<input type='radio'  [(ngModel)]='suspectedQuestions'  name='suspectedQuestions' value='true'>  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='suspectedQuestions' checked name='suspectedQuestions' value='false'> 
-<label for='no'>no</label>
-<br>
-<button type='button' (click)='symptomSubmit()'>Next question</button>
-</div>
 
 
 
