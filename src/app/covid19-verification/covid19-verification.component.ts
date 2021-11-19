@@ -18,19 +18,21 @@ export class Covid19VerificationComponent implements OnInit {
   public congestionRunnyNose:string = 'false';
   public nauseaVomiting:string = 'false';
   public diarrhea:string = 'false';
-  public symptomCheck:boolean = false;
-  public testedPositive:boolean = false;
-  public awaitingTestResults:boolean = false;
-  public diagnosedResults:boolean = false;
-  public suspectedCovid:boolean = false;
-  public vaccinatedOrRecovered:boolean = false;
+  public symptomCheck:string = 'false';
+  public testedPositive:string = 'false';
+  public awaitingTestResults:string = 'false';
+  public diagnosedResults:string = 'false';
+  public suspectedCovid:string = 'false';
+  public vaccinatedOrRecovered:string = 'false';
+  public covidArray:any = [this.feverChills, this.cough, this.shortnessOfBreath, this.fatigue, this.muscleOrBodyAches,
+  this.headache, this.lossOfTasteSmell, this.soreThroat, this.congestionRunnyNose, this.nauseaVomiting, this.diarrhea]
   
   public lastTest:Date = new Date(1970, 1, 1, 0, 0, 0);
-  public symptomQuestions:boolean = true;
-  public testedPositiveQuestions:boolean = false;
-  public awaitingTestQuestions:boolean = false;
-  public diagnosedQuestions:boolean = false;
-  public suspectedQuestions:boolean = false;
+  public symptomQuestions:string = 'true';
+  public testedPositiveQuestions:string = 'false';
+  public awaitingTestQuestions:string = 'false';
+  public diagnosedQuestions:string = 'false';
+  public suspectedQuestions:string = 'false';
   
 
   constructor() { }
@@ -40,28 +42,44 @@ export class Covid19VerificationComponent implements OnInit {
 
   symptomSubmit(){
     console.log(this.diarrhea);
-    this.symptomQuestions=false;
-    this.testedPositiveQuestions=true;
+    this.symptomQuestions='false';
+    this.testedPositiveQuestions='true';
   }
 
   testedPositiveSubmit() {
-    this.testedPositiveQuestions=false;
-    this.awaitingTestQuestions=true;
+    this.testedPositiveQuestions='false';
+    this.awaitingTestQuestions='true';
   }
 
   awaitingTestSubmit(){
-    this.awaitingTestQuestions=false;
-    this.diagnosedQuestions=true;
+    this.awaitingTestQuestions='false';
+    this.diagnosedQuestions='true';
   }
 
   diagnosedSubmit(){
-    this.diagnosedQuestions=false;
-    this.suspectedQuestions=true;
+    this.diagnosedQuestions='false';
+    this.suspectedQuestions='true';
   }
 
   suspectedSubmit(){
-    this.suspectedQuestions=false;
+    this.suspectedQuestions='false';
 
+  }
+  covidCheck(){
+    let count=0;
+    for(let i=0; i<this.covidArray.length;i++){
+      console.log(this.covidArray[i]);
+      console.log(this.covidArray);
+      if (this.covidArray[i]=='true'){
+        this.covidArray[i];
+        count++;
+      }
+      }
+      console.log(count);
+      if(count>1){
+        this.symptomCheck='true';
+    }
+      
   }
 
 }
