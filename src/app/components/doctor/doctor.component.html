@@ -1,1 +1,56 @@
 <p>doctor works!</p>
+
+<div class="backgroung">
+<div class="container">
+<h1>Doctor</h1>
+</div>
+
+<app-button class="btn btn-top-left" (btnClick) = "goBack()" text = "Back"></app-button>
+
+<div class="top-right">
+<app-button class="btn" (btnClick) = "getInfo()" text = "View User Info"></app-button>
+<app-button class="btn" (btnClick) = "logout()" text = "Logout"></app-button>
+</div>
+
+<div class="search-area">
+    <div class="form-group">
+         <!-- <label for="patient-search">Search for Patients</label> -->
+         <input type="text" class="form-control" id="patient-search"  name="patient-search" placeholder="Search for Patients" required>
+    </div>
+    <app-button class="btn btn-search" (btnClick) = "searchPatient()" text = "Search for Patients"></app-button>
+</div>
+
+<div class="table">
+    <table>
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Allergies</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Vaccinations</th>
+                <th>Blood Type</th>
+                <th>Sex</th>
+                <th>Doctor</th>
+            </tr>
+        </thead>
+          <!-- <tbody>
+            <a routerLink="test"><tr *ngFor=let patient of Patients>
+                <td>{{patient.name}}</td>
+                <td>{{patient.dob}}</td>
+                <td>{{patient.age}}</td>
+                <td>{{patient.allergy}}</td>
+                <td>{{patient.height}}</td>
+                <td>{{patient.weight}}</td>
+                <td>patient.vaccinations}}</td>
+                <td>patient.bloodType}}</td>
+                <td>{{patient.sex}}</td>
+                <td>{{patient.doctor}}</td>
+            </tr></a>
+        </tbody>  -->
+    </table>
+</div>
+
+</div>
