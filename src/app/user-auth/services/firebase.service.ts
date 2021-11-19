@@ -24,15 +24,16 @@ export class FirebaseService {
     });
   }
   
-  overrideNull(): string {
+  overrideNull(): any {
     if (localStorage.getItem('user') === null) return '';
     return localStorage.getItem('user') as any;
   }
 
   getUserFromSpringServer()
   {
+    const user = JSON.parse(this.overrideNull());
     let header : HttpHeaders = new HttpHeaders({
-      Authorization: JSON.parse(this.overrideNull()),
+      Authorization: 'Bearer ' + user.user.stsTokenManager.accessToken,
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type'
