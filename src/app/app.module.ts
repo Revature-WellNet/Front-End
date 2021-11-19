@@ -8,7 +8,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ButtonComponent } from './components/button/button.component';
 import { NurseComponent } from './components/nurse/nurse.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { DoctorComponent } from './components/doctor/doctor.component';
     NurseComponent,
     ButtonComponent,
     NurseComponent,
+    ProfileEditComponent,
     DoctorComponent
   ],
   imports: [

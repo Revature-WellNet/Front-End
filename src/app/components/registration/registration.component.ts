@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit {
     this.registrationButtonSetting = true;
   }
 
-  ngOnChanges() {
+  ngOnChanges(){
 
     this.updateFirstName(this.firstName);
 
