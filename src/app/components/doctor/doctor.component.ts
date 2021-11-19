@@ -8,6 +8,8 @@ import { DoctorService } from 'src/app/services/doctor.service';
 })
 export class DoctorComponent implements OnInit {
 
+  doctorId!: string;
+
   constructor(private doctorService: DoctorService) { }
 
   ngOnInit(): void {
@@ -19,8 +21,9 @@ export class DoctorComponent implements OnInit {
   // getPatientById(){
   //   this.doctorService.getPatientById(id);
   // }
-
-
+  goBack(){
+    this.doctorService.goBack();
+  }
   
   viewUserInfo(){
     this.doctorService.getUserInfo();
@@ -30,9 +33,9 @@ export class DoctorComponent implements OnInit {
   //   this.doctorService.getPatients();
   // }
 
-   // getPatientsByDoctor(doctorId){
-  //   this.doctorService.getPatientsByDocId();
-  // }
+   getPatientsByDoctor(doctorId: string){
+    this.doctorService.getPatientsByDocId();
+  }
 
  
   
