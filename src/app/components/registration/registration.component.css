@@ -8,6 +8,114 @@
   padding-top : 20px;
   padding-bottom : 20px;
 
+  background-color:antiquewhite;
+/* 
+  align-self : center;
+  justify-self : center; */
 
+  width : 300px;
+
+  margin : auto;
+
+}
+
+#CenterContainerContent {
+
+  display : flex;
+
+  align-items : center;
+  justify-content : center;
+
+  
+
+}
+
+#RegistrationTitle {
+
+  width : 80%;
+  margin-left : 10%;
+  margin-right : 10%;
+/* 
+  align-self : center;
+  justify-self : center; */
+
+  text-align : center;
+
+}
+
+#RegistrationFirstName, #RegistrationLastName, #RegistrationUsername,
+#RegistrationEmail, #RegistrationRole, #RegistrationPassword{
+
+  width : 100%;
+  margin : 0 auto;
+
+  background-color : rgb(220, 220, 180);
+
+}
+
+#RegistrationValidationMessage {
+
+  margin : 0;
+  margin-left : 10px;
+
+  padding : 0;
+
+  color : red;
+
+  height : 14px;
+
+  font-family : sans-serif;
+  font-style : italic;
+  font-size : 14px;
+  font-weight : 300;
+
+}
+
+#RegisterButton:enabled {
+
+  margin-top : 10px;
+  margin-bottom : 20px;
+
+  width : 60%;
+  background-color : rgb(240, 240, 200);
+
+  align-items : center;
+  justify-content: center;
+
+  height : 30px;
+
+  border-radius : 10px 100px / 120px;
+
+} 
+#RegisterButton:enabled:hover {
+  background-color : rgb(250, 250, 210);
+} 
+#RegisterButton:disabled {
+
+  margin-top : 10px;
+  margin-bottom : 20px;
+
+  width : 60%;
+
+  color : black;
+
+  background-color :rgb(200, 220, 180);
+
+  align-items : center;
+  justify-content: center;
+
+  height : 30px;
+
+  border-radius : 10px 100px / 120px;
+
+}
+
+#RegistrationSpacer {
+
+  margin : 0;
+  padding : 0;
+  height : 14px;
+
+  font-size : 14px;
 
 }
