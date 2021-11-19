@@ -172,13 +172,13 @@ export class RegistrationComponent implements OnInit {
 
     if (this.role == "nurse") {
 
-      user = new User("d", this.firstName, 
+      user = new User("h", this.firstName, 
       this.lastName, this.email, new Role(1, this.role));
 
     }
     if (this.role == "doctor") {
       
-      user = new User("d", this.firstName, 
+      user = new User("h", this.firstName, 
       this.lastName, this.email, new Role(2, this.role));
 
     }
