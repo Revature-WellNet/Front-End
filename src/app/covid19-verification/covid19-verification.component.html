@@ -1,6 +1,30 @@
+<div *ngIf="testedPositiveQuestions=='true'">
+    <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
+    <br>
+<input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='testedPositiveSubmit()'>Next question</button>
+</div>
+
+<div *ngIf="diagnosedQuestions=='true'">
+    <label for='diagnosedResults'>Have you been diagnosed with COVID-19 by a licensed healthcare
+        provider (for example, a doctor, nurse, pharmacist, or other) in the
+        past 14 days?</label>
+    <br>
+<input type='radio'  [(ngModel)]='diagnosedResults' name='diagnosedResults' value="true">  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value="false"> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='diagnosedSubmit()'>Next question</button>
+</div>
+
 <div *ngIf="symptomQuestions == 'true'">
 <div>
-    Have you experienced any of the following symptoms:
+    Have you experienced any of the following symptoms in the past 24 hours?
 </div>
 
 <label for=feverChills>Fever or Chills</label>
@@ -119,42 +143,45 @@
         name="diarrhea" checked=checked>
 </label>
 <br>
-
-
-
 <button type='button' (click)='symptomSubmit()'>Next question</button>
 </div>
 
-<div *ngIf="testedPositiveQuestions=='true'">
-    <label for='testedPositive'>Have you tested positive for Covid-19 in the past 10 days?</label>
+<div *ngIf="contactQuestions=='true'">
+    <label for='testedPositive'>Have you  had close contact with someone with confirmed or suspected COVID-19 within
+        the last 14 days?</label>
     <br>
-<input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>  
+<input type='radio'  [(ngModel)]='contactCheck' name='contactCheck' value="true">  
 <label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
+<input type='radio'  [(ngModel)]='contactCheck' checked=checked name='contactCheck' value="false"> 
 <label for='no'>no</label>
 <br>
-<button type='button' (click)='testedPositiveSubmit()'>Next question</button>
-</div>
-
-<div *ngIf="diagnosedQuestions == 'true'">
-<label for='diagnosedQuestions'>Have you been diagnosed with COVID-19 by a licensed healthcare provider (for example, a doctor, nurse, 
-pharmacist, or other) in the past 10 days?
-    </label>
-    <br>
-<input type='radio'  [(ngModel)]='diagnosedResults'  name='diagnosedQuetions' value='true'>  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedQuestions' value='false'> 
-<label for='no'>no</label>
-<br>
-<button type='button' (click)='diagnosedSubmit()'>Next question</button>
+<button type='button' (click)='contactSubmit()'>Submit</button>
 </div>
 
 
+<div *ngIf="testedQuestions=='true'">
+    <label for='testedPositive'>Have you been tested for Covid-19 in the past 14 days?</label>
+    <br>
+<input type='radio'  [(ngModel)]='tested' name='tested' value='true'>  
+<label for='yes'>yes</label>              
+<input type='radio'  [(ngModel)]='tested' checked=checked name='tested' value='false'> 
+<label for='no'>no</label>
+<br>
+<button type='button' (click)='testedSubmit()'>Next question</button>
+</div>
 
+<div *ngIf="testedQuestions=='true'">
+    <label for='testedQuestionResults'>What were the the results of this test??</label>
+    <br>
+<input type='radio'  [(ngModel)]='testedPositive' name='tested' value='true'>  
+<label for='yes'>positive</label>              
+<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='tested' value='false'> 
+<label for='no'>negative</label>
+<br>
+<button type='button' (click)='testedSubmit()'>Next question</button>
+</div>
 
+<div *ngIf="getTested=='true'"> Please refrain from work until you can present a negative covid test</div>
 
-
-
-
-            
+<div *ngIf="formSubmit=='true'"> Redirecting to home page</div>
 

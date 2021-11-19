@@ -5,8 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './covid19-verification.component.html',
   styleUrls: ['./covid19-verification.component.css']
 })
-export class Covid19VerificationComponent implements OnInit {
+export class Covid19VerificationComponent implements OnInit { 
 
+  public testedPositive:string = 'false'; 
+  public diagnosedResults:string = 'false';
   public feverChills:string = 'false';
   public cough:string = 'false';
   public shortnessOfBreath:string = 'false';
@@ -19,18 +21,27 @@ export class Covid19VerificationComponent implements OnInit {
   public nauseaVomiting:string = 'false';
   public diarrhea:string = 'false';
   public symptomCheck:string = 'false';
-  public testedPositive:string = 'false';
-  public awaitingTestResults:string = 'false';
-  public diagnosedResults:string = 'false';
-  public suspectedCovid:string = 'false';
-  public vaccinatedOrRecovered:string = 'false';
-  public covidArray:any = [];
+  public contactCheck:string = 'false';
+ 
   
-  public lastTest:Date = new Date(1970, 1, 1, 0, 0, 0);
-  public symptomQuestions:string = 'true';
-  public testedPositiveQuestions:string = 'false';
+  public vaccinatedOrRecovered:string = 'false';
+  public tested:string = 'false';
+  public testedResult:string = 'false';
+  public covidArray:any = [];
+
+  public testedPositiveQuestions:string = 'true';
   public diagnosedQuestions:string = 'false';
-  public suspectedQuestions:string = 'false';
+  public symptomQuestions:string = 'false'; 
+  public contactQuestions:string = 'false';
+  
+  public testedQuestions:string = 'false';
+  public testedQuestionsResult:string = 'false';
+  public getTested:string = 'false';
+  public formSubmit:string = 'false';
+
+  public lastTest:Date = new Date(1970, 1, 1, 0, 0, 0);
+  public finalStatus:boolean = false;
+  
   
 
   constructor() { }
@@ -38,25 +49,51 @@ export class Covid19VerificationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+    testedPositiveSubmit() {
+    this.testedPositiveQuestions='false';
+    if(this.testedPositive=='true'){
+      this.getTested='true';
+    }
+    else{this.diagnosedQuestions='true';}
+  }
+  
+    diagnosedSubmit(){
+    this.diagnosedQuestions='false';
+    console.log(this.diagnosedResults);
+
+    if(this.diagnosedResults=='true'){
+      this.getTested='true';
+    }
+    else{this.symptomQuestions='true';}
+  }
+
   symptomSubmit(){
     console.log(this.diarrhea);
     this.covidCheck();
     this.symptomQuestions='false';
-    this.testedPositiveQuestions='true';
+    if(this.symptomCheck=='true'){
+      this.testedQuestions='true';
+    }
+    else{
+    this.contactQuestions='true';}
   }
 
-  testedPositiveSubmit() {
-    this.testedPositiveQuestions='false';
-    this.diagnosedQuestions='true';
+  contactSubmit(){
+    this.contactQuestions='false';
+    if(this.contactCheck=='true'){
+      this.testedQuestions='true';
+    }
+    else{
+      this.formSubmit='true';
+    }
+    ;
   }
+  
 
+  testedSubmit(){
+    this.testedQuestions='false';
 
-
-  diagnosedSubmit(){
-    this.diagnosedQuestions='false';
-    this.suspectedQuestions='true';
   }
-
 
   covidCheck(){
     let count=0;
