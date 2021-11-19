@@ -7,17 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Covid19VerificationComponent implements OnInit {
 
-  public feverChills:boolean = false;
-  public cough:boolean = false;
-  public shortnessOfBreath:boolean = false;
-  public fatigue:boolean = false;
-  public muscleOrBodyAches:boolean = false;
-  public headache:boolean = false;
-  public lossOfTasteSmell:boolean = false;
-  public soreThroat:boolean = false;
-  public congestionRunnyNose:boolean = false;
-  public nauseaVomiting:boolean = false;
-  public diarrhea:boolean = false;
+  public feverChills:string = 'false';
+  public cough:string = 'false';
+  public shortnessOfBreath:string = 'false';
+  public fatigue:string = 'false';
+  public muscleOrBodyAches:string = 'false';
+  public headache:string = 'false';
+  public lossOfTasteSmell:string = 'false';
+  public soreThroat:string = 'false';
+  public congestionRunnyNose:string = 'false';
+  public nauseaVomiting:string = 'false';
+  public diarrhea:string = 'false';
   public symptomCheck:boolean = false;
   public testedPositive:boolean = false;
   public awaitingTestResults:boolean = false;
