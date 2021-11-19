@@ -33,7 +33,7 @@ export class NurseService {
   }
 
   getUserInfo(){
-    this.router.navigate(["profile"]);
+    this.router.navigate(['profile']);
   }
 
   logout(){
