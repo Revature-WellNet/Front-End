@@ -3,11 +3,17 @@ import { Injectable } from '@angular/core';
 
 import {AngularFireAuth} from '@angular/fire/compat/auth'
 import { Observable } from 'rxjs';
+import firebase from 'firebase/compat/app'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
+
+  public springServerUrl : string = 'http://localhost:8080/';
+
+  public idToken : string = "";
 
   constructor(public firebaseAuth : AngularFireAuth, public httpClient : HttpClient) { }
 
@@ -17,30 +23,36 @@ export class FirebaseService {
     .then(response => {
       let responseString : string = JSON.stringify(response);
       console.log(responseString);
-      localStorage.setItem('user', responseString);
     }, function(e)
     {
       console.error(e);
     });
   }
-  
-  overrideNull(): any {
-    if (localStorage.getItem('user') === null) return '';
-    return localStorage.getItem('user') as any;
+
+  async logout()
+  {
+    await this.firebaseAuth.signOut();
   }
 
-  getUserFromSpringServer()
+  async getToken() { 
+    const user = firebase.auth().currentUser;
+    if(user != null)
+       this.idToken = await user.getIdToken(true);
+  }
+
+  async getUserFromSpringServer() : Promise<any>
   {
-    const user = JSON.parse(this.overrideNull());
-    let header : HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + user.user.stsTokenManager.accessToken,
+    let idToken = await firebase.auth().currentUser?.getIdToken();
+
+    let httpHeader : HttpHeaders = new HttpHeaders({
+      Authorization: 'Bearer ' + idToken,
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type'
-    });
-
-    let url : string = 'http://localhost:8080/private/random';
-    return this.httpClient.get<any>(url, {headers: header}) as Observable<any>;
+      });
+  
+    let url : string = this.springServerUrl + 'private/random';
+    return this.httpClient.get<any>(url, {headers: httpHeader}).toPromise<any>();
   }
 
   

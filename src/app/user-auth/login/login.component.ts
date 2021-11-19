@@ -13,13 +13,23 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSignin(email : string, password : string)
+  onSignin(email : string, password : string)
   {
-    await this.firebaseService.signin(email, password).then(()=>{
-      this.firebaseService.getUserFromSpringServer().subscribe((data) => {
-        console.log(data);
-      });
-    });
+    console.log('sign in');
+    this.firebaseService.signin(email, password);
+  }
+
+  logout()
+  {
+    console.log('log out');
+    this.firebaseService.logout();
+  }
+
+  getUser()
+  {
+    this.firebaseService.getUserFromSpringServer().then(user=>{
+      console.log("current user uid: " + user.uid);
+    })
   }
   
 
