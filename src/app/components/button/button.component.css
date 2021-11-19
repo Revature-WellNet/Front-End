@@ -1,5 +1,5 @@
 button {
-    background: #F26925;
+    background: rgb(146, 200, 63);
     border: none;
     padding: 10px;
     margin: 0px;
@@ -7,6 +7,6 @@ button {
 }
 
 button:hover{
-    background-color: #72A4C2
+    background-color: rgb(36, 141, 2);
     ;
 }

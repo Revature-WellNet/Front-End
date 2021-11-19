@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegistrationInfo } from '../../models/registration-info';
 import { EmailValidationService } from '../../services/email-validation.service';
 import { RoleValidationService } from '../../services/role-validation.service';
@@ -31,7 +32,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private emailValidator : EmailValidationService,
-    private roleValidator : RoleValidationService
+    private roleValidator : RoleValidationService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -114,6 +116,7 @@ export class RegistrationComponent implements OnInit {
       this.registrationButtonSetting = false;
 
       console.log("Successful Button Press");
+      this.router.navigate(["/nurse"]);
 
     }
 
