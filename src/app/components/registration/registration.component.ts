@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   public emailValidated : boolean | null = null;
   public roleValidated : boolean | null = null;
 
-  public registrationButtonSetting : string = "disabled";
+  public registrationButtonSetting : boolean = true;
   
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
@@ -36,7 +36,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.registrationButtonSetting = "disabled";
+    this.registrationButtonSetting = true;
   }
 
   ngOnChanges() {
@@ -75,6 +75,8 @@ export class RegistrationComponent implements OnInit {
 
     this.roleValidated = this.roleValidator.validateRole(this.role);
 
+    this.buttonActivator();
+
   }
 
   updateEmail(email : string) {
@@ -83,18 +85,33 @@ export class RegistrationComponent implements OnInit {
 
     this.emailValidated = this.emailValidator.validateEmailFormat(this.email);
 
+    this.buttonActivator();
+
   }
 
-  
-  
+  buttonActivator() {
+
+    if (this.emailValidated && this.roleValidated) {
+
+      this.registrationButtonSetting = false;
+
+    }
+
+  }
+
+
+
 
   updateValues() {
 
     //console.log(this.email);
 
+    console.log(this.emailValidated);
+    console.log(this.roleValidated);
+
     if (this.emailValidated && this.roleValidated) {
 
-      this.registrationButtonSetting = "enabled";
+      this.registrationButtonSetting = false;
 
       console.log("Successful Button Press");
 

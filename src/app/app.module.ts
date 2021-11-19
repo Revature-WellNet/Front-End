@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-// import { NurseComponent } from './components/nurse/nurse.component';
 import { ButtonComponent } from './components/button/button.component';
+import { NurseComponent } from './components/nurse/nurse.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     RegistrationComponent,
-    //NurseComponent,
-    ButtonComponent
+    NurseComponent,
+    ButtonComponent,
+    NurseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

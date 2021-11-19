@@ -9,7 +9,7 @@ export class RoleValidationService {
 
   public validateRole (role : string) {
 
-    console.log(role);
+    //console.log(role);
 
     let nurseRegularExpression : RegExp = new RegExp('^nurse$', 'i');
     let doctorRegularExpression : RegExp = new RegExp('^doctor$', 'i');

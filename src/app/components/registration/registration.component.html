@@ -17,7 +17,8 @@
       #RegistrationFirstName 
       (keyup.enter)="updateFirstName(RegistrationFirstName.value)"
       (blur)="updateFirstName(RegistrationFirstName.value);"
-      onkeydown="return event.key != 'Enter';">
+      onkeydown="return event.key != 'Enter';"
+      autocomplete = "off">
   
     <br>
     <label for="RegistrationLastName">
@@ -27,7 +28,8 @@
       #RegistrationLastName
       (keyup.enter)="updateLastName(RegistrationLastName.value)"
       (blur)="updateLastName(RegistrationLastName.value);"
-      onkeydown="return event.key != 'Enter';">
+      onkeydown="return event.key != 'Enter';"
+      autocomplete = "off">
 
     <br>
     <label for="RegistrationUsername">
@@ -37,7 +39,8 @@
       #RegistrationUsername
       (keyup.enter)="updateUsername(RegistrationUsername.value)"
       (blur)="updateUsername(RegistrationUsername.value)"
-      onkeydown="return event.key != 'Enter';">
+      onkeydown="return event.key != 'Enter';"
+      autocomplete = "off">
 
     <br>
     <label for="RegistrationPassword">
@@ -47,7 +50,8 @@
       #RegistrationPassword
       (keyup.enter)="updatePassword(RegistrationPassword.value)"
       (blur)="updatePassword(RegistrationPassword.value)"
-      onkeydown="return event.key != 'Enter';">
+      onkeydown="return event.key != 'Enter';"
+      autocomplete = "off">
 
     <br>
     <label for="RegistrationRole">
@@ -57,7 +61,8 @@
       #RegistrationRole
       (keyup.enter)="updateRole(RegistrationRole.value)"
       (blur)="updateRole(RegistrationRole.value)"
-      onkeydown="return event.key != 'Enter';">
+      onkeydown="return event.key != 'Enter';"
+      autocomplete = "off">
     <p *ngIf="roleValidated == false" id="RegistrationValidationMessage">
       Please Enter A Valid Role : Nurse or Doctor
     </p>
@@ -71,7 +76,8 @@
       #RegistrationEmail
       (keyup.enter)="updateEmail(RegistrationEmail.value)"
       (blur)="updateEmail(RegistrationEmail.value)"
-      onkeydown="return event.key != 'Enter';">
+      onkeydown="return event.key != 'Enter';"
+      autocomplete = "off">
     <p *ngIf="emailValidated == false" id="RegistrationValidationMessage"> 
       Please enter a valid email
     </p>
@@ -82,8 +88,8 @@
     <p id="RegistrationSpacer" *ngIf="emailValidated == true || emailValidated === null"></p>
 
     <div id="CenterContainerContent">
-    <button type="button" (click)="updateValues()" id="RegisterButton"
-      value="RegistrationButtonSetting">
+    <button type="button" (click)="updateValues()" 
+      id="RegisterButton" [disabled] = "registrationButtonSetting">
       Register User
     </button>
     </div>
