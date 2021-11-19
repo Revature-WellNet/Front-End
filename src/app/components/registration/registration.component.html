@@ -1,7 +1,14 @@
 
+<!-- <p class="col-sm-4"> -->
+<div id = "RegistrationDiv" class="col-sm-4">
 
-<div id = "RegistrationDiv">
-  <form>
+  <div id = "CenterContainerContent">
+    <h1 id="RegistrationTitle">
+      New User <br> Registration
+    </h1>
+  </div>
+
+  <form class = "d-flex col-sm-4" id = "RegistrationForm">
 
     <label for="RegistrationFirstName">
       First Name
@@ -51,8 +58,12 @@
       (keyup.enter)="updateRole(RegistrationRole.value)"
       (blur)="updateRole(RegistrationRole.value)"
       onkeydown="return event.key != 'Enter';">
+    <p *ngIf="roleValidated == false" id="RegistrationValidationMessage">
+      Please Enter A Valid Role : Nurse or Doctor
+    </p>
 
-    <br>
+    <p id="RegistrationSpacer"></p>
+    <p id="RegistrationSpacer" *ngIf="roleValidated == true || roleValidated === null"></p>
     <label for="RegistrationEmail">
       Email
     </label>
@@ -61,14 +72,26 @@
       (keyup.enter)="updateEmail(RegistrationEmail.value)"
       (blur)="updateEmail(RegistrationEmail.value)"
       onkeydown="return event.key != 'Enter';">
+    <p *ngIf="emailValidated == false" id="RegistrationValidationMessage"> 
+      Please enter a valid email
+    </p>
 
-    <button (click)="updateValues()">
+    
+
+    <p id="RegistrationSpacer"></p>
+    <p id="RegistrationSpacer" *ngIf="emailValidated == true || emailValidated === null"></p>
+
+    <div id="CenterContainerContent">
+    <button type="button" (click)="updateValues()" id="RegisterButton"
+      value="RegistrationButtonSetting">
       Register User
     </button>
+    </div>
 
   </form>
 
   <!-- Validate Entry -->
+  <div *ngIf = "debugging == true;">
 
   <h3> VV For Debugging VV </h3>
   <p> Entered First Name : {{firstName}} </p>
@@ -78,7 +101,8 @@
   <p> Entered Role : {{role}} </p>
   <p> Entered Email : {{email}} </p>
 
-
+  </div>
 </div>
+<!-- <p class="col-sm-4"> -->
 
 

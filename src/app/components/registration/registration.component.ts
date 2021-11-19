@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationInfo } from '../../models/registration-info';
+import { EmailValidationService } from '../../services/email-validation.service';
+import { RoleValidationService } from '../../services/role-validation.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,15 +14,29 @@ export class RegistrationComponent implements OnInit {
   public lastName : string = "";
   public role : string = "";
   public email : string = "";
+
+  public emailValidated : boolean | null = null;
+  public roleValidated : boolean | null = null;
+
+  public registrationButtonSetting : string = "disabled";
   
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
   public username : string = "";
   public password : string = "";
 
-  constructor() { }
+  public debugging : boolean = false;
+
+
+
+  constructor(
+    private emailValidator : EmailValidationService,
+    private roleValidator : RoleValidationService
+  ) { }
 
   ngOnInit(): void {
+
+    this.registrationButtonSetting = "disabled";
   }
 
   ngOnChanges() {
@@ -57,18 +73,32 @@ export class RegistrationComponent implements OnInit {
 
     this.role = role;
 
+    this.roleValidated = this.roleValidator.validateRole(this.role);
+
   }
 
   updateEmail(email : string) {
 
     this.email = email;
 
+    this.emailValidated = this.emailValidator.validateEmailFormat(this.email);
+
   }
 
   
+  
+
   updateValues() {
 
-    console.log("First Name : " + this.firstName);
+    //console.log(this.email);
+
+    if (this.emailValidated && this.roleValidated) {
+
+      this.registrationButtonSetting = "enabled";
+
+      console.log("Successful Button Press");
+
+    }
 
   }
   
