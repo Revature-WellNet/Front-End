@@ -1,4 +1,7 @@
 <div class="container" id ="favs">
+
+    <app-button class="btn" (click)="navigateHome()" text="Back to Home"></app-button>
+
     <h1>Account Information</h1>
 
     <table class="profile"> 
@@ -6,20 +9,22 @@
         <tbody>
             <tr>
                 <td>First Name:</td>
-                <td>{{firstName}}</td>
+                <td id = "firstName"></td>
             </tr>
             <tr>
                 <td>Last Name:</td>
-                <td>{{lastName}}</td>
+                <td id = "lastName"></td>
             </tr>
             <tr>
-                <td>Specialty:</td>
-                <td>{{specialty}}</td>
+                <td>Role:</td>
+                <td id = "role"></td>
             </tr>
             <tr>
                 <td>Email:</td>
-                <td>{{email}}</td>
+                <td id = "email"></td>
             </tr>
         </tbody>
     </table>
+
+    <a routerLink= "profileEdit" ><app-button class="btn" text="Edit Information"></app-button></a>
 </div>
