@@ -8,6 +8,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ButtonComponent } from './components/button/button.component';
 import { NurseComponent } from './components/nurse/nurse.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DoctorComponent } from './components/doctor/doctor.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     NurseComponent,
     ButtonComponent,
-    NurseComponent
+    NurseComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,
