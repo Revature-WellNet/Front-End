@@ -201,8 +201,18 @@ export class RegistrationComponent implements OnInit {
 
     this.registrationSender.postRegistration(user).subscribe(
       data => {
-        console.log(data);
+
+        // console.error("Data Values VVV");
+        // console.log(data);
+        // console.log(Object(data).firstname);
+        // console.log(Object(data).role.role);
+        // console.log(data[0].role);
+        // console.log(data[0].role.role);
+
+        this.registrationSender.routeToNurseComponent(Object(data).role.role);
+
       });
+
 
   }
   

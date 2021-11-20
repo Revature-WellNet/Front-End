@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: "",  redirectTo: "/registration", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
   {path: "nurse", component: NurseComponent},
-   {path: "doctor", component: DoctorComponent},
+  {path: "doctor", component: DoctorComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: "doctor", component: DoctorComponent}
