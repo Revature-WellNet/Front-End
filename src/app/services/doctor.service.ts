@@ -2,6 +2,7 @@
 import { LocationStrategy } from '@angular/common';
 import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 const APIURL = "http://localHost:8081/"
@@ -10,7 +11,7 @@ const APIURL = "http://localHost:8081/"
 })
 export class DoctorService {
 
-  constructor(private http: HttpClient, private location: LocationStrategy, private ttp: HttpClientModule) { }
+  constructor(private http: HttpClient, private location: LocationStrategy, private ttp: HttpClientModule, private router : Router) { }
 
 
   // getPatients(){
@@ -27,7 +28,7 @@ export class DoctorService {
 
 
   getUserInfo(){
-    this.http.get(APIURL + "Wellnet/user");
+    this.router.navigate(['profile']);
   }
 
   goBack(): void {
