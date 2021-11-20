@@ -7,6 +7,7 @@ import { EmailValidationService } from '../../services/email-validation.service'
 import { RoleValidationService } from '../../services/role-validation.service';
 
 import { RegistrationService } from '../../services/registration.service';
+import { SemiUniqueStringsService } from '../../services/semi-unique-strings.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +16,7 @@ import { RegistrationService } from '../../services/registration.service';
 })
 export class RegistrationComponent implements OnInit {
 
+  public uniqueUserString : string = "";
   public firstName : string = "";
   public lastName : string = "";
   public role : string = "";
@@ -32,7 +34,7 @@ export class RegistrationComponent implements OnInit {
   public username : string = "";
   public password : string = "";
 
-  public debugging : boolean = false;
+  public debugging : boolean = true;
 
 
 
@@ -40,7 +42,8 @@ export class RegistrationComponent implements OnInit {
     private emailValidator : EmailValidationService,
     private roleValidator : RoleValidationService,
     private router : Router,
-    private registrationSender : RegistrationService
+    private registrationSender : RegistrationService,
+    private rngGenerator : SemiUniqueStringsService
   ) { }
 
   ngOnInit(): void {
@@ -129,6 +132,11 @@ export class RegistrationComponent implements OnInit {
 
   }
 
+  rng() {
+
+    this.uniqueUserString = this.rngGenerator.generateString(this.uniqueUserString);
+
+  }
 
 
 
@@ -166,19 +174,24 @@ export class RegistrationComponent implements OnInit {
     // public email : string;
     // public role : Role;
   
+    this.uniqueUserString = "";
+    this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
+
+    console.log("User : " + this.uniqueUserString);
+
     let user! : User;
 
     console.error("Creating User");
 
     if (this.role == "nurse") {
 
-      user = new User("h", this.firstName, 
+      user = new User(this.uniqueUserString, this.firstName, 
       this.lastName, this.email, new Role(1, this.role));
 
     }
     if (this.role == "doctor") {
       
-      user = new User("h", this.firstName, 
+      user = new User(this.uniqueUserString, this.firstName, 
       this.lastName, this.email, new Role(2, this.role));
 
     }
