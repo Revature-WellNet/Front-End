@@ -39,7 +39,11 @@ export class DoctorComponent implements OnInit {
 
  
   
-  logout(){}
+  logout(){
+
+    this.doctorService.routerLogOutDoctor();
+
+  }
   // RouterLink to redirect to Login Page
 
 
