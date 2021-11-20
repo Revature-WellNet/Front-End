@@ -3,26 +3,26 @@
         <h1>Edit Information</h1>
             <div class="form-group">
                 <label for="firstName">First name</label>
-                <input type="text" class="form-control" id="firstName" maxlength="20" name="firstName" placeholder="Change your first name">
+                <input type="text" class="form-control" #firstname id="firstName" maxlength="20" name="firstName" placeholder="Change your first name">
 
             </div>
             <div class="form-group">
                 <label for="lastName">Last name</label>
-                <input type="text" class="form-control"  id="lastName" maxlength="20"  name="lastName" placeholder="Change your last name" >
+                <input type="text" class="form-control" #lastname id="lastName" maxlength="20"  name="lastName" placeholder="Change your last name" >
                 
             </div>
             <div class="form-group">
                 <label for="role">Role</label>
-                <input type="text" class="form-control"  id="role" maxlength="200"  name="role" placeholder="Change your role" >
+                <input type="text" class="form-control" #role id="role" maxlength="200"  name="role" placeholder="Change your role" >
                 
             </div>
             <div class="form-group">
-                <label for="lastName">Last name</label>
-                <input type="text" class="form-control"  id="email" maxlength="200"  name="email" placeholder="Change your email" >
+                <label for="lastName">Email</label>
+                <input type="text" class="form-control" #email id="email" maxlength="200"  name="email" placeholder="Change your email" >
                 
             </div>
     </div>
 
-    <a routerLink="/profile"><app-button text="Submit" (click)="submit(firstName, lastName, role, email)"></app-button></a>
+    <a routerLink="/profile"><app-button text="Submit" (click)="submit(firstname.value, lastname.value, role.value, email.value)"></app-button></a>
 
 </div>

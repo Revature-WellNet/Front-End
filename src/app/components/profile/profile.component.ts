@@ -16,14 +16,14 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-  //  this.generateProfile();
+   this.generateProfile();
   }
 
   generateProfile(){
     //need to get user's id from login for this to work
     //this.loginService.getUserId().subscribe((userId : string){
     let userId = "53";
-
+      
       this.userService.getUser(userId).subscribe((response : User) => {  
         
         let firstName = document.createElement("span");

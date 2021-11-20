@@ -25,9 +25,11 @@ export class ProfileEditComponent implements OnInit {
   submit(fName: any, lName: any, role: any, email : any){
     
 
-    let userRole = new Role(8, role);
+    let userRole = new Role(888, role);
 
-    if(role.role === "doctor"){
+    console.log(userRole);
+
+    if(userRole.role === "doctor"){
       userRole.roleId = 2;
     }else{
       userRole.roleId = 1;
