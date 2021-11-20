@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Covid19VerificationModel } from '../models/covid19-verification-model';
+import { Covid19VerificationService } from '../services/covid19-verification.service';
 
 @Component({
   selector: 'app-covid19-verification',
@@ -39,12 +41,12 @@ export class Covid19VerificationComponent implements OnInit {
   public getTested:string = 'false';
   public formSubmit:string = 'false';
 
-  public lastTest:Date = new Date(1970, 1, 1, 0, 0, 0);
+  public lastTest:Date = new Date(1973, 1, 1, 0, 0, 0);
   public finalStatus:boolean = false;
   
   
 
-  constructor() { }
+  constructor(private cvs:Covid19VerificationService) { }
 
   ngOnInit(): void {
   }
@@ -93,6 +95,14 @@ export class Covid19VerificationComponent implements OnInit {
   testedSubmit(){
     this.testedQuestions='false';
 
+  }
+
+  formSubmitFun(){
+    let cv:Covid19VerificationModel = new Covid19VerificationModel(1, false, this.lastTest);
+    console.log(cv);
+    this.cvs.submitFormServ(cv).subscribe((data:Object) =>{
+      console.log(data);
+    })
   }
 
   covidCheck(){
