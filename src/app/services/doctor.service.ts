@@ -30,7 +30,7 @@ export class DoctorService {
 
 
   getUserInfo(){
-    this.http.get(APIURL + "Wellnet/user");
+    this.router.navigate(['profile']);
   }
 
   goBack(): void {
