@@ -8,12 +8,12 @@ import { NurseService } from 'src/app/services/nurse.service';
 })
 export class NurseComponent implements OnInit {
 
-  patientsArray=[];
+  patientsArray:any=[];
 
   constructor(private nurse: NurseService) { }
 
   ngOnInit(): void {
-    // this.nurse.getPatients().subscribe((response: any[])=> this.patientsArray = response)
+    this.nurse.getPatients().subscribe((response: any[])=> {this.patientsArray = response})
   }
 
   getInfo(){
@@ -27,6 +27,10 @@ export class NurseComponent implements OnInit {
 
   searchPatient(){
     this.nurse.getPatientsById();
+  }
+
+  getAllPatients(){
+    this.nurse.getPatients();
   }
 
   goBack(){

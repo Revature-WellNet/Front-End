@@ -12,14 +12,15 @@ const APIURL="http://localHost:8081/"
 export class NurseService {
 
   // private patientAPI = "URL for Patients";
+  // APIURL = "http://localHost:8081/diagnosis/patient"
 
   constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
 
   // Will turn into observable once have patient table created in database
-  // getPatients(): Observable:any[]{
-  //   console.log("This will return patients");
-  //   return this.http.http.get<any[]>(this.api)
-  // }
+  getPatients(): Observable<any[]>{
+    console.log("This will return patients");
+    return this.http.get<any[]>(APIURL + "diagnosis/patient");
+  }
 
   // Will turn into observable once have patient table created in database
   getPatientsById(){
