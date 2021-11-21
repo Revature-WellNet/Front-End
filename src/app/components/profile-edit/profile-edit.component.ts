@@ -22,6 +22,9 @@ export class ProfileEditComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    console.log("First Name : " + this.firstName);
+
   }
 
   submit(fName: any, lName: any, email : any){

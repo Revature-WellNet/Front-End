@@ -1,54 +1,108 @@
 <div class="background">
-<div class="container">
-<h1>Doctor</h1>
-</div>
-
-<app-button class="btn btn-top-left" (btnClick) = "goBack()" text = "Back"></app-button>
-
-<div class="top-right">
-<app-button class="btn" (btnClick) = "viewUserInfo()" text = "View User Info"></app-button>
-<app-button class="btn" (btnClick) = "logout()" text = "Logout"></app-button>
-</div>
-
-<div class="search-area">
-    <div class="form-group">
-         <!-- <label for="patient-search">Search for Patients</label> -->
-         <input type="text" class="form-control" id="patient-search"  name="patient-search" placeholder="Search for Patients" required>
+    <div class="container">
+        <h1>Doctor</h1>
     </div>
-    <app-button class="btn btn-search" (btnClick) = "getPatientsByDoctor(doctorId)" text = "Search for Patients"></app-button>
-</div>
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Patient</th>
-                <th>Date of Birth</th>
-                <th>Age</th>
-                <th>Allergies</th>
-                <th>Height</th>
-                <th>Weight</th>
-                <th>Vaccinations</th>
-                <th>Blood Type</th>
-                <th>Sex</th>
-                <th>Doctor</th>
-            </tr>
+    <app-button class="btn btn-top-left" (btnClick) = "goBack()" text = "Back"></app-button>
+
+    <div class="top-right">
+    <app-button class="btn" (btnClick) = "viewUserInfo()" text = "View User Info"></app-button>
+    <app-button class="btn" (btnClick) = "logout()" text = "Logout"></app-button>
+    </div>
+
+    <div id = "TempDiv">
+        <h1> All Patients Available (Displaying Available Fields) </h1>
+
+        <table class="table table-striped table-light table-hover
+        table-sm"
+        id="TempAllPatients">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col"> First Name </th>
+            <th scope="col"> Last Name </th>
+            <th scope="col"> Patient ID </th>
+            <th scope="col"> DOB </th>
+            <th scope="col"> Sex </th>
+            <th scope="col"> Height </th>
+            <th scope="col"> Weight </th>
+        </tr>
         </thead>
-          <!-- <tbody>
-            <a routerLink="test"><tr *ngFor=let patient of Patients>
-                <td>{{patient.name}}</td>
-                <td>{{patient.dob}}</td>
-                <td>{{patient.age}}</td>
-                <td>{{patient.allergy}}</td>
-                <td>{{patient.height}}</td>
-                <td>{{patient.weight}}</td>
-                <td>patient.vaccinations}}</td>
-                <td>patient.bloodType}}</td>
-                <td>{{patient.sex}}</td>
-                <td>{{patient.doctor}}</td>
-            </tr></a>
-        </tbody>  -->
+        <tbody>
+
+<!--        VVV From Patient Model VVV     
+    public patientId: number|null;
+    public firstName: string;
+    public lastName: string;
+    public dob: Date;
+    public height: number;
+    public weight: number;
+    public bloodType: string;
+    public sex: string;
+    public vaccinations?: object[];
+    public allergies?: object[]; -->
+
+            <tr *ngFor="let t of tempAllPatients">
+                <td style="text-align : center;">{{t.patientId}}</td>
+                <td style="text-align : center;">{{t.firstName}}</td>
+                <td style="text-align : center;">{{t.lastName}}</td>
+                <td style="text-align : center;">{{t.dob}}</td>
+                <!-- VV Can Not Pull Out Without Sex Model Because Patient Currently STores As 
+                        The String sex_id In DBeaver Database And Does Not Map To Their
+                        Patient-->
+                <td style="text-align : center;">{{t.sex}}</td>
+                <td style="text-align : center;">{{t.height}}</td>
+                <td style="text-align : center;">{{t.weight}}</td>
+            </tr>
+        </tbody>
     </table>
-</div>
+
+    </div>
+
+    <div class="search-area">
+        <div class="form-group">
+            <!-- <label for="patient-search">Search for Patients</label> -->
+            <input type="text" class="form-control" #SecondButtonCrunch id="patient-search"  name="patient-search" placeholder="Search for Patients" required>
+        </div>
+        <app-button class="btn btn-search" (btnClick) = "getPatientsByDoctor(doctorId)" text = "Search for Patients"></app-button>
+        <!-- VV Temporary Button For Displaying All Patients But It Demonstrates Sending A 
+                String To The Backend Via Parameter -->
+        <button type="button" (click)="getPatientsByString(SecondButtonCrunch.value)">
+
+            Display All After Any String Entry
+        </button>
+    </div>
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Date of Birth</th>
+                    <th>Age</th>
+                    <th>Allergies</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Vaccinations</th>
+                    <th>Blood Type</th>
+                    <th>Sex</th>
+                    <th>Doctor</th>
+                </tr>
+            </thead>
+            <!-- <tbody>
+                <a routerLink="test"><tr *ngFor=let patient of Patients>
+                    <td>{{patient.name}}</td>
+                    <td>{{patient.dob}}</td>
+                    <td>{{patient.age}}</td>
+                    <td>{{patient.allergy}}</td>
+                    <td>{{patient.height}}</td>
+                    <td>{{patient.weight}}</td>
+                    <td>patient.vaccinations}}</td>
+                    <td>patient.bloodType}}</td>
+                    <td>{{patient.sex}}</td>
+                    <td>{{patient.doctor}}</td>
+                </tr></a>
+            </tbody>  -->
+        </table>
+    </div>
 
 </div>

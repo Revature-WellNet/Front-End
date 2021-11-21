@@ -3,6 +3,8 @@ import { LocationStrategy } from '@angular/common';
 import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Patient } from '../models/patient';
 
 
 
@@ -16,6 +18,24 @@ export class DoctorService {
     private ttp: HttpClientModule, private router : Router) { }
 
 
+
+  overrideNull(): string {
+    if (localStorage.getItem('token') === null) return '';
+    return localStorage.getItem('token') as any;
+  }
+
+httpOptions = {
+    headers: new HttpHeaders({
+      Authorization: this.overrideNull(),
+     
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Credentials': 'true',
+    }),
+  };
+
   // getPatients(){
   //   this.http.get(APIURL + "wellnet/user");
   // }
@@ -26,6 +46,14 @@ export class DoctorService {
 
   getPatientsByDocId(){
     this.http.get(APIURL +"wellnet/patient/doctor")
+  }
+
+  getPatientsByDocIdUser(inputString : string) : Observable<Patient[]> {
+
+    console.log("Sending String : " + inputString);
+
+    return this.http.get<Patient[]>(APIURL + "wellnet/user/patient/doctor/" + inputString);
+
   }
 
 
