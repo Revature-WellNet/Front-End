@@ -20,11 +20,10 @@ const routes: Routes = [
   // {path: "doctor", component: DoctorComponent},
   {path: "profile", component: ProfileComponent},
   {path: "diagnosis", component: DiagnosisComponent},
-  {path: "checkin", component: PatientCheckInComponent}
+  {path: "checkin", component: PatientCheckInComponent},
   {path: "doctor", component: DoctorComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profileEdit', component: ProfileEditComponent},
-  {path: "doctor", component: DoctorComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {
     path:"rooms",
