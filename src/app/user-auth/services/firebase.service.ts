@@ -29,6 +29,13 @@ export class FirebaseService {
     });
   }
 
+  //when creating a nurse model (front-end) make sure to call this function when setting their uid
+  getLoggedUserUid() : string
+  {
+    const user = firebase.auth().currentUser;
+    return (user != null) ? user.uid : "";
+  }
+
   async logout()
   {
     await this.firebaseAuth.signOut();
@@ -57,6 +64,5 @@ export class FirebaseService {
     let url : string = this.springServerUrl + 'private/random';
     return this.httpClient.get<any>(url, {headers: httpHeader}).toPromise<any>();
   }
-
   
 }
