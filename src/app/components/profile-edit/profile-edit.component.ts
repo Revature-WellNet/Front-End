@@ -31,6 +31,16 @@ export class ProfileEditComponent implements OnInit {
 
     this.userService.getUser(userId).subscribe((user : User) => {
 
+      if(email){
+        if(!this.emailValidator.validateEmailFormat(email)){
+          alert("Email format not accepted. Please try again.");
+          return;
+    
+        }else{
+          user.email = email;
+        }
+    }
+
     if(fName){
       user.firstname = fName;
     }
@@ -47,9 +57,6 @@ export class ProfileEditComponent implements OnInit {
         userRole.roleId = 1;
       }
       user.role = userRole;
-    }
-    if(this.emailValidator.validateEmailFormat(email)){
-     user.email = email;
     }
 
     console.log(user);
