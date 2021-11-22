@@ -46,22 +46,40 @@ export class NurseComponent implements OnInit {
   }
 
   searchPatByFullName(firstName: string, lastName: string){
-    this.nurseService.getPatientByFullName(firstName,lastName);
+    this.nurseService.getPatientByFullName(firstName, lastName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
   }
 
   searchPatNameDate(firstName: string, lastName:string, dobMonth:string, dobDay:string, dobYear:string){
     let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
-    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate);
+    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
   getAllPatients(){
     this.nurseService.getPatients().subscribe(
       (response: Patient[])=> {
         this.patientsArray = response;
-        let dobtest:any = this.patientsArray[0].dob;
-        console.log(this.patientsArray);
+                console.log(this.patientsArray);
         console.log(response);
-        console.log(typeof dobtest);
+        console.log(typeof response);
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);
