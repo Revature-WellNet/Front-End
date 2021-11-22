@@ -16,11 +16,11 @@
 <div class="search-area">
     <div class="form-group">
         <!-- <label for="patient-search">Search for Patients</label> -->
-        <input type="text" class="form-control" id="firstName"  name="firstName" placeholder="Enter First Name" required>
-        <input type="text" class="form-control" id="lastName"  name="lastName" placeholder="Enter Last Name" required>           
+        <input type="text" class="form-control" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
+        <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>           
     </div>
     <div class="dob">
-        <select name="dob" id="dobMonth">
+        <select name="dob" #dobMonth id="dobMonth">
             <option value=''>Please choose a value below</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -35,7 +35,7 @@
             <option value='11'>11</option>
             <option value='12'>12</option>
         </select>
-        <select name="dob" id="dobDay">
+        <select name="dob" #dobDay id="dobDay">
             <option value=''>Please choose a value below</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -69,13 +69,13 @@
             <option value='30'>30</option>
             <option value='31'>31</option>
         </select>
-        <input type="text" id="dobYear" placeholder="Enter Year">
+        <input type="text" #dobYear id="dobYear" placeholder="Enter Year">
     </div>
     <div class="button-group">
         <app-button id="searchId" class="btn btn-search" (btnClick)="searchPatient()" text="Search for Patients"></app-button>
-        <app-button id="searchName" class="btn btn-search" (btnClick)="searchPatByFName()" text="Search for Patients by First Name"></app-button>
-        <app-button id="searchFullName" class="btn btn-search" (btnClick)="searchPatByFullName()" text="Search for Patients by Last Name"></app-button>
-        <app-button id="searchDOB" class="btn btn-search" (btnClick)="searchPatNameDate()" text="Search for Patients by First, Last, and Date of Birth"></app-button>
+        <app-button id="searchName"  class="btn btn-search" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name"></app-button>
+        <app-button id="searchFullName"  class="btn btn-search" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name"></app-button>
+        <app-button id="searchDOB" class="btn btn-search" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobMonth.value, dobDay.value, dobYear.value)" text="Search for Patients by First, Last, and Date of Birth"></app-button>
     </div>
 </div>
 

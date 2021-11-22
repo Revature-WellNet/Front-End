@@ -30,8 +30,9 @@ export class NurseService {
     return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${patientId}`);
   }
 
-  getPatientByFirstName(firstName: string){
-    return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${firstName}`);
+  getPatientByFirstName(firstName: string) :Observable<Patient[]>{
+    console.log("in function");
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/${firstName}`);
   }
 
   getPatientByFullName(firstName: string, lastName: string){

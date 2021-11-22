@@ -31,16 +31,27 @@ export class NurseComponent implements OnInit {
     this.nurseService.getPatientById(1);
   }
 
-  searchPatByFName(){
-    this.nurseService.getPatientByFirstName("Matt");
+  searchPatByFName(firstName: string){
+    console.log("Button Clickd")
+    this.nurseService.getPatientByFirstName(firstName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
   }
 
-  searchPatByFullName(){
-    this.nurseService.getPatientByFullName("Matt", "Jordan");
+  searchPatByFullName(firstName: string, lastName: string){
+    this.nurseService.getPatientByFullName(firstName,lastName);
   }
 
-  searchPatNameDate(){
-    this.nurseService.getPatientByNameDOB("Matt", "Jordan", "3/22/1980");
+  searchPatNameDate(firstName: string, lastName:string, dobMonth:string, dobDay:string, dobYear:string){
+    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate);
   }
 
   getAllPatients(){

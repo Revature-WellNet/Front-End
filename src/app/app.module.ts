@@ -3,16 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
-
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
+import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NurseComponent } from './components/nurse/nurse.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { NurseService } from './services/nurse.service';
