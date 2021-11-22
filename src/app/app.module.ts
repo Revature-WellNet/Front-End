@@ -7,12 +7,16 @@ import { Router, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FirebaseService } from './user-auth/services/firebase.service';
+
+import {AngularFireModule} from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { UserAuthModule } from './user-auth/user-auth.module';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NurseComponent } from './components/nurse/nurse.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { NurseService } from './services/nurse.service';
@@ -39,9 +43,11 @@ import { LockoutComponent } from './lockout/lockout.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    UserAuthModule
   ],
-  providers: [NurseService],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
