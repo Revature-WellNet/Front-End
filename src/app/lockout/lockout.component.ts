@@ -1,5 +1,6 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Covid19VerificationService } from '../services/covid19-verification.service';
 
 @Component({
   selector: 'app-lockout',
@@ -8,14 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LockoutComponent implements OnInit {
 
-  constructor() { }
+  public userId:number = 1;
+  
+  constructor(private cvs:Covid19VerificationService) { }
 
   ngOnInit(): void {
+    
     setTime();
   }
 
 
 }
+
+
   // Update the count down every 1 second
 let x = setInterval(setTime, 1000);
 function setTime() {
@@ -44,4 +50,6 @@ function setTime() {
     }
   ;
 }
+
+
 

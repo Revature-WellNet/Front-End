@@ -16,4 +16,8 @@ export class Covid19VerificationService {
     return this.http.post(this.serverUrl + '/covid', cv) ;
   }
 
+  getFormServ(id:number):Observable<Object>{
+    return this.http.get(this.serverUrl + '/covid/' + id);
+  }
+
 }
