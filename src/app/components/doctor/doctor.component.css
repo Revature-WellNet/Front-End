@@ -7,6 +7,10 @@
     background:  rgba(200, 220, 180, 0.1);
 }
 
+table tr{
+    text-align: center;
+}
+
 .container{
     display: flex;
     justify-content: center;
@@ -65,7 +69,7 @@ input {
 }
 
 .table{
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     margin: auto;
     background: rgba(200, 220, 180, 0.1);

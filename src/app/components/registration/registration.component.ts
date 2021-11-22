@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
   public username : string = "";
   public password : string = "";
 
-  public debugging : boolean = true;
+  public debugging : boolean = false;
 
 
 
