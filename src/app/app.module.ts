@@ -9,6 +9,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { NurseComponent } from './components/nurse/nurse.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
+import { PatientCheckInComponent } from './components/patient-check-in/patient-check-in.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
     NurseComponent,
     ButtonComponent,
     NurseComponent,
-    DiagnosisComponent
+    DiagnosisComponent,
+    PatientCheckInComponent
   ],
   imports: [
     BrowserModule,

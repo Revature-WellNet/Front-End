@@ -10,15 +10,26 @@ export class DiagnosisComponent implements OnInit {
 
   diagnosis: string = ' ';
   symptoms: string = ' ';
-  constructor(private patientService:PatientService) { 
+  constructor(private patientService: PatientService) { 
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   onSubmit(diagnosis: string, symptoms: string){
     console.log(symptoms, ' ', diagnosis);
 
   }
+
+  rejectDiagnosis(){
+    // logic to inform nurse to revisit with patient.
+  }
+
+  overrideDiagnosis(diagnosis: string){
+    // perhaps format invalid diagnosis (make italic or someting) then append new diagnosis.
+  }
+
+  prescribeTreatment(treatment: string){}
+
 }
