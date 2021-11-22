@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.firebaseService.logout();
   }
 
+  //dummy example of sending an http request requiring an authorization header
   getUser()
   {
     this.firebaseService.getUserFromSpringServer().then(user=>{

@@ -40,6 +40,9 @@ export class FirebaseService {
        this.idToken = await user.getIdToken(true);
   }
 
+  //Example of sending a request to Spring server with appropriate header
+  //all functions that are expecting a response MUST be in the form of
+  //a promise object not an Observable
   async getUserFromSpringServer() : Promise<any>
   {
     let idToken = await firebase.auth().currentUser?.getIdToken();
