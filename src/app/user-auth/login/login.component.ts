@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     await this.firebaseService.signin(email, password).then(()=>{
       this.firebaseService.getUserFromSpringServer().subscribe((data) => {
         console.log(data);
+        // const user= data.user;
       });
     });
   }

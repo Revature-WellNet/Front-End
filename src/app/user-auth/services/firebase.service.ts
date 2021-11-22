@@ -16,7 +16,7 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
     .then(response => {
       let responseString : string = JSON.stringify(response);
-      console.log(responseString);
+      //console.log(responseString);
       localStorage.setItem('user', responseString);
     }, function(e)
     {
@@ -31,14 +31,18 @@ export class FirebaseService {
 
   getUserFromSpringServer()
   {
+    const user=JSON.parse(this.overrideNull());
+    console.log(user.user.stsTokenManager.accessToken)
     let header : HttpHeaders = new HttpHeaders({
-      Authorization: JSON.parse(this.overrideNull()),
+      Authorization: 'Bearer '+ user.user.stsTokenManager.accessToken,
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type'
     });
 
-    let url : string = 'http://localhost:8080/private/random';
+   
+//console.log(user.user.stsTokenManager.accessToken);
+    let url : string = 'http://localhost:8085/private/random';
     return this.httpClient.get<any>(url, {headers: header}) as Observable<any>;
   }
 
