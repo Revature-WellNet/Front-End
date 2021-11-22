@@ -40,12 +40,12 @@ export class FirebaseService {
        this.idToken = await user.getIdToken(true);
   }
 
-  //Example of sending a request to Spring server with appropriate header
-  //all functions that are expecting a response MUST be in the form of
-  //a promise object not an Observable
+  //Test function - example of sending a request to Spring server with appropriate header.
+  //All functions sending HTTP requests must call getToken() and if they are expecting to return a response 
+  //for components, they MUST be in the form of a promise object not an Observable
   async getUserFromSpringServer() : Promise<any>
   {
-    let idToken = await firebase.auth().currentUser?.getIdToken();
+    let idToken = await this.getToken();
 
     let httpHeader : HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + idToken,
