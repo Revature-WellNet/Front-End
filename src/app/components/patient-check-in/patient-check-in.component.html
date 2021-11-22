@@ -1,0 +1,49 @@
+<div class= "container" >
+    <div *ngIf="!patientCheck; else NewPatient" class= "patientCheckIn">
+        <form
+        #formDemo= "ngForm"
+        class= "form-check-in "
+        (ngSubmit)= "onSubmit(firstName, lastName, dob)">
+
+        <div class= "form-group">
+            <label for= "firstName">firstName</label>
+            <input
+                type= "text"
+                class= "form-control"
+                name= "firstName"
+                id= "firstName"
+                [(ngModel)] = "firstName"
+                required
+            />
+            <br>
+                <label for= "lastName">lastName</label>
+                <input
+                    type= "text"
+                    class= "form-control"
+                    name= "lastName"
+                    id= "lastName"
+                    [(ngModel)] = "lastName"
+                    required
+                />
+            <br>
+                <label for= "dob">Date of Birth</label>
+                <input
+                    type= "date"
+                    class= "form-control"
+                    name= "dob"
+                    id= "dob"
+                    [(ngModel)] = "dob"
+                    required
+                />
+            <br>
+        </div>
+        <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Get Patient</button>
+    </form>
+    </div>
+    <ng-template #NewPatient>
+      <p>This is where the new patient registration goes</p>
+    </ng-template>
+</div>
+
+
+
