@@ -210,6 +210,7 @@ export class RegistrationComponent implements OnInit {
         // console.log(data[0].role.role);
 
         this.registrationSender.routeToNurseComponent(Object(data).role.role);
+        console.log(Object(data).role.role);
 
       });
 
