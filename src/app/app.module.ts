@@ -8,7 +8,8 @@ import { FirebaseService } from './user-auth/services/firebase.service';
 import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { UserAuthModule } from './user-auth/user-auth.module';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from '@angular/common/http'
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     UserAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

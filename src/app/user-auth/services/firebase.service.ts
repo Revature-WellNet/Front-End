@@ -29,6 +29,14 @@ export class FirebaseService {
     });
   }
 
+  signUp(email: string, password: string) {
+    return this.firebaseAuth.createUserWithEmailAndPassword(email, password).then((result) => {
+      console.log(result.user);
+    }).catch((error) => {
+      window.alert(error.message);
+    })
+  }
+
   async logout()
   {
     await this.firebaseAuth.signOut();
