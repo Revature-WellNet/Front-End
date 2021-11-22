@@ -29,12 +29,8 @@ export class FirebaseService {
     });
   }
 
-  signUp(email: string, password: string) {
-    return this.firebaseAuth.createUserWithEmailAndPassword(email, password).then((result) => {
-      console.log(result.user);
-    }).catch((error) => {
-      window.alert(error.message);
-    })
+  async signUp(email: string, password: string) {
+    return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
   }
   
   //when creating a nurse model (front-end) make sure to call this function when setting their uid
