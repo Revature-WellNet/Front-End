@@ -1,5 +1,6 @@
 import { getLocaleDateFormat, getLocaleTimeFormat, Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 
 @Component({
@@ -16,18 +17,13 @@ export class LockoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    getDate();
-    setTime();
+    this.getTimestamp();
+    this.setTime();
   }
 
-
-}
-
-
-  // Update the count down every 1 second
-let x = setInterval(setTime, 1000);
-function setTime() {
-
+    // Update the count down every 1 second
+    public x = setInterval(this.setTime(), 1000);
+  setTime() {
     let countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
     //let countDownDate = new Date(month+day+year+"08:00:00").getTime();
     let now = new Date().getTime();
@@ -51,11 +47,18 @@ function setTime() {
  
 }
 
-
-
-async function getDate(this: any) {
-  this.cvs.getFormServ(2).subscribe((data: Object) => {
-    console.log(data)
-  })
+  getTimestamp() {
+    this.cvs.getFormServ(2).subscribe((data: Object) => {
+      console.log(data)
+    })
+  }
 }
+
+
+
+
+
+
+
+
 
