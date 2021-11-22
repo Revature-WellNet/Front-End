@@ -25,32 +25,47 @@
     <table>
         <thead>
             <tr>
-                <th>Patient</th>
+                <th>Patient First Name</th>
+                <th>Patient Last Name</th>
                 <th>Date of Birth</th>
-                <th>Age</th>
+                <!-- <th>Age</th> -->
                 <th>Allergies</th>
                 <th>Height</th>
                 <th>Weight</th>
                 <th>Vaccinations</th>
                 <th>Blood Type</th>
                 <th>Sex</th>
-                <th>Doctor</th>
+                <!-- <th>Doctor</th> -->
             </tr>
         </thead>
-        <!-- <tbody>
-            <a routerLink="test"><tr *ngFor=let patient of Patients>
-                <td>{{patient.name}}</td>
+        <tbody>
+            <tr *ngFor="let patient of patientsArray">
+                <td>{{patient.firstName}}</td>
+                <td>{{patient.lastName}}</td>
                 <td>{{patient.dob}}</td>
-                <td>{{patient.age}}</td>
-                <td>{{patient.allergy}}</td>
+                <!-- <td>{{patient.dob}}</td> -->
+                <td>
+                    <ul>
+                        <li  *ngFor = "let allergy of patient.allergies">
+                            {{allergy.allergy}}
+                        </li>
+                    </ul>
+                </td>
                 <td>{{patient.height}}</td>
                 <td>{{patient.weight}}</td>
-                <td>patient.vaccinations}}</td>
-                <td>patient.bloodType}}</td>
-                <td>{{patient.sex}}</td>
+                <td>
+                    <ul>
+                        <li  *ngFor = "let vax of patient.vaccinations">
+                            {{vax.vaccination}}
+                        </li>
+                    </ul>
+                    <!-- {{patient.vaccinations[0].vaccination}} -->
+                </td>
+                <td>{{patient.bloodType.type}}</td>
+                <td>{{patient.sex.sex}}</td>
                 <td>{{patient.doctor}}</td>
-            </tr></a>
-        </tbody>  -->
+            </tr>
+        </tbody> 
     </table>
 </div>
 </div>

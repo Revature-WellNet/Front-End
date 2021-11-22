@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteConfigLoadEnd } from '@angular/router';
+import { Router } from '@angular/router';
+import { Role } from 'src/app/models/role';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,19 +12,51 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private router : Router) { }
 
-  public firstName = "";
-  public lastName = "";
-  public specialty = "";
-  public email = "";
 
   ngOnInit(): void {
-    this.generateProfile();
+   this.generateProfile();
   }
 
   generateProfile(){
+    //need to get user's id from login for this to work
+    //this.loginService.getUserId().subscribe((userId : string){
+    let userId = "53";
+      
+      this.userService.getUser(userId).subscribe((response : User) => {  
+        
+        let firstName = document.createElement("span");
+        let lastName = document.createElement("span");
+        let role = document.createElement("span");
+        let email = document.createElement("span");
+        firstName.innerHTML = response.firstname
+        lastName.innerHTML = response.lastname
+        role.innerHTML = response.role.role
+        email.innerHTML = response.email
 
+        document.getElementById("firstName")!.appendChild(firstName);
+        document.getElementById("lastName")!.appendChild(lastName);
+        document.getElementById("role")!.appendChild(role);
+        document.getElementById("email")!.appendChild(email);
+        
+      })
+   // })
+  }
+
+  navigateHome(){
+    
+  //  this.loginService.getUserId().subscribe((userId : string) => {
+    let userId = "53";
+        this.userService.getUser(userId).subscribe((response : User) => {
+
+          if(response.role.role.toLowerCase() === "doctor"){
+            this.router.navigate(["/doctor"]);
+          }else{
+            this.router.navigate(["/nurse"]);
+          }
+        })
+   // })
 
   }
 
