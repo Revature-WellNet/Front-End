@@ -12,6 +12,7 @@ export class LockoutComponent implements OnInit {
 
   public userId:number = 1;
   public time:any='';
+  public auth:any ='';
   
   constructor(private cvs:Covid19VerificationService) { 
     window.setInterval(() => this.setTime(),1000);
@@ -25,12 +26,9 @@ export class LockoutComponent implements OnInit {
 
   setTime() {
     let countDownDate = this.time.getTime()+1209600000;
-    //let countDownDate = new Date(month+day+year+"08:00:00").getTime();
+
     let now = new Date().getTime();
-    console.log(countDownDate)
-console.log(now)
     let distance = countDownDate - now;
-    console.log(distance)
   
     // Time calculations for days, hours, minutes and seconds
     let days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -48,15 +46,27 @@ console.log(now)
     };
  
 }
+  //getTimestampIdByAuth(auth:string){
+  //  this.cvs.getUserByAuth(auth).subscribe((data:object)=>{
+      
+  //})
+ // }
 
   getTimestamp() {
+    //this.cvs.getFormServ(getTimestampIdByAuth(this.auth)).subscribe((data: Object) => {
     this.cvs.getFormServ(2).subscribe((data: Object) => {
-      console.log(Object.values(data))
-      let dateArray:any[] = Object.values(data);
-      let dateTime=dateArray[1];
-      let date = new Date(dateTime);
-      this.time = date;
-console.log(this.time)
+      if(data!=null){
+        let dateArray:any[] = Object.values(data);
+        let dateTime=dateArray[1];
+        let date = new Date(dateTime);
+        this.time = date;
+        return true;
+      }
+      else{
+        return false;
+      } 
+
+
 
     })
   }
