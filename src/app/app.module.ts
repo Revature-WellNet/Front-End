@@ -46,10 +46,7 @@ import { LockoutComponent } from './lockout/lockout.component';
     PatientCheckInComponent,
     ProfileEditComponent,
     DoctorComponent,
-
-
     RoomsComponent,
-
     Covid19VerificationComponent,
     LockoutComponent
 

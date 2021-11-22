@@ -17,18 +17,14 @@ const routes: Routes = [
   {path: "",  redirectTo: "/registration", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
   {path: "nurse", component: NurseComponent},
-  // {path: "doctor", component: DoctorComponent},
   {path: "profile", component: ProfileComponent},
   {path: "diagnosis", component: DiagnosisComponent},
   {path: "checkin", component: PatientCheckInComponent},
   {path: "doctor", component: DoctorComponent},
-  {path: 'profile', component: ProfileComponent},
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
-  {
-    path:"rooms",
-    component:RoomsComponent
-  }
+  {path:"rooms", component:RoomsComponent},
+  {path:"patientcheckin", component:PatientCheckInComponent}
 
 ];
 
