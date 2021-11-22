@@ -1,4 +1,4 @@
-import { Time } from '@angular/common';
+import { getLocaleDateFormat, getLocaleTimeFormat, Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 
@@ -11,10 +11,12 @@ export class LockoutComponent implements OnInit {
 
   public userId:number = 1;
   
-  constructor(private cvs:Covid19VerificationService) { }
+  constructor(private cvs:Covid19VerificationService) { 
+
+  }
 
   ngOnInit(): void {
-    
+    getDate();
     setTime();
   }
 
@@ -26,8 +28,6 @@ export class LockoutComponent implements OnInit {
 let x = setInterval(setTime, 1000);
 function setTime() {
 
-  
-  
     let countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
     //let countDownDate = new Date(month+day+year+"08:00:00").getTime();
     let now = new Date().getTime();
@@ -47,9 +47,15 @@ function setTime() {
     // If the count down is finished, write some text
     if (distance < 0) {
       document.getElementById("timer")!.innerHTML = "EXPIRED";
-    }
-  ;
+    };
+ 
 }
 
 
+
+async function getDate(this: any) {
+  this.cvs.getFormServ(2).subscribe((data: Object) => {
+    console.log(data)
+  })
+}
 
