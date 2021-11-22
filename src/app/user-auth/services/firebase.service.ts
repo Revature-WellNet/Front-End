@@ -5,17 +5,11 @@ import {AngularFireAuth} from '@angular/fire/compat/auth'
 import { Observable } from 'rxjs';
 import firebase from 'firebase/compat/app'
 
-import * as admin from 'firebase-admin';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-
-  public static NURSE : string = "ROLE_NURSE";
-  
-  public static DOCTOR : string = "ROLE_DOCTOR";
 
   public springServerUrl : string = 'http://localhost:8080/';
 
@@ -35,26 +29,6 @@ export class FirebaseService {
     });
   }
 
-  async signup(email : string, password : string)
-  {
-    await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
-    .then(response => {
-      let responseString : string = JSON.stringify(response);
-      console.log(responseString);
-      this.assignUserRole(FirebaseService.NURSE);
-    }, function(e)
-    {
-      console.error(e);
-    });
-  }
-
-  assignUserRole(userRole : string)
-  {
-    const user = firebase.auth().currentUser;
-    if(user != null)
-      admin.auth().setCustomUserClaims(user.uid, {userRole : true});
-  }
-
   async logout()
   {
     await this.firebaseAuth.signOut();
@@ -68,7 +42,7 @@ export class FirebaseService {
 
   async getUserFromSpringServer() : Promise<any>
   {
-    let idToken = await this.getToken();
+    let idToken = await firebase.auth().currentUser?.getIdToken();
 
     let httpHeader : HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + idToken,
