@@ -1,0 +1,161 @@
+
+#RegistrationDiv {
+
+  border-style : double;
+
+  padding-left : 3%;
+  padding-right : 3%;
+  padding-top : 20px;
+  padding-bottom : 20px;
+
+  background-color: rgba(200, 220, 180, 0.1);
+/* 
+  align-self : center;
+  justify-self : center; */
+
+  width : 300px;
+
+  margin : auto;
+
+}
+
+#CenterContainerContent {
+
+  display : flex;
+
+  align-items : center;
+  justify-content : center;
+
+  
+
+}
+
+#RegistrationTitle {
+
+  width : 80%;
+  margin-left : 10%;
+  margin-right : 10%;
+
+  color : rgb(0, 38, 74);
+
+/* 
+  align-self : center;
+  justify-self : center; */
+
+  text-align : center;
+
+}
+
+#RegistrationFirstName, #RegistrationLastName, #RegistrationUsername,
+#RegistrationEmail, #RegistrationRole, #RegistrationPassword{
+
+  width : 100%;
+  margin : 0 auto;
+
+  color : rgb(0, 38, 74);
+
+  background-color : rgba(196, 230, 83, 0.2);
+
+}
+
+#RegistrationRoleTitle, #RegistrationCovidTitle {
+
+  margin : 0;
+
+  padding-bottom : 4px;
+
+  color : rgb(0, 38, 74);
+
+}
+#RegistrationRole1, #RegistrationRole2,
+#RegistrationCovidStatus1, #RegistrationCovidStatus2 {
+
+  margin : 0;
+
+  margin-left : 10px;
+
+  color : rgb(0, 38, 74);
+
+}
+
+#RegistrationValidationMessage {
+
+  margin : 0;
+  margin-left : 10px;
+
+  padding : 0;
+
+  color : red;
+
+  height : 14px;
+
+  font-family : sans-serif;
+  font-style : italic;
+  font-size : 14px;
+  font-weight : 300;
+
+}
+
+#RegisterButton:enabled {
+
+  margin-top : 10px;
+  margin-bottom : 20px;
+
+  width : 60%;
+  color : rgb(0, 38, 74);
+  background-color : rgb(146, 200, 63);
+
+  font-weight : 600;
+
+  align-items : center;
+  justify-content: center;
+
+  height : 30px;
+
+  border-radius : 10px 100px / 120px;
+
+} 
+#RegisterButton:enabled:hover {
+  background-color : rgb(36, 141, 2);
+} 
+#RegisterButton:disabled {
+
+  margin-top : 10px;
+  margin-bottom : 20px;
+
+  width : 60%;
+
+  font-weight : 600;
+  color : rgb(0, 38, 74);
+
+  background-color :rgb(126, 160, 43);
+
+  align-items : center;
+  justify-content: center;
+
+  height : 30px;
+
+  border-radius : 10px 100px / 120px;
+
+}
+
+#RegistrationSpacer {
+
+  margin : 0;
+  padding : 0;
+  height : 14px;
+
+  font-size : 14px;
+
+}
+
+#RegistrationCovidNotice {
+
+  color : red;
+  font-weight : 700;
+
+  
+  text-align : center;
+
+
+}

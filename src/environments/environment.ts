@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false, 
+  apiBaseUrl: 'http://localhost:8081/wellnet/',
+  firebase : {
+    apiKey: "AIzaSyDTzgCaK2cYqraEg9fn-X92cNZnU5ZDC-k",
+    authDomain: "sandbox-project-a5abb.firebaseapp.com",
+    projectId: "sandbox-project-a5abb",
+    storageBucket: "sandbox-project-a5abb.appspot.com",
+    messagingSenderId: "70781762376",
+    appId: "1:70781762376:web:1e3cfbd999ff8ed9d2d17d"
+  }
 };
 
 /*
