@@ -15,6 +15,8 @@ const APIURL = environment.apiBaseUrl;
 })
 export class DoctorService {
 
+  private patientApiServerUrl = environment.apiBaseUrl;
+
   constructor(private http: HttpClient, private location: LocationStrategy, 
     private ttp: HttpClientModule, private router : Router) { }
 
@@ -37,9 +39,10 @@ httpOptions = {
     }),
   };
 
-  // getPatients(){
-  //   this.http.get(APIURL + "user");
-  // }
+  getPatients(): Observable<Patient[]>{
+    console.log("This will return patients");
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient`);
+  }
 
    // getPatientById(id){
   //   this.http.get(APIURL + "* not this: select patient where id = ?");

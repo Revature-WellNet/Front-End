@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { Patient } from '../../models/patient';
@@ -11,11 +12,16 @@ export class DoctorComponent implements OnInit {
 
   doctorId!: string;
 
-  public tempAllPatients : Array<Patient> = [];
+  public patientsArray : any = [];
 
   constructor(private doctorService: DoctorService) { }
 
   ngOnInit(): void {
+
+    //before we get doctor: 
+    this.getAllPatients();
+
+
    // getPatientsByDoctor(doctorId){
   //   this.doctorService.getPatientsByDocId();
   // }
@@ -52,9 +58,9 @@ export class DoctorComponent implements OnInit {
 
         for (let i = 0; i < length; ++ i) {
 
-          this.tempAllPatients.push(Object(data)[i]);
+          this.patientsArray.push(Object(data)[i]);
 
-          console.log(this.tempAllPatients[i]);
+          console.log(this.patientsArray[i]);
 
         }
 
@@ -64,7 +70,21 @@ export class DoctorComponent implements OnInit {
 
   }
  
-  
+  getAllPatients(){
+    this.doctorService.getPatients().subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+        let dobtest:any = this.patientsArray[0].dob;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof dobtest);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
   logout(){
 
     this.doctorService.routerLogOutDoctor();

@@ -13,10 +13,10 @@
     <div id = "TempDiv">
         <h1> All Patients Available (Displaying Available Fields) </h1>
 
-        <table class="table table-striped table-light table-hover
+        <!-- <table class="table table-striped table-light table-hover
         table-sm"
-        id="TempAllPatients">
-        <thead class="thead-light">
+        id="TempAllPatients"> -->
+        <!-- <thead class="thead-light">
         <tr>
             <th scope="col"> First Name </th>
             <th scope="col"> Last Name </th>
@@ -26,8 +26,9 @@
             <th scope="col"> Height </th>
             <th scope="col"> Weight </th>
         </tr>
-        </thead>
-        <tbody>
+        </thead> -->
+
+        <!-- <tbody> -->
 
 <!--        VVV From Patient Model VVV     
     public patientId: number|null;
@@ -41,20 +42,20 @@
     public vaccinations?: object[];
     public allergies?: object[]; -->
 
-            <tr *ngFor="let t of tempAllPatients">
+            <!-- <tr *ngFor="let t of tempAllPatients">
                 <td style="text-align : center;">{{t.patientId}}</td>
                 <td style="text-align : center;">{{t.firstName}}</td>
                 <td style="text-align : center;">{{t.lastName}}</td>
-                <td style="text-align : center;">{{t.dob}}</td>
+                <td style="text-align : center;">{{t.dob}}</td> -->
                 <!-- VV Can Not Pull Out Without Sex Model Because Patient Currently STores As 
                         The String sex_id In DBeaver Database And Does Not Map To Their
                         Patient-->
-                <td style="text-align : center;">{{t.sex}}</td>
+              <!--  <td style="text-align : center;">{{t.sex}}</td>
                 <td style="text-align : center;">{{t.height}}</td>
                 <td style="text-align : center;">{{t.weight}}</td>
             </tr>
-        </tbody>
-    </table>
+        </tbody> -->
+    <!-- </table> -->
 
     </div>
 
@@ -66,42 +67,57 @@
         <app-button class="btn btn-search" (btnClick) = "getPatientsByDoctor(doctorId)" text = "Search for Patients"></app-button>
         <!-- VV Temporary Button For Displaying All Patients But It Demonstrates Sending A 
                 String To The Backend Via Parameter -->
-        <button type="button" (click)="getPatientsByString(SecondButtonCrunch.value)">
+        <!-- <button type="button" (click)="getPatientsByString(SecondButtonCrunch.value)">
 
             Display All After Any String Entry
-        </button>
+        </button> -->
     </div>
 
     <div class="table">
         <table>
             <thead>
                 <tr>
-                    <th>Patient</th>
+                    <th>Patient First Name</th>
+                    <th>Patient Last Name</th>
                     <th>Date of Birth</th>
-                    <th>Age</th>
+                    <!-- <th>Age</th> -->
                     <th>Allergies</th>
                     <th>Height</th>
                     <th>Weight</th>
                     <th>Vaccinations</th>
                     <th>Blood Type</th>
                     <th>Sex</th>
-                    <th>Doctor</th>
+                    <!-- <th>Doctor</th> -->
                 </tr>
             </thead>
-            <!-- <tbody>
-                <a routerLink="test"><tr *ngFor=let patient of Patients>
-                    <td>{{patient.name}}</td>
+            <tbody>
+                <tr *ngFor="let patient of patientsArray">
+                    <td>{{patient.firstName}}</td>
+                    <td>{{patient.lastName}}</td>
                     <td>{{patient.dob}}</td>
-                    <td>{{patient.age}}</td>
-                    <td>{{patient.allergy}}</td>
+                    <!-- <td>{{patient.dob}}</td> -->
+                    <td>
+                        <ul>
+                            <li  *ngFor = "let allergy of patient.allergies">
+                                {{allergy.allergy}}
+                            </li>
+                        </ul>
+                    </td>
                     <td>{{patient.height}}</td>
                     <td>{{patient.weight}}</td>
-                    <td>patient.vaccinations}}</td>
-                    <td>patient.bloodType}}</td>
-                    <td>{{patient.sex}}</td>
+                    <td>
+                        <ul>
+                            <li  *ngFor = "let vax of patient.vaccinations">
+                                {{vax.vaccination}}
+                            </li>
+                        </ul>
+                        <!-- {{patient.vaccinations[0].vaccination}} -->
+                    </td>
+                    <td>{{patient.bloodType.type}}</td>
+                    <td>{{patient.sex.sex}}</td>
                     <td>{{patient.doctor}}</td>
-                </tr></a>
-            </tbody>  -->
+                </tr>
+            </tbody> 
         </table>
     </div>
 
