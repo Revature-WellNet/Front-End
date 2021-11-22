@@ -31,6 +31,18 @@ export class NurseComponent implements OnInit {
     this.nurseService.getPatientById(1);
   }
 
+  searchPatByFName(){
+    this.nurseService.getPatientByFirstName("Matt");
+  }
+
+  searchPatByFullName(){
+    this.nurseService.getPatientByFullName("Matt", "Jordan");
+  }
+
+  searchPatNameDate(){
+    this.nurseService.getPatientByNameDOB("Matt", "Jordan", "3/22/1980");
+  }
+
   getAllPatients(){
     this.nurseService.getPatients().subscribe(
       (response: Patient[])=> {

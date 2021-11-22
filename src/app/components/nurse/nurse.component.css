@@ -30,24 +30,24 @@ table td{
 }
 
 .search-area{
-    display: flex;
     margin-bottom: 100px;
-    position: relative;
     left: 0px;
 }
 
 .form-group {
-    width: 87%;
+    width: 100%;
     margin: 0px;
 }
 
 .btn-search {
     width: 12%;
     margin: 0px;
-    height: 35px;
-    position: absolute;
-    bottom: 0px; 
-    right: 0px;
+
+}
+
+.button-group{
+    display: block;
+    
 }
 
 input {
@@ -55,9 +55,6 @@ input {
     margin-right: 0px;
     padding-left: 10px;
     height: 35px;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
     border: 1px transparent;
     border-radius: 5px;
     background: rgba(196, 230, 83, 0.2);
@@ -88,4 +85,6 @@ table th {
 table th:last-child {
     border-right: none;
 }
+
+
 
