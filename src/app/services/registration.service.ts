@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RegistrationService {
 
   // private registrationValues! : Registration;
 
-  private url : string = "http://localHost:8081/wellnet/";
+  private url : string = environment.apiBaseUrl+"wellnet/";
 
   // getRegistrationValues(values : Registration) {
 

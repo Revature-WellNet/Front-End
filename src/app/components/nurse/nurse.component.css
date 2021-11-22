@@ -3,6 +3,11 @@
     position: relative;
     color: rgb(0, 38, 74);
 }
+
+table td{
+    text-align: center;
+}
+
 .background {
     background:  rgba(200, 220, 180, 0.1);
 }

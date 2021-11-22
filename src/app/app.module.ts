@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
+import { NurseService } from './services/nurse.service';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { DoctorComponent } from './components/doctor/doctor.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [NurseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

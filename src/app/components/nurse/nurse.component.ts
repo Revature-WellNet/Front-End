@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Patient } from 'src/app/models/patient';
 import { NurseService } from 'src/app/services/nurse.service';
 
 @Component({
@@ -10,35 +12,46 @@ export class NurseComponent implements OnInit {
 
   patientsArray:any=[];
 
-  constructor(private nurse: NurseService) { }
+  constructor(private nurseService: NurseService) { }
 
   ngOnInit(): void {
-    this.nurse.getPatients().subscribe((response: any[])=> {this.patientsArray = response})
+    this.getAllPatients();
   }
 
   getInfo(){
-    this.nurse.getUserInfo();
+    this.nurseService.getUserInfo();
   }
 
   addPatient(){
-    this.nurse.addPatients();
+    this.nurseService.addPatients();
     console.log("Button Clicked");
   }
 
   searchPatient(){
-    this.nurse.getPatientsById();
+    this.nurseService.getPatientById(1);
   }
 
   getAllPatients(){
-    this.nurse.getPatients();
+    this.nurseService.getPatients().subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+        let dobtest:any = this.patientsArray[0].dob;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof dobtest);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
   goBack(){
-    this.nurse.goBack();
+    this.nurseService.goBack();
   }
 
   logout(){
-    this.nurse.logout();
+    this.nurseService.logout();
   }
 
 }

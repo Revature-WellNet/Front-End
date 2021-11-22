@@ -4,11 +4,12 @@ import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Patient } from '../models/patient';
 
 
 
-const APIURL = "http://localHost:8081/"
+const APIURL = environment.apiBaseUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +38,7 @@ httpOptions = {
   };
 
   // getPatients(){
-  //   this.http.get(APIURL + "wellnet/user");
+  //   this.http.get(APIURL + "user");
   // }
 
    // getPatientById(id){
@@ -45,14 +46,14 @@ httpOptions = {
   // }
 
   getPatientsByDocId(){
-    this.http.get(APIURL +"wellnet/patient/doctor")
+    this.http.get(APIURL +"patient/doctor")
   }
 
   getPatientsByDocIdUser(inputString : string) : Observable<Patient[]> {
 
     console.log("Sending String : " + inputString);
 
-    return this.http.get<Patient[]>(APIURL + "wellnet/user/patient/doctor/" + inputString);
+    return this.http.get<Patient[]>(APIURL + "user/patient/doctor/" + inputString);
 
   }
 
