@@ -13,13 +13,13 @@
   align-self : center;
   justify-self : center; */
 
-  width : 300px;
+  width : 40%;
 
   margin : auto;
 
 }
 
-#CenterContainerContent {
+.CenterContainerContent {
 
   display : flex;
 
@@ -30,7 +30,7 @@
 
 }
 
-#RegistrationTitle {
+.RegistrationTitle {
 
   width : 80%;
   margin-left : 10%;
@@ -46,8 +46,8 @@
 
 }
 
-#RegistrationFirstName, #RegistrationLastName, #RegistrationUsername,
-#RegistrationEmail, #RegistrationRole, #RegistrationPassword{
+.RegistrationFirstName, .RegistrationLastName, .RegistrationUsername,
+.RegistrationEmail, .RegistrationRole, .RegistrationPassword{
 
   width : 100%;
   margin : 0 auto;
@@ -58,7 +58,7 @@
 
 }
 
-#RegistrationRoleTitle, #RegistrationCovidTitle {
+.RegistrationRoleTitle, .RegistrationCovidTitle {
 
   margin : 0;
 
@@ -67,8 +67,8 @@
   color : rgb(0, 38, 74);
 
 }
-#RegistrationRole1, #RegistrationRole2,
-#RegistrationCovidStatus1, #RegistrationCovidStatus2 {
+.RegistrationRole1, .RegistrationRole2,
+.RegistrationCovidStatus1, .RegistrationCovidStatus2 {
 
   margin : 0;
 
@@ -78,7 +78,7 @@
 
 }
 
-#RegistrationValidationMessage {
+.RegistrationValidationMessage {
 
   margin : 0;
   margin-left : 10px;
@@ -96,7 +96,7 @@
 
 }
 
-#RegisterButton:enabled {
+.RegisterButton:enabled {
 
   margin-top : 10px;
   margin-bottom : 20px;
@@ -115,10 +115,10 @@
   border-radius : 10px 100px / 120px;
 
 } 
-#RegisterButton:enabled:hover {
+.RegisterButton:enabled:hover {
   background-color : rgb(36, 141, 2);
 } 
-#RegisterButton:disabled {
+.RegisterButton:disabled {
 
   margin-top : 10px;
   margin-bottom : 20px;
@@ -139,7 +139,7 @@
 
 }
 
-#RegistrationSpacer {
+.RegistrationSpacer {
 
   margin : 0;
   padding : 0;
@@ -149,7 +149,7 @@
 
 }
 
-#RegistrationCovidNotice {
+.RegistrationCovidNotice {
 
   color : red;
   font-weight : 700;
