@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
 
   getUser()
   {
+    this.firebaseService.gettest().subscribe(data=>{
+      console.log(data);
+    })
     this.firebaseService.getUserFromSpringServer().then(user=>{
       console.log("current user uid: " + user.uid);
     })

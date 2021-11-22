@@ -17,6 +17,11 @@ export class FirebaseService {
 
   constructor(public firebaseAuth : AngularFireAuth, public httpClient : HttpClient) { }
 
+  gettest(): Observable<any>
+  {
+   return this.httpClient.get<any>("http://localhost:8080/test") as Observable<any>
+  }
+
   async signin(email : string, password : string)
   {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -45,14 +50,14 @@ export class FirebaseService {
     let idToken = await firebase.auth().currentUser?.getIdToken();
 
     let httpHeader : HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + idToken,
+      // Authorization: 'Bearer ' + idToken,
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type'
       });
   
     let url : string = this.springServerUrl + 'private/random';
-    return this.httpClient.get<any>(url, {headers: httpHeader}).toPromise<any>();
+    return this.httpClient.get<any>(url).toPromise<any>();
   }
 
   
