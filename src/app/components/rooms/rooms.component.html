@@ -1,0 +1,118 @@
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <p>rooms works!</p>
+
+            <ul class="list-group list-group-horizontal">
+                <li *ngFor="let area of areas" class="list-group-item shadow-pop-bl" (click)="getRoomByArea(area.areaId);">
+                    {{area.name}}
+                </li>
+            </ul>
+            <ul class="list-group">
+                <li *ngFor="let room of rooms" class="list-group-item shadow-pop-bl">
+                    {{room.roomId}} - {{room.roomNumber}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 p-0">
+            <div style="height: 10%;">
+
+            </div>
+            <div class="other d-flex align-items-center" style="background-color:#ECECFB; height: 80%;border-right: none;">
+ <span>open offices</span>
+            </div>
+             <div style="height: 10%">
+ 
+             </div>
+        </div>
+        <div  class="col-md-9">
+           <div class="row">
+               <div  class="col-md-2 room"><span class="badge bg-info text-dark">available</span></div>
+               <div  class="col-md-2 room"><span class="badge bg-info text-dark">available</span></div>
+               <div  class="col-md-2 room"><span class="badge bg-info text-dark">available</span></div>
+               <div  class="col-md-2 room"><span class="badge bg-info text-dark">available</span></div>
+               <div class="col-md-2 room">5</div>
+               <div  class="col-md-2 room">6</div>
+           </div>
+           <div class="row">
+            <div class="col-md-12 hall">
+                <!--Hall-->
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2 p-0">
+<div class="room">
+1
+</div>
+<div class="room">
+2
+</div>
+<div class="other smallroom">
+    Restroom
+</div>
+                    </div>
+                    <div class="col-md-1">
+<!--Hall-->
+                    </div>
+                    <div class="col-md-4 other">
+4
+                    </div>
+                    <div class="col-md-1">
+<!--Hall-->
+                    </div>
+                    <div class="col-md-2 p-0">
+<div class="other tallroom">
+    1
+    </div>
+    <div class="other tallroom">
+        1
+    </div>
+                    </div>
+                 
+                    <div class="col-md-2 p-0">
+                        <div class="other tallroom">
+                            1
+                            </div>
+                            <div class="other tallroom">
+                                1
+                            </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-12 hall">
+                <!--Hall-->
+            </div>
+           </div>
+           <div class="row">
+            <div  class="col-md-2 room"><span class="badge bg-secondary">occupied
+            </span><p class="mt-3"><i class='bx bx-user'></i> Patient name</p>
+        
+        </div>
+            <div  class="col-md-2 room">2</div>
+            <div  class="col-md-2 room"><span class="badge bg-secondary">occupied
+            </span><p class="mt-3"><i class='bx bx-user'></i> Patient name</p></div>
+            <div  class="col-md-2 room">4</div>
+            <div class="col-md-2 room">5</div>
+            <div  class="col-md-2 room">6</div>
+        </div>
+        </div>
+        <div class="col-md-2 p-0">
+           <div style="height: 10%;">
+
+           </div>
+           <div class="other" style="background-color:#ECECFB; height: 80%; border-left: none;">
+
+           </div>
+            <div style="height: 10%">
+
+            </div>
+        </div>
+    </div>
+</div>

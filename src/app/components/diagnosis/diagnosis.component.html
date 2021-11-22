@@ -1,0 +1,41 @@
+<div class= "container" >
+    <div class= "patientDiagnosis">
+        <form
+        #formDemo= "ngForm"
+        class= "form-diagnose "
+        (ngSubmit)= "onSubmit(symptoms, diagnosis)">
+    
+        <div class= "form-group">
+            <label for= "symptoms">Symptoms</label>
+            <input
+                type= "text"
+                class= "form-control"
+                name= "symptoms"
+                id= "symptoms"
+                [(ngModel)] = "symptoms"
+                required
+            />
+            <br>
+            <label for ="diagnosis">Diagnosis</label>
+            <textarea
+                rows = "10"
+                cols= "100"
+                class= "form-control"
+                name= "diagnosis"
+                id= "diagnosis"
+                [(ngModel)]= "diagnosis"
+                required
+            >
+            </textarea>
+            <!-- <span
+          class= "help-block"
+          *ngIf= "!symptoms.valid"
+          >Please enter patient symptoms</span> -->
+        </div>
+    <br>
+    <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Subimt Diagnosis</button> 
+    </form>
+    
+    </div>
+</div>
+
