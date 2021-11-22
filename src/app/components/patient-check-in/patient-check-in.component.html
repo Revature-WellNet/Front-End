@@ -1,5 +1,5 @@
 <div class= "container" >
-    <div class= "patientCheckIn">
+    <div *ngIf="!patientCheck; else NewPatient" class= "patientCheckIn">
         <form
         #formDemo= "ngForm"
         class= "form-check-in "
@@ -37,11 +37,13 @@
                 />
             <br>
         </div>
-        <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Get Patient</button> 
+        <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Get Patient</button>
     </form>
     </div>
+    <ng-template #NewPatient>
+      <p>This is where the new patient registration goes</p>
+    </ng-template>
 </div>
 
 
 
-    

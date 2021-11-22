@@ -9,7 +9,7 @@ import { PatientService } from 'src/app/services/patient.service';
   styleUrls: ['./patient-check-in.component.css']
 })
 export class PatientCheckInComponent implements OnInit {
-
+  public patientCheck: boolean = false;
   public firstName!: string;
   public lastName!: string;
   public dob!: Date;
@@ -27,16 +27,14 @@ export class PatientCheckInComponent implements OnInit {
     console.log(this.firstName, " ", this.lastName," ", this.dob);
   }
 
-  checkInPatient(firstName: string, lastName: string, dob: Date ){
-    this.patientService.getPatient(firstName, lastName, dob).subscribe(
-      (response: Patient)=>{
-        this.patient = response;
-      }
-  );
+  async checkInPatient(firstName: string, lastName: string, dob: Date ){
+    const response = await this.patientService.getPatient(firstName, lastName, dob).toPromise();
+    this.patient = response[0];
+    this.patientCheck = true;
   if(this.patient == null){
     console.log("null patient");
     //create new or try again?
   }
-  else console.log(this.patient);
+  else console.log("the patient is:", this.patient.firstName, this.patient.lastName);
   }
 }
