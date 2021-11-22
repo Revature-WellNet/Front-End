@@ -22,8 +22,9 @@ export class LockoutComponent implements OnInit {
   }
 
     // Update the count down every 1 second
-    public x = setInterval(this.setTime(), 1000);
+  
   setTime() {
+
     let countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
     //let countDownDate = new Date(month+day+year+"08:00:00").getTime();
     let now = new Date().getTime();
@@ -55,7 +56,7 @@ export class LockoutComponent implements OnInit {
 }
 
 
-
+let x = setInterval(this.setTime, 1000);
 
 
 
