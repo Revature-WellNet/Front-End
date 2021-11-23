@@ -1,6 +1,9 @@
+
+<p>You current log status is => {{log}}</p>
 <input type = "text" #email>
 <input type = "password" #password>
 <button (click)="onSignin(email.value, password.value)">Sign in</button>
 <button (click)="register()">Register</button>
 <button (click)="getUser()">Get user</button> 
 <button (click)="logout()">Logout</button> 
+<!-- <a routerLink="signup" routerLinkActive="active"><button>Create Account</button></a> -->
