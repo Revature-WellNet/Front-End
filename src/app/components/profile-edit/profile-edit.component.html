@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div>
+        <h1>Edit Information</h1>
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" #firstname id="firstName" maxlength="20"
+                 name="firstName" placeholder="Change your first name">
+
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" #lastname id="lastName" maxlength="20"
+                  name="lastName" placeholder="Change your last name" >
+                
+            </div>
+
+            <div id="RoleRadios">
+                <p id="roleTitle">
+                  Hospital Role
+                </p>
+                <input type = "radio" id="role1"
+                  #role
+                  name="role" value="nurse"
+                  >
+                <label for="role1">
+                  Nurse
+                </label>
+          
+                <input type = "radio" id="role2"
+                  #role
+                  name="role" value="doctor"
+                  >
+                <label for="RegistrationRole2">
+                  Doctor
+                </label>
+              </div>
+
+
+            <div class="form-group">
+                <label for="lastName">Email</label>
+                <input type="text" class="form-control" #email  id="email" maxlength="200"
+                  name="email" placeholder="Change your email">
+            </div>
+
+    </div>
+
+    <app-button text="Submit"
+        (click)="submit(firstname.value, lastname.value, email.value)"></app-button>
+
+</div>
