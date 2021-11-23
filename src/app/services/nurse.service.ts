@@ -32,15 +32,15 @@ export class NurseService {
 
   getPatientByFirstName(firstName: string) :Observable<Patient[]>{
     console.log("in function");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/p/${firstName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/firstname/${firstName}`);
   }
 
   getPatientByFullName(firstName: string, lastName: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/p/${firstName}/${lastName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/fullname/${firstName}/${lastName}`);
   }
 
   getPatientByNameDOB(firstName: string, lastName: string, dob: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/p/${firstName}/${lastName}/${dob}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/fullnamedob/${firstName}/${lastName}/${dob}`);
   }
 
   //add or update?
