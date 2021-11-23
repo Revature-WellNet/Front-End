@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { RegistrationInfo } from '../../models/registration-info';
 import { EmailValidationService } from '../../services/email-validation.service';
 import { RoleValidationService } from '../../services/role-validation.service';
+import { CallBootstrapDBService } from '../../services/call-bootstrap-db.service';
 
 import { RegistrationService } from '../../services/registration.service';
 import { SemiUniqueStringsService } from '../../services/semi-unique-strings.service';
@@ -20,6 +21,8 @@ export class RegistrationComponent implements OnInit {
   public firstName : string = "";
   public lastName : string = "";
   public role : string = "";
+
+  // VV Sent To Firebase - Token Returned
   public email : string = "";
 
   public covidStatus : boolean = false;
@@ -31,7 +34,10 @@ export class RegistrationComponent implements OnInit {
   
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
+  // VV Username Is Not A Thing Anymore
   public username : string = "";
+
+  // VV Sent To Firebase - Token Returned
   public password : string = "";
 
   public debugging : boolean = false;
@@ -43,13 +49,22 @@ export class RegistrationComponent implements OnInit {
     private roleValidator : RoleValidationService,
     private router : Router,
     private registrationSender : RegistrationService,
-    private rngGenerator : SemiUniqueStringsService
+    private rngGenerator : SemiUniqueStringsService,
+    private bootstrapCaller : CallBootstrapDBService
   ) { }
+
 
   ngOnInit(): void {
 
+    this.bootstrapCaller.getPatientsByDoctorName();
+
     this.registrationButtonSetting = true;
+
   }
+
+
+
+
 
   ngOnChanges(){
 

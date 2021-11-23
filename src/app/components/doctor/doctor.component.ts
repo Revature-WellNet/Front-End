@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
 
 @Component({
@@ -13,8 +14,12 @@ export class DoctorComponent implements OnInit {
   doctorId!: string;
 
   public patientsArray : any = [];
+  public searchingDoctor : boolean = false;
 
-  constructor(private doctorService: DoctorService) { }
+  constructor(
+    private doctorService: DoctorService,
+    private nurseService : NurseService
+  ) { }
 
   ngOnInit(): void {
 
@@ -45,6 +50,68 @@ export class DoctorComponent implements OnInit {
    getPatientsByDoctor(doctorId: string){
     this.doctorService.getPatientsByDocId();
   }
+
+
+  
+  searchPatient(){
+
+    this.searchingDoctor = false;
+
+    this.nurseService.getPatientById(1);
+  }
+
+  searchPatByFName(firstName: string){
+
+    this.searchingDoctor = false;
+
+    console.log("Button Clickd")
+    this.nurseService.getPatientByFirstName(firstName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatByFullName(firstName: string, lastName: string){
+
+    this.searchingDoctor = false;  
+
+  this.nurseService.getPatientByFullName(firstName, lastName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
+    
+    this.searchingDoctor = false;
+
+    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    console.log(firstName, lastName, fullDate);
+    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
 
   getPatientsByString(inputString : string) {
 
@@ -93,5 +160,14 @@ export class DoctorComponent implements OnInit {
   // RouterLink to redirect to Login Page
 
 
+  searchByDoctor(doctorFirstName : string, doctorLastName : string) {
+
+    console.log("First Name : " + doctorFirstName);
+    console.log("Last Name  : " + doctorLastName);
+
+    this.searchingDoctor = true;
+
+
+  }
 
 }
