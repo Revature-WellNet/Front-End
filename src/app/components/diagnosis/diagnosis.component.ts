@@ -40,10 +40,13 @@ export class DiagnosisComponent implements OnInit {
                     this.user
     )
     console.log(diagnosisDTO);      
-    this.diagnosisService.postDiagnosisForm(diagnosisDTO);//.subscribe(
-  /*    (form:DiagnosisForm)->{
-        console.log()
-      }*/
+    this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
+      (form:DiagnosisForm)=>{
+        console.log("form was submitted");
+      },
+      (error)=>{
+        console.log("there was an error");
+      });
 
   }
 
