@@ -8,6 +8,8 @@ import { RoleValidationService } from '../../services/role-validation.service';
 
 import { RegistrationService } from '../../services/registration.service';
 import { SemiUniqueStringsService } from '../../services/semi-unique-strings.service';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-registration',
@@ -21,6 +23,7 @@ export class RegistrationComponent implements OnInit {
   public lastName : string = "";
   public role : string = "";
   public email : string = "";
+  public idToken : string = "";
 
   public covidStatus : boolean = false;
 
@@ -43,7 +46,8 @@ export class RegistrationComponent implements OnInit {
     private roleValidator : RoleValidationService,
     private router : Router,
     private registrationSender : RegistrationService,
-    private rngGenerator : SemiUniqueStringsService
+    private rngGenerator : SemiUniqueStringsService,
+    private firebaseService : FirebaseService
   ) { }
 
   ngOnInit(): void {
@@ -140,7 +144,7 @@ export class RegistrationComponent implements OnInit {
 
 
 
-  updateValues() {
+  async updateValues() {
 
     //console.log(this.email);
 
@@ -174,6 +178,9 @@ export class RegistrationComponent implements OnInit {
     // public email : string;
     // public role : Role;
   
+    let JWT = await this.firebaseService.signUp(this.email, this.password);
+    console.log(JSON.stringify(JWT));
+
     this.uniqueUserString = "";
     this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
 
@@ -185,13 +192,13 @@ export class RegistrationComponent implements OnInit {
 
     if (this.role == "nurse") {
 
-      user = new User(this.uniqueUserString, this.firstName, 
+      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
       this.lastName, this.email, new Role(1, this.role));
 
     }
     if (this.role == "doctor") {
       
-      user = new User(this.uniqueUserString, this.firstName, 
+      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
       this.lastName, this.email, new Role(2, this.role));
 
     }
@@ -199,7 +206,7 @@ export class RegistrationComponent implements OnInit {
     console.log("User Created : ");
     console.log (user);
 
-    this.registrationSender.postRegistration(user).subscribe(
+    this.registrationSender.postRegistration(user).then(
       data => {
 
         // console.error("Data Values VVV");
@@ -216,6 +223,8 @@ export class RegistrationComponent implements OnInit {
 
 
   }
+
+
   
 
 
