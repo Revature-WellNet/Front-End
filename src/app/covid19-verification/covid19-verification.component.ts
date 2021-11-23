@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 import { Router } from '@angular/router';
