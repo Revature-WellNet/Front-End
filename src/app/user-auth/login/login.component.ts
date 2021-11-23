@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public firebaseService : FirebaseService) { }
+  constructor(public firebaseService : FirebaseService, public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,9 @@ export class LoginComponent implements OnInit {
       console.log("current user uid: " + user.uid);
     })
   }
-  
+
+  register(){
+    this.router.navigateByUrl('/registration');
+  }
 
 }

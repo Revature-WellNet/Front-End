@@ -14,7 +14,7 @@ export class RegistrationService {
 
   // private registrationValues! : Registration;
 
-  private url : string = environment.apiBaseUrl+"wellnet/";
+  private url : string = environment.apiBaseUrl;
 
   // getRegistrationValues(values : Registration) {
 
