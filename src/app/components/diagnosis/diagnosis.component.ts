@@ -39,8 +39,8 @@ export class DiagnosisComponent implements OnInit {
                     this.room,
                     this.user
     )
-                  
-    this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
+    console.log(diagnosisDTO);      
+    this.diagnosisService.postDiagnosisForm(diagnosisDTO);//.subscribe(
   /*    (form:DiagnosisForm)->{
         console.log()
       }*/

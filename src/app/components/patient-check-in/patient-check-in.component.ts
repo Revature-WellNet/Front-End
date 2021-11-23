@@ -29,7 +29,7 @@ export class PatientCheckInComponent implements OnInit {
 
   async checkInPatient(firstName: string, lastName: string, dob: Date ){
     const response = await this.patientService.getPatient(firstName, lastName, dob).toPromise();
-    this.patient = response[0];
+    this.patient = response;
     this.patientCheck = true;
   if(this.patient == null){
     console.log("null patient");
