@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: "registration", component: RegistrationComponent},
   {path: "signup", component:RegisterComponent},
   {path: "nurse", component: NurseComponent},
-  // {path: "doctor", component: DoctorComponent},
+  {path: "doctor", component: DoctorComponent},
   {path: "profile", component: ProfileComponent},
   {path: "diagnosis", component: DiagnosisComponent},
   {path: "checkin", component: PatientCheckInComponent},
