@@ -12,8 +12,10 @@ import { environment } from 'src/environments/environment';
 import { catchError, tap } from 'rxjs/operators';
 import { SignupResponse } from '../models/signup-response';
 import { Userinfo } from '../models/userinfo';
-import { User } from 'src/app/models/user';
+import { Tknholder } from '../models/tknholder';
+
 import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +32,7 @@ export class FirebaseService {
     public firebaseAuth: AngularFireAuth,
     public httpClient: HttpClient,
     public router: Router
+   
   ) {}
 
   // Registering with firebase
@@ -134,24 +137,29 @@ export class FirebaseService {
     this.userInfo.next(userInfo);
     this.autoSignOut(expiresIn * 1000);
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
+    
   }
 
-  gettest(): Observable<any> {
-    return this.httpClient.get<any>(
-      'http://localhost:8081/wellnet/public/user'
+  gettest( ): Observable<any> {
+ const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+  let  tkn = new Tknholder(userData._token, "nurse");
+console.log(userData._token)
+
+    return this.httpClient.post<any>(
+      'http://localhost:8081/wellnet/public/signup', tkn
     ) as Observable<any>;
   }
 
   // //when creating a nurse model (front-end) make sure to call this function when setting their uid
-  getLoggedUserUid(): string {
-    const user = firebase.auth().currentUser;
-    return user != null ? user.uid : '';
+   getLoggedUserUid(): string {
+   
+  //   const user = firebase.auth().currentUser;
+  //  //console.log(userData.token);
+   return "";
+
   }
 
-  // async logout()
-  // {
-  //   await this.firebaseAuth.signOut();
-  // }
+  
 
   async getToken() {
     const user = firebase.auth().currentUser;

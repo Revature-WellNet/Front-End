@@ -28,7 +28,7 @@ export class Apihttpintercept implements HttpInterceptor {
                 } else {
 
                     
-                    console.log(user.token)
+                   // console.log(user.token)
                     const modifiedReq = req.clone({
                         headers: req.headers
                             .set('Authorization', 'Bearer ' + user.token)
