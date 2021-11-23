@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
@@ -21,10 +22,12 @@ import { NurseService } from './services/nurse.service';
 
 
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -43,12 +46,15 @@ import { LockoutComponent } from './lockout/lockout.component';
     DoctorComponent,
     RoomsComponent,
     Covid19VerificationComponent,
-    LockoutComponent
+    LockoutComponent,
+    NavbarComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    DragDropModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
