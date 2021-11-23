@@ -16,7 +16,7 @@ import { RegisterComponent } from './user-auth/register/register.component';
 import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 
 const routes: Routes = [
-  {path: "",  redirectTo: "/registration", pathMatch: "full"},
+  {path: "",  redirectTo: "/login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
   {path: "signup", component:RegisterComponent},
   {path: "nurse", component: NurseComponent},

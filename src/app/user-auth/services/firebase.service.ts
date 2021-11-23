@@ -165,11 +165,13 @@ console.log(userData._token)
 
   
 
-  async getToken() {
-    const user = firebase.auth().currentUser;
-    if (user != null) this.idToken = await user.getIdToken(true);
-  }
+  //Deprecated
+  // async getToken() {
+  //   const user = firebase.auth().currentUser;
+  //   if (user != null) this.idToken = await user.getIdToken(true);
+  // }
 
+  //Deprecated
   //Test function - example of sending a request to Spring server with appropriate header.
   //All functions sending HTTP requests must call getToken() and if they are expecting to return a response
   //for components, they MUST be in the form of a promise object not an Observable

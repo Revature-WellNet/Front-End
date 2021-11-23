@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// import * as firebase from 'firebase/compat';
 import { Userinfo } from '../models/userinfo';
 import { FirebaseService } from '../services/firebase.service';
+import firebase from 'firebase/compat/app';
+import { UserService } from 'src/app/services/user.service'
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,7 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class LoginComponent implements OnInit {
   log:boolean=false;
-  constructor(public firebaseService : FirebaseService, private router: Router) { }
+  constructor(public firebaseService : FirebaseService, private router: Router, public userService : UserService) { }
 
  
 
@@ -20,11 +23,27 @@ export class LoginComponent implements OnInit {
     this.firebaseService.login(email, password).subscribe(
       res=> {
         console.log(res);
-    },
-    err => {
-      console.log(err);
-      alert(err.error.error.message)
-    });
+
+        // get custom claims to find role
+        this.userService.getUser(this.firebaseService.getLoggedUserUid()).subscribe(
+          data =>{
+            console.log(JSON.stringify(data));
+            if(data.role.role=='nurse'){
+              // nurseUI()
+              this.router.navigate(['nurse']);
+            }else if(data.role.role=='doctor'){
+              // doctorUI()
+              this.router.navigate(['doctor']);
+            }else{
+              // user does not have a role / could not find users role
+              console.error('this user does not have a role');
+            }
+          }
+        )
+      
+        // this.router.navigate([whichPage]);
+      }
+    )
   }
   
 
