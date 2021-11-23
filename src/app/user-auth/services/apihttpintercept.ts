@@ -1,33 +1,47 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { tokenize } from "@angular/compiler/src/ml_parser/lexer";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import firebase from 'firebase/compat/app'
-import { Observable } from "rxjs";
+import {
+    HttpEvent,
+    HttpHandler,
+    HttpInterceptor,
+    HttpRequest,
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+import firebase from 'firebase/compat/app';
+import { Observable } from 'rxjs';
+import { exhaustMap, take } from 'rxjs/operators';
+import { FirebaseService } from './firebase.service';
 @Injectable()
 export class Apihttpintercept implements HttpInterceptor {
-    constructor(public router: Router) {
-    }
-   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    constructor(public router: Router, private service: FirebaseService) { }
+    intercept(
+        req: HttpRequest<any>,
+        next: HttpHandler
+    ): Observable<HttpEvent<any>> {
+        
+        return this.service.userInfo.pipe(
+            take(1),
+            exhaustMap((user) => {
+                
+                if (!user) {
+                    return next.handle(req);
+                } else {
 
-  if (!req.headers.has('Authorization')) {
-               
-                    const user = firebase.auth().currentUser;
-                     if(user != null){
-                        user.getIdToken(true).then(data => {
-                        req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + data) });
-                       
-                        console.log(req)
-                        return next.handle(req)
+                    
+                    console.log(user.token)
+                    const modifiedReq = req.clone({
+                        headers: req.headers
+                            .set('Authorization', 'Bearer ' + user.token)
+                            .set('Content-Type', 'application/json')
+                            .set('Access-Control-Allow-Origin', '*')
+                            .set('Access-Control-Allow-Headers', 'Content-Type')
+                           
                     });
-                         
-                  }
-               
-            }
-          
-    return next.handle(req)
-    
+                    
+                  
+                    return next.handle(modifiedReq);
+                }
+            })
+        );
     }
-
-    
 }

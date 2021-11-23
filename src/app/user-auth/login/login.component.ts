@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Userinfo } from '../models/userinfo';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
@@ -7,22 +9,29 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  log:boolean=false;
+  constructor(public firebaseService : FirebaseService, private router: Router) { }
 
-  constructor(public firebaseService : FirebaseService) { }
-
-  ngOnInit(): void {
-  }
+ 
 
   onSignin(email : string, password : string)
   {
     console.log('sign in');
-    this.firebaseService.signin(email, password);
+    this.firebaseService.login(email, password).subscribe(
+      res=> {
+        console.log(res);
+    },
+    err => {
+      console.log(err);
+      alert(err.error.error.message)
+    });
   }
+  
 
   logout()
   {
-    console.log('log out');
     this.firebaseService.logout();
+  
   }
 
   //dummy example of sending an http request requiring an authorization header
@@ -31,10 +40,17 @@ export class LoginComponent implements OnInit {
     this.firebaseService.gettest().subscribe(data=>{
       console.log(data);
     })
-    this.firebaseService.getUserFromSpringServer().then(user=>{
-      console.log("current user uid: " + user.uid);
+    
+  }
+
+
+  ngOnInit(): void {
+    // to keep yourself sign in
+    this.firebaseService.autoSignIn();
+    // to check the status of login
+    this.firebaseService.userInfo.subscribe(res=>{
+      this.log=!!res;
     })
   }
-  
 
 }

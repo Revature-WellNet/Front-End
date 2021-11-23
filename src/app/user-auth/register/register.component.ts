@@ -14,6 +14,12 @@ export class RegisterComponent implements OnInit {
   }
 
   onSignUp(email: string, password: string) {
-    this.firebaseService.signUp(email, password);
+    this.firebaseService.signup(email, password).subscribe(
+      res=> {
+        console.log(res);
+    },
+    err => {
+      console.log(err);
+    });
   }
 }
