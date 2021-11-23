@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { DiagnosisDTO } from 'src/app/models/diagnosis-dto';
+import { Patient } from 'src/app/models/patient';
+import { Room } from 'src/app/models/rooms/room';
+import { User } from 'src/app/models/user';
+import { DiagnosisFormService } from 'src/app/services/diagnosis-form.service';
 import { PatientService } from 'src/app/services/patient.service';
+import { UserService } from 'src/app/services/user.service';
+import { NurseComponent } from '../nurse/nurse.component';
 
 @Component({
   selector: 'app-diagnosis',
@@ -12,15 +19,28 @@ export class DiagnosisComponent implements OnInit {
   symptoms: string = ' ';
   symptom: string = ' ';
   iter: number = 0;
-  constructor(private patientService: PatientService) { 
+  diagnosisDTO?: DiagnosisDTO;
+  room!: Room;
+  user!: User;
+  constructor(private patientService: PatientService, private diagnosisService : DiagnosisFormService, private userService : UserService) { 
 
   }
 
   ngOnInit() {
   }
-
-  onSubmit(diagnosis: string){
-    console.log(this.symptoms, ' ', diagnosis);
+  onSubmit(diagnosis:string){
+    let current = new Date();
+    let diagnosisDTO : DiagnosisDTO = new DiagnosisDTO( 
+                    this.symptoms,
+                    diagnosis,
+                    false,
+                    current,
+                    this.patientService.patient,
+                    this.room,
+                    this.user
+    )
+                  
+    this.diagnosisService.postDiagnosisForm(diagnosisDTO);
 
   }
 
