@@ -27,7 +27,20 @@ export class NurseService {
   // Will turn into observable once have patient table created in database
   getPatientById(patientId:number): Observable<Patient>{
     console.log("This will return patients");
-    return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${patientId}`)
+    return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${patientId}`);
+  }
+
+  getPatientByFirstName(firstName: string) :Observable<Patient[]>{
+    console.log("in function");
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/${firstName}`);
+  }
+
+  getPatientByFullName(firstName: string, lastName: string){
+    return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${firstName}/${lastName}`);
+  }
+
+  getPatientByNameDOB(firstName: string, lastName: string, dob: string){
+    return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${firstName}/${lastName}/${dob}`);
   }
 
   //add or update?

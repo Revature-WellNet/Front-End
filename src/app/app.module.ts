@@ -3,17 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
-
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
 import { FirebaseService } from './user-auth/services/firebase.service';
-
-import {AngularFireModule} from '@angular/fire/compat';
+import { AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { UserAuthModule } from './user-auth/user-auth.module';
-
+import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonComponent } from './components/button/button.component';

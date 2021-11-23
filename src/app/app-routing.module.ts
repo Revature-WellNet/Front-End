@@ -19,20 +19,14 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "lockout", component: LockoutComponent},
   {path: "nurse", component: NurseComponent},
+  {path: "profile", component: ProfileComponent},
+  {path: "diagnosis", component: DiagnosisComponent},
+  {path: "checkin", component: PatientCheckInComponent},
   {path: "doctor", component: DoctorComponent},
-  {path: "profile", component: ProfileComponent},
-  {path: "diagnosis", component: DiagnosisComponent},
-  {path: "checkin", component: PatientCheckInComponent},
-  {path: "profile", component: ProfileComponent},
-  {path: "diagnosis", component: DiagnosisComponent},
-  {path: "checkin", component: PatientCheckInComponent},
-  {path: 'profile', component: ProfileComponent},
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
-  {
-    path:"rooms",
-    component:RoomsComponent
-  }
+  {path:"rooms", component:RoomsComponent},
+  {path:"patientcheckin", component:PatientCheckInComponent}
 
 ];
 

@@ -31,6 +31,29 @@ export class NurseComponent implements OnInit {
     this.nurseService.getPatientById(1);
   }
 
+  searchPatByFName(firstName: string){
+    console.log("Button Clickd")
+    this.nurseService.getPatientByFirstName(firstName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatByFullName(firstName: string, lastName: string){
+    this.nurseService.getPatientByFullName(firstName,lastName);
+  }
+
+  searchPatNameDate(firstName: string, lastName:string, dobMonth:string, dobDay:string, dobYear:string){
+    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate);
+  }
+
   getAllPatients(){
     this.nurseService.getPatients().subscribe(
       (response: Patient[])=> {
