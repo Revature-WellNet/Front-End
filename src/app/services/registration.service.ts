@@ -40,7 +40,7 @@ export class RegistrationService {
       'Access-Control-Allow-Headers': 'Content-Type'
       });
 
-    return this.http.post<User[]>(this.url + "public/registration", values, {headers : httpHeader}).toPromise<User[]>();
+    return this.http.post<User[]>(this.url + "user/registration", values, {headers : httpHeader}).toPromise<User[]>();
 
   }
 
