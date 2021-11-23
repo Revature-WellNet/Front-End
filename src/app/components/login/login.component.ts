@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import * as firebase from 'firebase/compat';
-import { Userinfo } from '../models/userinfo';
-import { FirebaseService } from '../services/firebase.service';
+import { Userinfo } from 'src/app/user-auth/models/userinfo';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 import firebase from 'firebase/compat/app';
 import { UserService } from 'src/app/services/user.service'
 

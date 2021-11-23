@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './user-auth/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { NurseComponent } from './components/nurse/nurse.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
