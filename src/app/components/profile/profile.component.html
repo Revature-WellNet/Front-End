@@ -1,0 +1,30 @@
+<div class="container" id ="favs">
+
+    <app-button class="btn" (click)="navigateHome()" text="Back to Home"></app-button>
+
+    <h1>Account Information</h1>
+
+    <table class="profile"> 
+        <thead></thead>
+        <tbody>
+            <tr>
+                <td>First Name:</td>
+                <td id = "firstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td id = "lastName"></td>
+            </tr>
+            <tr>
+                <td>Role:</td>
+                <td id = "role"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td id = "email"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a routerLink= "/profileEdit" ><app-button class="btn" text="Edit Information"></app-button></a>
+</div>
