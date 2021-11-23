@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiagnosisDTO } from 'src/app/models/diagnosis-dto';
+import { DiagnosisForm } from 'src/app/models/diagnosis-form';
 import { Patient } from 'src/app/models/patient';
 import { Room } from 'src/app/models/rooms/room';
 import { User } from 'src/app/models/user';
@@ -39,7 +40,10 @@ export class DiagnosisComponent implements OnInit {
                     this.user
     )
                   
-    this.diagnosisService.postDiagnosisForm(diagnosisDTO);
+    this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
+  /*    (form:DiagnosisForm)->{
+        console.log()
+      }*/
 
   }
 
