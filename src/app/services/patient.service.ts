@@ -17,7 +17,7 @@ const httpOptions = {
 export class PatientService {
 
   private backendUrl = 'http://localhost:8081/wellnet/patient'
-  public patient?: Patient;
+  public patient!: Patient;  //= new Patient(-1,'dummyfirst','dummylast',new Date(),120,10,'AB','other',[],[]);
   constructor(private http: HttpClient/*private patientIn: Patient*/) {
     //this.patient = patientIn;
   }
@@ -26,9 +26,9 @@ export class PatientService {
    // this.patient = this.getPatient("bob", "white", "12-25-00");
   }
 
-  getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient[]>{
+  getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient>{
     console.log("getting patient: " + this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob);
-    return this.http.get<Patient[]>(this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob, httpOptions) as Observable<Patient[]>;
+    return this.http.get<Patient>(this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob, httpOptions) as Observable<Patient>;
   }
 /*
 
