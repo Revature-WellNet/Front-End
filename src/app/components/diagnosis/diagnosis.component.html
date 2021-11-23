@@ -3,26 +3,27 @@
         <form
         #formDemo= "ngForm"
         class= "form-diagnose "
-        (ngSubmit)= "onSubmit(diagnosis)">
-    
+        (ngSubmit)= "onSubmit(symptoms, diagnosis)">
+
         <div class= "form-group">
             <div class="symptomInput">
                 <label for= "symptom">Symptoms</label>
-                <input
-                    type= "text"
-                    class= "form-control col-sm-3"
-                    name= "symptom"
-                    id= "symptom"
-                    [(ngModel)] = "symptom"
-                    required
-                />
-                <button type="button" class="btn btn-secondary col-sm-1" (click)="addSymptom(symptom)">+</button>
+                <!-- <button type="button" class="btn btn-add-symptom" (click)="addSymptom()"><b>+</b></button> -->
+                <textarea
+                rows = "4"
+                cols= "40"
+                class= "form-control"
+                name= "symptoms"
+                id= "diagnosis"
+                [(ngModel)]= "symptoms"
+                required
+            ></textarea>
                 <br>
             </div>
             <label for ="diagnosis">Diagnosis</label>
             <textarea
-                rows = "10"
-                cols= "100"
+                rows = "4"
+                cols= "40"
                 class= "form-control"
                 name= "diagnosis"
                 id= "diagnosis"
@@ -36,9 +37,9 @@
           >Please enter patient symptoms</span> -->
         </div>
     <br>
-    <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Subimt Diagnosis</button> 
+    <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Submit Diagnosis</button>
     </form>
-    
+
     </div>
 </div>
 

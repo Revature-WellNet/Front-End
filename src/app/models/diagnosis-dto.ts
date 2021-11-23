@@ -23,7 +23,7 @@ export class DiagnosisDTO {
         room: Room,
         nurse: User)
     { 
-        this.symptoms=symptoms;
+        this.symptoms = symptoms;
         this.diagnosis = diagnosis;
         this.resolutionStatus = resolutionStatus;
         this.checkIn = checkIn;
