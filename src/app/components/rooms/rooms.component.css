@@ -1,9 +1,15 @@
 
 .room, .other{
     border: solid black 1px;
+    background-color:seashell;
 }
 .room{
     height: 150px;
+}
+.iroom{
+    border-radius: 10%;
+    background-color: lightgoldenrodyellow;
+    height:fit-content;
 }
 .hall{
     height: 70px;
@@ -14,6 +20,25 @@
 .tallroom{
     height: 50%;
 }
+.patient {
+    border: solid 1px #ccc;
+    min-height: 60px;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+  }
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
 .shadow-pop-bl:hover {
 	-webkit-animation: shadow-pop-bl 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 	        animation: shadow-pop-bl 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
