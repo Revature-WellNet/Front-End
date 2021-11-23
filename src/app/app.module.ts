@@ -30,6 +30,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -46,12 +47,10 @@ import { LockoutComponent } from './lockout/lockout.component';
     PatientCheckInComponent,
     ProfileEditComponent,
     DoctorComponent,
-
-
     RoomsComponent,
-
     Covid19VerificationComponent,
-    LockoutComponent
+    LockoutComponent,
+    NavbarComponent
 
   ],
   imports: [
