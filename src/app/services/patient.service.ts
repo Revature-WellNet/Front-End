@@ -17,7 +17,7 @@ const httpOptions = {
 export class PatientService {
 
   private backendUrl = 'http://localhost:8081/wellnet/patient'
-  //public patient: Patient;  //= new Patient(-1,'dummyfirst','dummylast',new Date(),120,10,'AB','other',[],[]);
+  public patient!: Patient;  //= new Patient(-1,'dummyfirst','dummylast',new Date(),120,10,'AB','other',[],[]);
   constructor(private http: HttpClient/*private patientIn: Patient*/) {
     //this.patient = patientIn;
   }

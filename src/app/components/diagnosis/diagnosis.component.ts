@@ -27,10 +27,10 @@ export class DiagnosisComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit(diagnosis:string){
+  onSubmit(symptoms: string, diagnosis:string){
     let current = new Date();
     let diagnosisDTO : DiagnosisDTO = new DiagnosisDTO( 
-                    this.symptoms,
+                    symptoms,
                     diagnosis,
                     false,
                     current,
