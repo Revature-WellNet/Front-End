@@ -22,33 +22,34 @@ export class DiagnosisComponent implements OnInit {
   diagnosisDTO?: DiagnosisDTO;
   room!: Room;
   user!: User;
-  constructor(private patientService: PatientService, private diagnosisService : DiagnosisFormService, private userService : UserService) { 
+  constructor(private patientService: PatientService, private diagnosisService: DiagnosisFormService, private userService: UserService) { 
 
   }
 
   ngOnInit() {
   }
-  onSubmit(symptoms: string, diagnosis:string){
+  onSubmit(symptoms: string, diagnosis: string){
     let current = new Date();
-    let diagnosisDTO : DiagnosisDTO = new DiagnosisDTO( 
-                    symptoms,
-                    diagnosis,
-                    false,
-                    current,
-                    this.patientService.patient,
-                    this.room,
-                    this.user
+    let diagnosisDTO: DiagnosisDTO = new DiagnosisDTO( 
+      symptoms,
+      diagnosis,
+      false,
+      current,
+      this.patientService.patient,
+      this.room,
+      this.user
     )
     console.log(diagnosisDTO);      
     this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
-      (form:DiagnosisForm)=>{
+      (form:DiagnosisForm) => {
         console.log("form was submitted");
       },
-      (error)=>{
+      (error) => {
         console.log("there was an error");
       });
-
   }
+
+
 
   addSymptom() {
     // attempts at adding rows commented out
