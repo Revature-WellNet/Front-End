@@ -10,15 +10,21 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
+import { PatientCheckInComponent } from './components/patient-check-in/patient-check-in.component';
+import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 
 const routes: Routes = [
   {path: "",  redirectTo: "/registration", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
+  {path: "login", component: LoginComponent},
+  {path: "lockout", component: LockoutComponent},
   {path: "nurse", component: NurseComponent},
   {path: "doctor", component: DoctorComponent},
+  {path: "profile", component: ProfileComponent},
+  {path: "diagnosis", component: DiagnosisComponent},
+  {path: "checkin", component: PatientCheckInComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profileEdit', component: ProfileEditComponent},
-  {path: "doctor", component: DoctorComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {
     path:"rooms",

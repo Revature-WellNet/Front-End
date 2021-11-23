@@ -18,6 +18,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NurseComponent } from './components/nurse/nurse.component';
+import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
+import { PatientCheckInComponent } from './components/patient-check-in/patient-check-in.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { NurseService } from './services/nurse.service';
@@ -40,6 +42,8 @@ import { LockoutComponent } from './lockout/lockout.component';
     NurseComponent,
     ButtonComponent,
     NurseComponent,
+    DiagnosisComponent,
+    PatientCheckInComponent,
     ProfileEditComponent,
     DoctorComponent,
 
