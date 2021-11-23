@@ -58,8 +58,9 @@ export class NurseComponent implements OnInit {
       );
   }
 
-  searchPatNameDate(firstName: string, lastName:string, dobMonth:string, dobDay:string, dobYear:string){
+  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
     let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    console.log(firstName, lastName, fullDate);
     this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
       (response: Patient[])=> {
         this.patientsArray = response;

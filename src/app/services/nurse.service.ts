@@ -14,40 +14,40 @@ import { environment } from 'src/environments/environment';
 export class NurseService {
 
   private patientApiServerUrl = environment.apiBaseUrl;
-  // APIURL = "http://localHost:8081/diagnosis/patient"
+  // APIURL = "http://localHost:8081/public/patient"
 
   constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
 
   // Will turn into observable once have patient table created in database
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient`);
   }
 
   // Will turn into observable once have patient table created in database
   getPatientById(patientId:number): Observable<Patient>{
     console.log("This will return patients");
-    return this.http.get<Patient>(`${this.patientApiServerUrl}diagnosis/patient/${patientId}`);
+    return this.http.get<Patient>(`${this.patientApiServerUrl}public/patient/${patientId}`);
   }
 
   getPatientByFirstName(firstName: string) :Observable<Patient[]>{
     console.log("in function");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/firstname/${firstName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/firstname/${firstName}`);
   }
 
   getPatientByFullName(firstName: string, lastName: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/fullname/${firstName}/${lastName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/fullname/${firstName}/${lastName}`);
   }
 
   getPatientByNameDOB(firstName: string, lastName: string, dob: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient/fullnamedob/${firstName}/${lastName}/${dob}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/fullnamedob/${firstName}/${lastName}/${dob}`);
   }
 
   //add or update?
   // addPatients(patient:Patient): Observable<Patient>{
     addPatients(): void{
     console.log("This will create a patient");
-    // return this.http.post<Patient>(`${this.patientApiServerUrl}/diagnosis/patient`, patient);
+    // return this.http.post<Patient>(`${this.patientApiServerUrl}/public/patient`, patient);
   }
 
   getUserInfo(){
