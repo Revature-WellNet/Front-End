@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   constructor(public firebaseService : FirebaseService, private router: Router, public userService : UserService) { }
 
  
+  register()
+  {
+    this.router.navigate(['registration']);
+  }
 
   onSignin(email : string, password : string)
   {
