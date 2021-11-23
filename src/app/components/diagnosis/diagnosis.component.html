@@ -3,19 +3,22 @@
         <form
         #formDemo= "ngForm"
         class= "form-diagnose "
-        (ngSubmit)= "onSubmit(symptoms, diagnosis)">
+        (ngSubmit)= "onSubmit(diagnosis)">
     
         <div class= "form-group">
-            <label for= "symptoms">Symptoms</label>
-            <input
-                type= "text"
-                class= "form-control"
-                name= "symptoms"
-                id= "symptoms"
-                [(ngModel)] = "symptoms"
-                required
-            />
-            <br>
+            <div class="symptomInput">
+                <label for= "symptom">Symptoms</label>
+                <input
+                    type= "text"
+                    class= "form-control col-sm-3"
+                    name= "symptom"
+                    id= "symptom"
+                    [(ngModel)] = "symptom"
+                    required
+                />
+                <button type="button" class="btn btn-secondary col-sm-1" (click)="addSymptom(symptom)">+</button>
+                <br>
+            </div>
             <label for ="diagnosis">Diagnosis</label>
             <textarea
                 rows = "10"
