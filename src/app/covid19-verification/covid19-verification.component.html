@@ -1,9 +1,11 @@
+<div class='container d-flex justify-content-center border border-primary p-3 mt-3 rounded'>
+    <div class='form-check '>
 <div *ngIf="testedPositiveQuestions=='true'">
     <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
     <br>
 <input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>  
 <label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
+<input type='radio'   [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
 <label for='no'>no</label>
 <br>
 <button type='button' (click)='testedPositiveSubmit()'>Next question</button>
@@ -200,4 +202,5 @@
     
 </div>
 
-
+</div>
+</div>

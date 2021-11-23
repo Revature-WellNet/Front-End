@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FirebaseService } from './user-auth/services/firebase.service';
@@ -9,6 +10,8 @@ import { AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -21,10 +24,13 @@ import { NurseService } from './services/nurse.service';
 
 
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { Apihttpintercept } from './user-auth/services/apihttpintercept';
 
 
 
@@ -43,20 +49,31 @@ import { LockoutComponent } from './lockout/lockout.component';
     DoctorComponent,
     RoomsComponent,
     Covid19VerificationComponent,
-    LockoutComponent
+    LockoutComponent,
+    NavbarComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    DragDropModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
     AngularFireModule.initializeApp(environment.firebase),
-    UserAuthModule
+    UserAuthModule,
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [FirebaseService],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: Apihttpintercept,
+    multi: true
+},
+FirebaseService,  
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

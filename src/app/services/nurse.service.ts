@@ -46,8 +46,8 @@ export class NurseService {
   //add or update?
   // addPatients(patient:Patient): Observable<Patient>{
     addPatients(): void{
-    console.log("This will create a patient");
-    // return this.http.post<Patient>(`${this.patientApiServerUrl}/public/patient`, patient);
+      this.router.navigate(['patientcheckin']);
+    // return this.http.post<Patient>(`${this.patientApiServerUrl}/diagnosis/patient`, patient);
   }
 
   getUserInfo(){
