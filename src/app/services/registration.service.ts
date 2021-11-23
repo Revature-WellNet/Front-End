@@ -36,6 +36,7 @@ export class RegistrationService {
 
   }
 
+
   routeToNurseComponent(whichPage : string) {
 
     this.router.navigate([whichPage]);

@@ -20,6 +20,25 @@ export class LoginComponent implements OnInit {
     this.firebaseService.login(email, password).subscribe(
       res=> {
         console.log(res);
+
+
+        // get custom claims to find role
+        // firebase.auth().currentUser.getIdTokenResult()
+        // .then((idTokenResult) => {
+        //    // Confirm the user is an Admin.
+        //    if (!!idTokenResult.claims.admin) {
+        //      // Show admin UI.
+        //      showAdminUI();
+        //    } else {
+        //      // Show regular user UI.
+        //      showRegularUI();
+        //    }
+        // })
+        // .catch((error) => {
+        //   console.log(error);
+        // });
+      
+        // this.router.navigate([whichPage]);
     },
     err => {
       console.log(err);
