@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth'
 import { Observable } from 'rxjs';
 import firebase from 'firebase/compat/app'
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import firebase from 'firebase/compat/app'
 })
 export class FirebaseService {
 
-  public springServerUrl : string = 'http://localhost:8080/';
+  public url : string = environment.apiBaseUrl;
 
   public idToken : string = "";
 
@@ -34,6 +35,10 @@ export class FirebaseService {
     });
   }
 
+  async signUp(email: string, password: string) {
+    return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+  }
+  
   //when creating a nurse model (front-end) make sure to call this function when setting their uid
   getLoggedUserUid() : string
   {
@@ -65,7 +70,7 @@ export class FirebaseService {
       'Access-Control-Allow-Headers': 'Content-Type'
       });
   
-    let url : string = this.springServerUrl + 'private/user-details';
+    let url : string = this.url + 'private/user-details';
     return this.httpClient.get<any>(url, {headers: httpHeader}).toPromise<any>();
   }
   

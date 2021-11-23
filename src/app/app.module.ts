@@ -13,6 +13,7 @@ import { FirebaseService } from './user-auth/services/firebase.service';
 import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { UserAuthModule } from './user-auth/user-auth.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -63,7 +64,9 @@ import { Apihttpintercept } from './user-auth/services/apihttpintercept';
     HttpClientModule,
     RouterModule,
     AngularFireModule.initializeApp(environment.firebase),
-    UserAuthModule
+    UserAuthModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

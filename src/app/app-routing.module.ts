@@ -25,6 +25,9 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
+  {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
+  {path: "login", component:LoginComponent},
+  
   {
     path:"rooms",
     component:RoomsComponent
