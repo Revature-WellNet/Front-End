@@ -25,7 +25,6 @@ const routes: Routes = [
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path:"rooms", component:RoomsComponent},
   {path:"patientcheckin", component:PatientCheckInComponent}
-
 ];
 
 @NgModule({

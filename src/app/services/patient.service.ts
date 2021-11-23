@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Patient } from '../models/patient.model';
+import { Patient } from '../models/patient';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,8 +22,16 @@ export class PatientService {
     //this.patient = patientIn;
   }
 
-  setPatient(){
-   // this.patient = this.getPatient("bob", "white", "12-25-00");
+  createPatient(patient : Patient){
+    return this.http.post<Patient>('http://localhost:8081/wellnet/diagnosis/patient', patient).subscribe((response : any) => {console.log(response)});
+  }
+
+  getAllergies(){
+    return this.http.get<Object[]>('http://localhost:8081/wellnet/diagnosis/patient/allergies');
+  }
+
+  getVaccinations(){
+    return this.http.get<Object[]>('http://localhost:8081/wellnet/diagnosis/patient/vaccinations');
   }
 
   getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient[]>{
