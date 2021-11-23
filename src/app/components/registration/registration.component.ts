@@ -144,25 +144,12 @@ export class RegistrationComponent implements OnInit {
 
 
 
-updateValues() {
-
-
- console.log("start");
-    this.firebaseService.signup(this.email, this.password).subscribe(
-      res=> {
-        console.log(res);
-        console.warn("user creation complete")
-    },
-    err => {
-      console.error(err);
-      alert(err.error.error.message)
-    });
-  
+  async updateValues() {
 
     //console.log(this.email);
 
-    // console.log(this.emailValidated);
-    // console.log(this.roleValidated);
+    console.log(this.emailValidated);
+    console.log(this.roleValidated);
 
     // if (this.emailValidated && this.roleValidated) {
 
@@ -191,8 +178,8 @@ updateValues() {
     // public email : string;
     // public role : Role;
   
-    
-    
+    let JWT = await this.firebaseService.signUp(this.email, this.password);
+    console.log(JSON.stringify(JWT));
 
     this.uniqueUserString = "";
     this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
@@ -201,7 +188,7 @@ updateValues() {
 
     let user! : User;
 
-    //console.error("Creating User");
+    console.error("Creating User");
 
     if (this.role == "nurse") {
 
@@ -216,8 +203,8 @@ updateValues() {
 
     }
 
-    // console.log("User Created : ");
-    // console.log (user);
+    console.log("User Created : ");
+    console.log (user);
 
     this.registrationSender.postRegistration(user).then(
       data => {

@@ -62,6 +62,10 @@ export class FirebaseService {
       );
   }
 
+  async signUp(email: string, password: string) {
+    return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+  }
+
   // Sign in with firebase
 
   login(email: string, pass: string) {

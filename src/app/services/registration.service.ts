@@ -30,17 +30,9 @@ export class RegistrationService {
   }
 
 
-  async postRegistration(values : User) : Promise<User[]>{
+  postRegistration(values : User) : Promise<User[]>{
 
-    await this.firebaseService.getToken(); //always await for this
-    let httpHeader : HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + this.firebaseService.idToken,
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type'
-      });
-
-    return this.http.post<User[]>(this.url + "user/registration", values, {headers : httpHeader}).toPromise<User[]>();
+    return this.http.post<User[]>(this.url + "public/registration", values).toPromise<User[]>();
 
   }
 
