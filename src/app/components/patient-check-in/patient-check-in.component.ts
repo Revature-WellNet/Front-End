@@ -12,7 +12,7 @@ import { PatientService } from 'src/app/services/patient.service';
   styleUrls: ['./patient-check-in.component.css']
 })
 export class PatientCheckInComponent implements OnInit {
-  //public patientCheck: boolean = false;
+  public patientCheck: boolean = false;
   public firstName!: string;
   public lastName!: string;
   public dob!: Date;
@@ -191,6 +191,15 @@ export class PatientCheckInComponent implements OnInit {
     })
 
     
+  }
+  async checkInPatient(firstName: string, lastName: string, dob: Date ){
+    const response = await this.patientService.getPatient(firstName, lastName, dob).toPromise();
+    this.patient = response;
+    this.patientCheck = true;
+    if(this.patient == null){
+      console.log("null patient");
+      //create new or try again?
+    }
   }
 
   addAllergy(allergy : string){

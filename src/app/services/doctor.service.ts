@@ -41,7 +41,7 @@ httpOptions = {
 
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}diagnosis/patient`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/`);
   }
 
    // getPatientById(id){
@@ -57,6 +57,15 @@ httpOptions = {
     console.log("Sending String : " + inputString);
 
     return this.http.get<Patient[]>(APIURL + "user/patient/doctor/" + inputString);
+
+  }
+
+  getPatientsByDoctorName(doctorFirstName : string, doctorLastName : string) : Observable<Patient[]> {
+
+    console.log("Getting Patients Of Doctor : " + doctorFirstName + "  " + doctorLastName);
+
+    return this.http.get<Patient[]>(APIURL + "user/patient/doctor/" + doctorFirstName + "/" + doctorLastName);
+
 
   }
 
