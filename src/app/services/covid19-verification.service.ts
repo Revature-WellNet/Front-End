@@ -25,4 +25,6 @@ export class Covid19VerificationService {
     return this.http.get(this.serverUrl+'/covid/'+id);
   }
 
+  
+
 }
