@@ -8,11 +8,12 @@ export class DiagnosisDTO {
     private symptoms?: string;
     private diagnosis?: string;
     private treatment?: string;
-    private resolutionStatus?: boolean;
+    public resolutionStatus?: boolean;
     private checkIn?: Date;
     private patient?: Patient;
     private room?: Room;
-    private nurse?: User;
+    public nurse?: User|null;
+    public doctor?: User|null;
 
     constructor(
         symptoms: string,
@@ -22,7 +23,9 @@ export class DiagnosisDTO {
         checkIn: Date,
         patient: Patient,
         room: Room,
-        nurse: User)
+        nurse: User|null,
+        doctor: User|null
+        )
     {
         this.symptoms = symptoms;
         this.diagnosis = diagnosis;
@@ -32,6 +35,7 @@ export class DiagnosisDTO {
         this.patient = patient;
         this.room = room;
         this.nurse = nurse;
+        this.doctor = doctor;
     }
 }
 
