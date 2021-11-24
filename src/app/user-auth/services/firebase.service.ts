@@ -66,6 +66,22 @@ export class FirebaseService {
     return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
   }
 
+  setEmail(email : string) {
+    firebase.auth().currentUser?.updateEmail(email).then(() => {
+      console.log("Email updated to " + email);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
+  setPassword(password : string) {
+    firebase.auth().currentUser?.updatePassword(password).then(() => {
+      console.log("Password updated");
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
   // Sign in with firebase
 
   login(email: string, pass: string) {
