@@ -157,8 +157,9 @@ console.log(userData._token)
   // //when creating a nurse model (front-end) make sure to call this function when setting their uid
    getLoggedUserUid(): string {
    
-    const user = firebase.auth().currentUser;
-    return user != null ? user.uid : '';
+  //   const user = firebase.auth().currentUser;
+  //  //console.log(userData.token);
+   return "";
 
   }
 
