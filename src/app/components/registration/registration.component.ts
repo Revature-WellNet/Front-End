@@ -186,9 +186,8 @@ export class RegistrationComponent implements OnInit {
     // public lastName : string;
     // public email : string;
     // public role : Role;
-  
-    let JWT = await this.firebaseService.signUp(this.email, this.password);
-    console.log(JSON.stringify(JWT));
+  this.firebaseService.signup(this.email, this.password).subscribe(()=>{
+    const userData=localStorage.getItem('userinfo')
 
     this.uniqueUserString = "";
     this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
@@ -237,7 +236,10 @@ export class RegistrationComponent implements OnInit {
       });
 
 
+  });
   }
+  
+    
 
 
   
