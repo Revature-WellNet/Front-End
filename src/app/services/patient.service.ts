@@ -23,15 +23,24 @@ export class PatientService {
   }
 
   createPatient(patient : Patient){
-    return this.http.post<Patient>('http://localhost:8081/wellnet/diagnosis/patient', patient).subscribe((response : any) => {console.log(response)});
+    return this.http.post<Patient>('http://localhost:8081/wellnet/public/patient', patient).subscribe((response : any) => {console.log(response)});
   }
 
   getAllergies(){
-    return this.http.get<Object[]>('http://localhost:8081/wellnet/diagnosis/patient/allergies');
+    
+    return this.http.get<Object[]>('http://localhost:8081/wellnet/public/patient/allergies');
   }
 
   getVaccinations(){
-    return this.http.get<Object[]>('http://localhost:8081/wellnet/diagnosis/patient/vaccinations');
+    return this.http.get<Object[]>('http://localhost:8081/wellnet/public/patient/vaccinations');
+  }
+
+  getBloodType(name :string){
+    return this.http.get<Object[]>('http://localhost:8081/wellnet/public/patient/bloodtype/'+name);
+  }
+
+  getSex(name :string){
+    return this.http.get<Object[]>('http://localhost:8081/wellnet/public/patient/sex/'+name);
   }
 
   getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient[]>{
