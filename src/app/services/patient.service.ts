@@ -23,7 +23,8 @@ export class PatientService {
   }
 
   createPatient(patient : Patient){
-    return this.http.post<Patient>('http://localhost:8081/wellnet/public/patient', patient).subscribe((response : any) => {console.log(response)});
+    console.log(patient);
+    return this.http.post<Patient>('http://localhost:8081/wellnet/public/patient', patient).subscribe((response : any) => {console.log("adding patient")});
   }
 
   getAllergies(){

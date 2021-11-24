@@ -71,7 +71,10 @@ export class PatientCheckInComponent implements OnInit {
           
           let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
 
-          console.log(patient)
+          console.log(patient);
+          
+          
+          
           this.patientService.createPatient(patient);
         
           })
@@ -119,20 +122,20 @@ export class PatientCheckInComponent implements OnInit {
             if (this.checked) {
 
               self.addAllergy(checkbox.value);
-
+              
             } else {
               
-              for(let a in allergies){
-                if(allergies[a].allergy === checkbox.value){
+              // for(let a in allergies){
+              //   if(allergies[a].allergy == checkbox.value){
                   
-                  const index = allergies.indexOf(allergies[a], 0);  
-                  if (index > -1) {
+                  const index = self.allergies.indexOf(a);  
+                //  if (index > -1) {
 
                     self.allergies.splice(index, 1);
                     
-                 }
-                }              
-               }
+                 //}
+                //}              
+              // }
 
             }
           });
@@ -174,14 +177,14 @@ export class PatientCheckInComponent implements OnInit {
 
             } else {
 
-              for(let v in vaccinations){
-                if(vaccinations[v].vaccination === checkbox.value){
-                  const index = vaccinations.indexOf(vaccinations[v], 0);  
-                  if (index > -1) {
+              // for(let v in vaccinations){
+              //   if(vaccinations[v].vaccination === checkbox.value){
+                  const index = self.vaccinations.indexOf(v);  
+                 // if (index > -1) {
                     self.vaccinations.splice(index, 1);
-                 }
-                }              
-               }
+                 //}
+              //   }              
+              //  }
             }
           });
           
@@ -207,8 +210,9 @@ export class PatientCheckInComponent implements OnInit {
     this.patientService.getAllergies().subscribe((response: any) => {
 
     for(let a of response){
-      if(a.allergy === allergy){
+      if(a.allergy == allergy){
         
+
         this.allergies.push(a);
       }
     }

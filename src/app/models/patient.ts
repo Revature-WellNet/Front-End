@@ -13,8 +13,8 @@ export class Patient {
     public weight: number | null;
     public bloodType: Bloodtype | null;
     public sex: Sex;
-    public vaccinations: Vaccination[];
-    public allergies: Allergy[];
+    public patientVaccinations: Vaccination[];
+    public patientAllergies: Allergy[];
 
     constructor(patientId: number|null, 
         firstName: string,
@@ -35,8 +35,8 @@ export class Patient {
             this.weight = weight;
             this. bloodType = bloodType;
             this. sex = sex;
-            this.vaccinations = vaccinations;
-            this.allergies = allergies;
+            this.patientVaccinations = vaccinations;
+            this.patientAllergies = allergies;
         }
 
   

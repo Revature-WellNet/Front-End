@@ -30,9 +30,9 @@ export class ProfileEditComponent implements OnInit {
   submit(fName: any, lName: any, email : any){
     
 //need to add user id, but that comes from login service
-    let userId ="53";
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
-    this.userService.getUser(userId).subscribe((user : User) => {
+    this.userService.getUser(userData.id).subscribe((user : User) => {
 
       if(email){
         if(!this.emailValidator.validateEmailFormat(email)){
