@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
   public idToken : string = "";
 
   public covidStatus : boolean = false;
-  public lastTest: Date = new Date();
+  public lastTest: Date = new Date(1970,1,1);
 
   public userId:string = '';
 

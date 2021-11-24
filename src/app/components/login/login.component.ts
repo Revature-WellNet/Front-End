@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
             let dataArray= Object.values(data);
             let now = new Date().getTime();
             let date = new Date(dataArray[2]).getTime();
-            if ((date - now) < 86400000){
+            console.log(now-date)
+            if ((now - date) < 86400000){
               this.userService.getUser(userData.id).subscribe(
                 data =>{
                   console.log(JSON.stringify(data));
