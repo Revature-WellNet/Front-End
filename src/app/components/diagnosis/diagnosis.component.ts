@@ -12,10 +12,9 @@ import { NurseComponent } from '../nurse/nurse.component';
 @Component({
   selector: 'app-diagnosis',
   templateUrl: './diagnosis.component.html',
-  styleUrls: ['./diagnosis.component.css']
+  styleUrls: ['./diagnosis.component.css'],
 })
 export class DiagnosisComponent implements OnInit {
-
   diagnosis: string = ' ';
   symptoms: string = ' ';
   treatment: string = ' ';
@@ -25,14 +24,26 @@ export class DiagnosisComponent implements OnInit {
   user!: User;
   patient!: Patient;
 
-  constructor(private patientService: PatientService, private diagnosisService: DiagnosisFormService, private userService: UserService) {
+  constructor(
+    private patientService: PatientService,
+    private diagnosisService: DiagnosisFormService,
+    private userService: UserService
+  ) {
     // this.patient = patientService.patient;
-    this.patient = new Patient(-1, "Vincent", "Caccamo", new Date("1991-01-11"), 73, 240, "O-", "M");
+    this.patient = new Patient(
+      -1,
+      'Vincent',
+      'Caccamo',
+      new Date('1991-01-11'),
+      73,
+      240,
+      'O-',
+      'M'
+    );
   }
 
-  ngOnInit() {
-  }
-  onSubmit(symptoms: string, diagnosis: string, treatment: string){
+  ngOnInit() {}
+  onSubmit(symptoms: string, diagnosis: string, treatment: string) {
     let current = new Date();
     let diagnosisDTO: DiagnosisDTO = new DiagnosisDTO(
       symptoms,
@@ -43,17 +54,31 @@ export class DiagnosisComponent implements OnInit {
       this.patientService.patient,
       this.room,
       this.user
-    )
+    );
     console.log(diagnosisDTO);
-    this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
-      (form:DiagnosisForm) => {
-        console.log("form was submitted");
-      },
-      (error) => {
-        console.log("there was an error");
-      });
+    switch (this.user.role.role) {
+      case 'nurse':
+        this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
+          (success) => {
+            console.log('form was submitted');
+          },
+          (error) => {
+            console.log('there was an error');
+          }
+        );
+        break;
+      case 'doctor':
+        this.diagnosisService.putDiagnosisForm(diagnosisDTO).subscribe(
+          (success) => {
+            console.log('form was submitted');
+          },
+          (error) => {
+            console.log('there was an error');
+          }
+        );
+        break;
+    }
   }
 
-  prescribeTreatment(treatment: string){}
-
+  prescribeTreatment(treatment: string) {}
 }

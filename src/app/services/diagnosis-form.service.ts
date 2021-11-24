@@ -13,13 +13,16 @@ import { User } from '../models/user';
 export class DiagnosisFormService {
   private backendUrl = 'http://localhost:8081/wellnet/public/diagnosis/'
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
-  postDiagnosisForm(diagDTO: DiagnosisDTO): Observable<any>{  
+  postDiagnosisForm(diagDTO: DiagnosisDTO): Observable<any>{
     return this.http.post(this.backendUrl,diagDTO) as Observable<any>;
   }
-  getDiagnosisForm(patientId: number): Observable<DiagnosisForm[]>{  
+  getDiagnosisForm(patientId: number): Observable<DiagnosisForm[]>{
     return this.http.get<DiagnosisForm[]>(this.backendUrl+"patientId/"+patientId) as Observable<DiagnosisForm[]>;
+  }
+  putDiagnosisForm(diagDTO: DiagnosisDTO): Observable<any>{
+    return this.http.put(this.backendUrl, diagDTO) as Observable<any>;
   }
 }

@@ -87,13 +87,24 @@
           >Please enter patient symptoms</span> -->
       </div>
       <br />
+      <div [ngSwitch] = "user.role.role">
       <button
+        *ngSwitchCase = "'nurse'"
         type="submit"
         class="btn btn-success submit-button"
         [disabled]="!formDemo.valid"
       >
         Submit Diagnosis
       </button>
+      <button
+        *ngSwitchCase = "'doctor'"
+        type="submit"
+        class="btn btn-success submit-button"
+        [disabled]="!formDemo.valid"
+      >
+        Submit Treatment
+      </button>
+    </div>
     </form>
   </div>
 </div>
