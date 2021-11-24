@@ -4,9 +4,10 @@ import { Room } from "./rooms/room";
 import { User } from "./user";
 
 export class DiagnosisDTO {
-    
+
     private symptoms?: string;
     private diagnosis?: string;
+    private treatment?: string;
     private resolutionStatus?: boolean;
     private checkIn?: Date;
     private patient?: Patient;
@@ -16,14 +17,16 @@ export class DiagnosisDTO {
     constructor(
         symptoms: string,
         diagnosis: string,
+        treatment: string,
         resolutionStatus: boolean,
         checkIn: Date,
         patient: Patient,
         room: Room,
         nurse: User)
-    { 
+    {
         this.symptoms = symptoms;
         this.diagnosis = diagnosis;
+        this.treatment = treatment;
         this.resolutionStatus = resolutionStatus;
         this.checkIn = checkIn;
         this.patient = patient;

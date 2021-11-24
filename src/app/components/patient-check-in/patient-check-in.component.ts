@@ -34,9 +34,9 @@ export class PatientCheckInComponent implements OnInit {
 
 
     feet : number | null,
-    inches : number | null, 
-    weight : number | null, 
-    bloodtype : string | null, 
+    inches : number | null,
+    weight : number | null,
+    bloodtype : string | null,
     sex : string,
     allergies : Allergy[],
     vaccinations : Vaccination[]){
@@ -49,11 +49,11 @@ export class PatientCheckInComponent implements OnInit {
       }
     }else{
       height = null;
-    }  
-    
+    }
+
     let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodtype, sex, allergies, vaccinations);
     this.patientService.createPatient(patient);
-    
+
     console.log(patient);
 
   }
@@ -61,10 +61,10 @@ export class PatientCheckInComponent implements OnInit {
   generateChecklists(){
 
     this.patientService.getAllergies().subscribe((response: any) => {
-      
+
       let allergies : Allergy[] = response;
         for(let a of allergies){
-          
+
           let label = document.createElement("label");
           label.innerHTML = a.allergy+": ";
 
@@ -79,17 +79,17 @@ export class PatientCheckInComponent implements OnInit {
           document.getElementById("vaccinationanchor")!.appendChild(breaker);
           document.getElementById("allergyanchor")!.appendChild(label);
           document.getElementById("allergyanchor")!.appendChild(checkbox);
-          
+
 
         }
 
     })
 
     this.patientService.getVaccinations().subscribe((response: any) => {
-      
+
       let vaccinations : Vaccination[] = response;
         for(let v of vaccinations){
-          
+
           let label = document.createElement("label");
           label.innerHTML = v.vaccination+": ";
 
@@ -103,7 +103,7 @@ export class PatientCheckInComponent implements OnInit {
           document.getElementById("vaccinationanchor")!.appendChild(breaker);
           document.getElementById("vaccinationanchor")!.appendChild(label);
           document.getElementById("vaccinationanchor")!.appendChild(checkbox);
-          
+
 
         }
 
@@ -117,6 +117,10 @@ export class PatientCheckInComponent implements OnInit {
       console.log("null patient");
       //create new or try again?
     }
+    else {
+      this.patientService.patient = this.patient;
+      console.log(`patient updated to ${this.patientService.patient}`)
+    }
   }
 
   addAllergy(){
@@ -125,7 +129,7 @@ export class PatientCheckInComponent implements OnInit {
   }
 
   addVaccination(){
-    
+
   }
 
 }

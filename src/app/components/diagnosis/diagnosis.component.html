@@ -1,45 +1,99 @@
-<div class= "container" >
-    <div class= "patientDiagnosis">
-        <form
-        #formDemo= "ngForm"
-        class= "form-diagnose "
-        (ngSubmit)= "onSubmit(symptoms, diagnosis)">
-
-        <div class= "form-group">
-            <div class="symptomInput">
-                <label for= "symptom">Symptoms</label>
-                <!-- <button type="button" class="btn btn-add-symptom" (click)="addSymptom()"><b>+</b></button> -->
-                <textarea
-                rows = "4"
-                cols= "40"
-                class= "form-control"
-                name= "symptoms"
-                id= "diagnosis"
-                [(ngModel)]= "symptoms"
-                required
-            ></textarea>
-                <br>
-            </div>
-            <label for ="diagnosis">Diagnosis</label>
-            <textarea
-                rows = "4"
-                cols= "40"
-                class= "form-control"
-                name= "diagnosis"
-                id= "diagnosis"
-                [(ngModel)]= "diagnosis"
-                required
-            >
-            </textarea>
-            <!-- <span
+<div class="container">
+  <div class="patient-info">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-sm-6">
+            {{ patient.firstName }} {{ patient.lastName }}
+          </th>
+          <th class="col-sm-6">{{ patient.dob }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sm-6">Sex</td>
+          <td class="col-sm-6">{{ patient.sex }}</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6">Height</td>
+          <td class="col-sm-6">{{ patient.height }} inches</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6">Weight</td>
+          <td class="col-sm-6">{{ patient.weight }} pounds</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6">Blood Type</td>
+          <td class="col-sm-6">{{ patient.bloodType }}</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6">Allergies</td>
+          <td class="col-sm-6">{{ patient.allergies }}</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6">Vaccinations</td>
+          <td class="col-sm-6">{{ patient.vaccinations }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="patientDiagnosis">
+    <form
+      #formDemo="ngForm"
+      class="form-diagnose"
+      (ngSubmit)="onSubmit(symptoms, diagnosis, treatment)"
+    >
+      <div class="form-group">
+        <div class="symptomInput">
+          <label for="symptom">Symptoms</label>
+          <!-- <button type="button" class="btn btn-add-symptom" (click)="addSymptom()"><b>+</b></button> -->
+          <textarea
+            rows="4"
+            cols="40"
+            class="form-control"
+            name="symptoms"
+            id="diagnosis"
+            [(ngModel)]="symptoms"
+            required
+          ></textarea>
+          <br />
+        </div>
+        <label for="diagnosis">Diagnosis</label>
+        <textarea
+          rows="4"
+          cols="40"
+          class="form-control"
+          name="diagnosis"
+          id="diagnosis"
+          [(ngModel)]="diagnosis"
+          required
+        >
+        </textarea>
+        <div *ngIf="user.role.role == 'doctor'" class="add-treatment">
+          <label for="treatment">Treatment</label>
+          <textarea
+            rows="4"
+            cols="40"
+            class="form-control"
+            name="treatment"
+            id="treatment"
+            [(ngModel)]="treatment"
+            required
+          ></textarea>
+        </div>
+        <!-- <span
           class= "help-block"
           *ngIf= "!symptoms.valid"
           >Please enter patient symptoms</span> -->
-        </div>
-    <br>
-    <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Submit Diagnosis</button>
+      </div>
+      <br />
+      <button
+        type="submit"
+        class="btn btn-success submit-button"
+        [disabled]="!formDemo.valid"
+      >
+        Submit Diagnosis
+      </button>
     </form>
-
-    </div>
+  </div>
 </div>
-
