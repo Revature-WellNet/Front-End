@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firebaseService : FirebaseService) { }
 
   ngOnInit(): void {
+  }
+
+  logout()
+  {
+    this.firebaseService.logout();
   }
 
 }
