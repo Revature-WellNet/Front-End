@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-doctor',
@@ -15,7 +16,7 @@ export class DoctorComponent implements OnInit {
 
   public patientsArray : any = [];
 
-  constructor(private doctorService: DoctorService, private nurseService : NurseService) { }
+  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService : FirebaseService) { }
 
   ngOnInit(): void {
 
@@ -137,9 +138,7 @@ export class DoctorComponent implements OnInit {
   }
 
   logout(){
-
-    this.doctorService.routerLogOutDoctor();
-
+    this.firebaseService.logout();
   }
   // RouterLink to redirect to Login Page
 
