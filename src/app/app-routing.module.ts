@@ -18,30 +18,18 @@ import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 const routes: Routes = [
   {path: "",  redirectTo: "/login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
-  {path: "signup", component:RegisterComponent},
+  {path:"patientcheckin", component:PatientCheckInComponent},
   {path: "nurse", component: NurseComponent},
   {path: "doctor", component: DoctorComponent},
   {path: "profile", component: ProfileComponent},
   {path: "diagnosis", component: DiagnosisComponent},
   {path: "checkin", component: PatientCheckInComponent},
-
-
-
-  {path: "doctor", canActivate:[AuthGuardGuard], component: DoctorComponent},
-
-
-  
-  {path: 'profile', component: ProfileComponent},
+  {path: "doctor", canActivate:[AuthGuardGuard], component: DoctorComponent}, 
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
-  {path: "login", component:LoginComponent},
-  
-  {
-    path:"rooms",
-    component:RoomsComponent
-  }
-
+  {path: "login", component:LoginComponent}, 
+  {path:"rooms", component:RoomsComponent}
 ];
 
 @NgModule({

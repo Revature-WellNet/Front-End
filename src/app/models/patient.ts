@@ -4,9 +4,9 @@ export class Patient {
     public firstName: string;
     public lastName: string;
     public dob: Date;
-    public height: number;
-    public weight: number;
-    public bloodType: string;
+    public height: number | null;
+    public weight: number | null;
+    public bloodType: string | null;
     public sex: string;
     public vaccinations?: object[];
     public allergies?: object[];
@@ -15,9 +15,9 @@ export class Patient {
         firstName: string,
         lastName: string, 
         dob: Date, 
-        height: number, 
-        weight: number, 
-        bloodType: string, 
+        height: number | null, 
+        weight: number | null, 
+        bloodType: string | null, 
         sex: string, 
         vaccinations?: object[], 
         allergies?: object[]
