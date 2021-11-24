@@ -226,7 +226,7 @@ export class RegistrationComponent implements OnInit {
         // console.log(data[0].role.role);
         if(user.id!= null){
 
-        let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, true, this.lastTest);
+        let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, false, this.lastTest);
         this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
           console.log(data1);
           this.registrationSender.routeToNurseComponent(Object(data).role.role);

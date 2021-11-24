@@ -32,7 +32,17 @@ export class LoginComponent implements OnInit {
         this.cvs.getFormServByString(userData.id).subscribe(
           data=>{
             console.log(JSON.stringify(data));
+
             let dataArray= Object.values(data);
+            console.log(dataArray);
+            console.log(dataArray[3]);
+            if(dataArray[3]==true){
+              console.log("hello");
+              this.router.navigate(['lockout']);
+
+            }
+            
+            else{
             let now = new Date().getTime();
             let date = new Date(dataArray[2]).getTime();
             console.log(now-date)
@@ -56,7 +66,7 @@ export class LoginComponent implements OnInit {
             }
             else{
               this.router.navigate(['/covid-verification']);
-            }
+            }}
           }
         )
         // this.userService.getUser(userData.id).subscribe(
