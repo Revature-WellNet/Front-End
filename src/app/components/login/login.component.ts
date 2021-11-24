@@ -61,12 +61,19 @@ export class LoginComponent implements OnInit {
     this.firebaseService.gettest().subscribe(data=>{
       console.log(data);
     })
-    
   }
 
 
   ngOnInit(): void {
-    this.firebaseService.logout();
+    this.log = localStorage.getItem('userinfo') != null;
+    //this.firebaseService.logout();
+  }
+
+  refreshToken()
+  {
+    this.firebaseService.refreshToken().subscribe(()=>{
+      console.log("refreshed token");
+    });
   }
 
 }
