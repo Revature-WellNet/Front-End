@@ -22,7 +22,7 @@ export class Covid19VerificationService {
   }
 
   getFormServByString(id:string):Observable<Object>{
-    return this.http.get(this.serverUrl+'/covid/'+id);
+    return this.http.get(this.serverUrl+'/covid/user/'+id);
   }
 
 }

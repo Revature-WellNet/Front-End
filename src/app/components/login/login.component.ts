@@ -29,22 +29,50 @@ export class LoginComponent implements OnInit {
         console.log(res);
         const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
         // get custom claims to find role
-        let timestamp:any=this.cvs.getFormServByString('')
-        this.userService.getUser(userData.id).subscribe(
-          data =>{
+        this.cvs.getFormServByString(userData.id).subscribe(
+          data=>{
             console.log(JSON.stringify(data));
-            if(data.role.role=='nurse'){
-              // nurseUI()
-              this.router.navigate(['nurse']);
-            }else if(data.role.role=='doctor'){
-              // doctorUI()
-              this.router.navigate(['doctor']);
-            }else{
-              // user does not have a role / could not find users role
-              console.error('this user does not have a role');
+            let dataArray= Object.values(data);
+            let now = new Date().getTime();
+            let date = new Date(dataArray[2]).getTime();
+            if ((date - now) < 86400000){
+              this.userService.getUser(userData.id).subscribe(
+                data =>{
+                  console.log(JSON.stringify(data));
+                  if(data.role.role=='nurse'){
+                    // nurseUI()
+                    this.router.navigate(['nurse']);
+                  }else if(data.role.role=='doctor'){
+                    // doctorUI()
+                    this.router.navigate(['doctor']);
+                  }else{
+                    // user does not have a role / could not find users role
+                    console.error('this user does not have a role');
+                  }
+                }
+              )
+            
+            }
+            else{
+              this.router.navigate(['/covid-verification']);
             }
           }
         )
+        // this.userService.getUser(userData.id).subscribe(
+        //   data =>{
+        //     console.log(JSON.stringify(data));
+        //     if(data.role.role=='nurse'){
+        //       // nurseUI()
+        //       this.router.navigate(['nurse']);
+        //     }else if(data.role.role=='doctor'){
+        //       // doctorUI()
+        //       this.router.navigate(['doctor']);
+        //     }else{
+        //       // user does not have a role / could not find users role
+        //       console.error('this user does not have a role');
+        //     }
+        //   }
+        // )
       
         // this.router.navigate([whichPage]);
       }
