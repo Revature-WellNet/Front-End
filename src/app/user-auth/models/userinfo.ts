@@ -3,6 +3,7 @@ export class Userinfo {
         public email:string,
         public id: string,
         private _token: string,
+        private _refreshToken: string,
         private _tokenExpirationDate: Date
     ){}
         get token(){

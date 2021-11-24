@@ -56,6 +56,7 @@ export class FirebaseService {
             res.email,
             res.localId,
             res.idToken,
+            res.refreshToken,
             +res.expiresIn
           );
         })
@@ -64,6 +65,22 @@ export class FirebaseService {
 
   async signUp(email: string, password: string) {
     return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+  }
+
+  setEmail(email : string) {
+    firebase.auth().currentUser?.updateEmail(email).then(() => {
+      console.log("Email updated to " + email);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
+  setPassword(password : string) {
+    firebase.auth().currentUser?.updatePassword(password).then(() => {
+      console.log("Password updated");
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 
   // Sign in with firebase
@@ -88,6 +105,35 @@ export class FirebaseService {
             res.email,
             res.localId,
             res.idToken,
+            res.refreshToken,
+            +res.expiresIn
+          );
+        })
+      );
+  }
+
+  refreshToken()
+  {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    return this.httpClient
+      .post<SignupResponse>(
+        'https://identitytoolkit.googleapis.com/v1/token?key=' +
+          this.API_KEY,
+        {
+          grant_type: "refresh_token",
+          refresh_token: userData._refreshToken
+        }
+      )
+      .pipe(
+        catchError((err) => {
+          return err;
+        }),
+        tap((res: any) => {
+          this.authenticatedUser(
+            res.email,
+            res.localId,
+            res.idToken,
+            res.refreshToken,
             +res.expiresIn
           );
         })
@@ -103,6 +149,7 @@ export class FirebaseService {
       userData.email,
       userData.id,
       userData._token,
+      userData._refreshToken,
       new Date(userData._tokenExpirationDate)
     );
     if (loggedInUser.token) {
@@ -124,7 +171,9 @@ export class FirebaseService {
 
   autoSignOut(expirDuration: number) {
     this.tokenExpireTime = setTimeout(() => {
-      this.logout();
+      this.refreshToken().subscribe(()=>{
+        console.log("token has been refreshed!");
+      });
     }, expirDuration);
   }
 
@@ -133,10 +182,11 @@ export class FirebaseService {
     email: string,
     userId: string,
     token: string,
+    refreshToken : string,
     expiresIn: any
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const userInfo = new Userinfo(email, userId, token, expirationDate);
+    const userInfo = new Userinfo(email, userId, token, refreshToken, expirationDate);
     console.log('User Info>>>>', userInfo);
     this.userInfo.next(userInfo);
     this.autoSignOut(expiresIn * 1000);
