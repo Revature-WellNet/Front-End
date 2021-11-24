@@ -63,8 +63,12 @@ httpOptions = {
   getPatientsByDoctorName(doctorFirstName : string, doctorLastName : string) : Observable<Patient[]> {
 
     console.log("Getting Patients Of Doctor : " + doctorFirstName + "  " + doctorLastName);
-
-    return this.http.get<Patient[]>(APIURL + "user/patient/doctor/" + doctorFirstName + "/" + doctorLastName);
+    if(doctorFirstName && doctorLastName){
+    return this.http.get<Patient[]>(APIURL + "public/user/doctorPatientMap/" + doctorFirstName + "/" + doctorLastName);
+    } else {
+      let  returner: Observable<Patient[]> = new Observable<Patient[]>();
+      return returner;
+    }
 
 
   }

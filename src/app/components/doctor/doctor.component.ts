@@ -13,6 +13,8 @@ export class DoctorComponent implements OnInit {
 
   doctorId!: string;
 
+  public doctorName!: string;
+
   public patientsArray : any = [];
   public searchingDoctor : boolean = false;
 
@@ -161,13 +163,15 @@ export class DoctorComponent implements OnInit {
 
 
   searchByDoctor(doctorFirstName : string, doctorLastName : string) {
-
+    this.doctorName =  `${doctorFirstName} ${doctorLastName}`;
     console.log("First Name : " + doctorFirstName);
     console.log("Last Name  : " + doctorLastName);
 
     this.searchingDoctor = true;
 
-
+    this.doctorService.getPatientsByDoctorName(doctorFirstName, doctorLastName).subscribe((response)=>{this.patientsArray=response;
+      console.log(this.patientsArray);
+    });
   }
 
 }
