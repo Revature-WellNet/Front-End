@@ -43,7 +43,8 @@ export class Covid19VerificationComponent implements OnInit {
   public previous3: string = 'false';
   public previous4: string = 'false';
 
-  public userId: number = 0;
+  public id:number = 0;
+  public userId: string = '';
   public lastTest: Date = new Date();
   public finalStatus: boolean = false;
 
@@ -107,7 +108,7 @@ export class Covid19VerificationComponent implements OnInit {
   
   //form submitter
   formSubmitFun() {
-    let cv: Covid19VerificationModel = new Covid19VerificationModel(this.userId, this.finalStatus, this.lastTest);
+    let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id,this.userId, this.finalStatus, this.lastTest);
     console.log(cv);
     this.cvs.submitFormServ(cv).subscribe((data: Object) => {
       console.log(data);

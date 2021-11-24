@@ -5,6 +5,7 @@ import { Userinfo } from 'src/app/user-auth/models/userinfo';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 import firebase from 'firebase/compat/app';
 import { UserService } from 'src/app/services/user.service'
+import { Covid19VerificationService } from 'src/app/services/covid19-verification.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/services/user.service'
 })
 export class LoginComponent implements OnInit {
   log:boolean=false;
-  constructor(public firebaseService : FirebaseService, private router: Router, public userService : UserService) { }
+  constructor(public firebaseService : FirebaseService, private router: Router, public userService : UserService, public cvs:Covid19VerificationService) { }
  
   register()
   {
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
         // get custom claims to find role
+        let timestamp:any=this.cvs.getFormServByString('')
         this.userService.getUser(userData.id).subscribe(
           data =>{
             console.log(JSON.stringify(data));
