@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
 
 @Component({
@@ -14,7 +15,7 @@ export class DoctorComponent implements OnInit {
 
   public patientsArray : any = [];
 
-  constructor(private doctorService: DoctorService) { }
+  constructor(private doctorService: DoctorService, private nurseService : NurseService) { }
 
   ngOnInit(): void {
 
@@ -46,6 +47,8 @@ export class DoctorComponent implements OnInit {
     this.doctorService.getPatientsByDocId();
   }
 
+
+
   getPatientsByString(inputString : string) {
 
     console.log(inputString);
@@ -70,14 +73,62 @@ export class DoctorComponent implements OnInit {
 
   }
  
-  getAllPatients(){
-    this.doctorService.getPatients().subscribe(
-      (response: Patient[])=> {
+
+  searchPatient(){
+    this.nurseService.getPatientById(1);
+  }
+
+  searchPatByFName(firstName: string){
+    console.log("Button Clickd")
+    this.nurseService.getPatientByFirstName(firstName).subscribe((response: Patient[])=> {
         this.patientsArray = response;
-        let dobtest:any = this.patientsArray[0].dob;
         console.log(this.patientsArray);
         console.log(response);
-        console.log(typeof dobtest);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatByFullName(firstName: string, lastName: string){
+    this.nurseService.getPatientByFullName(firstName, lastName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
+    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    console.log(firstName, lastName, fullDate);
+    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+  getAllPatients(){
+    this.nurseService.getPatients().subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+                console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);
