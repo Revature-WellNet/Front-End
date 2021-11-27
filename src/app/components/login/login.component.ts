@@ -38,7 +38,16 @@ export class LoginComponent implements OnInit {
             console.log(dataArray[3]);
             if(dataArray[3]==true){
               console.log("hello");
-              this.router.navigate(['lockout']);
+              let now = new Date().getTime();
+              let date = new Date(dataArray[2]).getTime();
+              console.log(now-date)
+              if ((now - date) > 1210000000){
+                console.log('hello');
+                this.router.navigate(['/covid-verification']);
+               
+              }
+              else{
+              this.router.navigate(['lockout']);}
 
             }
             

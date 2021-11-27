@@ -2,6 +2,7 @@ import { getLocaleDateFormat, getLocaleTimeFormat, Time } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
 import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-lockout',
@@ -14,7 +15,7 @@ export class LockoutComponent implements OnInit {
   public time:any='';
   public auth:any ='';
   
-  constructor(private cvs:Covid19VerificationService) { 
+  constructor(private cvs:Covid19VerificationService, private firebaseService:FirebaseService) { 
     window.setInterval(() => this.setTime(),1000);
   }
 
@@ -71,6 +72,11 @@ export class LockoutComponent implements OnInit {
 
 
     })
+  }
+
+  logout()
+  {
+    this.firebaseService.logout();
   }
 }
 
