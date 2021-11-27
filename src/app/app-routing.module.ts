@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: "profile", component: ProfileComponent},
   {path: "diagnosis", component: DiagnosisComponent},
   {path: "checkin", component: PatientCheckInComponent},
-  {path: "doctor", canActivate:[AuthGuardGuard], component: DoctorComponent}, 
+ 
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},

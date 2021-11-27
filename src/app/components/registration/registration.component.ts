@@ -186,9 +186,9 @@ export class RegistrationComponent implements OnInit {
     // public lastName : string;
     // public email : string;
     // public role : Role;
-  
-    let JWT = await this.firebaseService.signUp(this.email, this.password);
-    console.log(JSON.stringify(JWT));
+  this.firebaseService.signup(this.email, this.password).subscribe(()=>{
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+
 
     this.uniqueUserString = "";
     this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
@@ -200,14 +200,14 @@ export class RegistrationComponent implements OnInit {
     console.error("Creating User");
 
     if (this.role == "nurse") {
-
-      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
+      
+      user = new User(userData.id, this.firstName, 
       this.lastName, this.email, new Role(1, this.role));
 
     }
     if (this.role == "doctor") {
       
-      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
+      user = new User(userData.id, this.firstName, 
       this.lastName, this.email, new Role(2, this.role));
 
     }
@@ -226,9 +226,9 @@ export class RegistrationComponent implements OnInit {
         // console.log(data[0].role.role);
         if(user.id!= null){
 
-        let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, true, this.lastTest);
+        let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, false, this.lastTest);
         this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
-          console.log(data1);
+        
           this.registrationSender.routeToNurseComponent(Object(data).role.role);
         })
         console.log(Object(data).role.role);}
@@ -237,7 +237,10 @@ export class RegistrationComponent implements OnInit {
       });
 
 
+  });
   }
+  
+    
 
 
   

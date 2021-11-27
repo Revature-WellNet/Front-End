@@ -151,7 +151,7 @@ export class Covid19VerificationComponent implements OnInit {
   testedResultSubmit() {
     this.testedQuestionsResult = 'false';
     if (this.testedPositive == 'true') {
-      this.lastPositiveTest = 'true';
+      this.finalStatus = true;
       this.formSubmitFun();
     }
     else if(this.previous3=='true'){
