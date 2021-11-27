@@ -42,7 +42,7 @@ export class LockoutComponent implements OnInit {
   
     // If the count down is finished, write some text
     if (distance < 0) {
-      document.getElementById("timer")!.innerHTML = "EXPIRED";
+      document.getElementById("timer")!.innerHTML = "You may return to work";
     };
  
 }
