@@ -18,18 +18,18 @@ import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 const routes: Routes = [
   {path: "",  redirectTo: "/login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
-  {path:"patientcheckin",canActivate:[AuthGuardGuard], component:PatientCheckInComponent},
-  {path: "nurse",canActivate:[AuthGuardGuard], component: NurseComponent},
-  {path: "doctor",canActivate:[AuthGuardGuard], component: DoctorComponent},
-  {path: "profile",canActivate:[AuthGuardGuard], component: ProfileComponent},
-  {path: "diagnosis",canActivate:[AuthGuardGuard], component: DiagnosisComponent},
-  {path: "checkin",canActivate:[AuthGuardGuard], component: PatientCheckInComponent},
+  {path:"patientcheckin", component:PatientCheckInComponent},
+  {path: "nurse", component: NurseComponent},
+  {path: "doctor", component: DoctorComponent},
+  {path: "profile", component: ProfileComponent},
+  {path: "diagnosis", component: DiagnosisComponent},
+  {path: "checkin", component: PatientCheckInComponent},
  
-  {path: 'profileEdit',canActivate:[AuthGuardGuard], component: ProfileEditComponent},
-  {path: 'covid-verification',canActivate:[AuthGuardGuard], component:Covid19VerificationComponent, pathMatch: 'full'},
-  {path: 'lockout',canActivate:[AuthGuardGuard], component:LockoutComponent, pathMatch: 'full'},
+  {path: 'profileEdit', component: ProfileEditComponent},
+  {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
+  {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
   {path: "login", component:LoginComponent}, 
-  {path:"rooms",canActivate:[AuthGuardGuard], component:RoomsComponent}
+  {path:"rooms", component:RoomsComponent}
 ];
 
 @NgModule({

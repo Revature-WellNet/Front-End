@@ -8,13 +8,15 @@ import { FirebaseService } from '../user-auth/services/firebase.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private firebaseService:FirebaseService) { }
+  constructor(private firebaseService : FirebaseService) { }
+
+  ngOnInit(): void {
+    this.firebaseService.autoSignIn();
+  }
+
   logout()
   {
     this.firebaseService.logout();
-  }
-  ngOnInit(): void {
-    this.firebaseService.autoSignIn();
   }
 
 }

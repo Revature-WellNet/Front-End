@@ -145,9 +145,7 @@ export class DoctorComponent implements OnInit {
   }
 
   logout(){
-
-    this.doctorService.routerLogOutDoctor();
-
+    this.firebaseService.logout();
   }
   // RouterLink to redirect to Login Page
 

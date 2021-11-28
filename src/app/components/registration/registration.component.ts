@@ -188,7 +188,7 @@ export class RegistrationComponent implements OnInit {
     // public role : Role;
   
     this.firebaseService.signUp(this.email, this.password).then(JWT=>{
-
+      const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
    
     
@@ -206,14 +206,14 @@ export class RegistrationComponent implements OnInit {
     console.error("Creating User");
 
     if (this.role == "nurse") {
-
-      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
+      
+      user = new User(userData.id, this.firstName, 
       this.lastName, this.email, new Role(1, this.role));
 
     }
     if (this.role == "doctor") {
       
-      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
+      user = new User(userData.id, this.firstName, 
       this.lastName, this.email, new Role(2, this.role));
 
     }
@@ -234,7 +234,7 @@ export class RegistrationComponent implements OnInit {
 
         let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, false, this.lastTest);
         this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
-          console.log(data1);
+        
           this.registrationSender.routeToNurseComponent(Object(data).role.role);
         })
         console.log(Object(data).role.role);}
