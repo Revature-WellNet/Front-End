@@ -89,10 +89,10 @@ div {
 }
 
 .RegisterButton:enabled {
-  margin-top: 4px;
-  margin-bottom: 4px;
 
-  width: 95%;
+  margin: 4px auto 4px auto;
+
+  width: 100%;
   color: rgb(0, 38, 74);
   background-color: rgb(146, 200, 63);
 

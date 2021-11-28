@@ -94,6 +94,9 @@ export class LoginComponent implements OnInit {
   logout() {
     this.firebaseService.logout();
   }
+  forgetPassword(){
+  
+  }
 
   //dummy example of sending an http request requiring an authorization header
   getUser() {
