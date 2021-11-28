@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { Router } from '@angular/router';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doctor',
@@ -15,10 +18,15 @@ export class DoctorComponent implements OnInit {
 
   public patientsArray : any = [];
 
-  constructor(private doctorService: DoctorService, private nurseService : NurseService) { }
+  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService:FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.firebaseService.userInfo.pipe(take(1),map(res=>{
+      if(res==null){
+        console.log("doctor", res)
+        this.router.createUrlTree(['login']);
+      }
+    }))
     //before we get doctor: 
     this.getAllPatients();
 

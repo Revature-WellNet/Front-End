@@ -1,10 +1,31 @@
+<div id="RegistrationDiv" class="col-sm-4">
 
-<p>You current log status is => {{log}}</p>
-<input type = "text" #email>
-<input type = "password" #password>
-<button (click)="onSignin(email.value, password.value)">Sign in</button>
-<button (click)="register()">Register</button>
-<button (click)="getUser()">Get user</button> 
-<button (click)="logout()">Logout</button> 
-<button (click)="refreshToken()">Refresh Token</button>
+    <div class="CenterContainerContent">
+        <h1 class="RegistrationTitle">
+            Sign in
+        </h1>
+    </div>
+   
+    <div>
+        <div>
+            <label class="loginText">Email:</label>
+            <input type="text" #email class="loginInput">
+        </div>
+        <div>
+            <label class="loginText">Password:</label>
+            <input type="password" #password class="loginInput">
+        </div>
+        <div><button (click)="onSignin(email.value, password.value)" class="RegisterButton">Sign in</button></div>
+    </div>
+    <div>
+       
+        <div><button (click)="register()" class="RegisterButton">Register</button> </div>
+        <hr>
+        
+        
+        <div><button (click)="getUser()" class="RegisterButton">Get user info</button> </div>
+        <div><button (click)="logout()" class="RegisterButton">Logout</button></div>
+        <div><button (click)="refreshToken()" class="RegisterButton"> Refresh Token</button> </div>
+    </div>
+</div>
 <!-- <a routerLink="signup" routerLinkActive="active"><button>Create Account</button></a> -->
