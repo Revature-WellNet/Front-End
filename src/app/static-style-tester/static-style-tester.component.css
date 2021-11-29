@@ -1,0 +1,111 @@
+/*
+Green:
+#194140
+#239507
+#8ec342
+#bbd999
+Blue:
+#566675
+#7f969c
+#a1aeba
+#b9c9d2
+White: 
+#f5f9f6
+*/
+
+#Green2 {
+    background-color: #239507;
+ }
+ #Green3 {
+    background-color: #8ec342;
+ }
+ #Green4 {
+     background-color: #bbd999;
+ }
+ #Blue1 {
+    background-color: #566675;
+ }
+ #Blue2 {
+    background-color: #7f969c;
+ }
+ #Blue3 {
+    background-color: #a1aeba;
+ }
+ #Blue4 {
+    background-color: #b9c9d2;
+ }
+
+ #White {
+    background-color: #f5f9f6;
+ }
+
+ .Button1 {
+     background-color: #566675;
+     border: none;
+     padding: 30px;
+     color: white;
+     font-size: 20px;
+ }
+
+ .Button2 {
+     background-color: #239507;
+     border: none;
+     padding: 9px;
+     border-radius: 8px;
+     color: white;
+     font-size: 16px;
+     margin: 18px;
+     transition-duration: 0.5s;
+
+    }
+ 
+ .Button2:hover {
+    background-color: white;
+    border: 2px solid #239507;
+    color: #239507;
+    box-shadow: 3px 8px 6px 8px #888888;
+  
+     
+ }
+
+ .Button3 {
+    background-color: white;
+    border: 2px solid #239507;
+    padding: 9px;
+    border-radius: 8px;
+    color: #239507;
+    font-size: 16px;
+    margin: 18px;
+    transition-duration: 0.5s;
+       }
+ 
+ .Button3:hover {
+    background-color: #239507;
+    border: 2px solid White;
+    color: White;
+    box-shadow: 3px 8px 6px 8px #888888;
+ }
+
+ .dot {
+        height: 25px;
+        width: 25px;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+ .MenuButton{
+     font-size: 16px;
+     background-color: white;
+ }
+
+ .font1 {
+    font-family: Verdana,Geneva,sans-serif;
+ }
+
+ .font2 {
+     font-family: Lora, sans-serif;
+ }
+
+ 
+
