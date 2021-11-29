@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class Covid19VerificationService {
 
-  public serverUrl:string = 'http://localhost:8081/wellnet/public';
+  public serverUrl:string = 'http://localhost:8081/wellnet';
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +20,11 @@ export class Covid19VerificationService {
     console.log(this.serverUrl + '/covid/' + id);
     return this.http.get(this.serverUrl + '/covid/' + id);
   }
+
+  getFormServByString(id:string):Observable<Object>{
+    return this.http.get(this.serverUrl+'/covid/user/'+id);
+  }
+
+  
 
 }

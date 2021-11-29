@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-covid19-verification',
@@ -43,13 +44,14 @@ export class Covid19VerificationComponent implements OnInit {
   public previous3: string = 'false';
   public previous4: string = 'false';
 
-  public userId: number = 0;
+  public id:number = 0;
+  public userId: string = '';
   public lastTest: Date = new Date();
   public finalStatus: boolean = false;
 
 
 
-  constructor(private cvs: Covid19VerificationService, private router: Router) { }
+  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService) { }
 
   ngOnInit(): void {
   }
@@ -107,12 +109,29 @@ export class Covid19VerificationComponent implements OnInit {
   
   //form submitter
   formSubmitFun() {
-    let cv: Covid19VerificationModel = new Covid19VerificationModel(this.userId, this.finalStatus, this.lastTest);
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    console.log(userData.id)
+    
+    let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id,userData.id, this.finalStatus, this.lastTest);
     console.log(cv);
     this.cvs.submitFormServ(cv).subscribe((data: Object) => {
       console.log(data);
       if (this.finalStatus == false) {
-        this.router.navigate(['']);
+        this.userService.getUser(userData.id).subscribe(
+          data =>{
+            console.log(JSON.stringify(data));
+            if(data.role.role=='nurse'){
+              // nurseUI()
+              this.router.navigate(['nurse']);
+            }else if(data.role.role=='doctor'){
+              // doctorUI()
+              this.router.navigate(['doctor']);
+            }else{
+              // user does not have a role / could not find users role
+              console.error('this user does not have a role');
+            }
+          }
+        )
       }
       else {
         this.router.navigate(['lockout']);
@@ -132,7 +151,7 @@ export class Covid19VerificationComponent implements OnInit {
   testedResultSubmit() {
     this.testedQuestionsResult = 'false';
     if (this.testedPositive == 'true') {
-      this.lastPositiveTest = 'true';
+      this.finalStatus = true;
       this.formSubmitFun();
     }
     else if(this.previous3=='true'){

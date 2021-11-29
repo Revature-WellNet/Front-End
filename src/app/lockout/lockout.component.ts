@@ -26,7 +26,7 @@ export class LockoutComponent implements OnInit {
 
   setTime() {
     let countDownDate = this.time.getTime()+1209600000;
-
+    console.log(this.time)
     let now = new Date().getTime();
     let distance = countDownDate - now;
   
@@ -53,11 +53,13 @@ export class LockoutComponent implements OnInit {
  // }
 
   getTimestamp() {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     //this.cvs.getFormServ(getTimestampIdByAuth(this.auth)).subscribe((data: Object) => {
-    this.cvs.getFormServ(2).subscribe((data: Object) => {
+    this.cvs.getFormServByString(userData.id).subscribe((data: Object) => {
       if(data!=null){
         let dateArray:any[] = Object.values(data);
-        let dateTime=dateArray[1];
+        console.log(data)
+        let dateTime=dateArray[2];
         let date = new Date(dateTime);
         this.time = date;
         return true;

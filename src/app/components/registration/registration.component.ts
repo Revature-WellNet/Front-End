@@ -10,6 +10,8 @@ import { RegistrationService } from '../../services/registration.service';
 import { SemiUniqueStringsService } from '../../services/semi-unique-strings.service';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 import { HttpHeaders } from '@angular/common/http';
+import { Covid19VerificationModel } from 'src/app/models/covid19-verification-model';
+import { Covid19VerificationService } from 'src/app/services/covid19-verification.service';
 
 @Component({
   selector: 'app-registration',
@@ -26,9 +28,14 @@ export class RegistrationComponent implements OnInit {
   public idToken : string = "";
 
   public covidStatus : boolean = false;
+  public lastTest: Date = new Date(1970,1,1);
+
+  public userId:string = '';
 
   public emailValidated : boolean | null = null;
   public roleValidated : boolean | null = null;
+
+  
 
   public registrationButtonSetting : boolean = true;
   
@@ -38,6 +45,7 @@ export class RegistrationComponent implements OnInit {
   public password : string = "";
 
   public debugging : boolean = false;
+  public id: number = 0;
 
 
 
@@ -47,7 +55,8 @@ export class RegistrationComponent implements OnInit {
     private router : Router,
     private registrationSender : RegistrationService,
     private rngGenerator : SemiUniqueStringsService,
-    private firebaseService : FirebaseService
+    private firebaseService : FirebaseService,
+    private cvs: Covid19VerificationService
   ) { }
 
   ngOnInit(): void {
@@ -177,9 +186,9 @@ export class RegistrationComponent implements OnInit {
     // public lastName : string;
     // public email : string;
     // public role : Role;
-  
-    let JWT = await this.firebaseService.signUp(this.email, this.password);
-    console.log(JSON.stringify(JWT));
+  this.firebaseService.signup(this.email, this.password).subscribe(()=>{
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+
 
     this.uniqueUserString = "";
     this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
@@ -191,14 +200,14 @@ export class RegistrationComponent implements OnInit {
     console.error("Creating User");
 
     if (this.role == "nurse") {
-
-      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
+      
+      user = new User(userData.id, this.firstName, 
       this.lastName, this.email, new Role(1, this.role));
 
     }
     if (this.role == "doctor") {
       
-      user = new User(this.firebaseService.getLoggedUserUid(), this.firstName, 
+      user = new User(userData.id, this.firstName, 
       this.lastName, this.email, new Role(2, this.role));
 
     }
@@ -215,14 +224,23 @@ export class RegistrationComponent implements OnInit {
         // console.log(Object(data).role.role);
         // console.log(data[0].role);
         // console.log(data[0].role.role);
+        if(user.id!= null){
 
-        this.registrationSender.routeToNurseComponent(Object(data).role.role);
-        console.log(Object(data).role.role);
+        let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, false, this.lastTest);
+        this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
+        
+          this.registrationSender.routeToNurseComponent(Object(data).role.role);
+        })
+        console.log(Object(data).role.role);}
+       
 
       });
 
 
+  });
   }
+  
+    
 
 
   
