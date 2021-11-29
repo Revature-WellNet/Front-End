@@ -19,7 +19,7 @@ export class NurseComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("before pipe");
-    this.firebaseService.userInfo.pipe(take(1),map(res=>{
+    this.firebaseService.userInfo.subscribe((res)=>{
       if(res==null){
         this.router.createUrlTree(['login']);
       }
@@ -27,7 +27,7 @@ export class NurseComponent implements OnInit {
       if(res?.role == "doctor"){
         this.router.navigate(['doctor']);
       }
-    }))
+    });
     this.getAllPatients();
   }
 
