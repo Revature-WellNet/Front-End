@@ -212,9 +212,7 @@ export class RegistrationComponent implements OnInit {
               this.lastTest
             );
             this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
-              this.registrationSender.routeToNurseComponent(
-                Object(data).role.role
-              );
+              this.firebaseService.logout();
             });
             console.log(Object(data).role.role);
           }
