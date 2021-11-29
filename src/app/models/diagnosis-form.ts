@@ -6,17 +6,17 @@ import { User } from "./user";
 
 export class DiagnosisForm {
 
-    private diagId:number;
-    private diagnosis:string;
-    private symptoms:string;
-    private treatment:string;
-    private resolutionStatus:boolean;
-    private checkIn:Timestamp<Date>;
-    private checkOut:Timestamp<Date>;
-    private patient:Patient;
-    private room:Room;
-    private nurse:User;
-    private doctor:User;
+    public diagId:number;
+    public diagnosis:string;
+    public symptoms:string;
+    public treatment:string;
+    public resolutionStatus:boolean;
+    public checkIn:Timestamp<Date>;
+    public checkOut:Timestamp<Date>;
+    public patient:Patient;
+    public room:Room;
+    public nurse:User;
+    public doctor:User;
 
     constructor(
         diagId:number,

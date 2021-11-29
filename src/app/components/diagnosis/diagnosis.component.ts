@@ -67,7 +67,7 @@ export class DiagnosisComponent implements OnInit {
         break;
       }
       case 'doctor':{
-          let diagFormTemp: DiagnosisDTO = this.getExistingForm(this.patient);
+          let diagFormTemp: DiagnosisForm = this.getExistingForm(this.patient.patientId);
           diagFormTemp.doctor = this.user;
           diagFormTemp.treatment = treatment;
           diagFormTemp.resolutionStatus = true;
@@ -85,17 +85,17 @@ export class DiagnosisComponent implements OnInit {
     }
   }
 
-  getExistingForm( patient: Patient): DiagnosisDTO{
-    this.diagnosisService.getDiagnosisForm(this.patient.patientId).subscribe(
-      (data:DiagnosisForm) => {
-        this.diagnosisDTO = data;
-        console.log(diagForm);
-        return diagForm;
+  getExistingForm( patientId: number): any{
+    this.diagnosisService.getDiagnosisForm(patientId).subscribe(
+      (data:DiagnosisForm[]) => {
+        console.log(data[0]);
+        return data[0];
       },
       (error) => {
         console.log("ERROR");
+        return {};
       }
-        );
+    );
   }
   prescribeTreatment(treatment: string) {}
 }

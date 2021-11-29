@@ -22,7 +22,7 @@ export class DiagnosisFormService {
   getDiagnosisForm(patientId: number): Observable<DiagnosisForm[]>{
     return this.http.get<DiagnosisForm[]>(this.backendUrl+"patientId/"+patientId) as Observable<DiagnosisForm[]>;
   }
-  putDiagnosisForm(diagDTO: DiagnosisDTO): Observable<any>{
+  putDiagnosisForm(diagDTO: DiagnosisForm): Observable<any>{
     return this.http.put(this.backendUrl, diagDTO) as Observable<any>;
   }
 }

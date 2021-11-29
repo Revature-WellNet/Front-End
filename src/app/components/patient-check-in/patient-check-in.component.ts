@@ -35,23 +35,21 @@ export class PatientCheckInComponent implements OnInit {
 
     feet : number | null,
     inches : number | null,
-    weight : number | null,
-    bloodtype : string | null,
+    weight : number ,
+    bloodtype : string ,
     sex : string,
     allergies : Allergy[],
     vaccinations : Vaccination[]){
 
-    let height : number | null;
+    let height : number ;
     if(feet){
       height = (feet*12);
       if(inches){
         height += inches;
       }
-    }else{
-      height = null;
-    }
+    }else {height = 1};
 
-    let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodtype, sex, allergies, vaccinations);
+    let patient : Patient = new Patient(-1, firstName, lastName, dob, height, weight, bloodtype, sex, allergies, vaccinations);
     this.patientService.createPatient(patient);
 
     console.log(patient);

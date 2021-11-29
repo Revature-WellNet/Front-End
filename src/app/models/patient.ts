@@ -1,6 +1,6 @@
 export class Patient {
   
-    public patientId: number|null;
+    public patientId!: number;
     public firstName: string;
     public lastName: string;
     public dob: Date;
@@ -11,7 +11,7 @@ export class Patient {
     public vaccinations?: object[];
     public allergies?: object[];
 
-    constructor(patientId: number|null, 
+    constructor(patientId: number, 
         firstName: string,
         lastName: string, 
         dob: Date, 
