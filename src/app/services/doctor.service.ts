@@ -17,7 +17,7 @@ export class DoctorService {
 
   private patientApiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient, private location: LocationStrategy, 
+  constructor(private http: HttpClient, private location: LocationStrategy,
     private ttp: HttpClientModule, private router : Router) { }
 
 
@@ -30,7 +30,7 @@ export class DoctorService {
 httpOptions = {
     headers: new HttpHeaders({
       Authorization: this.overrideNull(),
-     
+
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': '*',
       'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ httpOptions = {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['diagnosis']);
   }
 
   routerLogOutDoctor() {

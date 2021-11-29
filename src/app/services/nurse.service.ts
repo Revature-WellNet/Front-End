@@ -59,6 +59,6 @@ export class NurseService {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(["diagnosis"]);
   }
 }

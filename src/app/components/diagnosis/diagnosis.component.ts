@@ -23,24 +23,33 @@ export class DiagnosisComponent implements OnInit {
   iter: number = 0;
   diagnosisDTO!: DiagnosisDTO;
   room!: Room;
-  patient!: Patient;
+  patient: Patient = new Patient(-1, 'vincent', 'caccamo', new Date(), 73, 240, 'O-', 'M', [], []);
   role!: Role;
   user!: User;
 
   constructor(
     private patientService: PatientService,
     private diagnosisService: DiagnosisFormService,
-    private userService: UserService
+    private userService: UserService,
   ) {
     this.patientService = patientService;
   }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    this.patient = this.patientService.patient;
+    // this.patient = this.patientService.patient;
+    let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.userService.getUser(data.id).subscribe(
+      (response:User) => {
+        console.log("data", response);
+        this.user = response;
+        console.log("user", this.user.role.role);
+      },
+      (error) => {
+        console.log("error", error);
+      });
   }
   onSubmit(symptoms: string, diagnosis: string, treatment: string) {
-    let current = new Date();    
+    let current = new Date();
 
     switch (this.user.role.role){
       case 'nurse': {
@@ -55,7 +64,7 @@ export class DiagnosisComponent implements OnInit {
           this.user,
           null
         );
-        diagnosisDTO.nurse=this.user; 
+        diagnosisDTO.nurse=this.user;
         this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
           (success) => {
             console.log('form was submitted');
@@ -71,7 +80,7 @@ export class DiagnosisComponent implements OnInit {
           diagFormTemp.doctor = this.user;
           diagFormTemp.treatment = treatment;
           diagFormTemp.resolutionStatus = true;
-         
+
          this.diagnosisService.putDiagnosisForm(diagFormTemp).subscribe(
           (success) => {
             console.log('form was submitted as ', diagFormTemp);
@@ -81,7 +90,7 @@ export class DiagnosisComponent implements OnInit {
           }
         );
         break;
-      }     
+      }
     }
   }
 

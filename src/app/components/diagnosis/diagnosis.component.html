@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>You are logged in as a {{ user.role.role }}</h1>
   <div class="patient-info">
     <table>
       <thead>
@@ -58,17 +59,20 @@
           ></textarea>
           <br />
         </div>
-        <label for="diagnosis">Diagnosis</label>
-        <textarea
-          rows="4"
-          cols="40"
-          class="form-control"
-          name="diagnosis"
-          id="diagnosis"
-          [(ngModel)]="diagnosis"
-          required
-        >
-        </textarea>
+        <div class="diagnosisInput">
+          <label for="diagnosis">Diagnosis</label>
+          <textarea
+            rows="4"
+            cols="40"
+            class="form-control"
+            name="diagnosis"
+            id="diagnosis"
+            [(ngModel)]="diagnosis"
+            required
+          >
+          </textarea>
+        </div>
+        <br />
         <div *ngIf="user.role.role == 'doctor'" class="add-treatment">
           <label for="treatment">Treatment</label>
           <textarea
@@ -87,24 +91,24 @@
           >Please enter patient symptoms</span> -->
       </div>
       <br />
-      <div [ngSwitch] = "user.role.role">
-      <button
-        *ngSwitchCase = "'nurse'"
-        type="submit"
-        class="btn btn-success submit-button"
-        [disabled]="!formDemo.valid"
-      >
-        Submit Diagnosis
-      </button>
-      <button
-        *ngSwitchCase = "'doctor'"
-        type="submit"
-        class="btn btn-success submit-button"
-        [disabled]="!formDemo.valid"
-      >
-        Submit Treatment
-      </button>
-    </div>
+      <div [ngSwitch]="user.role.role">
+        <button
+          *ngSwitchCase="'nurse'"
+          type="submit"
+          class="btn btn-success submit-button"
+          [disabled]="!formDemo.valid"
+        >
+          Submit Diagnosis
+        </button>
+        <button
+          *ngSwitchCase="'doctor'"
+          type="submit"
+          class="btn btn-success submit-button"
+          [disabled]="!formDemo.valid"
+        >
+          Submit Treatment
+        </button>
+      </div>
     </form>
   </div>
 </div>
