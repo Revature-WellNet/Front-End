@@ -213,6 +213,7 @@ export class RegistrationComponent implements OnInit {
             );
             this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
               this.firebaseService.logout();
+              alert("Registration successful.");
             });
             console.log(Object(data).role.role);
           }

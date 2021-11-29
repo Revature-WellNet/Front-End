@@ -26,7 +26,7 @@ export class AuthGuardGuard implements CanActivate {
 
  
   const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
- 
+ console.log("user data: " + JSON.stringify(userData));
   if((userData._token==null) ){
   
     return this.router.createUrlTree([''])

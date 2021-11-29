@@ -110,23 +110,21 @@ export class LoginComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // to check the status of login
-    // this.firebaseService.userInfo.subscribe((res) => {
-    //   // console.log(res)
-    //   if (!!res) {
-    //     if (res.role == 'nurse') {
-    //       this.router.navigateByUrl('/nurse');
-    //     } else if (res.role == 'doctor') {
-    //       this.router.navigateByUrl('/doctor');
-    //     } else {
-    //       this.router.navigateByUrl('/nurse');
-    //     }
-    //   }
+    //to check the status of login
+    this.firebaseService.userInfo.subscribe((res) => {
+      // console.log(res)
+      if (!!res) {
+        if (res.role == 'nurse') {
+          this.router.navigateByUrl('/nurse');
+        } else if (res.role == 'doctor') {
+          this.router.navigateByUrl('/doctor');
+        } 
+      }
 
-    //   if (!res) {
-    //     this.firebaseService.autoSignIn();
-    //   }
-    // });
+      if (!res) {
+        this.firebaseService.autoSignIn();
+      }
+    });
   }
 
   refreshToken() {
