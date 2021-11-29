@@ -5,15 +5,15 @@ import { User } from "./user";
 
 export class DiagnosisDTO {
 
-    private symptoms?: string;
-    private diagnosis?: string;
-    private treatment?: string;
-    public resolutionStatus?: boolean;
-    private checkIn?: Date;
-    private patient?: Patient;
-    private room?: Room;
-    public nurse?: User|null;
-    public doctor?: User|null;
+    public symptoms!: string;
+    public diagnosis!: string;
+    public treatment!: string;
+    public resolutionStatus!: boolean;
+    public checkIn!: Date;
+    public patient!: Patient;
+    public room!: Room;
+    public nurse!: User|null;
+    public doctor!: User|null;
 
     constructor(
         symptoms: string,

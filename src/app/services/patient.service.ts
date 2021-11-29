@@ -35,7 +35,7 @@ export class PatientService {
   }
 
   getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient>{
-    console.log("getting patient: " + this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob);
+  //  console.log("getting patient: " + this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob);
     return this.http.get<Patient>(this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob, httpOptions) as Observable<Patient>;
   }
 /*

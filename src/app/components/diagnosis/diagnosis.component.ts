@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DiagnosisDTO } from 'src/app/models/diagnosis-dto';
 import { DiagnosisForm } from 'src/app/models/diagnosis-form';
@@ -22,49 +23,38 @@ export class DiagnosisComponent implements OnInit {
   iter: number = 0;
   diagnosisDTO!: DiagnosisDTO;
   room!: Room;
-  user!: User;
   patient!: Patient;
   role!: Role;
+  user!: User;
 
   constructor(
     private patientService: PatientService,
     private diagnosisService: DiagnosisFormService,
     private userService: UserService
   ) {
-    // this.patient = patientService.patient;
-    
+    this.patientService = patientService;
   }
 
   ngOnInit() {
-    this.patient = new Patient(
-      -1,
-      'Vincent',
-      'Caccamo',
-      new Date('1991-01-11'),
-      73,
-      240,
-      'O-',
-      'M'
-    );
-    this.role = new Role(2,"doctor");
-    this.user = new User("5555", "bob", "white", "birdsarentreal@hotmail.com", this.role);
+    this.user = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.patient = this.patientService.patient;
   }
   onSubmit(symptoms: string, diagnosis: string, treatment: string) {
-    let current = new Date();
-    let diagnosisDTO: DiagnosisDTO = new DiagnosisDTO(
-      symptoms,
-      diagnosis,
-      treatment,
-      false,
-      current,
-      this.patientService.patient,
-      this.room,
-      null,
-      null
-    );
-    console.log(diagnosisDTO);
-    switch (this.user.role.role) {
-      case 'nurse':
+    let current = new Date();    
+
+    switch (this.user.role.role){
+      case 'nurse': {
+        let diagnosisDTO: DiagnosisDTO = new DiagnosisDTO(
+          symptoms,
+          diagnosis,
+          treatment,
+          false,
+          current,
+          this.patient,
+          this.room,
+          this.user,
+          null
+        );
         diagnosisDTO.nurse=this.user; 
         this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
           (success) => {
@@ -75,21 +65,37 @@ export class DiagnosisComponent implements OnInit {
           }
         );
         break;
-      case 'doctor':
-        console.log(this.user);
-        diagnosisDTO.doctor=this.user; 
-        diagnosisDTO.resolutionStatus = true;
-        this.diagnosisService.putDiagnosisForm(diagnosisDTO).subscribe(
+      }
+      case 'doctor':{
+          let diagFormTemp: DiagnosisDTO = this.getExistingForm(this.patient);
+          diagFormTemp.doctor = this.user;
+          diagFormTemp.treatment = treatment;
+          diagFormTemp.resolutionStatus = true;
+         
+         this.diagnosisService.putDiagnosisForm(diagFormTemp).subscribe(
           (success) => {
-            console.log('form was submitted');
+            console.log('form was submitted as ', diagFormTemp);
           },
           (error) => {
             console.log('there was an error');
           }
         );
         break;
+      }     
     }
   }
 
+  getExistingForm( patient: Patient): DiagnosisDTO{
+    this.diagnosisService.getDiagnosisForm(this.patient.patientId).subscribe(
+      (data:DiagnosisForm) => {
+        this.diagnosisDTO = data;
+        console.log(diagForm);
+        return diagForm;
+      },
+      (error) => {
+        console.log("ERROR");
+      }
+        );
+  }
   prescribeTreatment(treatment: string) {}
 }
