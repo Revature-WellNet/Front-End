@@ -27,22 +27,22 @@ export class ProfileEditComponent implements OnInit {
 
   }
 
-  submit(fName: any, lName: any, email : any){
+  submit(fName: any, lName: any){
     
-//need to add user id, but that comes from login service
-const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+
 
     this.userService.getUser(userData.id).subscribe((user : User) => {
 
-      if(email){
-        if(!this.emailValidator.validateEmailFormat(email)){
-          alert("Email format not accepted. Please try again.");
-          return;
+    //   if(email){
+    //     if(!this.emailValidator.validateEmailFormat(email)){
+    //       alert("Email format not accepted. Please try again.");
+    //       return;
     
-        }else{
-          user.email = email;
-        }
-    }
+    //     }else{
+    //       user.email = email;
+    //     }
+    // }
 
     if(fName){
       user.firstname = fName;

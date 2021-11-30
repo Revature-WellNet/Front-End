@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { RegistrationInfo } from '../../models/registration-info';
 import { EmailValidationService } from '../../services/email-validation.service';
 import { RoleValidationService } from '../../services/role-validation.service';
+import { CallBootstrapDBService } from '../../services/call-bootstrap-db.service';
 
 import { RegistrationService } from '../../services/registration.service';
 import { SemiUniqueStringsService } from '../../services/semi-unique-strings.service';
@@ -24,6 +25,8 @@ export class RegistrationComponent implements OnInit {
   public firstName : string = "";
   public lastName : string = "";
   public role : string = "";
+
+  // VV Sent To Firebase - Token Returned
   public email : string = "";
   public idToken : string = "";
 
@@ -41,7 +44,10 @@ export class RegistrationComponent implements OnInit {
   
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
+  // VV Username Is Not A Thing Anymore
   public username : string = "";
+
+  // VV Sent To Firebase - Token Returned
   public password : string = "";
 
   public debugging : boolean = false;
@@ -59,10 +65,18 @@ export class RegistrationComponent implements OnInit {
     private cvs: Covid19VerificationService
   ) { }
 
+
   ngOnInit(): void {
 
+    // this.bootstrapCaller.getPatientsByDoctorName();
+
     this.registrationButtonSetting = true;
+
   }
+
+
+
+
 
   ngOnChanges(){
 
@@ -197,7 +211,7 @@ export class RegistrationComponent implements OnInit {
 
     let user! : User;
 
-    console.error("Creating User");
+    console.log("Creating User");
 
     if (this.role == "nurse") {
       
@@ -229,21 +243,24 @@ export class RegistrationComponent implements OnInit {
         let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, false, this.lastTest);
         this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
         
-          this.registrationSender.routeToNurseComponent(Object(data).role.role);
+//           this.registrationSender.routeToNurseComponent(Object(data).role.role);
         })
         console.log(Object(data).role.role);}
        
 
       });
 
-
+  
   });
+    
+    this.router.navigate(["/login"]);
+
   }
   
     
 
 
   
-
+  
 
 }

@@ -1,5 +1,7 @@
 <div class= "container" >
    <div class= "patientCheckIn">
+
+    <p><span class = "asterix">*</span> marks required fields.</p>
        
         <form
         
@@ -38,7 +40,7 @@
                     required
                 />
             <br>
-                <span>Height: </span>
+                <p>Height: </p>
                 <label for= "feet">feet:</label>
                 <input
                     type= "number"
@@ -71,6 +73,7 @@
             <br>
             <label for="bloodtype">Bloodtype:</label>
                 <select id="bloodtype" name="bloodtype" class= "form-control" [(ngModel)] = "bloodtype">
+                    <option value=""></option>
                     <option value="O-">O-</option>
                     <option value="O+">O+</option>
                     <option value="B-">B-</option>
@@ -81,7 +84,7 @@
                     <option value="AB+">AB+</option>
                 </select>
             <br>
-            <label for="sex">Sex:</label>
+            <span class = "asterix">*</span><label for="sex">Sex:</label>
                 <select id="sex" name="sex" class= "form-control" [(ngModel)] = "sex">
                     <option value="M">M</option>
                     <option value="F">F</option>
@@ -93,8 +96,11 @@
             <div id = "vaccinationanchor">Vaccinations:</div>
 
         </div>
-        <button type= "submit" class= "btn btn-success submit-button">Add Patient (This button doesn't work yet)</button>
+        <button type= "submit" class= "btn btn-success submit-button">Add Patient</button>
     </form>
+<br>
+
+    <a routerLink= "/nurse" ><app-button class="btn" text="Navigate Home"></app-button></a>
     <!-- </div>
     <ng-template #NewPatient>
       <p>This is where the new patient registration goes</p>
