@@ -4,6 +4,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-doctor',
@@ -16,11 +17,11 @@ export class DoctorComponent implements OnInit {
 
   public patientsArray : any = [];
 
-  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService : FirebaseService) { }
+  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService : FirebaseService, private patientService: PatientService) { }
 
   ngOnInit(): void {
 
-    //before we get doctor: 
+    //before we get doctor:
     this.getAllPatients();
 
 
@@ -35,11 +36,11 @@ export class DoctorComponent implements OnInit {
   goBack(){
     this.doctorService.goBack();
   }
-  
+
   viewUserInfo(){
     this.doctorService.getUserInfo();
   }
-  
+
   // getPatients(){
   //   this.doctorService.getPatients();
   // }
@@ -55,8 +56,8 @@ export class DoctorComponent implements OnInit {
     console.log(inputString);
 
     this.doctorService.getPatientsByDocIdUser(inputString).subscribe(
-      data => { 
-        console.log(Object(data)); 
+      data => {
+        console.log(Object(data));
 
         let length : number = data.length;
 
@@ -73,7 +74,7 @@ export class DoctorComponent implements OnInit {
     );
 
   }
- 
+
 
   searchPatient(){
     this.nurseService.getPatientById(1);
@@ -86,7 +87,7 @@ export class DoctorComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -99,7 +100,7 @@ export class DoctorComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -115,7 +116,7 @@ export class DoctorComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -130,11 +131,15 @@ export class DoctorComponent implements OnInit {
                 console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
+  }
+
+  diagnosePatient(patient: Patient){
+    this.patientService.diagnosePatient(patient);
   }
 
   logout(){
