@@ -2,6 +2,7 @@ import { getLocaleDateFormat, getLocaleTimeFormat, Time } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
 import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-lockout',
@@ -12,8 +13,9 @@ export class LockoutComponent implements OnInit {
 
   public userId:number = 1;
   public time:any='';
+  public auth:any ='';
   
-  constructor(private cvs:Covid19VerificationService) { 
+  constructor(private cvs:Covid19VerificationService, private firebaseService:FirebaseService) { 
     window.setInterval(() => this.setTime(),1000);
   }
 
@@ -25,12 +27,9 @@ export class LockoutComponent implements OnInit {
 
   setTime() {
     let countDownDate = this.time.getTime()+1209600000;
-    //let countDownDate = new Date(month+day+year+"08:00:00").getTime();
+    console.log(this.time)
     let now = new Date().getTime();
-    console.log(countDownDate)
-console.log(now)
     let distance = countDownDate - now;
-    console.log(distance)
   
     // Time calculations for days, hours, minutes and seconds
     let days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -44,21 +43,40 @@ console.log(now)
   
     // If the count down is finished, write some text
     if (distance < 0) {
-      document.getElementById("timer")!.innerHTML = "EXPIRED";
+      document.getElementById("timer")!.innerHTML = "You may return to work";
     };
  
 }
+  //getTimestampIdByAuth(auth:string){
+  //  this.cvs.getUserByAuth(auth).subscribe((data:object)=>{
+      
+  //})
+ // }
 
   getTimestamp() {
-    this.cvs.getFormServ(2).subscribe((data: Object) => {
-      console.log(Object.values(data))
-      let dateArray:any[] = Object.values(data);
-      let dateTime=dateArray[1];
-      let date = new Date(dateTime);
-      this.time = date;
-console.log(this.time)
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    //this.cvs.getFormServ(getTimestampIdByAuth(this.auth)).subscribe((data: Object) => {
+    this.cvs.getFormServByString(userData.id).subscribe((data: Object) => {
+      if(data!=null){
+        let dateArray:any[] = Object.values(data);
+        console.log(data)
+        let dateTime=dateArray[2];
+        let date = new Date(dateTime);
+        this.time = date;
+        return true;
+      }
+      else{
+        return false;
+      } 
+
+
 
     })
+  }
+
+  logout()
+  {
+    this.firebaseService.logout();
   }
 }
 
