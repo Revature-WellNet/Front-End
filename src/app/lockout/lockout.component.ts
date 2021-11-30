@@ -15,29 +15,28 @@ export class LockoutComponent implements OnInit {
   public userId:number = 1;
   public time:any='';
   public auth:any ='';
-
-  public interval:any = '';
+  public interval:any='';
   
-  constructor(private cvs:Covid19VerificationService, private firebaseService : FirebaseService, private router : Router) { 
+  constructor(private cvs:Covid19VerificationService, private firebaseService:FirebaseService, private router:Router) { 
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.id == undefined)
       this.router.navigate(['/login']);
   }
 
   ngOnInit(): void {
-    document.getElementById("timer")!.innerHTML = "";
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.id == undefined)
       this.router.navigate(['/login']);
     else
       this.getTimestamp();
+    
   }
 
-  ngAfterViewInit() : void {
+  ngAfterViewInit(): void{
     this.interval = window.setInterval(() => this.setTime(),1000);
   }
 
-  ngOnDestroy() : void {
+  ngOnDestroy():void{
     window.clearInterval(this.interval);
   }
 
@@ -67,15 +66,11 @@ export class LockoutComponent implements OnInit {
     };
  
 }
-  //getTimestampIdByAuth(auth:string){
-  //  this.cvs.getUserByAuth(auth).subscribe((data:object)=>{
-      
-  //})
- // }
+
 
   getTimestamp() {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    //this.cvs.getFormServ(getTimestampIdByAuth(this.auth)).subscribe((data: Object) => {
+    
     this.cvs.getFormServByString(userData.id).subscribe((data: Object) => {
       if(data!=null){
         let dateArray:any[] = Object.values(data);
