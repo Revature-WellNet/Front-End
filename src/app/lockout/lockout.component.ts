@@ -20,11 +20,11 @@ export class LockoutComponent implements OnInit {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.id == undefined)
       this.router.navigate(['/login']);
-    else
-      window.setInterval(() => this.setTime(),1000);
+    window.setInterval(() => this.setTime(),1000);
   }
 
   ngOnInit(): void {
+    document.getElementById("timer")!.innerHTML = "";
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.id == undefined)
       this.router.navigate(['/login']);
@@ -35,6 +35,8 @@ export class LockoutComponent implements OnInit {
     // Update the count down every 1 second
 
   setTime() {
+    if(this.time == null) return;
+    if( document.getElementById("timer")) return;
     let countDownDate = this.time.getTime()+1209600000;
     console.log(this.time)
     let now = new Date().getTime();
@@ -52,7 +54,7 @@ export class LockoutComponent implements OnInit {
   
     // If the count down is finished, write some text
     if (distance < 0) {
-      document.getElementById("timer")!.innerHTML = "EXPIRED";
+      document.getElementById("timer")!.innerHTML = "You may return to work";
     };
  
 }
@@ -81,6 +83,11 @@ export class LockoutComponent implements OnInit {
 
 
     })
+  }
+
+  logout()
+  {
+    this.firebaseService.logout();
   }
 }
 

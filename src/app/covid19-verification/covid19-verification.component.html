@@ -1,4 +1,4 @@
-<div class='container d-flex justify-content-center border border-primary p-3 mt-3 rounded'>
+<div class='container d-flex justify-content-center border p-3 mt-3 rounded'>
     <div class='form-check '>
 <div *ngIf="testedPositiveQuestions=='true'">
     <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
@@ -206,3 +206,8 @@
 
 </div>
 <div><button (click)="logout()">Don't wanna answer? Logout</button></div>
+<div *ngIf="inputError" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Please enter a date within the last 14 days</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+

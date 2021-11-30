@@ -50,6 +50,8 @@ export class Covid19VerificationComponent implements OnInit {
   public lastTest: Date = new Date();
   public finalStatus: boolean = false;
 
+  public inputError:boolean = false;
+
 
 
   constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService, private firebase: FirebaseService) { }
@@ -114,8 +116,17 @@ export class Covid19VerificationComponent implements OnInit {
   //form submitter
   formSubmitFun() {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    console.log(userData.id)
+    console.log(userData.id);
+    let now = new Date().getTime();
     
+    console.log(this.lastTest);
+    let date = new Date(this.lastTest).getTime();
+    console.log(now-date);
+    if ((now - date) > 1210000000){
+      console.log("date error");
+      this.inputError=true;
+    }
+    else{
     let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id,userData.id, this.finalStatus, this.lastTest);
     console.log(cv);
     this.cvs.submitFormServ(cv).subscribe((data: Object) => {
@@ -141,7 +152,7 @@ export class Covid19VerificationComponent implements OnInit {
         this.router.navigate(['lockout']);
       }
     })
-  }
+  }}
   
   testedSubmit() {
     this.testedQuestions = 'false';
@@ -155,8 +166,8 @@ export class Covid19VerificationComponent implements OnInit {
   testedResultSubmit() {
     this.testedQuestionsResult = 'false';
     if (this.testedPositive == 'true') {
-      this.finalStatus = true;
-      this.formSubmitFun();
+      this.finalStatus=true;
+      this.lastPositiveTest='true';
     }
     else if(this.previous3=='true'){
       this.contactQuestions='true'
