@@ -1,27 +1,24 @@
 # WellNet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
+## Team 3
 
-## Development server
+Endpoints: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- '/covid-verification' 
+  - This endpoint displays a covid screening form for employees to take 
+  - The form is represented by an object in angular which has an employee id(links to employee object), covid status(boolean) and timestamp
+  - Upon login the timestamp is used to check if an employee has been tested in the past 24 hours. If the employee has not been tested in the past 24 hours, login redirects them to /covid-verification.
+  - If the employee shows covid symptoms or has tested positive they are prompted to enter the date of their last positive and their covid status is updated to true.
+  - If the employee is covid negative they are able to login into their home page
 
-## Code scaffolding
+- '/lockout'
+    - This endpoint displays for employees who are covid positive in place of their home page
+    - Employees who are covid positive are locked out of their main account until 14 days have past since their last positive test
+    - Lockout counts down the time from 14 days since an employee's last positive test
+    - When the time expires the employees are redirected to retake the covid-verification form upon login
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Models:
+- Covid-Verification
+  - Contains formKey(primary key), lastTest(timestamp), covidStatus(boolean)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

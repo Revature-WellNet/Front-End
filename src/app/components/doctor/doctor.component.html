@@ -11,6 +11,7 @@
     <app-button class="btn" (btnClick) = "logout()" text = "Logout"></app-button>
     </div>
 
+
     <!-- <div id = "TempDiv">
         <h1> All Patients Available (Displaying Available Fields) </h1>
 
@@ -133,6 +134,7 @@
         <input type="text" class="form-control" id="doctorFirstName" #doctorFirstName name="doctorFirstName" placeholder="Enter First Name" required>
         <input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required>           
     </div>
+
 
     <app-button id="searchDoctor" class="btn btn-search" (btnClick)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor"></app-button> 
 

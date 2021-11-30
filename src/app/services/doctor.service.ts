@@ -41,7 +41,9 @@ httpOptions = {
 
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
+
     return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/`);
+
   }
 
    // getPatientById(id){

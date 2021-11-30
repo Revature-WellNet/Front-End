@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-doctor',
@@ -18,10 +19,9 @@ export class DoctorComponent implements OnInit {
   public patientsArray : any = [];
   public searchingDoctor : boolean = false;
 
-  constructor(
-    private doctorService: DoctorService,
-    private nurseService : NurseService
-  ) { }
+
+  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService : FirebaseService) { }
+
 
   ngOnInit(): void {
 
@@ -52,6 +52,7 @@ export class DoctorComponent implements OnInit {
    getPatientsByDoctor(doctorId: string){
     this.doctorService.getPatientsByDocId();
   }
+
 
 
   
@@ -139,14 +140,62 @@ export class DoctorComponent implements OnInit {
 
   }
  
-  getAllPatients(){
-    this.doctorService.getPatients().subscribe(
-      (response: Patient[])=> {
+
+  searchPatient(){
+    this.nurseService.getPatientById(1);
+  }
+
+  searchPatByFName(firstName: string){
+    console.log("Button Clickd")
+    this.nurseService.getPatientByFirstName(firstName).subscribe((response: Patient[])=> {
         this.patientsArray = response;
-        let dobtest:any = this.patientsArray[0].dob;
         console.log(this.patientsArray);
         console.log(response);
-        console.log(typeof dobtest);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatByFullName(firstName: string, lastName: string){
+    this.nurseService.getPatientByFullName(firstName, lastName).subscribe((response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+      );
+  }
+
+  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
+    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    console.log(firstName, lastName, fullDate);
+    this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+        console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+  getAllPatients(){
+    this.nurseService.getPatients().subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+                console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -155,9 +204,7 @@ export class DoctorComponent implements OnInit {
   }
 
   logout(){
-
-    this.doctorService.routerLogOutDoctor();
-
+    this.firebaseService.logout();
   }
   // RouterLink to redirect to Login Page
 

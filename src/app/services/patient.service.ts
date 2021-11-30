@@ -23,17 +23,17 @@ export class PatientService {
   }
 
   createPatient(patient : Patient){
-    console.log(patient);
-    return this.http.post<Patient>('http://localhost:8081/wellnet/patient', patient).subscribe((response : any) => {console.log("adding patient")});
+
+    return this.http.post<Patient>('http://localhost:8081/wellnet/patient', patient).subscribe((response : any) => {console.log(response)});
   }
 
   getAllergies(){
-    
     return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/allergies');
   }
 
   getVaccinations(){
     return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/vaccinations');
+
   }
 
   getBloodType(name :string){
@@ -42,6 +42,7 @@ export class PatientService {
 
   getSex(name :string){
     return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/sex/'+name);
+
   }
 
   getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient>{

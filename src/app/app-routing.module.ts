@@ -14,6 +14,7 @@ import { PatientCheckInComponent } from './components/patient-check-in/patient-c
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 import { RegisterComponent } from './user-auth/register/register.component';
 import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
+import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
 
 const routes: Routes = [
   {path: "",  redirectTo: "/login", pathMatch: "full"},
@@ -24,12 +25,13 @@ const routes: Routes = [
   {path: "profile", component: ProfileComponent},
   {path: "diagnosis", component: DiagnosisComponent},
   {path: "checkin", component: PatientCheckInComponent},
-  {path: "doctor", canActivate:[AuthGuardGuard], component: DoctorComponent}, 
+ 
   {path: 'profileEdit', component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
   {path: "login", component:LoginComponent}, 
-  {path:"rooms", component:RoomsComponent}
+  {path:"rooms", component:RoomsComponent},
+  {path: 'styles', component: StaticStyleTesterComponent}
 ];
 
 @NgModule({

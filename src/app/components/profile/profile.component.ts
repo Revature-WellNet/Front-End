@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+
   constructor(private userService : UserService, private router : Router) { }
 
 
@@ -20,10 +21,12 @@ export class ProfileComponent implements OnInit {
   }
 
   generateProfile(){
-    //need to get user's id from login for this to work
+ 
+  
     //this.loginService.getUserId().subscribe((userId : string){
       const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-      
+
+
       this.userService.getUser(userData.id).subscribe((response : User) => {  
         
         let firstName = document.createElement("span");
@@ -51,7 +54,9 @@ export class ProfileComponent implements OnInit {
     
   //  this.loginService.getUserId().subscribe((userId : string) => {
 
-        this.userService.getUser(userData.id).subscribe((response : User) => {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.userService.getUser(userData.id).subscribe((response : User) => {
+
 
           if(response.role.role.toLowerCase() === "doctor"){
             this.router.navigate(["/doctor"]);

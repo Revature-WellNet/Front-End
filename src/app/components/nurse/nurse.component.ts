@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/patient';
 import { NurseService } from 'src/app/services/nurse.service';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-nurse',
@@ -12,7 +13,7 @@ export class NurseComponent implements OnInit {
 
   patientsArray:any=[];
 
-  constructor(private nurseService: NurseService) { }
+  constructor(private nurseService: NurseService, private firebaseService : FirebaseService) { }
 
   ngOnInit(): void {
     this.getAllPatients();
@@ -93,7 +94,7 @@ export class NurseComponent implements OnInit {
   }
 
   logout(){
-    this.nurseService.logout();
+    this.firebaseService.logout();
   }
 
 }
