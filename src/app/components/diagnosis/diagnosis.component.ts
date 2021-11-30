@@ -22,7 +22,7 @@ export class DiagnosisComponent implements OnInit {
   symptoms: string = ' ';
   treatment: string = ' ';
   iter: number = 0;
-  diagnosisDTO!: DiagnosisDTO;
+  diagForm!: DiagnosisForm;
   room!: Room;
   role!: Role;
   user!: User;
@@ -43,13 +43,24 @@ export class DiagnosisComponent implements OnInit {
     let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
     this.userService.getUser(data.id).subscribe(
       (response:User) => {
-        console.log("data", response);
+       // console.log("data", response);
         this.user = response;
-        console.log("user", this.user.role.role);
+        if(this.user.role.role == 'doctor'){
+          console.log("I don't think this works.")
+          this.diagForm = this.getExistingForm(this.patient.patientId);
+          this.diagnosis = this.diagForm.diagnosis;
+          this.symptoms = this.diagForm.symptoms;
+          console.log(this.symptoms, this.diagnosis, this.treatment);
+        }
+       // console.log("user", this.user.role.role);
       },
       (error) => {
         console.log("error", error);
       });
+    //console.log("role before check",this.user.role.role);
+    
+    
+    
   }
   onSubmit(symptoms: string, diagnosis: string, treatment: string) {
     let current = new Date();
@@ -96,7 +107,7 @@ export class DiagnosisComponent implements OnInit {
   getExistingForm( patientId: number): any{
     this.diagnosisService.getDiagnosisForm(patientId).subscribe(
       (data:DiagnosisForm[]) => {
-        console.log(data[0]);
+       // console.log(data[0]);
         return data[0];
       },
       (error) => {
