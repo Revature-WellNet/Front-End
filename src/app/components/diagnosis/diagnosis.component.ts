@@ -26,6 +26,7 @@ export class DiagnosisComponent implements OnInit {
   room!: Room;
   role!: Role;
   user!: User;
+  returnVal!: any;
   bloodType: Object = {typeId:1,type:'a'};
   sex: Object = {sexId:1,sex:'male'};
   patient: Patient = new Patient(1, 'Captain', 'America', new Date("1920-3-31"), 72, 200, this.bloodType, this.sex, [], []);
@@ -38,31 +39,34 @@ export class DiagnosisComponent implements OnInit {
     this.patientService = patientService;
   }
 
+  ngAfterViewInit(){
+    if(this.user.role.role == 'doctor'){
+      console.log("I don't think this works.")
+      this.getExistingForm(this.patient.patientId);
+      //this.diagnosis = this.diagForm.diagnosis;
+     // this.symptoms = this.diagForm.symptoms;
+      console.log("on view init: ", this.diagForm, this.symptoms, this.diagnosis, this.treatment);
+    }
+   // console.log("user", this.user.role.role);
+  }
+
   ngOnInit() {
-    // this.patient = this.patientService.patient;
-    let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    this.userService.getUser(data.id).subscribe(
-      (response:User) => {
-       // console.log("data", response);
-        this.user = response;
-        if(this.user.role.role == 'doctor'){
-          console.log("I don't think this works.")
-          this.diagForm = this.getExistingForm(this.patient.patientId);
-          this.diagnosis = this.diagForm.diagnosis;
-          this.symptoms = this.diagForm.symptoms;
-          console.log(this.symptoms, this.diagnosis, this.treatment);
-        }
-       // console.log("user", this.user.role.role);
-      },
-      (error) => {
-        console.log("error", error);
-      });
-    //console.log("role before check",this.user.role.role);
     
+      // this.patient = this.patientService.patient;
+      let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
+      this.userService.getUser(data.id).subscribe(
+        (response:User) => {
+         // console.log("data", response);
+          this.user = response;
+        },
+        (error) => {
+          console.log("error", error);
+        });
+     // console.log("role before check",this.user.role.role);
     
     
   }
-  onSubmit(symptoms: string, diagnosis: string, treatment: string) {
+ onSubmit(symptoms: string, diagnosis: string, treatment: string) {
     let current = new Date();
 
     switch (this.user.role.role){
@@ -86,14 +90,16 @@ export class DiagnosisComponent implements OnInit {
         break;
       }
       case 'doctor':{
-          let diagFormTemp: DiagnosisForm = this.getExistingForm(this.patient.patientId);
-          diagFormTemp.doctor = this.user;
-          diagFormTemp.treatment = treatment;
-          diagFormTemp.resolutionStatus = true;
+          console.log(this.diagForm);
+          console.log(this.user);
+          this.diagForm.doctor = this.user;
+          this.diagForm.treatment = treatment;
+          this.diagForm.resolutionStatus = true;
+          this.diagForm.checkOut = new Date();
 
-         this.diagnosisService.putDiagnosisForm(diagFormTemp).subscribe(
+         this.diagnosisService.putDiagnosisForm(this.diagForm).subscribe(
           (success) => {
-            console.log('form was submitted as ', diagFormTemp);
+            console.log('form was submitted as ', this.diagForm);
           },
           (error) => {
             console.log('there was an error');
@@ -104,15 +110,16 @@ export class DiagnosisComponent implements OnInit {
     }
   }
 
-  getExistingForm( patientId: number): any{
+  getExistingForm( patientId: number){
     this.diagnosisService.getDiagnosisForm(patientId).subscribe(
       (data:DiagnosisForm[]) => {
-       // console.log(data[0]);
-        return data[0];
+        
+        this.diagForm = data[data.length-1];
+        
       },
       (error) => {
         console.log("ERROR");
-        return {};
+        
       }
     );
   }
