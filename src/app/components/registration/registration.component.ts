@@ -195,14 +195,14 @@ export class RegistrationComponent implements OnInit {
     let JWT = await this.firebaseService.signUp(this.email, this.password);
     console.log(JSON.stringify(JWT));
 
-    this.uniqueUserString = "";
-    this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
+    // this.uniqueUserString = "";
+    // this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
 
-    console.log("User : " + this.uniqueUserString);
+    // console.log("User : " + this.uniqueUserString);
 
     let user! : User;
 
-    console.error("Creating User");
+    console.log("Creating User");
 
     if (this.role == "nurse") {
 

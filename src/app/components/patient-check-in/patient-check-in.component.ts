@@ -84,7 +84,9 @@ export class PatientCheckInComponent implements OnInit {
           let sexObj = responseSex;
 
           let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
+          console.log(patient)
           this.patientService.createPatient(patient);
+          
 
         }
       })

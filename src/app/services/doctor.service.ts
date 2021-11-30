@@ -41,7 +41,7 @@ httpOptions = {
 
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/`);
   }
 
    // getPatientById(id){
@@ -64,7 +64,7 @@ httpOptions = {
 
     console.log("Getting Patients Of Doctor : " + doctorFirstName + "  " + doctorLastName);
     if(doctorFirstName && doctorLastName){
-    return this.http.get<Patient[]>(APIURL + "public/user/doctorPatientMap/" + doctorFirstName + "/" + doctorLastName);
+    return this.http.get<Patient[]>(APIURL + "user/doctorPatientMap/" + doctorFirstName + "/" + doctorLastName);
     } else {
       let  returner: Observable<Patient[]> = new Observable<Patient[]>();
       return returner;

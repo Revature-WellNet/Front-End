@@ -27,7 +27,7 @@ export class CallBootstrapDBService {
 
     console.log("Setting Up H2");
 
-    return this.http.get<Patient[]>(APIURL + "public/bootstrapDB/filler/one");
+    return this.http.get<Patient[]>(APIURL + "bootstrapDB/filler/one");
 
   }
 
