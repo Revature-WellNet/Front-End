@@ -134,6 +134,7 @@ export class Covid19VerificationComponent implements OnInit {
       if (this.finalStatus == false) {
         this.userService.getUser(userData.id).subscribe(
           data =>{
+            console.log("user id: " + userData.id);
             console.log(JSON.stringify(data));
             if(data.role.role=='nurse'){
               // nurseUI()

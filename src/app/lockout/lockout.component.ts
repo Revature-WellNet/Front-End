@@ -15,12 +15,13 @@ export class LockoutComponent implements OnInit {
   public userId:number = 1;
   public time:any='';
   public auth:any ='';
+
+  public interval:any = '';
   
   constructor(private cvs:Covid19VerificationService, private firebaseService : FirebaseService, private router : Router) { 
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.id == undefined)
       this.router.navigate(['/login']);
-    window.setInterval(() => this.setTime(),1000);
   }
 
   ngOnInit(): void {
@@ -30,6 +31,14 @@ export class LockoutComponent implements OnInit {
       this.router.navigate(['/login']);
     else
       this.getTimestamp();
+  }
+
+  ngAfterViewInit() : void {
+    this.interval = window.setInterval(() => this.setTime(),1000);
+  }
+
+  ngOnDestroy() : void {
+    window.clearInterval(this.interval);
   }
 
     // Update the count down every 1 second
