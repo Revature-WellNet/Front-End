@@ -12,25 +12,25 @@ import { Covid19VerificationComponent } from './covid19-verification/covid19-ver
 import { LockoutComponent } from './lockout/lockout.component';
 import { PatientCheckInComponent } from './components/patient-check-in/patient-check-in.component';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
-import { RegisterComponent } from './user-auth/register/register.component';
+
 import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
 
 const routes: Routes = [
-  {path: "",  redirectTo: "/login", pathMatch: "full"},
+  {path: "",  redirectTo: "login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
-  {path:"patientcheckin", component:PatientCheckInComponent},
-  {path: "nurse", component: NurseComponent},
-  {path: "doctor", component: DoctorComponent},
-  {path: "profile", component: ProfileComponent},
-  {path: "diagnosis", component: DiagnosisComponent},
-  {path: "checkin", component: PatientCheckInComponent},
+  {path:"patientcheckin", canActivate:[AuthGuardGuard], component:PatientCheckInComponent},
+  {path: "nurse", canActivate:[AuthGuardGuard], component: NurseComponent},
+  {path: "doctor", canActivate:[AuthGuardGuard], component: DoctorComponent},
+  {path: "profile", canActivate:[AuthGuardGuard], component: ProfileComponent},
+  {path: "diagnosis", canActivate:[AuthGuardGuard], component: DiagnosisComponent},
+  {path: "checkin", canActivate:[AuthGuardGuard], component: PatientCheckInComponent},
  
-  {path: 'profileEdit', component: ProfileEditComponent},
+  {path: 'profileEdit', canActivate:[AuthGuardGuard], component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
   {path: "login", component:LoginComponent}, 
-  {path:"rooms", component:RoomsComponent},
+  {path:"rooms", canActivate:[AuthGuardGuard], component:RoomsComponent},
   {path: 'styles', component: StaticStyleTesterComponent}
 ];
 

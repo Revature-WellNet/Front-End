@@ -9,213 +9,327 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject, Observable } from 'rxjs';
 import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
-import { catchError, tap } from 'rxjs/operators';
-import { SignupResponse } from '../models/signup-response';
+
 import { Userinfo } from '../models/userinfo';
 import { Tknholder } from '../models/tknholder';
 
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
-  private tokenExpireTime: any;
+
   public API_KEY: string = environment.firebase.apiKey;
   userInfo = new BehaviorSubject<Userinfo | null>(null);
-
   public url: string = environment.apiBaseUrl;
+  
   public idToken: string = '';
+  private tokenExpireTime: any;
 
   constructor(
     public firebaseAuth: AngularFireAuth,
     public httpClient: HttpClient,
     public router: Router
-   
   ) {}
 
-  // Registering with firebase
-  signup(email: string, pass: string) {
-    return this.httpClient
-      .post<SignupResponse>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-          this.API_KEY,
-        {
-          email: email,
-          password: pass,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(
-        catchError((err) => {
-          return err;
-        }),
-        tap((res: any) => {
-          this.authenticatedUser(
-            res.email,
-            res.localId,
-            res.idToken,
-            res.refreshToken,
-            +res.expiresIn
-          );
-        })
-      );
-  }
 
+//register with firebase
   async signUp(email: string, password: string) {
-    return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+    let signupdata = await this.firebaseAuth.createUserWithEmailAndPassword(
+      email,
+      password
+    );
+
+    // if (signupdata.user?.uid != null) {
+    //   const userin = firebase.auth().currentUser;
+    //   if (userin) {
+    //     const time = (await userin.getIdTokenResult()).expirationTime;
+    //     let exp = new Date(time);
+    //     let role="";
+    //     const nurse = (await userin.getIdTokenResult()).claims.ROLE_NURSE;
+    //     if (typeof nurse !== 'undefined' && nurse == true){ role = "nurse"}
+    //     const doctor = (await userin.getIdTokenResult()).claims.ROLE_DOCTOR;
+    //     if (typeof doctor !== 'undefined' && doctor == true){ role = "doctor"}
+    //     const tok = (await userin.getIdTokenResult()).token;
+    //     let email = userin.email;
+    //     if (email == null) {
+    //       email = '';
+    //     }
+    //     const refresh = userin.refreshToken;
+    //     const uid = userin.uid;
+    //     this.authenticatedUser(email, uid,role, tok, refresh, exp);
+    //   }
+    // }
+    return signupdata;
   }
 
-  setEmail(email : string) {
-    firebase.auth().currentUser?.updateEmail(email).then(() => {
-      console.log("Email updated to " + email);
-    }).catch((error) => {
-      console.error(error);
-    });
+  async setEmail(email: string) {
+    await firebase
+      .auth()
+      .currentUser?.updateEmail(email)
+      .then(() => {
+        console.log('Email updated to ' + email);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
-  setPassword(password : string) {
-    firebase.auth().currentUser?.updatePassword(password).then(() => {
-      console.log("Password updated");
-    }).catch((error) => {
-      console.error(error);
-    });
+  async ResetPass(email: string) {
+    await firebase
+      .auth().sendPasswordResetEmail(email).then(res=>{
+        console.log(res)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  setPassword(password: string) {
+    firebase
+      .auth()
+      .currentUser?.updatePassword(password)
+      .then(() => {
+        console.log('Password updated');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   // Sign in with firebase
+  async login(email: string, pass: string) {
+    let loginData = await this.firebaseAuth.signInWithEmailAndPassword(
+      email,
+      pass
+    );
 
-  login(email: string, pass: string) {
-    return this.httpClient
-      .post<SignupResponse>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-          this.API_KEY,
-        {
-          email: email,
-          password: pass,
-          returnSecureToken: true,
+    if (loginData.user?.uid != null) {
+      const userin = firebase.auth().currentUser;
+      if (userin) {
+        const time = (await userin.getIdTokenResult()).expirationTime;
+        //console.log(time)
+        let exp = new Date(time);
+        console.log(exp);
+        let role="";
+        const nurse = (await userin.getIdTokenResult()).claims.ROLE_NURSE;
+        if (typeof nurse !== 'undefined' && nurse == true){ role = "nurse";}
+        const doctor = (await userin.getIdTokenResult()).claims.ROLE_DOCTOR;
+        if (typeof doctor !== 'undefined' && doctor == true){ role = "doctor";}
+        const tok = (await userin.getIdTokenResult()).token;
+        let email = userin.email;
+        if (email == null) {
+          email = '';
         }
-      )
-      .pipe(
-        catchError((err) => {
-          return err;
-        }),
-        tap((res: any) => {
-          this.authenticatedUser(
-            res.email,
-            res.localId,
-            res.idToken,
-            res.refreshToken,
-            +res.expiresIn
-          );
-        })
-      );
+        const refresh = userin.refreshToken;
+        const uid = userin.uid;
+        this.authenticatedUser(email, uid, role, tok, refresh, exp);
+      }
+    }
+
+    return loginData;
   }
 
-  refreshToken()
-  {
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    return this.httpClient
-      .post<SignupResponse>(
-        'https://identitytoolkit.googleapis.com/v1/token?key=' +
-          this.API_KEY,
-        {
-          grant_type: "refresh_token",
-          refresh_token: userData._refreshToken
-        }
-      )
-      .pipe(
-        catchError((err) => {
-          return err;
-        }),
-        tap((res: any) => {
-          this.authenticatedUser(
-            res.email,
-            res.localId,
-            res.idToken,
-            res.refreshToken,
-            +res.expiresIn
-          );
-        })
-      );
+  // method to refresh the token
+  async refreshToken() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        user.getIdToken(true).then((idToken) => {});
+      }
+    });
+    const userin = firebase.auth().currentUser;
+    if (userin) {
+      const time = (await userin.getIdTokenResult()).expirationTime;
+      let exp = new Date(time);
+      let role="";
+      const nurse = (await userin.getIdTokenResult()).claims.ROLE_NURSE;
+      if (typeof nurse !== 'undefined' && nurse == true){ role = "nurse"}
+      const doctor = (await userin.getIdTokenResult()).claims.ROLE_DOCTOR;
+      if (typeof doctor !== 'undefined' && doctor == true){ role = "doctor"}
+      const tok = (await userin.getIdTokenResult()).token;
+      let email = userin.email;
+      if (email == null) {
+        email = '';
+      }
+      const refresh = userin.refreshToken;
+      const uid = userin.uid;
+      this.authenticatedUser(email, uid, role, tok, refresh, exp);
+    }
   }
-  autoSignIn() {
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
-    if (userData == '{}' || !userData) {
-      return;
+  //push the localstorage data to memory.
+  autoSignIn() : boolean {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if (userData.id == undefined) {
+      console.log("No user information can be found within local storage. Cancelling auto sign-in.");
+      return false;
     }
     const loggedInUser = new Userinfo(
       userData.email,
       userData.id,
+      userData.role,
       userData._token,
       userData._refreshToken,
       new Date(userData._tokenExpirationDate)
     );
     if (loggedInUser.token) {
       this.userInfo.next(loggedInUser);
-      const expirDurationtimer= new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      const expirDurationtimer =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
       this.autoSignOut(expirDurationtimer);
+      console.log("Successfully automatically signed in with user information found in local storage.");
+      return true;
     }
-  }
-  // logout and distroy token
-  logout() {
-    this.userInfo.next(null);
-    this.router.navigate(['']);
-    localStorage.removeItem('userinfo');
-    if (this.tokenExpireTime) {
-      clearTimeout(this.tokenExpireTime);
-    }
-    this.tokenExpireTime = null;
+    return false;
   }
 
+  // logout and distroy token and localstorage info
+  logout() {
+    console.log("User logging out of application. Clearing local storage and invalidating Firebase authentication session.")
+    localStorage.clear();
+    this.userInfo.next(null);
+    firebase.auth().signOut().then(()=>{
+      if (this.tokenExpireTime) {
+        clearTimeout(this.tokenExpireTime);
+      }
+      this.tokenExpireTime = null;
+      this.router.navigate(['/login']);
+    });
+  }
+
+  // either signout or refresh token
   autoSignOut(expirDuration: number) {
     this.tokenExpireTime = setTimeout(() => {
-      this.refreshToken().subscribe(()=>{
-        console.log("token has been refreshed!");
-      });
+      var answer = confirm(
+        'Your token is about to expire. Press cancel to refresh it'
+      );
+      if (answer) {
+        this.logout();
+      } else {
+        this.refreshToken();
+      }
     }, expirDuration);
   }
 
-  // authenticate user
+  // authenticated user's data saving to localstorage and userinfo model class
   private authenticatedUser(
     email: string,
     userId: string,
+    role: string,
     token: string,
-    refreshToken : string,
+    refreshToken: string,
     expiresIn: any
   ) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const userInfo = new Userinfo(email, userId, token, refreshToken, expirationDate);
-    console.log('User Info>>>>', userInfo);
+    // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    let expirationDate = new Date(expiresIn);
+    //expirationDate.setHours(expirationDate.getHours()+1)
+   
+    const userInfo = new Userinfo(
+      email,
+      userId,
+      role,
+      token,
+      refreshToken,
+      expirationDate
+    );
+    // console.log('User Info>', userInfo);
     this.userInfo.next(userInfo);
-    this.autoSignOut(expiresIn * 1000);
+    this.autoSignOut(expirationDate.getTime());
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
-    
   }
 
-  gettest( ): Observable<any> {
- const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-  let  tkn = new Tknholder(userData._token, "nurse");
-console.log(userData._token)
+  // For testing purpuse
+  gettest(): Observable<any> {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    let tkn = new Tknholder(userData._token, 'nurse');
+    console.log(userData._token);
 
     return this.httpClient.post<any>(
-      'http://localhost:8081/wellnet/public/signup', tkn
+      'http://localhost:8081/wellnet/public/signup',
+      tkn
     ) as Observable<any>;
   }
 
   // //when creating a nurse model (front-end) make sure to call this function when setting their uid
-   getLoggedUserUid(): string {
+  getLoggedUserUid(): string {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     return userData.id;
   }
-
   
 
-  //Deprecated
+  
+  
+}// end of file
+
+
+
+
+  //Deprecated Methods
+  //=========================================================================================
   // async getToken() {
   //   const user = firebase.auth().currentUser;
   //   if (user != null) this.idToken = await user.getIdToken(true);
+  // }
+  
+
+  // Deprecated
+  // login(email: string, pass: string) {
+
+    // return this.httpClient
+    //   .post<SignupResponse>(
+    //     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+    //       this.API_KEY,
+    //     {
+    //       email: email,
+    //       password: pass,
+    //       returnSecureToken: true,
+    //     }
+    //   )
+    //   .pipe(
+    //     catchError((err) => {
+    //       return err;
+    //     }),
+    //     tap((res: any) => {
+    //       this.authenticatedUser(
+    //         res.email,
+    //         res.localId,
+    //         res.idToken,
+    //         res.refreshToken,
+    //         +res.expiresIn
+    //       );
+    //     })
+    //   );
+  //}
+
+  //Deprecated
+  // Registering with firebase
+  // signup(email: string, pass: string) {
+  //   return this.httpClient
+  //     .post<SignupResponse>(
+  //       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+  //         this.API_KEY,
+  //       {
+  //         email: email,
+  //         password: pass,
+  //         returnSecureToken: true,
+  //       }
+  //     )
+  //     .pipe(
+  //       catchError((err) => {
+  //         return err;
+  //       }),
+  //       tap((res: any) => {
+  //         this.authenticatedUser(
+  //           res.email,
+  //           res.localId,
+  //           res.idToken,
+  //           res.refreshToken,
+  //           +res.expiresIn
+  //         );
+  //       })
+  //     );
   // }
 
   //Deprecated
@@ -235,4 +349,4 @@ console.log(userData._token)
   //   let url : string = this.url + 'private/user-details';
   //   return this.httpClient.get<any>(url, {headers: httpHeader}).toPromise<any>();
   // }
-}
+

@@ -4,6 +4,7 @@ import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-covid19-verification',
@@ -53,9 +54,11 @@ export class Covid19VerificationComponent implements OnInit {
 
 
 
-  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService) { }
+  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService, private firebase: FirebaseService) { }
 
   ngOnInit(): void {
+    if(!this.firebase.autoSignIn())
+      this.router.navigate(['/login']);  
   }
 
   //next question functions
@@ -127,20 +130,23 @@ export class Covid19VerificationComponent implements OnInit {
     console.log(cv);
     this.cvs.submitFormServ(cv).subscribe((data: Object) => {
       console.log(data);
+      localStorage.setItem('covidInfo', JSON.stringify(cv));
       if (this.finalStatus == false) {
         this.userService.getUser(userData.id).subscribe(
           data =>{
-            console.log(JSON.stringify(data));
-            if(data.role.role=='nurse'){
-              // nurseUI()
-              this.router.navigate(['nurse']);
-            }else if(data.role.role=='doctor'){
-              // doctorUI()
-              this.router.navigate(['doctor']);
-            }else{
-              // user does not have a role / could not find users role
-              console.error('this user does not have a role');
-            }
+            this.cvs.getFormServByString(userData.id).subscribe((resp)=>{
+              if(data.role.role=='nurse'){
+                // nurseUI()
+                this.router.navigate(['nurse']);
+              }else if(data.role.role=='doctor'){
+                // doctorUI()
+                this.router.navigate(['doctor']);
+              }else{
+                // user does not have a role / could not find users role
+                console.error('this user does not have a role');
+              }
+            });
+            
           }
         )
       }
@@ -225,7 +231,9 @@ export class Covid19VerificationComponent implements OnInit {
     this.testedQuestionsResult = 'false';
     this.testedQuestions = 'true';
   }
-
+  logout(){
+    this.firebase.logout();
+  }
 
   //covid checker
   covidCheck() {

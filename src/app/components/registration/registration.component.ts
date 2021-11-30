@@ -17,31 +17,28 @@ import { Covid19VerificationService } from 'src/app/services/covid19-verificatio
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-
-  public uniqueUserString : string = "";
-  public firstName : string = "";
-  public lastName : string = "";
-  public role : string = "";
+  public uniqueUserString: string = '';
+  public firstName: string = '';
+  public lastName: string = '';
+  public role: string = '';
 
   // VV Sent To Firebase - Token Returned
-  public email : string = "";
-  public idToken : string = "";
+  public email: string = '';
+  public idToken: string = '';
 
-  public covidStatus : boolean = false;
-  public lastTest: Date = new Date(1970,1,1);
+  public covidStatus: boolean = false;
+  public lastTest: Date = new Date(1970, 1, 1);
 
-  public userId:string = '';
+  public userId: string = '';
 
-  public emailValidated : boolean | null = null;
-  public roleValidated : boolean | null = null;
+  public emailValidated: boolean | null = null;
+  public roleValidated: boolean | null = null;
 
-  
+  public registrationButtonSetting: boolean = true;
 
-  public registrationButtonSetting : boolean = true;
-  
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
   // VV Username Is Not A Thing Anymore
@@ -50,217 +47,121 @@ export class RegistrationComponent implements OnInit {
   // VV Sent To Firebase - Token Returned
   public password : string = "";
 
-  public debugging : boolean = false;
+  public debugging: boolean = false;
   public id: number = 0;
 
-
-
   constructor(
-    private emailValidator : EmailValidationService,
-    private roleValidator : RoleValidationService,
-    private router : Router,
-    private registrationSender : RegistrationService,
-    private rngGenerator : SemiUniqueStringsService,
-    private firebaseService : FirebaseService,
+    private emailValidator: EmailValidationService,
+    private roleValidator: RoleValidationService,
+    private router: Router,
+    private registrationSender: RegistrationService,
+    private rngGenerator: SemiUniqueStringsService,
+    private firebaseService: FirebaseService,
     private cvs: Covid19VerificationService
-  ) { }
+  ) {}
 
 
   ngOnInit(): void {
-
-    // this.bootstrapCaller.getPatientsByDoctorName();
-
     this.registrationButtonSetting = true;
-
   }
 
-
-
-
-
-  ngOnChanges(){
-
+  ngOnChanges() {
     this.updateFirstName(this.firstName);
-
   }
 
-  updateFirstName(firstName : string) {
-
+  updateFirstName(firstName: string) {
     this.firstName = firstName;
-
   }
 
-  updateLastName(lastName : string) {
-
+  updateLastName(lastName: string) {
     this.lastName = lastName;
-
   }
 
-  updateUsername(username : string) {
-
+  updateUsername(username: string) {
     this.username = username;
-
   }
 
-  updatePassword(password : string) {
-
+  updatePassword(password: string) {
     this.password = password;
-
   }
 
-  updateRole(role : string) {
-
-    console.log(role);
+  updateRole(role: string) {
+   // console.log(role);
 
     this.role = role;
 
     this.roleValidated = this.roleValidator.validateRole(this.role);
 
     this.buttonActivator();
-
   }
 
-  updateEmail(email : string) {
-
+  updateEmail(email: string) {
     this.email = email;
 
     this.emailValidated = this.emailValidator.validateEmailFormat(this.email);
 
     this.buttonActivator();
-
   }
-
-  updateCovidStatus(status : string) {
-
-    switch (status) {
-      case "Yes" :
-        this.covidStatus = true;
-        break;
-      case "No" :
-        this.covidStatus = false;
-        break;
-      default :
-        this.covidStatus = false;
-        break;
-
-    }
-    
-    console.log(this.covidStatus);
-
-  }
-
   buttonActivator() {
-
     if (this.emailValidated && this.roleValidated) {
-
       this.registrationButtonSetting = false;
-
     }
-
   }
 
   rng() {
-
-    this.uniqueUserString = this.rngGenerator.generateString(this.uniqueUserString);
-
+    this.uniqueUserString = this.rngGenerator.generateString(
+      this.uniqueUserString
+    );
   }
 
-
-
-  async updateValues() {
-
-    //console.log(this.email);
-
-    console.log(this.emailValidated);
-    console.log(this.roleValidated);
-
-    // if (this.emailValidated && this.roleValidated) {
-
-    //   this.registrationButtonSetting = false;
-
-    //   console.log("Successful Button Press");
-    //   if(this.role.toLowerCase() == "nurse"){
-    //     this.router.navigate(["/nurse"]);
-    //   } else if (this.role.toLowerCase() == "doctor")
-    //   {
-    //     this.router.navigate(["/doctor"]);
-    //   }
-
-    // }
-
-
-    // public firstName : string = "";
-    // public lastName : string = "";
-    // public role : string = "";
-    // public email : string = "";
-
-
-    // public userId : string;
-    // public firstName : string;
-    // public lastName : string;
-    // public email : string;
-    // public role : Role;
-  this.firebaseService.signup(this.email, this.password).subscribe(()=>{
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-
-
-    this.uniqueUserString = "";
-    this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
-
-    console.log("User : " + this.uniqueUserString);
-
-    let user! : User;
-
-    console.log("Creating User");
-
-    if (this.role == "nurse") {
-      
-      user = new User(userData.id, this.firstName, 
-      this.lastName, this.email, new Role(1, this.role));
-
-    }
-    if (this.role == "doctor") {
-      
-      user = new User(userData.id, this.firstName, 
-      this.lastName, this.email, new Role(2, this.role));
-
-    }
-
-    console.log("User Created : ");
-    console.log (user);
-
-    this.registrationSender.postRegistration(user).then(
-      data => {
-
-        // console.error("Data Values VVV");
-        // console.log(data);
-        // console.log(Object(data).firstname);
-        // console.log(Object(data).role.role);
-        // console.log(data[0].role);
-        // console.log(data[0].role.role);
-        if(user.id!= null){
-
-        let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id, user.id, false, this.lastTest);
-        this.cvs.submitFormServ(cv).subscribe((data1: Object) => {
+  updateValues() {
+   
+    this.firebaseService
+      .signUp(this.email, this.password)
+      .then((JWT) => {
+        if (JWT.user?.uid != null) {
         
-//           this.registrationSender.routeToNurseComponent(Object(data).role.role);
-        })
-        console.log(Object(data).role.role);}
-       
 
+          this.uniqueUserString = '';
+          this.uniqueUserString =
+            this.role +
+            'USER' +
+            this.rngGenerator.generateString(this.uniqueUserString);
+
+          console.log('User : ' + this.uniqueUserString);
+
+          let user!: User;
+
+          if (this.role == 'nurse') {
+            user = new User(
+              JWT.user?.uid,
+              this.firstName,
+              this.lastName,
+              this.email,
+              new Role(1, this.role)
+            );
+          }
+          if (this.role == 'doctor') {
+            user = new User(
+              JWT.user?.uid,
+              this.firstName,
+              this.lastName,
+              this.email,
+              new Role(2, this.role)
+            );
+          }
+
+         
+
+          this.registrationSender.postRegistration(user).then((data) => {
+            this.firebaseService.logout();
+            alert('Registration successful.');
+           // console.log(data);
+          });
+        }
+      })
+      .catch((err) => {
+        alert(err);
       });
-
-  
-  });
-    
-    this.router.navigate(["/login"]);
-
   }
-  
-    
-
-
-  
-  
-
 }

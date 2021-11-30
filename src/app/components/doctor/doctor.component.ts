@@ -4,6 +4,8 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { Router } from '@angular/router';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doctor',
@@ -20,11 +22,16 @@ export class DoctorComponent implements OnInit {
   public searchingDoctor : boolean = false;
 
 
-  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService : FirebaseService) { }
+  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService:FirebaseService, private router: Router) { }
 
 
   ngOnInit(): void {
-
+    console.log("calling auto sign in from doctor");
+    if(!this.firebaseService.autoSignIn())
+      this.router.navigate(['/login']);
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if(userData.role == "nurse")
+      this.router.navigate(['nurse']);
     //before we get doctor: 
     this.getAllPatients();
 

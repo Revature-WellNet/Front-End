@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private firebaseService : FirebaseService, private router:Router) { }
 
   ngOnInit(): void {
+    this.firebaseService.autoSignIn();
   }
 
   logout()

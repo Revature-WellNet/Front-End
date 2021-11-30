@@ -97,7 +97,7 @@
     </label>
     <input type="text" class="RegistrationEmail"
       #RegistrationEmail
-      (keyup.enter)="updateEmail(RegistrationEmail.value)"
+      
       (blur)="updateEmail(RegistrationEmail.value)"
       onkeydown="return event.key != 'Enter';"
       autocomplete = "off">
@@ -107,7 +107,7 @@
     <p class="RegistrationSpacer"></p>
     <p class="RegistrationSpacer" *ngIf="emailValidated == true || emailValidated === null"></p>
 
-    <div id="RegistrationCovidRadios">
+    <!-- <div id="RegistrationCovidRadios">
       <p for="CovidValidation" clas="RegistrationCovidTitle">
         Do you currently have Covid-19 Symptoms?
       </p>
@@ -126,7 +126,7 @@
       <label for="RegistrationCovidStatus2">
         No
       </label>
-    </div>
+    </div> -->
 
     <div class="CenterContainerContent">
       <button type="button" (click)="updateValues()" 
@@ -135,10 +135,10 @@
       Register User
     </button>
 
-    <p id="RegistrationCovidNotice"
+    <!-- <p id="RegistrationCovidNotice"
       *ngIf="covidStatus == true">
       You Have Covid <br> Go Home!! <br> Login Denied
-    </p>
+    </p> -->
 
     </div>
 
