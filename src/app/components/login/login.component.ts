@@ -35,7 +35,9 @@ export class LoginComponent implements OnInit {
           // console.log(res);
           const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
           // get custom claims to find role
-          
+          console.log(this.firebaseService.userInfo)
+          this.firebaseService.autoSignIn()
+          console.log(this.firebaseService.userInfo)
           this.cvs.getFormServByString(userData.id).subscribe((data) => {
             if(data == null){
               this.router.navigate(['/covid-verification']);
