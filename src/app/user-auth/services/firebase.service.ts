@@ -173,10 +173,10 @@ export class FirebaseService {
   }
 
   // logout and distroy token and localstorage info
-  logout() {
-    this.userInfo.next(null);
-    firebase.auth().signOut();
-    localStorage.clear();
+ logout() {
+   this.userInfo.next(null);
+   firebase.auth().signOut();
+   localStorage.clear();
 
     if (this.tokenExpireTime) {
       clearTimeout(this.tokenExpireTime);

@@ -124,7 +124,7 @@ export class LoginComponent implements OnInit {
       }
 
       if (!res) {
-        this.firebaseService.autoSignIn();
+        //this.firebaseService.autoSignIn();
       }
     });
   }
