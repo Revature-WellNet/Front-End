@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
               if ((now - date) > 1210000000)
               {
                 console.log('hello');
-                this.router.navigate(['/covid-verification']);
+                this.router.navigate(['covid-verification']);
               }
               else
               {
