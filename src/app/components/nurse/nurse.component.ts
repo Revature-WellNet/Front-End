@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/patient';
 import { NurseService } from 'src/app/services/nurse.service';
+import { PatientService } from 'src/app/services/patient.service';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class NurseComponent implements OnInit {
 
   patientsArray:any=[];
 
-  constructor(private nurseService: NurseService, private firebaseService : FirebaseService) { }
+  constructor(private nurseService: NurseService, private firebaseService : FirebaseService, private patientService: PatientService) { }
 
   ngOnInit(): void {
     this.getAllPatients();
@@ -39,7 +40,7 @@ export class NurseComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -52,7 +53,7 @@ export class NurseComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -68,7 +69,7 @@ export class NurseComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -82,11 +83,15 @@ export class NurseComponent implements OnInit {
                 console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
+  }
+
+  diagnosePatient(patient: Patient){
+    this.patientService.diagnosePatient(patient);
   }
 
   goBack(){

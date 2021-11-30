@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient';
 
@@ -18,7 +19,7 @@ export class PatientService {
 
   private backendUrl = 'http://localhost:8081/wellnet/patient'
   public patient!: Patient;  //= new Patient(-1,'dummyfirst','dummylast',new Date(),120,10,'AB','other',[],[]);
-  constructor(private http: HttpClient/*private patientIn: Patient*/) {
+  constructor(private router: Router, private http: HttpClient/*private patientIn: Patient*/) {
     //this.patient = patientIn;
   }
 
@@ -37,6 +38,11 @@ export class PatientService {
   getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient>{
   //  console.log("getting patient: " + this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob);
     return this.http.get<Patient>(this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob, httpOptions) as Observable<Patient>;
+  }
+
+  diagnosePatient(patient: Patient) {
+    this.patient = patient;
+    this.router.navigate(["diagnosis"]);
   }
 /*
 

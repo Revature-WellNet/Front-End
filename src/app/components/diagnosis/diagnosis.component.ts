@@ -29,14 +29,14 @@ export class DiagnosisComponent implements OnInit {
   returnVal!: any;
   bloodType: Object = {typeId:1,type:'a'};
   sex: Object = {sexId:1,sex:'male'};
-  patient: Patient = new Patient(1, 'Captain', 'America', new Date("1920-3-31"), 72, 200, this.bloodType, this.sex, [], []);
+  // patient: Patient = new Patient(1, 'Captain', 'America', new Date("1920-3-31"), 72, 200, this.bloodType, this.sex, [], []);
+  patient: Patient = this.patientService.patient;
 
   constructor(
     private patientService: PatientService,
     private diagnosisService: DiagnosisFormService,
     private userService: UserService,
   ) {
-    this.patientService = patientService;
   }
 
   ngAfterViewInit(){
@@ -51,7 +51,7 @@ export class DiagnosisComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
       // this.patient = this.patientService.patient;
       let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
       this.userService.getUser(data.id).subscribe(
@@ -63,8 +63,8 @@ export class DiagnosisComponent implements OnInit {
           console.log("error", error);
         });
      // console.log("role before check",this.user.role.role);
-    
-    
+
+
   }
  onSubmit(symptoms: string, diagnosis: string, treatment: string) {
     let current = new Date();
@@ -113,13 +113,13 @@ export class DiagnosisComponent implements OnInit {
   getExistingForm( patientId: number){
     this.diagnosisService.getDiagnosisForm(patientId).subscribe(
       (data:DiagnosisForm[]) => {
-        
+
         this.diagForm = data[data.length-1];
-        
+
       },
       (error) => {
         console.log("ERROR");
-        
+
       }
     );
   }
