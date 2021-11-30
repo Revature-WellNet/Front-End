@@ -29,7 +29,7 @@ export class RoomsComponent implements OnInit {
     this.areas[1] = new Area(2,"Trauma");
     this.areas[2] = new Area(3,"ER");
     this.areas[3] = new Area(4,"Physical Therapy");
-    this.areas[4] = new Area(5,"Pediatrics");/**/ 
+    this.areas[4] = new Area(5,"Pediatrics");/*12*/ 
   }
 
   selectArea(areaId:number){
