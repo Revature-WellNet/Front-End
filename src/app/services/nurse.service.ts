@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class NurseService {
 
   private patientApiServerUrl = environment.apiBaseUrl;
-  // APIURL = "http://localHost:8081/public/patient"
+  // APIURL = "http://localHost:8081//patient"
 
   constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
 
@@ -36,11 +36,11 @@ export class NurseService {
   }
 
   getPatientByFullName(firstName: string, lastName: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/fullname/${firstName}/${lastName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/fullname/${firstName}/${lastName}`);
   }
 
   getPatientByNameDOB(firstName: string, lastName: string, dob: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}public/patient/fullnamedob/${firstName}/${lastName}/${dob}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/fullnamedob/${firstName}/${lastName}/${dob}`);
   }
 
   //add or update?
