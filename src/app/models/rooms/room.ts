@@ -1,5 +1,5 @@
 import { Area } from "./area";
-
+/**/
 export class Room {
     roomId:number;
     roomNumber:number;
