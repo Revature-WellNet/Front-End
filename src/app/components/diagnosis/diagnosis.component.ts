@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import { DiagnosisDTO } from 'src/app/models/diagnosis-dto';
 import { DiagnosisForm } from 'src/app/models/diagnosis-form';
 import { Patient } from 'src/app/models/patient';
@@ -23,9 +24,11 @@ export class DiagnosisComponent implements OnInit {
   iter: number = 0;
   diagnosisDTO!: DiagnosisDTO;
   room!: Room;
-  patient: Patient = new Patient(-1, 'vincent', 'caccamo', new Date(), 73, 240, 'O-', 'M', [], []);
   role!: Role;
   user!: User;
+  bloodType: Object = {typeId:1,type:'a'};
+  sex: Object = {sexId:1,sex:'male'};
+  patient: Patient = new Patient(1, 'Captain', 'America', new Date("1920-3-31"), 72, 200, this.bloodType, this.sex, [], []);
 
   constructor(
     private patientService: PatientService,
@@ -53,24 +56,20 @@ export class DiagnosisComponent implements OnInit {
 
     switch (this.user.role.role){
       case 'nurse': {
-        let diagnosisDTO: DiagnosisDTO = new DiagnosisDTO(
-          symptoms,
-          diagnosis,
-          treatment,
-          false,
-          current,
-          this.patient,
-          this.room,
-          this.user,
-          null
-        );
-        diagnosisDTO.nurse=this.user;
-        this.diagnosisService.postDiagnosisForm(diagnosisDTO).subscribe(
+        let diagFormTemp: DiagnosisForm = new DiagnosisForm();
+        diagFormTemp.diagnosis = diagnosis;
+        diagFormTemp.symptoms = symptoms;
+        diagFormTemp.resolutionStatus = false;
+        diagFormTemp.checkIn = new Date();
+        diagFormTemp.patient = this.patient;
+        diagFormTemp.nurse=this.user;
+
+        this.diagnosisService.postDiagnosisForm(diagFormTemp).subscribe(
           (success) => {
             console.log('form was submitted');
           },
           (error) => {
-            console.log('there was an error');
+            console.log('there was an error', diagFormTemp);
           }
         );
         break;
