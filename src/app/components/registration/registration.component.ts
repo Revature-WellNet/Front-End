@@ -195,10 +195,10 @@ export class RegistrationComponent implements OnInit {
     let JWT = await this.firebaseService.signUp(this.email, this.password);
     console.log(JSON.stringify(JWT));
 
-    // this.uniqueUserString = "";
-    // this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
+    this.uniqueUserString = "";
+    this.uniqueUserString = this.role + "USER" + this.rngGenerator.generateString(this.uniqueUserString);
 
-    // console.log("User : " + this.uniqueUserString);
+    console.log("User : " + this.uniqueUserString);
 
     let user! : User;
 
@@ -230,16 +230,16 @@ export class RegistrationComponent implements OnInit {
         // console.log(data[0].role);
         // console.log(data[0].role.role);
 
-        this.registrationSender.routeToNurseComponent(Object(data).role.role);
+        //this.registrationSender.routeToNurseComponent(Object(data).role.role);
         console.log(Object(data).role.role);
 
       });
 
-
+      this.router.navigate(["/login"]);
   }
 
 
   
-
+  
 
 }
