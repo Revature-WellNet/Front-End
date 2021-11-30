@@ -1,7 +1,9 @@
 import { getLocaleDateFormat, getLocaleTimeFormat, Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-lockout',
@@ -14,12 +16,20 @@ export class LockoutComponent implements OnInit {
   public time:any='';
   public auth:any ='';
   
-  constructor(private cvs:Covid19VerificationService) { 
-    window.setInterval(() => this.setTime(),1000);
+  constructor(private cvs:Covid19VerificationService, private firebaseService : FirebaseService, private router : Router) { 
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if(userData.id == undefined)
+      this.router.navigate(['/login']);
+    else
+      window.setInterval(() => this.setTime(),1000);
   }
 
   ngOnInit(): void {
-    this.getTimestamp();
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if(userData.id == undefined)
+      this.router.navigate(['/login']);
+    else
+      this.getTimestamp();
   }
 
     // Update the count down every 1 second

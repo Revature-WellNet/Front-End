@@ -42,7 +42,7 @@ export class AuthGuardGuard implements CanActivate {
   if(covidData.covid == true)
   {
     console.log("lock")
-    return false;
+    return this.router.createUrlTree(['']);
   }
   //console.log("before date compare");
   let now = new Date().getTime();

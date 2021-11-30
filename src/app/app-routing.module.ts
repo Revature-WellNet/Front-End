@@ -26,8 +26,8 @@ const routes: Routes = [
   {path: "checkin", canActivate:[AuthGuardGuard], component: PatientCheckInComponent},
  
   {path: 'profileEdit', canActivate:[AuthGuardGuard], component: ProfileEditComponent},
-  {path: 'covid-verification',  component:Covid19VerificationComponent, pathMatch: 'full'},
-  {path: 'lockout',  component:LockoutComponent, pathMatch: 'full'},
+  {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
+  {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
   {path: "login", component:LoginComponent}, 
   {path:"rooms", canActivate:[AuthGuardGuard], component:RoomsComponent}
 ];

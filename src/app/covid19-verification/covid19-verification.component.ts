@@ -55,6 +55,9 @@ export class Covid19VerificationComponent implements OnInit {
   constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService, private firebase: FirebaseService) { }
 
   ngOnInit(): void {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if(userData.id == undefined)
+      this.router.navigate(['/login']);
   }
 
   //next question functions
