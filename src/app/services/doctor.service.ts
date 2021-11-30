@@ -66,7 +66,7 @@ httpOptions = {
   }
 
   goBack(): void {
-    this.router.navigate(['diagnosis']);
+    this.location.back();
   }
 
   routerLogOutDoctor() {

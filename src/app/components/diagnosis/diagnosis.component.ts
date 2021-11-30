@@ -25,7 +25,7 @@ export class DiagnosisComponent implements OnInit {
   diagForm!: DiagnosisForm;
   room!: Room;
   role!: Role;
-  user!: User;
+  public user!: User;
   returnVal!: any;
   bloodType: Object = {typeId:1,type:'a'};
   sex: Object = {sexId:1,sex:'male'};
@@ -43,8 +43,8 @@ export class DiagnosisComponent implements OnInit {
     if(this.user.role.role == 'doctor'){
       console.log("I don't think this works.")
       this.getExistingForm(this.patient.patientId);
-      //this.diagnosis = this.diagForm.diagnosis;
-     // this.symptoms = this.diagForm.symptoms;
+      this.diagnosis = this.diagForm.diagnosis;
+      this.symptoms = this.diagForm.symptoms;
       console.log("on view init: ", this.diagForm, this.symptoms, this.diagnosis, this.treatment);
     }
    // console.log("user", this.user.role.role);
@@ -56,13 +56,14 @@ export class DiagnosisComponent implements OnInit {
       let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
       this.userService.getUser(data.id).subscribe(
         (response:User) => {
-         // console.log("data", response);
+          console.log("data", response);
           this.user = response;
+          console.log("after getting user: ",this.user);
         },
         (error) => {
           console.log("error", error);
         });
-     // console.log("role before check",this.user.role.role);
+      console.log("role before check",this.user);
 
 
   }
@@ -115,7 +116,9 @@ export class DiagnosisComponent implements OnInit {
       (data:DiagnosisForm[]) => {
 
         this.diagForm = data[data.length-1];
-
+        this.symptoms = this.diagForm.symptoms;
+        this.diagnosis = this.diagForm.diagnosis;
+        console.log("in method with: ",data[data.length-1]);
       },
       (error) => {
         console.log("ERROR");

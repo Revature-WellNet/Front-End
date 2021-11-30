@@ -100,7 +100,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let patient of patientsArray">
-              <td><app-button text="Enter Symptoms" (btnClick)="diagnosePatient(patient)"></app-button></td>
+              <td><app-button text="Perform Diagnosis" (btnClick)="diagnosePatient(patient)"></app-button></td>
                 <td>{{patient.firstName}}</td>
                 <td>{{patient.lastName}}</td>
                 <td>{{patient.dob}}</td>
