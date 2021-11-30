@@ -86,12 +86,13 @@ White:
     box-shadow: 3px 8px 6px 8px #888888;
  }
 
- .dot {
+ #dot {
         height: 25px;
         width: 25px;
         background-color: white;
         border-radius: 50%;
         display: inline-block;
+        align-items: center;
       }
 
  .MenuButton{
@@ -107,5 +108,81 @@ White:
      font-family: Lora, sans-serif;
  }
 
+ .font3 {
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+ }
+
+ .font4 {
+     font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+ }
+
+ .font5 {
+    font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+ }
+
+ .font6 {
+    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+ }
+
+ .box {
+     border: 2px solid #566675;
+     border-radius: 25px;
+     text-align: center;
+     margin: 20px;
+     color: Black;
+ }
+
+ .input {
+     border: 2px solid #566675;
+     border-radius: 8px;
+     margin: 8px;
+     outline: none;
+     transition-duration: 0.5s;
+     padding-left:10px;
+ }
+
+ .input:focus {
+    box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .searchInput {
+    border: 2px solid #566675;
+    border-radius: 8px;
+    margin: 8px;
+    outline: none;
+    transition-duration: 0.5s;
+    background-image: url('src/assets/img/Search.png');
+    background-position: 8px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+  
+ }
+
+ .searchInput:focus {
+    box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .navbarItem {
+     
+    background: rgba(0,0,0,0);
+    padding: 9px;
+    font-size: 16px;
+    margin: 18px;
+    white-space: nowrap;
+ }
+
+ .navbarItem:hover #dot{
+    box-shadow: 1.5px 4px 3px 4px #888888;
+    text-decoration: underline;
+    transition-duration: 0.5s;
+ }
+
+ .navbarItem:hover {
+    text-decoration: underline;
+    transition-duration: 0.5s;
+ }
+
+
+ 
  
 
