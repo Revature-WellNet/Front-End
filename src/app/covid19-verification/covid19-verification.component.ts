@@ -4,6 +4,7 @@ import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-covid19-verification',
@@ -51,7 +52,7 @@ export class Covid19VerificationComponent implements OnInit {
 
 
 
-  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService) { }
+  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService, private firebase: FirebaseService) { }
 
   ngOnInit(): void {
   }
@@ -214,7 +215,9 @@ export class Covid19VerificationComponent implements OnInit {
     this.testedQuestionsResult = 'false';
     this.testedQuestions = 'true';
   }
-
+  logout(){
+    this.firebase.logout();
+  }
 
   //covid checker
   covidCheck() {

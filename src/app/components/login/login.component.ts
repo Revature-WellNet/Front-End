@@ -35,7 +35,12 @@ export class LoginComponent implements OnInit {
           // console.log(res);
           const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
           // get custom claims to find role
+          
           this.cvs.getFormServByString(userData.id).subscribe((data) => {
+            if(data == null){
+              this.router.navigate(['/covid-verification']);
+             }
+             else{
             console.log(JSON.stringify(data));
             localStorage.setItem('covidInfo', JSON.stringify(data));
             let dataArray = Object.values(data);
@@ -67,6 +72,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/covid-verification']);
               }
             }
+          }
           });
           // this.userService.getUser(userData.id).subscribe(
           //   data =>{
@@ -113,16 +119,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     //to check the status of login
     this.firebaseService.userInfo.subscribe((res) => {
-      // console.log(res)
+    
       if (res != null) {
-        // console.log(res);
-        // get custom claims to find role
+        
         this.cvs.getFormServByString(res.id).subscribe((data) => {
-          console.log(JSON.stringify(data));
+         if(data == null){
+          this.router.navigate(['/covid-verification']);
+         }
+         else{
           localStorage.setItem('covidInfo', JSON.stringify(data));
           let dataArray = Object.values(data);
-          console.log(dataArray);
-          console.log(dataArray[3]);
+          //console.log(dataArray);
+          // console.log(dataArray[3]);
           if (dataArray[3] == true) {
             //console.log("hello");
             this.router.navigate(['lockout']);
@@ -146,7 +154,8 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/covid-verification']);
             }
           }
-        });
+        }
+       });
       }
 
       if (res == null) {

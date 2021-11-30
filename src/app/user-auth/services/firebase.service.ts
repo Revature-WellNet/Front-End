@@ -41,26 +41,26 @@ export class FirebaseService {
       password
     );
 
-    if (signupdata.user?.uid != null) {
-      const userin = firebase.auth().currentUser;
-      if (userin) {
-        const time = (await userin.getIdTokenResult()).expirationTime;
-        let exp = new Date(time);
-        let role="";
-        const nurse = (await userin.getIdTokenResult()).claims.ROLE_NURSE;
-        if (typeof nurse !== 'undefined' && nurse == true){ role = "nurse"}
-        const doctor = (await userin.getIdTokenResult()).claims.ROLE_DOCTOR;
-        if (typeof doctor !== 'undefined' && doctor == true){ role = "doctor"}
-        const tok = (await userin.getIdTokenResult()).token;
-        let email = userin.email;
-        if (email == null) {
-          email = '';
-        }
-        const refresh = userin.refreshToken;
-        const uid = userin.uid;
-        this.authenticatedUser(email, uid,role, tok, refresh, exp);
-      }
-    }
+    // if (signupdata.user?.uid != null) {
+    //   const userin = firebase.auth().currentUser;
+    //   if (userin) {
+    //     const time = (await userin.getIdTokenResult()).expirationTime;
+    //     let exp = new Date(time);
+    //     let role="";
+    //     const nurse = (await userin.getIdTokenResult()).claims.ROLE_NURSE;
+    //     if (typeof nurse !== 'undefined' && nurse == true){ role = "nurse"}
+    //     const doctor = (await userin.getIdTokenResult()).claims.ROLE_DOCTOR;
+    //     if (typeof doctor !== 'undefined' && doctor == true){ role = "doctor"}
+    //     const tok = (await userin.getIdTokenResult()).token;
+    //     let email = userin.email;
+    //     if (email == null) {
+    //       email = '';
+    //     }
+    //     const refresh = userin.refreshToken;
+    //     const uid = userin.uid;
+    //     this.authenticatedUser(email, uid,role, tok, refresh, exp);
+    //   }
+    // }
     return signupdata;
   }
 
@@ -184,7 +184,7 @@ export class FirebaseService {
         clearTimeout(this.tokenExpireTime);
       }
       this.tokenExpireTime = null;
-      this.router.navigate(['']);
+      this.router.navigate(['/login']);
     });
   }
 

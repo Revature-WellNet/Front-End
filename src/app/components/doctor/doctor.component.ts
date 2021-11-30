@@ -23,7 +23,7 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     this.firebaseService.userInfo.subscribe((res)=>{
       if(res==null){
-        this.router.createUrlTree(['login']);
+        this.router.createUrlTree(['/login']);
       }
       if(res?.role == "nurse"){
         this.router.navigate(['nurse']);

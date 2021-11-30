@@ -12,11 +12,11 @@ import { Covid19VerificationComponent } from './covid19-verification/covid19-ver
 import { LockoutComponent } from './lockout/lockout.component';
 import { PatientCheckInComponent } from './components/patient-check-in/patient-check-in.component';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
-import { RegisterComponent } from './user-auth/register/register.component';
+
 import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 
 const routes: Routes = [
-  {path: "",  redirectTo: "/login", pathMatch: "full"},
+  {path: "",  redirectTo: "login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
   {path:"patientcheckin", canActivate:[AuthGuardGuard], component:PatientCheckInComponent},
   {path: "nurse", canActivate:[AuthGuardGuard], component: NurseComponent},
@@ -26,8 +26,8 @@ const routes: Routes = [
   {path: "checkin", canActivate:[AuthGuardGuard], component: PatientCheckInComponent},
  
   {path: 'profileEdit', canActivate:[AuthGuardGuard], component: ProfileEditComponent},
-  {path: 'covid-verification', canActivate:[AuthGuardGuard], component:Covid19VerificationComponent, pathMatch: 'full'},
-  {path: 'lockout', canActivate:[AuthGuardGuard], component:LockoutComponent, pathMatch: 'full'},
+  {path: 'covid-verification',  component:Covid19VerificationComponent, pathMatch: 'full'},
+  {path: 'lockout',  component:LockoutComponent, pathMatch: 'full'},
   {path: "login", component:LoginComponent}, 
   {path:"rooms", canActivate:[AuthGuardGuard], component:RoomsComponent}
 ];

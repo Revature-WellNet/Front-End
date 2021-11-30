@@ -31,25 +31,28 @@ export class AuthGuardGuard implements CanActivate {
 
   if((userData._token==null) ){
     console.log("no user data");
-    return this.router.createUrlTree(['']);
+    return this.router.createUrlTree(['/login']);
   }
-  // if(covidData.userId == null)
-  // {
-  //   console.log("in here>>>>???");
-  //   return this.router.createUrlTree(['']);
-  // }
-  // if(covidData.covid == true)
-  // {
-  //   return this.router.createUrlTree(['lockout']);
-  // }
-  // console.log("before date compare");
-  // let now = new Date().getTime();
-  // let date = new Date(covidData.timestamp).getTime();
-  // console.log("now - date: " + (now-date >= 86400000))
-  // if( now - date >= 86400000)
-  // {
-  //   return this.router.navigate(['covid-verification']);
-  // }  
+  if(covidData.userId == null)
+  {
+    console.log("empty")
+    //this.service.logout();
+    return this.router.createUrlTree(['/login']);
+  }
+  if(covidData.covid == true)
+  {
+    console.log("lock")
+    return false;
+  }
+  //console.log("before date compare");
+  let now = new Date().getTime();
+  let date = new Date(covidData.timestamp).getTime();
+  console.log(covidData.timestamp)
+  if( now - date >= 86400000)
+  {
+    console.log("time")
+    return this.router.createUrlTree(['covid-verification']);
+  }  
  
   return true;
   }
