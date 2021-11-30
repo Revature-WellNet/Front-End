@@ -1,15 +1,15 @@
 <ul class="nav navbar-expand-lg navbar-light">
     <li class="nav-item">
-      <a class="nav-link text-dark" [routerLink]="['/nurse']">Home page</a>
+      <a class="nav-link text-dark" [routerLink]="['/nurse']">Nurse home page</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-dark" [routerLink]="['/profileEdit']">Edit profile</a>
+      <button class="btn shadow-none" (click)="editPage()" type="button">Edit profile</button>
     </li>
     <li class="nav-item">
         <button class="btn shadow-none" (click)="logout()" type="button">Logout</button>
       </li>
       <li class="nav-item">
-        <img src="/assets/img/WellNetLogo.png">
+        <img src="/assets/img/WellNetLogoClear.png">
       </li>
    
   </ul>
