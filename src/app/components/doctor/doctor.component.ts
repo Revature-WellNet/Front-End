@@ -21,12 +21,14 @@ export class DoctorComponent implements OnInit {
   constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService:FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
-    this.firebaseService.userInfo.pipe(take(1),map(res=>{
+    this.firebaseService.userInfo.subscribe((res)=>{
       if(res==null){
-        console.log("doctor", res)
         this.router.createUrlTree(['login']);
       }
-    }))
+      if(res?.role == "nurse"){
+        this.router.navigate(['nurse']);
+      }
+    });
     //before we get doctor: 
     this.getAllPatients();
 

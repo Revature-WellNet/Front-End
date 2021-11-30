@@ -19,7 +19,7 @@ export class UserService {
     console.log(user);
     console.log(typeof User);
 
-    return this.http.post<User>('http://localhost:8081/wellnet/user/registration', user).subscribe((response : any) => {console.log(response)});
+    return this.http.put<User>('http://localhost:8081/wellnet/user/updateprofile', user).subscribe((response : any) => {console.log(response)});
   }
            
 }

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           // get custom claims to find role
           this.cvs.getFormServByString(userData.id).subscribe((data) => {
             console.log(JSON.stringify(data));
-
+            localStorage.setItem('covidInfo', JSON.stringify(data));
             let dataArray = Object.values(data);
             console.log(dataArray);
             console.log(dataArray[3]);
@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
                   }
                 });
               } else {
+                console.log("go here");
                 this.router.navigate(['/covid-verification']);
               }
             }
@@ -110,21 +111,46 @@ export class LoginComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // to check the status of login
+    //to check the status of login
     this.firebaseService.userInfo.subscribe((res) => {
       // console.log(res)
-      if (!!res) {
-        if (res.role == 'nurse') {
-          this.router.navigateByUrl('/nurse');
-        } else if (res.role == 'doctor') {
-          this.router.navigateByUrl('/doctor');
-        } else {
-          this.router.navigateByUrl('/nurse');
-        }
+      if (res != null) {
+        // console.log(res);
+        // get custom claims to find role
+        this.cvs.getFormServByString(res.id).subscribe((data) => {
+          console.log(JSON.stringify(data));
+          localStorage.setItem('covidInfo', JSON.stringify(data));
+          let dataArray = Object.values(data);
+          console.log(dataArray);
+          console.log(dataArray[3]);
+          if (dataArray[3] == true) {
+            //console.log("hello");
+            this.router.navigate(['lockout']);
+          } else {
+            let now = new Date().getTime();
+            let date = new Date(dataArray[2]).getTime();
+            console.log(now - date);
+            if (now - date < 86400000) {
+              // console.log(JSON.stringify(data));
+              if (res.role == 'nurse') {
+                // nurseUI()
+                this.router.navigate(['nurse']);
+              } else if (res.role == 'doctor') {
+                // doctorUI()
+                this.router.navigate(['doctor']);
+              } else {
+                // user does not have a role / could not find users role
+                console.error('this user does not have a role');
+              }
+            } else {
+              this.router.navigate(['/covid-verification']);
+            }
+          }
+        });
       }
 
-      if (!res) {
-        //this.firebaseService.autoSignIn();
+      if (res == null) {
+        this.firebaseService.autoSignIn();
       }
     });
   }

@@ -64,8 +64,8 @@ export class FirebaseService {
     return signupdata;
   }
 
-  setEmail(email: string) {
-    firebase
+  async setEmail(email: string) {
+    await firebase
       .auth()
       .currentUser?.updateEmail(email)
       .then(() => {
@@ -173,16 +173,19 @@ export class FirebaseService {
   }
 
   // logout and distroy token and localstorage info
- logout() {
-   this.userInfo.next(null);
-   firebase.auth().signOut();
-   localStorage.clear();
+  logout() {
+    
+    firebase.auth().signOut().then(()=>{
+      this.userInfo.next(null);
+    }).then(()=>{
+      localStorage.clear();
 
-    if (this.tokenExpireTime) {
-      clearTimeout(this.tokenExpireTime);
-    }
-    this.tokenExpireTime = null;
-    this.router.navigate(['']);
+      if (this.tokenExpireTime) {
+        clearTimeout(this.tokenExpireTime);
+      }
+      this.tokenExpireTime = null;
+      this.router.navigate(['']);
+    });
   }
 
   // either signout or refresh token

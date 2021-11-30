@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/patient';
 import { NurseService } from 'src/app/services/nurse.service';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { map, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nurse',
@@ -13,9 +15,19 @@ export class NurseComponent implements OnInit {
 
   patientsArray:any=[];
 
-  constructor(private nurseService: NurseService, private firebaseService : FirebaseService) { }
+  constructor(private nurseService: NurseService, private firebaseService : FirebaseService, private router : Router) { }
 
   ngOnInit(): void {
+    console.log("before pipe");
+    this.firebaseService.userInfo.subscribe((res)=>{
+      if(res==null){
+        this.router.createUrlTree(['login']);
+      }
+      console.log("res role: " + res?.role);
+      if(res?.role == "doctor"){
+        this.router.navigate(['doctor']);
+      }
+    });
     this.getAllPatients();
   }
 
