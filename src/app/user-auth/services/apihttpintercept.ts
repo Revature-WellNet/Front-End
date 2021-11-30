@@ -26,7 +26,7 @@ export class Apihttpintercept implements HttpInterceptor {
             exhaustMap((user) => {
                 
                 if (!user) {
-                    console.log("User not logged in")
+                    console.warn("User attempting to send an HTTP request without stored credentials. Sending request without attached headers.")
                     return next.handle(req);
                 } 
                 // else  if (req.url.includes('https://securetoken.googleapis.com/v1/token?key=' +
@@ -46,7 +46,7 @@ export class Apihttpintercept implements HttpInterceptor {
                 // }
                 
                 else {
-console.log("intercepting the request")
+                    console.log("Intercepting request: " + req.url);
                     const modifiedReq = req.clone({
                         headers: req.headers
                             .set('Authorization', 'Bearer ' + user.token)

@@ -11,7 +11,6 @@ export class UserService {
 
   getUser(id : string){
     //right now the backend takes an int. need to change that after we talk with login
-    console.log(id);
     return this.http.get<User>('http://localhost:8081/wellnet/user/'+id);
   }
 

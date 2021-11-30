@@ -21,24 +21,6 @@ export class DoctorService {
     private ttp: HttpClientModule, private router : Router) { }
 
 
-
-  overrideNull(): string {
-    if (localStorage.getItem('token') === null) return '';
-    return localStorage.getItem('token') as any;
-  }
-
-httpOptions = {
-    headers: new HttpHeaders({
-      Authorization: this.overrideNull(),
-     
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': '*',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Credentials': 'true',
-    }),
-  };
-
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
     return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient`);

@@ -159,11 +159,11 @@ export class FirebaseService {
   }
 
   //push the localstorage data to memory.
-  autoSignIn() {
+  autoSignIn() : boolean {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-
-    if (userData == '{}' || !userData) {
-      return;
+    if (userData.id == undefined) {
+      console.log("No user information can be found within local storage. Cancelling auto sign-in.");
+      return false;
     }
     const loggedInUser = new Userinfo(
       userData.email,
@@ -179,17 +179,18 @@ export class FirebaseService {
         new Date(userData._tokenExpirationDate).getTime() -
         new Date().getTime();
       this.autoSignOut(expirDurationtimer);
+      console.log("Successfully automatically signed in with user information found in local storage.");
+      return true;
     }
+    return false;
   }
 
   // logout and distroy token and localstorage info
   logout() {
-    
+    console.log("User logging out of application. Clearing local storage and invalidating Firebase authentication session.")
+    localStorage.clear();
+    this.userInfo.next(null);
     firebase.auth().signOut().then(()=>{
-      this.userInfo.next(null);
-    }).then(()=>{
-      localStorage.clear();
-
       if (this.tokenExpireTime) {
         clearTimeout(this.tokenExpireTime);
       }

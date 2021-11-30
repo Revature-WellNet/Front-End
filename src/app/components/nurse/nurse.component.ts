@@ -19,15 +19,11 @@ export class NurseComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("before pipe");
-    this.firebaseService.userInfo.subscribe((res)=>{
-      if(res==null){
-        this.router.createUrlTree(['login']);
-      }
-      console.log("res role: " + res?.role);
-      if(res?.role == "doctor"){
-        this.router.navigate(['doctor']);
-      }
-    });
+    if(!this.firebaseService.autoSignIn())
+      this.router.navigate(['/login']);  
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if(userData.role == "doctor")
+      this.router.navigate(['doctor']);
     this.getAllPatients();
   }
 
