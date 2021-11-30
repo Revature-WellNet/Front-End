@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
 
   navigateHome(){
 
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+ 
 
     
   //  this.loginService.getUserId().subscribe((userId : string) => {
