@@ -24,9 +24,12 @@ export class LockoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.firebaseService.autoSignIn();
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    if(userData.id == undefined)
+    if(userData.id == undefined){
+      console.log("log")
       this.router.navigate(['/login']);
+    }
     else
       this.getTimestamp();
     
@@ -94,12 +97,3 @@ export class LockoutComponent implements OnInit {
     this.firebaseService.logout();
   }
 }
-
-
-
-
-
-
-
-
-

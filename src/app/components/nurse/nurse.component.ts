@@ -21,7 +21,7 @@ export class NurseComponent implements OnInit {
     console.log("before pipe");
     this.firebaseService.userInfo.subscribe((res)=>{
       if(res==null){
-        this.router.createUrlTree(['login']);
+        this.router.navigate(['login']);
       }
       console.log("res role: " + res?.role);
       if(res?.role == "doctor"){

@@ -46,7 +46,7 @@ export class Apihttpintercept implements HttpInterceptor {
                 // }
                 
                 else {
-console.log("intercepting the request")
+//console.log("intercepting the request")
                     const modifiedReq = req.clone({
                         headers: req.headers
                             .set('Authorization', 'Bearer ' + user.token)
@@ -55,7 +55,7 @@ console.log("intercepting the request")
                             .set('Access-Control-Allow-Headers', 'Content-Type')
                            
                     });
-                    
+                //    console.log(modifiedReq)
                     return next.handle(modifiedReq)
                 }
             })

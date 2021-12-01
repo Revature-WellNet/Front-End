@@ -85,15 +85,7 @@ export class FirebaseService {
       });
   }
 
-  async ResetPass(email: string) {
-    await firebase
-      .auth().sendPasswordResetEmail(email).then(res=>{
-        console.log(res)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  
 
   setPassword(password: string) {
     firebase
