@@ -1,14 +1,19 @@
-<div class='container d-flex justify-content-center border p-3 mt-3 rounded'>
-    <div class='form-check '>
+
+    <div class='form-check container'>
 <div *ngIf="testedPositiveQuestions=='true'">
     <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
     <br>
+    <br>
+<div>
 <input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>  
-<label for='yes'>yes</label>              
+<label for='yes'>yes</label>
+</div>
+<div>              
 <input type='radio'   [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
 <label for='no'>no</label>
+</div>
 <br>
-<button type='button' (click)='testedPositiveSubmit()'>Next question</button>
+<button type='button' class='Button2' (click)='testedPositiveSubmit()'>Next question</button>
 </div>
 
 <div *ngIf="diagnosedQuestions=='true'">
@@ -16,7 +21,7 @@
         provider (for example, a doctor, nurse, pharmacist, or other) in the
         past 14 days?</label>
     <br>
-<input type='radio'  [(ngModel)]='diagnosedResults' name='diagnosedResults' value="true">  
+<input type='radio' class=radioButton  [(ngModel)]='diagnosedResults' name='diagnosedResults' value="true">  
 <label for='yes'>yes</label>              
 <input type='radio'  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value="false"> 
 <label for='no'>no</label>
@@ -209,5 +214,7 @@
 <div *ngIf="inputError" class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Please enter a date within the last 14 days</strong> 
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
 </div>
+
 

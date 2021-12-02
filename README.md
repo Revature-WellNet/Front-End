@@ -21,4 +21,9 @@ Models:
 - Covid-Verification
   - Contains formKey(primary key), lastTest(timestamp), covidStatus(boolean)
 
+Testing automation:
+- Employees are required to take a test if they have not been tested in the last 24 hours
+- The login method contains the logic to determine the last test time
+- Firebase locks out all paths besides 'lockout' for users who have covidStatus=TRUE
+
 
