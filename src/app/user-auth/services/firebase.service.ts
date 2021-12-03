@@ -75,6 +75,8 @@ export class FirebaseService {
         console.error(error);
       });
   }
+
+
   async ResetPass(email: string) {
     await firebase
       .auth().sendPasswordResetEmail(email).then(res=>{
@@ -177,7 +179,7 @@ export class FirebaseService {
     if (loggedInUser.token) {
       this.userInfo.next(loggedInUser);
       const expirDurationtimer = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
-        console.log(expirDurationtimer)
+      console.log("Token expire after :", expirDurationtimer)
       this.autoSignOut(expirDurationtimer);
       console.log("Successfully automatically signed in with user information found in local storage.");
       return true;
@@ -237,7 +239,7 @@ export class FirebaseService {
     // console.log('User Info>', userInfo);
     this.userInfo.next(userInfo);
     const expirDurationtimer = new Date(expirationDate).getTime() - new Date().getTime();
-        console.log("Token expire in :", expirDurationtimer)
+        console.log("Token expire after:", expirDurationtimer)
     this.autoSignOut(expirDurationtimer);
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
   }
