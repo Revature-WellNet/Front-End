@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterComponent } from './register.component';
+import { StaticStyleTesterComponent } from './static-style-tester.component';
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+describe('StaticStyleTesterComponent', () => {
+  let component: StaticStyleTesterComponent;
+  let fixture: ComponentFixture<StaticStyleTesterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ StaticStyleTesterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(StaticStyleTesterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

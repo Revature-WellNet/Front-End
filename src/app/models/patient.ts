@@ -1,3 +1,8 @@
+import { Allergy } from "./allergy";
+import { Bloodtype } from "./bloodtype";
+import { Sex } from "./sex";
+import { Vaccination } from "./vaccination";
+
 export class Patient {
   
     public patientId!: number;

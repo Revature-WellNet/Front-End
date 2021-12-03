@@ -2,8 +2,9 @@ export class Userinfo {
     constructor(
         public email:string,
         public id: string,
+        public role:string,
         private _token: string,
-        private _refreshToken: string,
+        public _refreshToken: string,
         private _tokenExpirationDate: Date
     ){}
         get token(){

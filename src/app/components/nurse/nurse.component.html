@@ -1,84 +1,47 @@
 <app-navbar></app-navbar>
 <div class="background">
-<div class="container">
-    <h1>Nurse</h1>
-</div>
-<app-button class="btn btn-top-left" (btnClick)="goBack()" text="Back"></app-button>
-
-<div class="top-right">
-    <app-button class="btn" (btnClick)="getInfo()" text="View User Info"></app-button>
-    <app-button class="btn" (btnClick)="logout()"text="Logout"></app-button>
-</div>
-
-<div class="btn-center">
-    <app-button class="btn btn-add-patient" (btnClick)="addPatient()" text="Add a Patient"></app-button>
-</div>
+    <div class="container">
+        <h1>Nurse</h1>
+    </div>
+    <app-button class="btn btn-top-left" (btnClick)="goBack()" text="Back"></app-button>
 
 <div class="search-area">
     <div class="form-group">
         <!-- <label for="patient-search">Search for Patients</label> -->
         <input type="text" class="form-control" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
         <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>
+    <div class="top-right">
+        <app-button class="btn" (btnClick)="getInfo()" text="View User Info"></app-button>
+        <app-button class="btn" (btnClick)="logout()"text="Logout"></app-button>
     </div>
-    <div class="dob">
-        <select name="dob" #dobMonth id="dobMonth">
-            <option value=''>Please choose a value below</option>
-            <option value='01'>1</option>
-            <option value='02'>2</option>
-            <option value='03'>3</option>
-            <option value='04'>4</option>
-            <option value='05'>5</option>
-            <option value='06'>6</option>
-            <option value='07'>7</option>
-            <option value='08'>8</option>
-            <option value='09'>9</option>
-            <option value='10'>10</option>
-            <option value='11'>11</option>
-            <option value='12'>12</option>
-        </select>
-        <select name="dob" #dobDay id="dobDay">
-            <option value=''>Please choose a value below</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>
-            <option value='11'>11</option>
-            <option value='12'>12</option>
-            <option value='13'>13</option>
-            <option value='14'>14</option>
-            <option value='15'>15</option>
-            <option value='16'>16</option>
-            <option value='17'>17</option>
-            <option value='18'>18</option>
-            <option value='19'>19</option>
-            <option value='20'>20</option>
-            <option value='21'>21</option>
-            <option value='22'>22</option>
-            <option value='23'>23</option>
-            <option value='24'>24</option>
-            <option value='25'>25</option>
-            <option value='26'>26</option>
-            <option value='27'>27</option>
-            <option value='28'>28</option>
-            <option value='29'>29</option>
-            <option value='30'>30</option>
-            <option value='31'>31</option>
-        </select>
-        <input type="text" #dobYear id="dobYear" placeholder="Enter Year">
+
+    <div class="btn-center">
+        <app-button class="btn btn-add-patient" (btnClick)="addPatient()" text="Add a Patient"></app-button>
     </div>
-    <div class="button-group">
-        <app-button id="searchId" class="btn btn-search" (btnClick)="searchPatient()" text="Search for Patients"></app-button>
-        <app-button id="searchName"  class="btn btn-search" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name"></app-button>
-        <app-button id="searchFullName"  class="btn btn-search" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name"></app-button>
-        <app-button id="searchDOB" class="btn btn-search" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobYear.value, dobMonth.value, dobDay.value)" text="Search for Patients by First, Last, and Date of Birth"></app-button>
+
+    <div class="search-area">
+        <div class="form-group">
+            <!-- <label for="patient-search">Search for Patients</label> -->
+            <input type="text" class="form-control" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
+            <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>           
+        </div>
+
+        <label for= "dob">Date of Birth:</label>
+        <input
+            type= "date"
+            class= "form-control"
+            name= "dob"
+            id= "dob"
+            #dobField
+        >
+
+        <div class="button-group">
+            <app-button id="searchId" class="btn btn-search" (btnClick)="getAllPatients()" text="Display All Patients"></app-button>
+            <app-button id="searchName"  class="btn btn-search" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name"></app-button>
+            <app-button id="searchFullName"  class="btn btn-search" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name"></app-button>
+            <app-button id="searchDOB" class="btn btn-search" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth"></app-button>
+        </div>
     </div>
-</div>
 
 <div class="table">
     <table>

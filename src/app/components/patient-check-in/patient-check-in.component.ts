@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Allergy } from 'src/app/models/allergy';
+import { Bloodtype } from 'src/app/models/bloodtype';
 import { Patient } from 'src/app/models/patient'
+import { Sex } from 'src/app/models/sex';
 import { Vaccination } from 'src/app/models/vaccination';
 import { PatientService } from 'src/app/services/patient.service';
 
@@ -17,16 +19,21 @@ export class PatientCheckInComponent implements OnInit {
   public feet!: number;
   public inches!: number;
   public weight!: number;
+  public height!: number;
   public bloodtype! : string;
   public sex! : string;
-  public allergies! : Allergy[];
-  public vaccinations! : Vaccination[];
+  public allergies : Allergy[] = [];
+  public vaccinations : Vaccination[] = [];
   public patient! : Patient;
 
   constructor(private patientService: PatientService) { }
 
   ngOnInit(): void {
     this.generateChecklists();
+
+  }
+
+  ngOnChanges(): void{
 
   }
 
@@ -47,18 +54,55 @@ export class PatientCheckInComponent implements OnInit {
       if(inches){
         height += inches;
       }
-    }else {height = 1};
+    }else{
+      height = null;
+    }
+    if(sex && firstName && lastName && dob){
+      this.patientService.getSex(sex).subscribe((responseSex : any) => {
+        if(bloodtype){
+          this.patientService.getBloodType(bloodtype).subscribe((responseBloodType: any) => {
 
-    let patient : Patient = new Patient(-1, firstName, lastName, dob, height, weight, bloodtype, sex, allergies, vaccinations);
-    this.patientService.createPatient(patient);
+            console.log(bloodtype)
+            console.log(sex)
+            console.log(responseSex)
+            console.log(responseBloodType)
 
-    console.log(patient);
+          let bloodObj = responseBloodType;
+          let sexObj = responseSex;
+          
+          let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
 
+          console.log(patient);
+          
+          
+          
+          this.patientService.createPatient(patient);
+        
+          })
+        }else{
+
+          let bloodObj = null;
+          let sexObj = responseSex;
+
+          let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
+          console.log(patient)
+          this.patientService.createPatient(patient);
+          
+
+        }
+      })
+    }else{
+      alert("First and last name, dob and sex is required to add a new patient to Wellnet.")
+    }
   }
 
   generateChecklists(){
 
     this.patientService.getAllergies().subscribe((response: any) => {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
 
       let allergies : Allergy[] = response;
         for(let a of allergies){
@@ -68,8 +112,8 @@ export class PatientCheckInComponent implements OnInit {
 
           let checkbox = document.createElement("input");
           checkbox.type = "checkbox";
-          checkbox.id = "checkbox";
-          checkbox.name = "checkbox";
+          checkbox.id = "allergycheckbox";
+          checkbox.name = "allergycheckbox";
           checkbox.value = a.allergy
           label.htmlFor = "checkbox";
 
@@ -78,12 +122,45 @@ export class PatientCheckInComponent implements OnInit {
           document.getElementById("allergyanchor")!.appendChild(label);
           document.getElementById("allergyanchor")!.appendChild(checkbox);
 
+<<<<<<< HEAD
+=======
+          var self = this;
+          checkbox.addEventListener('change', function() {
+
+            if (this.checked) {
+
+              self.addAllergy(checkbox.value);
+              
+            } else {
+              
+              // for(let a in allergies){
+              //   if(allergies[a].allergy == checkbox.value){
+                  
+                  const index = self.allergies.indexOf(a);  
+                //  if (index > -1) {
+
+                    self.allergies.splice(index, 1);
+                    
+                 //}
+                //}              
+              // }
+
+            }
+          });
+>>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
 
         }
 
     })
 
+
+
     this.patientService.getVaccinations().subscribe((response: any) => {
+<<<<<<< HEAD
+=======
+      
+
+>>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
 
       let vaccinations : Vaccination[] = response;
         for(let v of vaccinations){
@@ -93,7 +170,8 @@ export class PatientCheckInComponent implements OnInit {
 
           let checkbox = document.createElement("input");
           checkbox.type = "checkbox";
-          checkbox.id = "checkbox";
+          checkbox.id = "vaccinationcheckbox";
+          checkbox.name = "vaccinationcheckbox";
           checkbox.value = v.vaccination;
           label.htmlFor = "checkbox";
 
@@ -102,10 +180,35 @@ export class PatientCheckInComponent implements OnInit {
           document.getElementById("vaccinationanchor")!.appendChild(label);
           document.getElementById("vaccinationanchor")!.appendChild(checkbox);
 
+<<<<<<< HEAD
+=======
+          var self = this;
+          checkbox.addEventListener('change', function() {
+
+            if (this.checked) {
+
+              self.addVaccination(checkbox.value);
+
+            } else {
+
+              // for(let v in vaccinations){
+              //   if(vaccinations[v].vaccination === checkbox.value){
+                  const index = self.vaccinations.indexOf(v);  
+                 // if (index > -1) {
+                    self.vaccinations.splice(index, 1);
+                 //}
+              //   }              
+              //  }
+            }
+          });
+          
+>>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
 
         }
 
     })
+
+    
   }
   async checkInPatient(firstName: string, lastName: string, dob: Date ){
     const response = await this.patientService.getPatient(firstName, lastName, dob).toPromise();
@@ -121,13 +224,38 @@ export class PatientCheckInComponent implements OnInit {
     }
   }
 
-  addAllergy(){
+  addAllergy(allergy : string){
 
+    this.patientService.getAllergies().subscribe((response: any) => {
 
+    for(let a of response){
+      if(a.allergy == allergy){
+        
+
+        this.allergies.push(a);
+      }
+    }
+
+    })
   }
 
+<<<<<<< HEAD
   addVaccination(){
 
+=======
+  addVaccination(vaccination : string){
+
+    this.patientService.getVaccinations().subscribe((response: any) => {
+
+      for(let v of response){
+        if(v.vaccination === vaccination){
+          
+          this.vaccinations.push(v);
+        }
+      }
+  
+      })
+>>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
   }
 
 }

@@ -31,6 +31,7 @@ import { Covid19VerificationComponent } from './covid19-verification/covid19-ver
 import { LockoutComponent } from './lockout/lockout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Apihttpintercept } from './user-auth/services/apihttpintercept';
+import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
 
 
 
@@ -50,7 +51,8 @@ import { Apihttpintercept } from './user-auth/services/apihttpintercept';
     RoomsComponent,
     Covid19VerificationComponent,
     LockoutComponent,
-    NavbarComponent
+    NavbarComponent,
+    StaticStyleTesterComponent
 
   ],
   imports: [

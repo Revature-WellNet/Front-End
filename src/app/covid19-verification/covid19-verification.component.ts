@@ -4,6 +4,7 @@ import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-covid19-verification',
@@ -49,11 +50,15 @@ export class Covid19VerificationComponent implements OnInit {
   public lastTest: Date = new Date();
   public finalStatus: boolean = false;
 
+  public inputError:boolean = false;
 
 
-  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService) { }
+
+  constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService, private firebase: FirebaseService) { }
 
   ngOnInit(): void {
+    if(!this.firebase.autoSignIn())
+      this.router.navigate(['/login']);  
   }
 
   //next question functions
@@ -110,26 +115,38 @@ export class Covid19VerificationComponent implements OnInit {
   //form submitter
   formSubmitFun() {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    console.log(userData.id)
+    console.log(userData.id);
+    let now = new Date().getTime();
     
+    console.log(this.lastTest);
+    let date = new Date(this.lastTest).getTime();
+    console.log(now-date);
+    if ((now - date) > 1210000000){
+      console.log("date error");
+      this.inputError=true;
+    }
+    else{
     let cv: Covid19VerificationModel = new Covid19VerificationModel(this.id,userData.id, this.finalStatus, this.lastTest);
     console.log(cv);
     this.cvs.submitFormServ(cv).subscribe((data: Object) => {
       console.log(data);
+      localStorage.setItem('covidInfo', JSON.stringify(cv));
       if (this.finalStatus == false) {
         this.userService.getUser(userData.id).subscribe(
           data =>{
-            console.log(JSON.stringify(data));
-            if(data.role.role=='nurse'){
-              // nurseUI()
-              this.router.navigate(['nurse']);
-            }else if(data.role.role=='doctor'){
-              // doctorUI()
-              this.router.navigate(['doctor']);
-            }else{
-              // user does not have a role / could not find users role
-              console.error('this user does not have a role');
-            }
+            this.cvs.getFormServByString(userData.id).subscribe((resp)=>{
+              if(data.role.role=='nurse'){
+                // nurseUI()
+                this.router.navigate(['nurse']);
+              }else if(data.role.role=='doctor'){
+                // doctorUI()
+                this.router.navigate(['doctor']);
+              }else{
+                // user does not have a role / could not find users role
+                console.error('this user does not have a role');
+              }
+            });
+            
           }
         )
       }
@@ -137,7 +154,7 @@ export class Covid19VerificationComponent implements OnInit {
         this.router.navigate(['lockout']);
       }
     })
-  }
+  }}
   
   testedSubmit() {
     this.testedQuestions = 'false';
@@ -151,8 +168,8 @@ export class Covid19VerificationComponent implements OnInit {
   testedResultSubmit() {
     this.testedQuestionsResult = 'false';
     if (this.testedPositive == 'true') {
-      this.finalStatus = true;
-      this.formSubmitFun();
+      this.finalStatus=true;
+      this.lastPositiveTest='true';
     }
     else if(this.previous3=='true'){
       this.contactQuestions='true'
@@ -214,7 +231,9 @@ export class Covid19VerificationComponent implements OnInit {
     this.testedQuestionsResult = 'false';
     this.testedQuestions = 'true';
   }
-
+  logout(){
+    this.firebase.logout();
+  }
 
   //covid checker
   covidCheck() {

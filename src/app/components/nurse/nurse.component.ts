@@ -4,6 +4,8 @@ import { Patient } from 'src/app/models/patient';
 import { NurseService } from 'src/app/services/nurse.service';
 import { PatientService } from 'src/app/services/patient.service';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { map, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nurse',
@@ -14,9 +16,16 @@ export class NurseComponent implements OnInit {
 
   patientsArray:any=[];
 
-  constructor(private nurseService: NurseService, private firebaseService : FirebaseService, private patientService: PatientService) { }
+  constructor(private nurseService: NurseService, private firebaseService : FirebaseService, private router : Router, private patientService: PatientService) { }
+
 
   ngOnInit(): void {
+    console.log("before pipe");
+    if(!this.firebaseService.autoSignIn())
+      this.router.navigate(['/login']);  
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    if(userData.role == "doctor")
+      this.router.navigate(['doctor']);
     this.getAllPatients();
   }
 
@@ -60,8 +69,11 @@ export class NurseComponent implements OnInit {
       );
   }
 
-  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
-    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+  searchPatNameDate(firstName: string, lastName:string, dobField : string){
+
+    //console.log(dobField);
+
+    let fullDate:string = dobField;
     console.log(firstName, lastName, fullDate);
     this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
       (response: Patient[])=> {
@@ -75,7 +87,7 @@ export class NurseComponent implements OnInit {
       }
     );
   }
-
+  
   getAllPatients(){
     this.nurseService.getPatients().subscribe(
       (response: Patient[])=> {
