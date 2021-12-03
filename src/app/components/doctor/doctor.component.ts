@@ -102,12 +102,11 @@ export class DoctorComponent implements OnInit {
       }
       );
   }
+ searchPatNameDate(firstName: string, lastName:string, dobField : string){
 
-  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
-    
-    this.searchingDoctor = false;
+    //console.log(dobField);
 
-    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+    let fullDate:string = dobField;
     console.log(firstName, lastName, fullDate);
     this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
       (response: Patient[])=> {

@@ -67,8 +67,11 @@ export class NurseComponent implements OnInit {
       );
   }
 
-  searchPatNameDate(firstName: string, lastName:string, dobYear:string, dobMonth:string, dobDay:string){
-    let fullDate:string = dobYear+"-"+dobMonth+"-"+dobDay;
+  searchPatNameDate(firstName: string, lastName:string, dobField : string){
+
+    //console.log(dobField);
+
+    let fullDate:string = dobField;
     console.log(firstName, lastName, fullDate);
     this.nurseService.getPatientByNameDOB(firstName, lastName, fullDate).subscribe(
       (response: Patient[])=> {
@@ -82,7 +85,7 @@ export class NurseComponent implements OnInit {
       }
     );
   }
-
+  
   getAllPatients(){
     this.nurseService.getPatients().subscribe(
       (response: Patient[])=> {
