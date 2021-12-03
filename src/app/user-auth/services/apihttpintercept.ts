@@ -20,11 +20,11 @@ export class Apihttpintercept implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
-        
+
         return this.service.userInfo.pipe(
             take(1),
             exhaustMap((user) => {
-                
+
                 if (!user) {
                     console.warn("User attempting to send an HTTP request without stored credentials. Sending request without attached headers.")
                     return next.handle(req);
@@ -53,7 +53,7 @@ export class Apihttpintercept implements HttpInterceptor {
                             .set('Content-Type', 'application/json')
                             .set('Access-Control-Allow-Origin', '*')
                             .set('Access-Control-Allow-Headers', 'Content-Type')
-                           
+
                     });
                     
                     return next.handle(modifiedReq)
