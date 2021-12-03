@@ -1,91 +1,70 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
-import { DiagnosisDTO } from 'src/app/models/diagnosis-dto';
 import { DiagnosisForm } from 'src/app/models/diagnosis-form';
 import { Patient } from 'src/app/models/patient';
-import { Role } from 'src/app/models/role';
 import { Room } from 'src/app/models/rooms/room';
 import { User } from 'src/app/models/user';
 import { DiagnosisFormService } from 'src/app/services/diagnosis-form.service';
 import { PatientService } from 'src/app/services/patient.service';
 import { UserService } from 'src/app/services/user.service';
-import { NurseComponent } from '../nurse/nurse.component';
 
 @Component({
   selector: 'app-diagnosis',
   templateUrl: './diagnosis.component.html',
   styleUrls: ['./diagnosis.component.css'],
 })
+
 export class DiagnosisComponent implements OnInit {
   diagnosis: string = ' ';
   symptoms: string = ' ';
   treatment: string = ' ';
-  iter: number = 0;
   diagForm!: DiagnosisForm;
-  room!: Room;
-  role!: Role;
+  room!: Room; // = this.patientService.room
   public user!: User;
-  returnVal!: any;
-  bloodType: Object = {typeId:1,type:'a'};
-  sex: Object = {sexId:1,sex:'male'};
-  // patient: Patient = new Patient(1, 'Captain', 'America', new Date("1920-3-31"), 72, 200, this.bloodType, this.sex, [], []);
   patient: Patient = this.patientService.patient;
 
   constructor(
     private patientService: PatientService,
     private diagnosisService: DiagnosisFormService,
     private userService: UserService,
-  ) {
-  }
+  ) {}
 
   ngAfterViewInit(){
     if(this.user.role.role == 'doctor'){
-      console.log("I don't think this works.")
       this.getExistingForm(this.patient.patientId);
       this.diagnosis = this.diagForm.diagnosis;
       this.symptoms = this.diagForm.symptoms;
-      console.log("on view init: ", this.diagForm, this.symptoms, this.diagnosis, this.treatment);
     }
-   // console.log("user", this.user.role.role);
   }
 
   ngOnInit() {
-
-      // this.patient = this.patientService.patient;
-      let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
-      this.userService.getUser(data.id).subscribe(
-        (response:User) => {
-          console.log("data", response);
-          this.user = response;
-          console.log("after getting user: ",this.user);
-        },
-        (error) => {
-          console.log("error", error);
-        });
-      console.log("role before check",this.user);
-
-
+    let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.userService.getUser(data.id).subscribe(
+      (response:User) => {
+        this.user = response;
+      },
+      (error) => {
+        console.log("error", error);
+      });
   }
- onSubmit(symptoms: string, diagnosis: string, treatment: string) {
-    let current = new Date();
 
+ onSubmit(symptoms: string, diagnosis: string, treatment: string) {
     switch (this.user.role.role){
       case 'nurse': {
-        let diagFormTemp: DiagnosisForm = new DiagnosisForm();
-        diagFormTemp.diagnosis = diagnosis;
-        diagFormTemp.symptoms = symptoms;
-        diagFormTemp.resolutionStatus = false;
-        diagFormTemp.checkIn = new Date();
-        diagFormTemp.patient = this.patient;
-        diagFormTemp.nurse=this.user;
+        this.diagForm = new DiagnosisForm();
+        this.diagForm.diagnosis = diagnosis;
+        this.diagForm.symptoms = symptoms;
+        this.diagForm.resolutionStatus = false;
+        this.diagForm.checkIn = new Date();
+        this.diagForm.patient = this.patient;
+        this.diagForm.nurse=this.user;
+        //this.diagForm.room = this.room;
 
-        this.diagnosisService.postDiagnosisForm(diagFormTemp).subscribe(
+        this.diagnosisService.postDiagnosisForm(this.diagForm).subscribe(
           (success) => {
             console.log('form was submitted');
           },
           (error) => {
-            console.log('there was an error', diagFormTemp);
+            console.log('there was an error', this.diagForm);
           }
         );
         break;
@@ -118,7 +97,9 @@ export class DiagnosisComponent implements OnInit {
         this.diagForm = data[data.length-1];
         this.symptoms = this.diagForm.symptoms;
         this.diagnosis = this.diagForm.diagnosis;
-        console.log("in method with: ",data[data.length-1]);
+        console.log("in method with: ",data[data.length-1]); 
+        // Logic only retrieves the most recent diagnosis form for a patient. 
+        // Logically this should be okay but practically will likely cause issues if patients just kind of leave without being given a treatement by a doctor
       },
       (error) => {
         console.log("ERROR");
@@ -126,5 +107,4 @@ export class DiagnosisComponent implements OnInit {
       }
     );
   }
-  prescribeTreatment(treatment: string) {}
 }

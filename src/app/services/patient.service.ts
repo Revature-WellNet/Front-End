@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient';
+import { Room } from '../models/rooms/room';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,9 +19,10 @@ const httpOptions = {
 export class PatientService {
 
   private backendUrl = 'http://localhost:8081/wellnet/patient'
-  public patient!: Patient;  //= new Patient(-1,'dummyfirst','dummylast',new Date(),120,10,'AB','other',[],[]);
-  constructor(private router: Router, private http: HttpClient/*private patientIn: Patient*/) {
-    //this.patient = patientIn;
+  public patient!: Patient;  
+  public room!: Room;
+  constructor(private router: Router, private http: HttpClient) {
+ 
   }
 
   createPatient(patient : Patient){
@@ -36,7 +38,6 @@ export class PatientService {
   }
 
   getPatient(firstName: string, lastName: string, dob: Date): Observable<Patient>{
-  //  console.log("getting patient: " + this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob);
     return this.http.get<Patient>(this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob, httpOptions) as Observable<Patient>;
   }
 
@@ -45,41 +46,32 @@ export class PatientService {
     this.router.navigate(["diagnosis"]);
   }
 /*
-
-
-http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
-
+  Not enough time to implement and not an MVP user story
 
   updatePatient(){
-    // put statement
+    // implement logic to update info in backend
   }
 
   updateWeight(weight:number){
     this.patient.weight = weight;
     this.updatePatient();
-}
+  }
 
-updateHeight(height:number):Patient{
-   // this.patient.height = height;
-   // this.updatePatient();
-   // return this.patient;
-}
+  updateHeight(height:number):Patient{
+    this.patient.height = height;
+    this.updatePatient();
+    return this.patient;
+  }
 
-addVaccination(vaccination:object){
- // this.patient.vaccinations?.push(vaccination);
-  //this.updatePatient();
-}
+  addVaccination(vaccination:object){
+    this.patient.vaccinations.push(vaccination);
+    this.updatePatient();
+  }
 
-addAllergy(Allergy:object){
-  this.patient.allergies?.push(Allergy);
-  this.updatePatient();
-}
-
-  // input a diagnosis by a nurse
-
-  // approve/deny/override diagnosis by a doctor
-
-  // prescribe a treatment for a patient
+  addAllergy(allergy:object){
+    this.patient.allergies.push(allergy);
+    this.updatePatient();
+  }
 */
 
 }
