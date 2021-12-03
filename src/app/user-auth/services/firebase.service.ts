@@ -81,9 +81,10 @@ export class FirebaseService {
       .auth().sendPasswordResetEmail(email).then(res=>{
         console.log(res)
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      // .catch((error) => {
+      //   alert(error);
+      //   console.error(error);
+      // });
   }
 
   setPassword(password: string) {
