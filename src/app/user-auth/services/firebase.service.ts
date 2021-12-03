@@ -210,7 +210,7 @@ export class FirebaseService {
       } else {
         this.refreshToken();
       }
-    }, expirDuration);
+    }, 3600000 );
   }
 
   // authenticated user's data saving to localstorage and userinfo model class
