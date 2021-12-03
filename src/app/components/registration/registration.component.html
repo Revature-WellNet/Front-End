@@ -46,7 +46,7 @@
     <label for="RegistrationPassword">
       Password
     </label>
-    <input type="text" class="RegistrationPassword"
+    <input type="password" class="RegistrationPassword"
       #RegistrationPassword
       (keyup.enter)="updatePassword(RegistrationPassword.value)"
       (blur)="updatePassword(RegistrationPassword.value)"
@@ -129,7 +129,7 @@
     </div> -->
 
     <div class="CenterContainerContent">
-    <button type="button" (click)="updateValues()" 
+      <button type="button" (click)="updateValues()" 
       class="RegisterButton" [disabled] = "registrationButtonSetting"
       *ngIf="covidStatus == false">
       Register User
@@ -155,9 +155,9 @@
   <p> Entered Role : {{role}} </p>
   <p> Entered Email : {{email}} </p>
 
-  <button type="button" (click)="rng()">
+  <!-- <button type="button" (click)="rng()">
     rng
-  </button>
+  </button> -->
 
   </div>
 </div>

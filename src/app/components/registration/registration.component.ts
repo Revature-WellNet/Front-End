@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { RegistrationInfo } from '../../models/registration-info';
 import { EmailValidationService } from '../../services/email-validation.service';
 import { RoleValidationService } from '../../services/role-validation.service';
+import { CallBootstrapDBService } from '../../services/call-bootstrap-db.service';
 
 import { RegistrationService } from '../../services/registration.service';
 import { SemiUniqueStringsService } from '../../services/semi-unique-strings.service';
@@ -23,6 +24,8 @@ export class RegistrationComponent implements OnInit {
   public firstName: string = '';
   public lastName: string = '';
   public role: string = '';
+
+  // VV Sent To Firebase - Token Returned
   public email: string = '';
   public idToken: string = '';
 
@@ -38,8 +41,11 @@ export class RegistrationComponent implements OnInit {
 
   // VV Will Need To Remove Eventually To Satisfy The
   // VV Do Not Store Username And Password Functionality
-  public username: string = '';
-  public password: string = '';
+  // VV Username Is Not A Thing Anymore
+  public username : string = "";
+
+  // VV Sent To Firebase - Token Returned
+  public password : string = "";
 
   public debugging: boolean = false;
   public id: number = 0;
@@ -53,6 +59,7 @@ export class RegistrationComponent implements OnInit {
     private firebaseService: FirebaseService,
     private cvs: Covid19VerificationService
   ) {}
+
 
   ngOnInit(): void {
     this.registrationButtonSetting = true;

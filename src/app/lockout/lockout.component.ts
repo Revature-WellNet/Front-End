@@ -18,21 +18,13 @@ export class LockoutComponent implements OnInit {
   public interval:any='';
   
   constructor(private cvs:Covid19VerificationService, private firebaseService:FirebaseService, private router:Router) { 
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    if(userData.id == undefined)
-      this.router.navigate(['/login']);
   }
 
   ngOnInit(): void {
-    this.firebaseService.autoSignIn();
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    if(userData.id == undefined){
-      console.log("log")
-      this.router.navigate(['/login']);
-    }
-    else
+    if(this.firebaseService.autoSignIn())
       this.getTimestamp();
-    
+    else 
+      this.router.navigate(['/login']);  
   }
 
   ngAfterViewInit(): void{
@@ -46,10 +38,7 @@ export class LockoutComponent implements OnInit {
     // Update the count down every 1 second
 
   setTime() {
-    if(this.time == null) return;
-    if( document.getElementById("timer")) return;
     let countDownDate = this.time.getTime()+1209600000;
-    console.log(this.time)
     let now = new Date().getTime();
     let distance = countDownDate - now;
   
@@ -77,7 +66,6 @@ export class LockoutComponent implements OnInit {
     this.cvs.getFormServByString(userData.id).subscribe((data: Object) => {
       if(data!=null){
         let dateArray:any[] = Object.values(data);
-        console.log(data)
         let dateTime=dateArray[2];
         let date = new Date(dateTime);
         this.time = date;

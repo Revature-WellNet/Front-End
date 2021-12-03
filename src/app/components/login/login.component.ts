@@ -30,66 +30,27 @@ export class LoginComponent implements OnInit {
     this.firebaseService
       .login(email, password)
       .then(
-        //.subscribe(
-        (res) => {
-         
-        }
-      ).then(covid=>{
-        console.log(covid)
-        this.covidInfo()
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  }
-
-  covidInfo() {
-    this.firebaseService.userInfo.subscribe((user) => {
-      if (user != null)
-        this.cvs.getFormServByString(user.id).subscribe((data) => {
-          if (data == null) {
-            console.log('line');
-            this.router.navigate(['/covid-verification']);
-          } else {
-            console.log(JSON.stringify(data));
-            localStorage.setItem('covidInfo', JSON.stringify(data));
-            let dataArray = Object.values(data);
-            console.log(dataArray);
-            console.log(dataArray[3]);
-            if (dataArray[3] == true) {
-              let now = new Date().getTime();
-              let date = new Date(dataArray[2]).getTime();
-              console.log(now - date);
-              if ((now - date) > 1210000000 ) {
-                this.router.navigate(['covid-verification']);
-              } else if ((now - date) > 86400000 && (now - date) < 1210000000){
-                console.log("555")
-                this.router.navigate(['lockout']);
-              }
-            } else {
-              let now = new Date().getTime();
-              let date = new Date(dataArray[2]).getTime();
-              console.log(now - date);
-              if (now - date < 86400000) {
-                console.log(data);
-                if (user.role == 'nurse') {
+        (res) => 
+        {
+          const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+          this.userService.getUser(userData.id).subscribe((data) => {
+            this.cvs.getFormServByString(userData.id).subscribe((formData) => {
+                localStorage.setItem('covidInfo', JSON.stringify(formData));
+                if (data.role.role == 'nurse') {
                   // nurseUI()
                   this.router.navigate(['nurse']);
-                } else if (user.role == 'doctor') {
-                  // doctorUI()
+                } else if (data.role.role == 'doctor') {
+                  console.log("should route to doctor");
                   this.router.navigate(['doctor']);
                 } else {
                   // user does not have a role / could not find users role
-                  console.error('this user does not have a role');
+                  console.error('This user account does not have an associated role.');
                 }
-              } else {
-                console.log('go here');
-                this.router.navigate(['covid-verification']);
-              }
-            }
-          }
-        });
-    });
+              })
+            });
+        }).catch((err) => {
+        alert(err);
+      });
   }
 
   logout() {
@@ -110,11 +71,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     //to check the status of login
     this.firebaseService.userInfo.subscribe((res) => {
-      if (res != null) {
-        this. covidInfo();
-      }
       if (res == null) {
-        this.firebaseService.autoSignIn();
+        console.log("Attempting automatic sign in...");
+        if(this.firebaseService.autoSignIn())
+        {
+          const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+          if (userData.role == 'nurse') {
+            // nurseUI()
+            this.router.navigate(['nurse']);
+          } else if (userData.role == 'doctor') {
+            // doctorUI()
+            this.router.navigate(['doctor']);
+          } else {
+            // user does not have a role / could not find users role
+            console.error('This user account does not have an associated role.');
+          }
+        }
       }
     });
   }

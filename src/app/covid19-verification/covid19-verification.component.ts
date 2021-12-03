@@ -57,9 +57,8 @@ export class Covid19VerificationComponent implements OnInit {
   constructor(private cvs: Covid19VerificationService, private router: Router, private userService:UserService, private firebase: FirebaseService) { }
 
   ngOnInit(): void {
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    if(userData.id == undefined)
-      this.router.navigate(['/login']);
+    if(!this.firebase.autoSignIn())
+      this.router.navigate(['/login']);  
   }
 
   //next question functions
@@ -131,21 +130,23 @@ export class Covid19VerificationComponent implements OnInit {
     console.log(cv);
     this.cvs.submitFormServ(cv).subscribe((data: Object) => {
       console.log(data);
+      localStorage.setItem('covidInfo', JSON.stringify(cv));
       if (this.finalStatus == false) {
         this.userService.getUser(userData.id).subscribe(
           data =>{
-            console.log("user id: " + userData.id);
-            console.log(JSON.stringify(data));
-            if(data.role.role=='nurse'){
-              // nurseUI()
-              this.router.navigate(['nurse']);
-            }else if(data.role.role=='doctor'){
-              // doctorUI()
-              this.router.navigate(['doctor']);
-            }else{
-              // user does not have a role / could not find users role
-              console.error('this user does not have a role');
-            }
+            this.cvs.getFormServByString(userData.id).subscribe((resp)=>{
+              if(data.role.role=='nurse'){
+                // nurseUI()
+                this.router.navigate(['nurse']);
+              }else if(data.role.role=='doctor'){
+                // doctorUI()
+                this.router.navigate(['doctor']);
+              }else{
+                // user does not have a role / could not find users role
+                console.error('this user does not have a role');
+              }
+            });
+            
           }
         )
       }
