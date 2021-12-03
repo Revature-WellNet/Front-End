@@ -5,11 +5,11 @@
     <br>
     <br>
 <div>
-<input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>  
+<input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>
 <label for='yes'>yes</label>
 </div>
-<div>              
-<input type='radio'   [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
+<div>
+<input type='radio'   [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'>
 <label for='no'>no</label>
 </div>
 <br>
@@ -21,9 +21,9 @@
         provider (for example, a doctor, nurse, pharmacist, or other) in the
         past 14 days?</label>
     <br>
-<input type='radio' class=radioButton  [(ngModel)]='diagnosedResults' name='diagnosedResults' value="true">  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value="false"> 
+<input type='radio' class=radioButton  [(ngModel)]='diagnosedResults' name='diagnosedResults' value="true">
+<label for='yes'>yes</label>
+<input type='radio'  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value="false">
 <label for='no'>no</label>
 <br>
 <button type='button' (click)='diagnosedPrevious()'>Previous question</button>
@@ -161,9 +161,9 @@
     <label for='testedPositive'>Have you  had close contact with someone with confirmed or suspected COVID-19 within
         the last 14 days?</label>
     <br>
-<input type='radio'  [(ngModel)]='contactCheck' name='contactCheck' value="true">  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='contactCheck' checked=checked name='contactCheck' value="false"> 
+<input type='radio'  [(ngModel)]='contactCheck' name='contactCheck' value="true">
+<label for='yes'>yes</label>
+<input type='radio'  [(ngModel)]='contactCheck' checked=checked name='contactCheck' value="false">
 <label for='no'>no</label>
 <br>
 <button type='button' (click)='contactPrevious()'>Previous question</button>
@@ -175,9 +175,9 @@
 <div *ngIf="testedQuestions=='true'">
     <label for='testedPositive'>Have you been tested for Covid-19 in the past 14 days?</label>
     <br>
-<input type='radio'  [(ngModel)]='tested' name='tested' value='true'>  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='tested' checked=checked name='tested' value='false'> 
+<input type='radio'  [(ngModel)]='tested' name='tested' value='true'>
+<label for='yes'>yes</label>
+<input type='radio'  [(ngModel)]='tested' checked=checked name='tested' value='false'>
 <label for='no'>no</label>
 <br>
 <button *ngIf="previous3=='true'" type='button' (click)='havePrevious3()'>Previous question</button>
@@ -187,9 +187,9 @@
 <div *ngIf="testedQuestionsResult=='true'">
     <label for='testedQuestionResults'>What were the the results of this test?</label>
     <br>
-<input type='radio'  [(ngModel)]='testedPositive' name='tested' value='true'>  
-<label for='yes'>positive</label>              
-<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='tested' value='false'> 
+<input type='radio'  [(ngModel)]='testedPositive' name='tested' value='true'>
+<label for='yes'>positive</label>
+<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='tested' value='false'>
 <label for='no'>negative</label>
 <br>
 <button type='button' (click)='testedResultSubmit()'>Select answer</button>
@@ -198,24 +198,19 @@
 
 <div *ngIf="lastPositiveTest=='true'">
     Please enter the date of your last positive COVID-19 test or diagnosis:
-    <input type='date' [(ngModel)]='lastTest'> 
+    <input type='date' [(ngModel)]='lastTest'>
     <button type='button' (click)='formSubmitFun()'>Submit</button>
-    <br> 
+    <br>
     <button *ngIf="previous1=='true'" (click)='datePrevious1()'>Previous question</button>
-    <button *ngIf="previous2=='true'" (click)='datePrevious2()'>Previous question</button>  
-   
-    
+    <button *ngIf="previous2=='true'" (click)='datePrevious2()'>Previous question</button>
+
+
 </div>
 
 </div>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> Sprint1
 <div><button (click)="logout()">Don't wanna answer? Logout</button></div>
 <div *ngIf="inputError" class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Please enter a date within the last 14 days</strong> 
+    <strong>Please enter a date within the last 14 days</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 </div>
