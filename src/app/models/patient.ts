@@ -11,8 +11,8 @@ export class Patient {
     public dob: Date;
     public height: number ;
     public weight: number;
-    public bloodType: Object;
-    public sex: Object;
+    public bloodType: Bloodtype;
+    public sex: Sex;
     public vaccinations?: object[];
     public allergies?: object[];
 
@@ -22,8 +22,8 @@ export class Patient {
         dob: Date, 
         height: number, 
         weight: number, 
-        bloodType: Object , 
-        sex: Object, 
+        bloodType: Bloodtype , 
+        sex: Sex, 
         vaccinations?: object[], 
         allergies?: object[]
         ){

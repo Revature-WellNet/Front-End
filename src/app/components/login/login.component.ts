@@ -36,10 +36,10 @@ export class LoginComponent implements OnInit {
           this.userService.getUser(userData.id).subscribe((data) => {
             this.cvs.getFormServByString(userData.id).subscribe((formData) => {
                 localStorage.setItem('covidInfo', JSON.stringify(formData));
-                if (data.role.role == 'nurse') {
+                if (data.role.roleId == 1) {
                   // nurseUI()
                   this.router.navigate(['nurse']);
-                } else if (data.role.role == 'doctor') {
+                } else if (data.role.roleId == 2) {
                   console.log("should route to doctor");
                   this.router.navigate(['doctor']);
                 } else {

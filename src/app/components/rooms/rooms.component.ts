@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Area } from 'src/app/models/rooms/area';
 import { Room } from 'src/app/models/rooms/room';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { PatientService } from 'src/app/services/patient.service';
+import { Patient } from 'src/app/models/patient';
 
 @Component({
   selector: 'app-rooms',
@@ -14,9 +16,13 @@ export class RoomsComponent implements OnInit {
   areas:Area[] = [];
   rooms:Room[] = [];
   log:string = "";
+  patient: Patient = this.patientService.patient; 
 
   waitingroom:string[] = ["Mario Vidal", "Bob White", "Iron Man"];
-  constructor() { }
+  
+  constructor( private patientService: PatientService ) { 
+
+  }
 
   ngOnInit(): void {
     this.getAllAreas();
@@ -41,6 +47,11 @@ export class RoomsComponent implements OnInit {
       }
     }
   }
+
+  /*
+  get all diagnForms where status = false;
+  check rooms and populate UI
+  */
 
   getRooms(){
     this.rooms[0] = new Room(1, 1, this.areas[0] , 2, ["Patient Name"], false);
@@ -82,11 +93,9 @@ export class RoomsComponent implements OnInit {
         event.currentIndex
       );
 
-      
-
       let newindex:number = Number(newRoom) - 1;
       let previndex:number = Number(event.previousContainer.element.nativeElement.dataset.rn) - 1;
-      if(previndex >  0){
+      if(previndex > 0){
         this.rooms[previndex].roomStatus = 1; 
       }
       if(newindex > 0){
@@ -95,9 +104,6 @@ export class RoomsComponent implements OnInit {
       }else{
         this.log = "Patient returned to waiting room";
       }
-      
-      
-
     }
   }
 }

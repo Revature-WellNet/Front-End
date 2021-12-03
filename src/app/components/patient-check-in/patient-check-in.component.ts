@@ -48,16 +48,14 @@ export class PatientCheckInComponent implements OnInit {
     allergies : Allergy[],
     vaccinations : Vaccination[]){
 
-    let height : number ;
+    
     if(feet){
-      height = (feet*12);
+      this.height = (feet*12);
       if(inches){
-        height += inches;
+        this.height += inches;
       }
-    }else{
-      height = null;
     }
-    if(sex && firstName && lastName && dob){
+    if(sex && firstName && lastName && dob && bloodtype && this.height && weight){
       this.patientService.getSex(sex).subscribe((responseSex : any) => {
         if(bloodtype){
           this.patientService.getBloodType(bloodtype).subscribe((responseBloodType: any) => {
@@ -70,7 +68,7 @@ export class PatientCheckInComponent implements OnInit {
           let bloodObj = responseBloodType;
           let sexObj = responseSex;
           
-          let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
+          let patient : Patient = new Patient(0, firstName, lastName, dob, this.height, weight, bloodObj, sexObj, vaccinations, allergies);
 
           console.log(patient);
           
@@ -79,31 +77,17 @@ export class PatientCheckInComponent implements OnInit {
           this.patientService.createPatient(patient);
         
           })
-        }else{
-
-          let bloodObj = null;
-          let sexObj = responseSex;
-
-          let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
-          console.log(patient)
-          this.patientService.createPatient(patient);
-          
-
         }
       })
     }else{
-      alert("First and last name, dob and sex is required to add a new patient to Wellnet.")
+      alert("First and last name, dob, bloodtype, and sex is required to add a new patient to Wellnet.")
     }
   }
 
   generateChecklists(){
 
     this.patientService.getAllergies().subscribe((response: any) => {
-<<<<<<< HEAD
-=======
-    
->>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
-
+  
       let allergies : Allergy[] = response;
         for(let a of allergies){
 
@@ -122,8 +106,6 @@ export class PatientCheckInComponent implements OnInit {
           document.getElementById("allergyanchor")!.appendChild(label);
           document.getElementById("allergyanchor")!.appendChild(checkbox);
 
-<<<<<<< HEAD
-=======
           var self = this;
           checkbox.addEventListener('change', function() {
 
@@ -147,7 +129,6 @@ export class PatientCheckInComponent implements OnInit {
 
             }
           });
->>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
 
         }
 
@@ -156,12 +137,7 @@ export class PatientCheckInComponent implements OnInit {
 
 
     this.patientService.getVaccinations().subscribe((response: any) => {
-<<<<<<< HEAD
-=======
-      
-
->>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
-
+     
       let vaccinations : Vaccination[] = response;
         for(let v of vaccinations){
 
@@ -180,8 +156,6 @@ export class PatientCheckInComponent implements OnInit {
           document.getElementById("vaccinationanchor")!.appendChild(label);
           document.getElementById("vaccinationanchor")!.appendChild(checkbox);
 
-<<<<<<< HEAD
-=======
           var self = this;
           checkbox.addEventListener('change', function() {
 
@@ -202,7 +176,6 @@ export class PatientCheckInComponent implements OnInit {
             }
           });
           
->>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
 
         }
 
@@ -239,10 +212,6 @@ export class PatientCheckInComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
-  addVaccination(){
-
-=======
   addVaccination(vaccination : string){
 
     this.patientService.getVaccinations().subscribe((response: any) => {
@@ -255,7 +224,6 @@ export class PatientCheckInComponent implements OnInit {
       }
   
       })
->>>>>>> ec27740d47453e7867e32ea086810ae92f3fd498
   }
 
 }
