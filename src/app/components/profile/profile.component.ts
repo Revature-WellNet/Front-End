@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,58 +14,61 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent implements OnInit {
 
 
-  constructor(private userService : UserService, private router : Router) { }
+  constructor(private userService: UserService, private firebaseService:FirebaseService, private router: Router) { }
 
 
   ngOnInit(): void {
-   this.generateProfile();
+    if (!this.firebaseService.autoSignIn())
+      this.router.navigate(['/login']);
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.generateProfile();
   }
 
-  generateProfile(){
- 
-  
+  generateProfile() {
+
+
     //this.loginService.getUserId().subscribe((userId : string){
-      const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
 
-      this.userService.getUser(userData.id).subscribe((response : User) => {  
-        
-        let firstName = document.createElement("span");
-        let lastName = document.createElement("span");
-        let role = document.createElement("span");
-        let email = document.createElement("span");
-        firstName.innerHTML = response.firstname
-        lastName.innerHTML = response.lastname
-        role.innerHTML = response.role.role
-        email.innerHTML = response.email
+    this.userService.getUser(userData.id).subscribe((response: User) => {
 
-        document.getElementById("firstName")!.appendChild(firstName);
-        document.getElementById("lastName")!.appendChild(lastName);
-        document.getElementById("role")!.appendChild(role);
-        document.getElementById("email")!.appendChild(email);
-        
-      })
-   // })
+      let firstName = document.createElement("span");
+      let lastName = document.createElement("span");
+      let role = document.createElement("span");
+      let email = document.createElement("span");
+      firstName.innerHTML = response.firstname
+      lastName.innerHTML = response.lastname
+      role.innerHTML = response.role.role
+      email.innerHTML = response.email
+
+      document.getElementById("firstName")!.appendChild(firstName);
+      document.getElementById("lastName")!.appendChild(lastName);
+      document.getElementById("role")!.appendChild(role);
+      document.getElementById("email")!.appendChild(email);
+
+    })
+    // })
   }
 
-  navigateHome(){
+  navigateHome() {
 
- 
 
-    
-  //  this.loginService.getUserId().subscribe((userId : string) => {
+
+
+    //  this.loginService.getUserId().subscribe((userId : string) => {
 
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    this.userService.getUser(userData.id).subscribe((response : User) => {
+    this.userService.getUser(userData.id).subscribe((response: User) => {
 
 
-          if(response.role.role.toLowerCase() === "doctor"){
-            this.router.navigate(["/doctor"]);
-          }else{
-            this.router.navigate(["/nurse"]);
-          }
-        })
-   // })
+      if (response.role.role.toLowerCase() === "doctor") {
+        this.router.navigate(["/doctor"]);
+      } else {
+        this.router.navigate(["/nurse"]);
+      }
+    })
+    // })
 
   }
 

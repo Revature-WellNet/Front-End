@@ -123,6 +123,7 @@ export class FirebaseService {
           email = '';
         }
         const refresh = userin.refreshToken;
+        console.log("in login(): refresh == "+refresh);
         const uid = userin.uid;
         this.authenticatedUser(email, uid, role, tok, refresh, exp);
       }
@@ -153,6 +154,7 @@ export class FirebaseService {
         email = '';
       }
       const refresh = userin.refreshToken;
+      console.log("in refreshToken(): refresh == "+refresh);
       const uid = userin.uid;
       this.authenticatedUser(email, uid, role, tok, refresh, exp);
     }
@@ -200,6 +202,7 @@ export class FirebaseService {
 
   // either signout or refresh token
   autoSignOut(expirDuration: number) {
+    console.log('expirDuration: ' + expirDuration);
     this.tokenExpireTime = setTimeout(() => {
       var answer = confirm(
         'Your token is about to expire. Press cancel to refresh it'
@@ -223,7 +226,7 @@ export class FirebaseService {
   ) {
     // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     let expirationDate = new Date(expiresIn);
-    //expirationDate.setHours(expirationDate.getHours()+1)
+    // expirationDate.setHours(expirationDate.getHours()+1)
    
     const userInfo = new Userinfo(
       email,
@@ -235,10 +238,17 @@ export class FirebaseService {
     );
     // console.log('User Info>', userInfo);
     this.userInfo.next(userInfo);
+// <<<<<<< Updated upstream
     const expirDurationtimer = new Date(expirationDate).getTime() - new Date().getTime();
         console.log("Token expire in :", expirDurationtimer)
     this.autoSignOut(expirDurationtimer);
+// =======
+    console.log('expirationDate: '+ new Date(expirationDate.getTime()));
+    this.autoSignOut(expirationDate.getTime());
+// >>>>>>> Stashed changes
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
+    localStorage.setItem('refreshToken', refreshToken);
+    // console.log('refreshToken in authenticatedUser: '+refreshToken);
   }
 
   // For testing purpuse

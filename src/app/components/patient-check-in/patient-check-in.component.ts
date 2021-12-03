@@ -5,6 +5,9 @@ import { Patient } from 'src/app/models/patient'
 import { Sex } from 'src/app/models/sex';
 import { Vaccination } from 'src/app/models/vaccination';
 import { PatientService } from 'src/app/services/patient.service';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-patient-check-in',
@@ -25,11 +28,13 @@ export class PatientCheckInComponent implements OnInit {
   public vaccinations : Vaccination[] = [];
   public patient! : Patient;
 
-  constructor(private patientService: PatientService) { }
+  constructor(private patientService: PatientService, private firebaseService:FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
-    this.generateChecklists();
-
+    if(!this.firebaseService.autoSignIn())
+      this.router.navigate(['/login']);  
+  const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+  this.generateChecklists();
   }
 
   ngOnChanges(): void{

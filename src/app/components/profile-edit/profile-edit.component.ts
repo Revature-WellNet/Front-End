@@ -17,73 +17,74 @@ export class ProfileEditComponent implements OnInit {
   @Input() lastName!: string;
   @Input() role!: string;
   @Input() email!: string;
- 
 
-  constructor(private userService : UserService, private emailValidator : EmailValidationService, private router : Router, private firebaseService : FirebaseService) { }
+
+  constructor(private userService: UserService, private emailValidator: EmailValidationService, private router: Router, private firebaseService: FirebaseService) { }
 
 
   ngOnInit(): void {
-
+    if (!this.firebaseService.autoSignIn())
+      this.router.navigate(['/login']);
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     console.log("First Name : " + this.firstName);
-
   }
 
-  submit(fName: any, lName: any){
-    
+  submit(fName: any, lName: any) {
+
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
 
-    this.userService.getUser(userData.id).subscribe((user : User) => {
+    this.userService.getUser(userData.id).subscribe((user: User) => {
 
-    //   if(email){
-    //     if(!this.emailValidator.validateEmailFormat(email)){
-    //       alert("Email format not accepted. Please try again.");
-    //       return;
-    
-    //     }else{
-    //       user.email = email;
-    //     }
-    // }
+      //   if(email){
+      //     if(!this.emailValidator.validateEmailFormat(email)){
+      //       alert("Email format not accepted. Please try again.");
+      //       return;
 
-    if(fName){
-      user.firstname = fName;
-      console.log("being called?");
-    }
-    if(lName){
-      user.lastname = lName;
-    }
-    if(document.querySelector('input[name="role"]:checked')){
-    let newRole =  (<HTMLInputElement>document.querySelector('input[name="role"]:checked'))!.value
-      let userRole = new Role(888, newRole);
-      console.log(userRole)
-      if(userRole.role == "doctor"){
-        userRole.roleId = 2;
-      }else{
-        userRole.roleId = 1;
+      //     }else{
+      //       user.email = email;
+      //     }
+      // }
+
+      if (fName) {
+        user.firstname = fName;
+        console.log("being called?");
       }
-      user.role = userRole;
-      console.log("being called in query selector");
-    }
-
-    console.log("called before setting email");
-    this.firebaseService.setEmail(user.email).then(()=>{
-      this.userService.createOrUpdateUser(user);
-
-      if(user.role.role.toLowerCase() === "doctor"){
-        this.router.navigate(["/doctor"]);
-      }else{
-        this.router.navigate(["/nurse"]);
+      if (lName) {
+        user.lastname = lName;
       }
-    }).catch((error) => {
-      alert(error);
-    });
+      if (document.querySelector('input[name="role"]:checked')) {
+        let newRole = (<HTMLInputElement>document.querySelector('input[name="role"]:checked'))!.value
+        let userRole = new Role(888, newRole);
+        console.log(userRole)
+        if (userRole.role == "doctor") {
+          userRole.roleId = 2;
+        } else {
+          userRole.roleId = 1;
+        }
+        user.role = userRole;
+        console.log("being called in query selector");
+      }
 
-    
+      console.log("called before setting email");
+      this.firebaseService.setEmail(user.email).then(() => {
+        this.userService.createOrUpdateUser(user);
+
+        if (user.role.role.toLowerCase() === "doctor") {
+          this.router.navigate(["/doctor"]);
+        } else {
+          this.router.navigate(["/nurse"]);
+        }
+      }).catch((error) => {
+        alert(error);
+      });
+
+
     })
 
-        
 
-        
+
+
 
 
 
