@@ -1,7 +1,16 @@
+import { TestBed } from '@angular/core/testing';
 import { Bloodtype } from './bloodtype';
 
 describe('Bloodtype', () => {
-  it('should create an instance', () => {
-    expect(new Bloodtype()).toBeTruthy();
+
+  let bloodType: Bloodtype;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    bloodType = TestBed.inject(Bloodtype);
+  });
+
+  it('should be created', () => {
+    expect(bloodType).toBeTruthy();
   });
 });
