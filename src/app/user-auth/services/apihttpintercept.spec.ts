@@ -1,7 +1,16 @@
 import { Apihttpintercept } from './apihttpintercept';
 
+import { TestBed } from '@angular/core/testing';
+
 describe('Apihttpintercept', () => {
-  it('should create an instance', () => {
-    expect(new Apihttpintercept()).toBeTruthy();
+  let intercept: Apihttpintercept;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    intercept = TestBed.inject(Apihttpintercept);
+  });
+
+  it('should be created', () => {
+    expect(intercept).toBeTruthy();
   });
 });
