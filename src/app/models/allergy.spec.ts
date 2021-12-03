@@ -1,7 +1,16 @@
+import { TestBed } from '@angular/core/testing';
 import { Allergy } from './allergy';
 
 describe('Allergy', () => {
-  it('should create an instance', () => {
-    expect(new Allergy()).toBeTruthy();
+
+  let allergy: Allergy;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    allergy = TestBed.inject(Allergy);
+  });
+
+  it('should be created', () => {
+    expect(allergy).toBeTruthy();
   });
 });

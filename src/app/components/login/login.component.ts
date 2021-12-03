@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['registration']);
   }
 
+  forgetPassword(){
+    this.router.navigate(['forget-password']);
+  }
+
   onSignin(email: string, password: string) {
     // console.log('sign in');
     this.firebaseService
@@ -56,9 +60,7 @@ export class LoginComponent implements OnInit {
   logout() {
     this.firebaseService.logout();
   }
-  forgetPassword(){
-  
-  }
+
 
   //dummy example of sending an http request requiring an authorization header
   getUser() {
