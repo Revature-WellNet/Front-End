@@ -25,8 +25,7 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit(): void {
 
     console.log("First Name : " + this.firstName);
-    if(!this.firebaseService.autoSignIn())
-      this.router.navigate(['/login']); 
+
   }
 
   submit(fName: any, lName: any){

@@ -1,18 +1,12 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { Covid19VerificationService } from 'src/app/services/covid19-verification.service';
 import { FirebaseService } from './firebase.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthGuardGuard implements CanActivate {
   constructor(private service:FirebaseService, private router:Router, private cvService : Covid19VerificationService){}
@@ -45,4 +39,5 @@ export class AuthGuardGuard implements CanActivate {
   
     return true;
   }
+  
 }

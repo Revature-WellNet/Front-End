@@ -55,7 +55,7 @@ export class Apihttpintercept implements HttpInterceptor {
                             .set('Access-Control-Allow-Headers', 'Content-Type')
 
                     });
-                //    console.log(modifiedReq)
+                    
                     return next.handle(modifiedReq)
                 }
             })
