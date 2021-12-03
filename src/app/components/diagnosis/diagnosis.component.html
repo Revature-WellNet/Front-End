@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<br>
+<br />
 <div class="container">
   <div>
     <table>
@@ -30,15 +30,23 @@
         </tr>
         <tr>
           <td class="col-sm-6 patient-info">Allergies</td>
-          <td class="col-sm-6 patient-info">{{ patient.allergies }}</td>
+          <td class="col-sm-6 patient-info">
+            <ul *ngFor="let allergy of patient.patientAllergies">
+              <li>{{ allergy.allergy }}</li>
+            </ul>
+          </td>
         </tr>
         <tr>
           <td class="col-sm-6 patient-info">Vaccinations</td>
-          <td class="col-sm-6 patient-info">{{ patient.vaccinations }}</td>
+          <td class="col-sm-6 patient-info">
+            <ul *ngFor="let vax of patient.patientVaccinations">
+              <li>{{ vax.vaccination }}</li>
+            </ul>
+          </td>
         </tr>
       </tbody>
     </table>
-    <br>
+    <br />
   </div>
   <div class="patientDiagnosis">
     <form

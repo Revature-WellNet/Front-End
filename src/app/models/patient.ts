@@ -4,7 +4,7 @@ import { Sex } from "./sex";
 import { Vaccination } from "./vaccination";
 
 export class Patient {
-  
+
     public patientId!: number;
     public firstName: string;
     public lastName: string;
@@ -13,19 +13,19 @@ export class Patient {
     public weight: number;
     public bloodType: Bloodtype;
     public sex: Sex;
-    public vaccinations?: object[];
-    public allergies?: object[];
+    public patientVaccinations?: Vaccination[];
+    public patientAllergies?: Allergy[];
 
-    constructor(patientId: number, 
+    constructor(patientId: number,
         firstName: string,
-        lastName: string, 
-        dob: Date, 
-        height: number, 
-        weight: number, 
-        bloodType: Bloodtype , 
-        sex: Sex, 
-        vaccinations?: object[], 
-        allergies?: object[]
+        lastName: string,
+        dob: Date,
+        height: number,
+        weight: number,
+        bloodType: Bloodtype ,
+        sex: Sex,
+        vaccinations?:Vaccination[],
+        allergies?: Allergy[]
         ){
             this.patientId = patientId;
             this.firstName = firstName;
@@ -35,11 +35,11 @@ export class Patient {
             this.weight = weight;
             this. bloodType = bloodType;
             this. sex = sex;
-            this.vaccinations = vaccinations;
-            this.allergies = allergies;
+            this.patientVaccinations = vaccinations;
+            this.patientAllergies = allergies;
         }
 
-  
+
 
 
 

@@ -34,6 +34,7 @@ export class DiagnosisComponent implements OnInit {
       this.diagnosis = this.diagForm.diagnosis;
       this.symptoms = this.diagForm.symptoms;
     }
+    console.log(this.patient);
   }
 
   ngOnInit() {
