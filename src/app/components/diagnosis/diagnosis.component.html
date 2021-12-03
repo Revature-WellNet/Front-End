@@ -1,42 +1,44 @@
+<app-navbar></app-navbar>
+<br>
 <div class="container">
- <h1>You are logged in as a {{ user.role.role }}</h1> 
-  <div class="patient-info">
+  <div>
     <table>
       <thead>
         <tr>
-          <th class="col-sm-6">
+          <th class="col-sm-6 patient-info">
             {{ patient.firstName }} {{ patient.lastName }}
           </th>
-          <th class="col-sm-6">{{ patient.dob }}</th>
+          <th class="col-sm-6 patient-info">DOB: {{ patient.dob }}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="col-sm-6">Sex</td>
-          <td class="col-sm-6">{{ patient.sex.sex }}</td>
+          <td class="col-sm-6 patient-info">Sex</td>
+          <td class="col-sm-6 patient-info">{{ patient.sex.sex }}</td>
         </tr>
         <tr>
-          <td class="col-sm-6">Height</td>
-          <td class="col-sm-6">{{ patient.height }} inches</td>
+          <td class="col-sm-6 patient-info">Height</td>
+          <td class="col-sm-6 patient-info">{{ patient.height }} inches</td>
         </tr>
         <tr>
-          <td class="col-sm-6">Weight</td>
-          <td class="col-sm-6">{{ patient.weight }} pounds</td>
+          <td class="col-sm-6 patient-info">Weight</td>
+          <td class="col-sm-6 patient-info">{{ patient.weight }} pounds</td>
         </tr>
         <tr>
-          <td class="col-sm-6">Blood Type</td>
-          <td class="col-sm-6">{{ patient.bloodType.type }}</td>
+          <td class="col-sm-6 patient-info">Blood Type</td>
+          <td class="col-sm-6 patient-info">{{ patient.bloodType.type }}</td>
         </tr>
         <tr>
-          <td class="col-sm-6">Allergies</td>
-          <td class="col-sm-6">{{ patient.allergies }}</td>
+          <td class="col-sm-6 patient-info">Allergies</td>
+          <td class="col-sm-6 patient-info">{{ patient.allergies }}</td>
         </tr>
         <tr>
-          <td class="col-sm-6">Vaccinations</td>
-          <td class="col-sm-6">{{ patient.vaccinations }}</td>
+          <td class="col-sm-6 patient-info">Vaccinations</td>
+          <td class="col-sm-6 patient-info">{{ patient.vaccinations }}</td>
         </tr>
       </tbody>
     </table>
+    <br>
   </div>
   <div class="patientDiagnosis">
     <form
@@ -95,7 +97,7 @@
         <button
           *ngSwitchCase="'nurse'"
           type="submit"
-          class="btn btn-success submit-button"
+          class="btn Button2"
           [disabled]="!formDemo.valid"
         >
           Submit Diagnosis
@@ -103,7 +105,7 @@
         <button
           *ngSwitchCase="'doctor'"
           type="submit"
-          class="btn btn-success submit-button"
+          class="btn Button2"
           [disabled]="!formDemo.valid"
         >
           Submit Treatment

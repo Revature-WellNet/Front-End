@@ -23,7 +23,7 @@
         <div class="form-group">
             <!-- <label for="patient-search">Search for Patients</label> -->
             <input type="text" class="form-control" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
-            <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>           
+            <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>
         </div>
 
         <label for= "dob">Date of Birth:</label>
@@ -47,7 +47,7 @@
     <table>
         <thead>
             <tr>
-                <th></th>
+                <th>Diagnose Patient</th>
                 <th>Patient First Name</th>
                 <th>Patient Last Name</th>
                 <th>Date of Birth</th>
@@ -63,7 +63,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let patient of patientsArray">
-              <td><app-button text="Perform Diagnosis" (btnClick)="diagnosePatient(patient)"></app-button></td>
+              <td><app-button (btnClick)="diagnosePatient(patient)"></app-button></td>
                 <td>{{patient.firstName}}</td>
                 <td>{{patient.lastName}}</td>
                 <td>{{patient.dob}}</td>

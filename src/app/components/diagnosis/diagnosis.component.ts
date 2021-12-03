@@ -14,9 +14,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 
 export class DiagnosisComponent implements OnInit {
-  diagnosis: string = ' ';
-  symptoms: string = ' ';
-  treatment: string = ' ';
+  diagnosis: string = '';
+  symptoms: string = '';
+  treatment: string = '';
   diagForm!: DiagnosisForm;
   room!: Room; // = this.patientService.room
   public user!: User;
@@ -97,8 +97,8 @@ export class DiagnosisComponent implements OnInit {
         this.diagForm = data[data.length-1];
         this.symptoms = this.diagForm.symptoms;
         this.diagnosis = this.diagForm.diagnosis;
-        console.log("in method with: ",data[data.length-1]); 
-        // Logic only retrieves the most recent diagnosis form for a patient. 
+        console.log("in method with: ",data[data.length-1]);
+        // Logic only retrieves the most recent diagnosis form for a patient.
         // Logically this should be okay but practically will likely cause issues if patients just kind of leave without being given a treatement by a doctor
       },
       (error) => {
