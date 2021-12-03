@@ -34,7 +34,7 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     console.log("calling auto sign in from doctor");
     if(!this.firebaseService.autoSignIn())
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.role == "nurse")
       this.router.navigate(['nurse']);
