@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
           this.userService.getUser(userData.id).subscribe((data) => {
             this.cvs.getFormServByString(userData.id).subscribe((formData) => {
                 localStorage.setItem('covidInfo', JSON.stringify(formData));
+                console.log(data)
                 if (data.role.role == 'nurse') {
                   // nurseUI()
                   this.router.navigate(['nurse']);

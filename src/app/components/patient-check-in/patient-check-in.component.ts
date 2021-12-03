@@ -95,7 +95,7 @@ export class PatientCheckInComponent implements OnInit {
     }
   }
 
-  generateChecklists(){
+generateChecklists(){
 
     this.patientService.getAllergies().subscribe((response: any) => {
     
