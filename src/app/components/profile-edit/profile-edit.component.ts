@@ -4,6 +4,7 @@ import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { EmailValidationService } from 'src/app/services/email-validation.service';
 import { UserService } from 'src/app/services/user.service';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -18,7 +19,7 @@ export class ProfileEditComponent implements OnInit {
   @Input() email!: string;
  
 
-  constructor(private userService : UserService, private emailValidator : EmailValidationService, private router : Router) { }
+  constructor(private userService : UserService, private emailValidator : EmailValidationService, private router : Router, private firebaseService : FirebaseService) { }
 
 
   ngOnInit(): void {
@@ -27,25 +28,26 @@ export class ProfileEditComponent implements OnInit {
 
   }
 
-  submit(fName: any, lName: any, email : any){
+  submit(fName: any, lName: any){
     
-//need to add user id, but that comes from login service
-const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+
 
     this.userService.getUser(userData.id).subscribe((user : User) => {
 
-      if(email){
-        if(!this.emailValidator.validateEmailFormat(email)){
-          alert("Email format not accepted. Please try again.");
-          return;
+    //   if(email){
+    //     if(!this.emailValidator.validateEmailFormat(email)){
+    //       alert("Email format not accepted. Please try again.");
+    //       return;
     
-        }else{
-          user.email = email;
-        }
-    }
+    //     }else{
+    //       user.email = email;
+    //     }
+    // }
 
     if(fName){
       user.firstname = fName;
+      console.log("being called?");
     }
     if(lName){
       user.lastname = lName;
@@ -60,16 +62,22 @@ const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
         userRole.roleId = 1;
       }
       user.role = userRole;
+      console.log("being called in query selector");
     }
 
-    console.log(user);
-    this.userService.createOrUpdateUser(user);
+    console.log("called before setting email");
+    this.firebaseService.setEmail(user.email).then(()=>{
+      this.userService.createOrUpdateUser(user);
 
-    if(user.role.role.toLowerCase() === "doctor"){
-      this.router.navigate(["/doctor"]);
-    }else{
-      this.router.navigate(["/nurse"]);
-    }
+      if(user.role.role.toLowerCase() === "doctor"){
+        this.router.navigate(["/doctor"]);
+      }else{
+        this.router.navigate(["/nurse"]);
+      }
+    }).catch((error) => {
+      alert(error);
+    });
+
     
     })
 

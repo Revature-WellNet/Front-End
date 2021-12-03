@@ -1,5 +1,7 @@
 
-    <div class='form-check container'>
+ 
+     <div class='background'>
+      <div class='form-check container covidCard'>  
 <div *ngIf="testedPositiveQuestions=='true'">
     <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
     <br>
@@ -13,7 +15,7 @@
 <label for='no'>no</label>
 </div>
 <br>
-<button type='button' class='Button2' (click)='testedPositiveSubmit()'>Next question</button>
+<button type='button' class='Button2' class='Button2' (click)='testedPositiveSubmit()'>Next question</button>
 </div>
 
 <div *ngIf="diagnosedQuestions=='true'">
@@ -21,13 +23,19 @@
         provider (for example, a doctor, nurse, pharmacist, or other) in the
         past 14 days?</label>
     <br>
-<input type='radio' class=radioButton  [(ngModel)]='diagnosedResults' name='diagnosedResults' value="true">  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value="false"> 
-<label for='no'>no</label>
+    <br>
+    <div>
+        <input type='radio'  [(ngModel)]='diagnosedResults' name='diagnosedResults' value='true'>  
+        <label for='yes'>yes</label>
+        </div>
+        <div>              
+        <input type='radio'   [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value='false'> 
+        <label for='no'>no</label>
+        </div>
+        <br>
 <br>
-<button type='button' (click)='diagnosedPrevious()'>Previous question</button>
-<button type='button' (click)='diagnosedSubmit()'>Next question</button>
+<button type='button' class='Button2' class='Button2' (click)='diagnosedPrevious()'>Previous question</button>
+<button type='button' class='Button2' class='Button2' (click)='diagnosedSubmit()'>Next question</button>
 
 </div>
 
@@ -35,12 +43,12 @@
 <div>
     Have you experienced any of the following symptoms in the past 24 hours?
 </div>
-
-<label for=feverChills>Fever or Chills</label>
+<br>
+<label for=feverChills>Fever or Chills </label>
 <label>
     Yes
     <input for="feverChills" [(ngModel)]="feverChills" type="radio" value="true"
-        name="feverChills">
+        name="feverChills" class="yesButton">
 </label>
 <label>
     No
@@ -49,7 +57,7 @@
 </label>
 <br>
 
-<label for=cough>Cough</label>
+<label for=cough>Cough </label>
 <label>
     Yes
     <input for="cough" [(ngModel)]="cough" type="radio" value="true"
@@ -62,7 +70,7 @@
 </label>
 <br>
 
-<label for=shortnessOfBreath>Shortness of breathe or difficulty breathing</label>
+<label for=shortnessOfBreath>Shortness of breathe or difficulty breathing </label>
 <label>
     Yes
     <input for="shortnessOfBreath" [(ngModel)]="shortnessOfBreath" type="radio" value="true"
@@ -75,7 +83,7 @@
 </label>
 <br>
 
-<label for=fatigue>Fatigue</label>
+<label for=fatigue>Fatigue </label>
 <label>
     Yes
     <input for="fatigue" [(ngModel)]="fatigue" type="radio" value="true"
@@ -88,7 +96,7 @@
 </label>
 <br>
 
-<label for=muscleOrBodyAches>Muscle or body aches</label>
+<label for=muscleOrBodyAches>Muscle or body aches </label>
 <label>
     Yes
     <input for="muscleOrBodyAches" [(ngModel)]="muscleOrBodyAches" type="radio" value="true"
@@ -101,7 +109,7 @@
 </label>
 <br>
 
-<label for=lossOfTasteSmell>New loss of taste or smell</label>
+<label for=lossOfTasteSmell>New loss of taste or smell </label>
 <label>
     Yes
     <input for="lossOfTasteSmell" [(ngModel)]="lossOfTasteSmell" type="radio" value="true"
@@ -114,7 +122,7 @@
 </label>
 <br>
 
-<label for=soreThroat>Sore throat</label>
+<label for=soreThroat>Sore throat </label>
 <label>
     Yes
     <input for="soreThroat" [(ngModel)]="soreThroat" type="radio" value="true"
@@ -127,7 +135,7 @@
 </label>
 <br>
 
-<label for=nauseaVomiting>Nausea</label>
+<label for=nauseaVomiting>Nausea </label>
 <label>
     Yes
     <input for="nauseaVomiting" [(ngModel)]="nauseaVomiting" type="radio" value="true"
@@ -140,7 +148,7 @@
 </label>
 <br>
 
-<label for=diarrhea>Diarrhea</label>
+<label for=diarrhea>Diarrhea </label>
 <label>
     Yes
     <input for="diarrhea" [(ngModel)]="diarrhea" type="radio" value="true"
@@ -152,8 +160,9 @@
         name="diarrhea" checked=checked>
 </label>
 <br>
-<button type='button' (click)='symptomPrevious()'>Previous question</button>
-<button type='button' (click)='symptomSubmit()'>Next question</button>
+<br>
+<button type='button' class='Button2' (click)='symptomPrevious()'>Previous question</button>
+<button type='button' class='Button2' (click)='symptomSubmit()'>Next question</button>
 
 </div>
 
@@ -166,8 +175,8 @@
 <input type='radio'  [(ngModel)]='contactCheck' checked=checked name='contactCheck' value="false"> 
 <label for='no'>no</label>
 <br>
-<button type='button' (click)='contactPrevious()'>Previous question</button>
-<button type='button' (click)='contactSubmit()'>Submit</button>
+<button type='button' class='Button2' (click)='contactPrevious()'>Previous question</button>
+<button type='button' class='Button2' (click)='contactSubmit()'>Submit</button>
 
 </div>
 
@@ -180,8 +189,8 @@
 <input type='radio'  [(ngModel)]='tested' checked=checked name='tested' value='false'> 
 <label for='no'>no</label>
 <br>
-<button *ngIf="previous3=='true'" type='button' (click)='havePrevious3()'>Previous question</button>
-<button type='button' (click)='testedSubmit()'>Select answer</button>
+<button *ngIf="previous3=='true'" type='button' class='Button2' (click)='havePrevious3()'>Previous question</button>
+<button type='button' class='Button2' (click)='testedSubmit()'>Select answer</button>
 </div>
 
 <div *ngIf="testedQuestionsResult=='true'">
@@ -192,14 +201,14 @@
 <input type='radio'  [(ngModel)]='testedPositive' checked=checked name='tested' value='false'> 
 <label for='no'>negative</label>
 <br>
-<button type='button' (click)='testedResultSubmit()'>Select answer</button>
-<button type='button' (click)='testedQuestionsResultPrevious()'>Previous question</button>
+<button type='button' class='Button2' (click)='testedResultSubmit()'>Select answer</button>
+<button type='button' class='Button2' (click)='testedQuestionsResultPrevious()'>Previous question</button>
 </div>
 
 <div *ngIf="lastPositiveTest=='true'">
     Please enter the date of your last positive COVID-19 test or diagnosis:
     <input type='date' [(ngModel)]='lastTest'> 
-    <button type='button' (click)='formSubmitFun()'>Submit</button>
+    <button type='button' class='Button2' (click)='formSubmitFun()'>Submit</button>
     <br> 
     <button *ngIf="previous1=='true'" (click)='datePrevious1()'>Previous question</button>
     <button *ngIf="previous2=='true'" (click)='datePrevious2()'>Previous question</button>  
@@ -208,7 +217,14 @@
 </div>
 
 </div>
+
+
+<div><button class='Button3' (click)="logout()">Logout</button></div>
 <div *ngIf="inputError" class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Please enter a date within the last 14 days</strong> 
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
+
+</div>
+
+</div>
+

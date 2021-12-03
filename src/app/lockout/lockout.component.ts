@@ -1,5 +1,6 @@
 import { getLocaleDateFormat, getLocaleTimeFormat, Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Covid19VerificationModel } from '../models/covid19-verification-model';
 import { Covid19VerificationService } from '../services/covid19-verification.service';
 import { FirebaseService } from '../user-auth/services/firebase.service';
@@ -16,13 +17,14 @@ export class LockoutComponent implements OnInit {
   public auth:any ='';
   public interval:any='';
   
-  constructor(private cvs:Covid19VerificationService, private firebaseService:FirebaseService) { 
-
+  constructor(private cvs:Covid19VerificationService, private firebaseService:FirebaseService, private router:Router) { 
   }
 
   ngOnInit(): void {
-    this.getTimestamp();
-    
+    if(this.firebaseService.autoSignIn())
+      this.getTimestamp();
+    else 
+      this.router.navigate(['/login']);  
   }
 
   ngAfterViewInit(): void{
@@ -37,7 +39,6 @@ export class LockoutComponent implements OnInit {
 
   setTime() {
     let countDownDate = this.time.getTime()+1209600000;
-    console.log(this.time)
     let now = new Date().getTime();
     let distance = countDownDate - now;
   
@@ -65,7 +66,6 @@ export class LockoutComponent implements OnInit {
     this.cvs.getFormServByString(userData.id).subscribe((data: Object) => {
       if(data!=null){
         let dateArray:any[] = Object.values(data);
-        console.log(data)
         let dateTime=dateArray[2];
         let date = new Date(dateTime);
         this.time = date;
