@@ -61,17 +61,25 @@ export class PatientService {
   }
 
   deleteAllergy(oldAllergies : string[]){
+    
     for(let i of oldAllergies){
-      this.http.delete<Object[]>('http://localhost:8081/wellnet/patient/allergies/'+i);
+      console.log(i)
+      this.http.delete('http://localhost:8081/wellnet/patient/allergies/'+i).subscribe((response : any) => {console.log(response)});
+      
       }
   }
 
-  deleteVaccine(oldVaccines :string[]){
+ deleteVaccine(oldVaccines :string[]){
 
     for(let i of oldVaccines){
-    this.http.delete<Object[]>('http://localhost:8081/wellnet/patient/vaccinations/'+i);
+      console.log(i)
+    this.http.delete('http://localhost:8081/wellnet/patient/vaccinations/'+i).subscribe((response : any) => {console.log(response)});
     }
   }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
 /*
 
 

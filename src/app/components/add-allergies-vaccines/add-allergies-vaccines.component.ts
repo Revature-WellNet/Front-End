@@ -15,17 +15,26 @@ export class AddAllergiesVaccinesComponent implements OnInit {
 
   public newAllergy!: string;
   public newVaccine!: string;
-  public oldAllergies!: string[];
-  public oldVaccines!: string[];
+  public oldAllergies: string[] = [];
+  public oldVaccines: string[] = [];
+  public currentAllergies: Allergy[] =[];
+  public currentVaccines: Vaccination[] =[];
+  
 
   ngOnInit(): void {
 
-    this.generateChecklists
+    this.generateChecklists();
   }
 
   submitAllergy(newAllergy : string) {
     
     this.patientService.createAllergy(newAllergy);
+
+    alert(newAllergy+" added!");
+
+    this.hideCheckboxes(document.getElementById("vaccinationanchor")!)
+     this.hideCheckboxes(document.getElementById("allergyanchor")!)
+     this.generateChecklists();
 
   }
 
@@ -33,16 +42,65 @@ export class AddAllergiesVaccinesComponent implements OnInit {
     
     this.patientService.createVaccination(newVaccine);
 
+    alert(newVaccine+" added!");
+
+    this.hideCheckboxes(document.getElementById("vaccinationanchor")!)
+     this.hideCheckboxes(document.getElementById("allergyanchor")!)
+     this.generateChecklists();
+
   }
 
-  deleteAllergy(oldAllergy : string[]){
+  async deleteAllergy(oldAllergy : string[]){
 
-    this.patientService.deleteAllergy(oldAllergy);
+    
+    // this.patientService.getAllergies().subscribe((response: any) => {
+    
+
+    //   let allergies : Allergy[] = response;
+    //   let length = allergies.length;
+
+      this.patientService.deleteAllergy(oldAllergy);
+      await this.patientService.delay(77);
+
+      this.patientService.getAllergies().subscribe((response: any) => {
+
+        let allergies : Allergy[] = response;
+
+        if(allergies.length < this.currentAllergies.length){
+
+          this.hideCheckboxes(document.getElementById("vaccinationanchor")!)
+          this.hideCheckboxes(document.getElementById("allergyanchor")!)
+          this.generateChecklists();
+
+          alert(oldAllergy+" deleted!");
+        }else if(oldAllergy.length>0){
+          alert("You can't delete an allergy currently attributed to a patient.");
+        }
+
+      })
+
+    // })
+    
   }
 
-  deleteVaccine(oldVaccine: string[]){
+  async deleteVaccine(oldVaccine: string[]){
+
 
     this.patientService.deleteVaccine(oldVaccine);
+    await this.patientService.delay(77);
+
+      this.patientService.getVaccinations().subscribe((response: any) => {
+        let vaccines : Vaccination[] = response;
+        if(vaccines.length < this.currentVaccines.length){
+          this.hideCheckboxes(document.getElementById("vaccinationanchor")!)
+          this.hideCheckboxes(document.getElementById("allergyanchor")!)
+          this.generateChecklists();
+          alert(oldVaccine+" deleted!");
+        }else if(oldVaccine.length>0){
+          alert("You can't delete a vaccination currently attributed to a patient.");
+        }
+      })
+    
   }
 
   goBack(){
@@ -55,6 +113,8 @@ export class AddAllergiesVaccinesComponent implements OnInit {
     
 
       let allergies : Allergy[] = response;
+      this.currentAllergies = response;
+
         for(let a of allergies){
           
           let label = document.createElement("label");
@@ -68,7 +128,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
           label.htmlFor = "checkbox";
 
           let breaker = document.createElement("p");
-          document.getElementById("vaccinationanchor")!.appendChild(breaker);
+          document.getElementById("allergyanchor")!.appendChild(breaker);
           document.getElementById("allergyanchor")!.appendChild(label);
           document.getElementById("allergyanchor")!.appendChild(checkbox);
 
@@ -82,8 +142,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
             } else {
                  
                   const index = self.oldAllergies.indexOf(a.allergy);
-
-                    self.oldAllergies.splice(index, 1);
+                  self.oldAllergies.splice(index, 1);
                     
              
 
@@ -101,6 +160,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
 
 
       let vaccinations : Vaccination[] = response;
+      this.currentVaccines = response;
         for(let v of vaccinations){
           
           let label = document.createElement("label");
@@ -141,6 +201,14 @@ export class AddAllergiesVaccinesComponent implements OnInit {
 
     
   }
+
+  hideCheckboxes(body : HTMLElement) {
+
+    while (body.firstChild) {
+      body.removeChild(body.firstChild);
+    }
+  }
+
 
 
 }
