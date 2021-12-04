@@ -22,7 +22,7 @@ export class NurseComponent implements OnInit {
   ngOnInit(): void {
     console.log("before pipe");
     if(!this.firebaseService.autoSignIn())
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);  
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.role == "doctor")
       this.router.navigate(['doctor']);
@@ -112,6 +112,10 @@ export class NurseComponent implements OnInit {
 
   logout(){
     this.firebaseService.logout();
+  }
+
+  routeToAdd(){
+    this.router.navigate(["addAllergiesVaccines"]);
   }
 
 }

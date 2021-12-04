@@ -52,6 +52,41 @@ export class PatientService {
     return this.http.get<Patient>(this.backendUrl+"?firstname="+firstName+"&lastname="+lastName+"&dob="+dob, httpOptions) as Observable<Patient>;
   }
 
+  createAllergy(allergy : string){
+
+    return this.http.post<string>('http://localhost:8081/wellnet/patient/allergies', allergy).subscribe((response : any) => {console.log(response)});
+  }
+
+  createVaccination(vaccine : string){
+
+    return this.http.post<string>('http://localhost:8081/wellnet/patient/vaccinations', vaccine).subscribe((response : any) => {console.log(response)});
+  }
+
+  deleteAllergy(oldAllergies : string[]){
+    
+    for(let i of oldAllergies){
+      console.log(i)
+      this.http.delete('http://localhost:8081/wellnet/patient/allergies/'+i).subscribe((response : any) => {console.log(response)});
+      
+      }
+  }
+
+ deleteVaccine(oldVaccines :string[]){
+
+    for(let i of oldVaccines){
+      console.log(i)
+    this.http.delete('http://localhost:8081/wellnet/patient/vaccinations/'+i).subscribe((response : any) => {console.log(response)});
+    }
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+/*
+
+
+http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
+
   diagnosePatient(patient: Patient) {
     this.patient = patient;
     this.router.navigate(["diagnosis"]);

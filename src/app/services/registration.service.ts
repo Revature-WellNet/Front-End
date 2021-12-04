@@ -31,8 +31,8 @@ export class RegistrationService {
 
 
   postRegistration(values : User) : Promise<User[]>{
-    console.log(this.url);
-    return this.http.post<User[]>(this.url + "registration", values).toPromise<User[]>();
+
+    return this.http.post<User[]>(this.url + "public/registration", values).toPromise<User[]>();
 
   }
 
