@@ -31,7 +31,7 @@
         <tr>
           <td class="col-sm-6 patient-info">Allergies</td>
           <td class="col-sm-6 patient-info">
-            <ul *ngIf="patient">
+            <ul>
               <li *ngFor="let allergy of patient.patientAllergies">
                 {{ allergy.allergy }}
               </li>
