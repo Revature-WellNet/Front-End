@@ -19,6 +19,7 @@ export class PatientCheckInComponent implements OnInit {
   public feet!: number;
   public inches!: number;
   public weight!: number;
+  public height!: number;
   public bloodtype! : string;
   public sex! : string;
   public allergies : Allergy[] = [];
@@ -40,23 +41,21 @@ export class PatientCheckInComponent implements OnInit {
 
 
     feet : number | null,
-    inches : number | null, 
-    weight : number | null, 
-    bloodtype : string | null, 
+    inches : number | null,
+    weight : number ,
+    bloodtype : string ,
     sex : string,
     allergies : Allergy[],
     vaccinations : Vaccination[]){
 
-    let height : number | null;
+    
     if(feet){
-      height = (feet*12);
+      this.height = (feet*12);
       if(inches){
-        height += inches;
+        this.height += inches;
       }
-    }else{
-      height = null;
     }
-    if(sex && firstName && lastName && dob){
+    if(sex && firstName && lastName && dob && bloodtype && this.height && weight){
       this.patientService.getSex(sex).subscribe((responseSex : any) => {
         if(bloodtype){
           this.patientService.getBloodType(bloodtype).subscribe((responseBloodType: any) => {
@@ -69,7 +68,7 @@ export class PatientCheckInComponent implements OnInit {
           let bloodObj = responseBloodType;
           let sexObj = responseSex;
           
-          let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
+          let patient : Patient = new Patient(0, firstName, lastName, dob, this.height, weight, bloodObj, sexObj, vaccinations, allergies);
 
           console.log(patient);
           
@@ -78,31 +77,20 @@ export class PatientCheckInComponent implements OnInit {
           this.patientService.createPatient(patient);
         
           })
-        }else{
-
-          let bloodObj = null;
-          let sexObj = responseSex;
-
-          let patient : Patient = new Patient(null, firstName, lastName, dob, height, weight, bloodObj, sexObj, vaccinations, allergies);
-          console.log(patient)
-          this.patientService.createPatient(patient);
-          
-
         }
       })
     }else{
-      alert("First and last name, dob and sex is required to add a new patient to Wellnet.")
+      alert("First and last name, dob, bloodtype, and sex is required to add a new patient to Wellnet.")
     }
   }
 
 generateChecklists(){
 
     this.patientService.getAllergies().subscribe((response: any) => {
-    
-
+  
       let allergies : Allergy[] = response;
         for(let a of allergies){
-          
+
           let label = document.createElement("label");
           label.innerHTML = a.allergy+": ";
 
@@ -149,12 +137,10 @@ generateChecklists(){
 
 
     this.patientService.getVaccinations().subscribe((response: any) => {
-      
-
-
+     
       let vaccinations : Vaccination[] = response;
         for(let v of vaccinations){
-          
+
           let label = document.createElement("label");
           label.innerHTML = v.vaccination+": ";
 
@@ -204,6 +190,10 @@ generateChecklists(){
     if(this.patient == null){
       console.log("null patient");
       //create new or try again?
+    }
+    else {
+      this.patientService.patient = this.patient;
+      console.log(`patient updated to ${this.patientService.patient}`)
     }
   }
 

@@ -15,8 +15,8 @@ export class UserService {
   }
 
   createOrUpdateUser(user : User){
-    console.log(user);
-    console.log(typeof User);
+   // console.log(user);
+   // console.log(typeof User);
 
     return this.http.put<User>('http://localhost:8081/wellnet/user/updateprofile', user).subscribe((response : any) => {console.log(response)});
   }

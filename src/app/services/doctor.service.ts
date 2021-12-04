@@ -17,7 +17,7 @@ export class DoctorService {
 
   private patientApiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient, private location: LocationStrategy, 
+  constructor(private http: HttpClient, private location: LocationStrategy,
     private ttp: HttpClientModule, private router : Router) { }
 
 

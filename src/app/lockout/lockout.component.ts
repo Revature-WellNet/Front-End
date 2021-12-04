@@ -85,12 +85,3 @@ export class LockoutComponent implements OnInit {
     this.firebaseService.logout();
   }
 }
-
-
-
-
-
-
-
-
-

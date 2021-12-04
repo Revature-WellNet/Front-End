@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['registration']);
   }
 
+  forgetPassword(){
+    this.router.navigate(['forget-password']);
+  }
+
   onSignin(email: string, password: string) {
     // console.log('sign in');
     this.firebaseService
@@ -36,16 +40,15 @@ export class LoginComponent implements OnInit {
           this.userService.getUser(userData.id).subscribe((data) => {
             this.cvs.getFormServByString(userData.id).subscribe((formData) => {
                 localStorage.setItem('covidInfo', JSON.stringify(formData));
-                console.log(data)
-                if (data.role.role == 'nurse') {
+                if (userData.role == 'nurse') {
                   // nurseUI()
                   this.router.navigate(['nurse']);
-                } else if (data.role.role == 'doctor') {
+                } else if (userData.role == 'doctor') {
                   console.log("should route to doctor");
                   this.router.navigate(['doctor']);
                 } else {
                   // user does not have a role / could not find users role
-                  console.error('This user account does not have an associated role.');
+                  console.error('This account properly registered. Please register again');
                 }
               })
             });
@@ -53,12 +56,9 @@ export class LoginComponent implements OnInit {
         alert(err);
       });
   }
-
+             
   logout() {
     this.firebaseService.logout();
-  }
-  forgetPassword(){
-  
   }
 
   //dummy example of sending an http request requiring an authorization header
@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
       console.log(data);
     });
   }
-  
 
   ngOnInit(): void {
     //to check the status of login
