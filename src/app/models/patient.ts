@@ -13,8 +13,8 @@ export class Patient {
     public weight: number;
     public bloodType: Bloodtype;
     public sex: Sex;
-    public patientVaccinations?: Vaccination[];
-    public patientAllergies?: Allergy[];
+    public patientVaccinations: Vaccination[];
+    public patientAllergies: Allergy[];
 
     constructor(patientId: number,
         firstName: string,
@@ -24,8 +24,8 @@ export class Patient {
         weight: number,
         bloodType: Bloodtype ,
         sex: Sex,
-        vaccinations?:Vaccination[],
-        allergies?: Allergy[]
+        vaccinations:Vaccination[],
+        allergies: Allergy[]
         ){
             this.patientId = patientId;
             this.firstName = firstName;

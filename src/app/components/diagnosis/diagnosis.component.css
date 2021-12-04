@@ -29,3 +29,7 @@
   border: 1px solid rgb(119, 119, 119);
   padding: 4px 10px;
 }
+
+ul {
+  margin-bottom: 4px;
+}

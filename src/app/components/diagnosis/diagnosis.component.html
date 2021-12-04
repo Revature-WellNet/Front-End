@@ -31,16 +31,20 @@
         <tr>
           <td class="col-sm-6 patient-info">Allergies</td>
           <td class="col-sm-6 patient-info">
-            <ul *ngFor="let allergy of patient.patientAllergies">
-              <li>{{ allergy.allergy }}</li>
+            <ul *ngIf="patient">
+              <li *ngFor="let allergy of patient.patientAllergies">
+                {{ allergy.allergy }}
+              </li>
             </ul>
           </td>
         </tr>
         <tr>
           <td class="col-sm-6 patient-info">Vaccinations</td>
           <td class="col-sm-6 patient-info">
-            <ul *ngFor="let vax of patient.patientVaccinations">
-              <li>{{ vax.vaccination }}</li>
+            <ul>
+              <li *ngFor="let vax of patient.patientVaccinations">
+                {{ vax.vaccination }}
+              </li>
             </ul>
           </td>
         </tr>

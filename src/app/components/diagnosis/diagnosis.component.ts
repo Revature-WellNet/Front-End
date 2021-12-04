@@ -26,7 +26,9 @@ export class DiagnosisComponent implements OnInit {
     private patientService: PatientService,
     private diagnosisService: DiagnosisFormService,
     private userService: UserService,
-  ) {}
+  ) {
+    this.patientService = patientService;
+  }
 
   ngAfterViewInit(){
     if(this.user.role.role == 'doctor'){

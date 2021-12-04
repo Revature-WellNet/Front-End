@@ -47,7 +47,7 @@ table td{
 
 .button-group{
     display: block;
-    
+
 }
 
 input {
@@ -86,5 +86,8 @@ table th:last-child {
     border-right: none;
 }
 
+ul {
+  margin-bottom: 4px;
+}
 
 

@@ -19,10 +19,10 @@ const httpOptions = {
 export class PatientService {
 
   private backendUrl = 'http://localhost:8081/wellnet/patient'
-  public patient!: Patient;  
+  public patient!: Patient;
   public room!: Room;
   constructor(private router: Router, private http: HttpClient) {
- 
+
   }
 
   createPatient(patient : Patient){
@@ -63,11 +63,11 @@ export class PatientService {
   }
 
   deleteAllergy(oldAllergies : string[]){
-    
+
     for(let i of oldAllergies){
       console.log(i)
       this.http.delete('http://localhost:8081/wellnet/patient/allergies/'+i).subscribe((response : any) => {console.log(response)});
-      
+
       }
   }
 
@@ -82,10 +82,10 @@ export class PatientService {
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
-/*
 
 
-http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
+
+// http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
 
   diagnosePatient(patient: Patient) {
     this.patient = patient;
