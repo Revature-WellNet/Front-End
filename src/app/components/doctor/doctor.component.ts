@@ -4,6 +4,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { NurseService } from '../../services/nurse.service';
 import { Patient } from '../../models/patient';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 
@@ -21,14 +22,19 @@ export class DoctorComponent implements OnInit {
   public patientsArray : any = [];
   public searchingDoctor : boolean = false;
 
+  constructor(private doctorService: DoctorService, 
+    private nurseService : NurseService, 
+    private firebaseService : FirebaseService, 
+    private patientService: PatientService, 
+    private router: Router) { }
 
-  constructor(private doctorService: DoctorService, private nurseService : NurseService, private firebaseService:FirebaseService, private router: Router) { }
+
 
 
   ngOnInit(): void {
     console.log("calling auto sign in from doctor");
     if(!this.firebaseService.autoSignIn())
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.role == "nurse")
       this.router.navigate(['nurse']);
@@ -47,11 +53,11 @@ export class DoctorComponent implements OnInit {
   goBack(){
     this.doctorService.goBack();
   }
-  
+
   viewUserInfo(){
     this.doctorService.getUserInfo();
   }
-  
+
   // getPatients(){
   //   this.doctorService.getPatients();
   // }
@@ -59,9 +65,6 @@ export class DoctorComponent implements OnInit {
    getPatientsByDoctor(doctorId: string){
     this.doctorService.getPatientsByDocId();
   }
-
-
-
   
   searchPatient(){
 
@@ -80,7 +83,7 @@ export class DoctorComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -96,7 +99,7 @@ export class DoctorComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -114,7 +117,7 @@ export class DoctorComponent implements OnInit {
         console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
@@ -157,11 +160,15 @@ export class DoctorComponent implements OnInit {
                 console.log(this.patientsArray);
         console.log(response);
         console.log(typeof response);
-      }, 
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
+  }
+
+  diagnosePatient(patient: Patient){
+    this.patientService.diagnosePatient(patient);
   }
 
   logout(){
@@ -180,6 +187,10 @@ export class DoctorComponent implements OnInit {
     this.doctorService.getPatientsByDoctorName(doctorFirstName, doctorLastName).subscribe((response)=>{this.patientsArray=response;
       console.log(this.patientsArray);
     });
+  }
+
+  routeToAdd(){
+    this.router.navigate(["addAllergiesVaccines"]);
   }
 
 }
