@@ -82,17 +82,17 @@ export class PatientService {
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
-/*
 
 
-http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
+
+// http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
 
   diagnosePatient(patient: Patient) {
     this.patient = patient;
     this.router.navigate(["diagnosis"]);
   }
-/*
-  Not enough time to implement and not an MVP user story
+
+ /* Not enough time to implement and not an MVP user story
 
   updatePatient(){
     // implement logic to update info in backend
