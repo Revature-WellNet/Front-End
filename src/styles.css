@@ -66,6 +66,8 @@ White:
      font-size: 16px;
      margin: 18px;
      transition-duration: 0.5s;
+     width:100%;
+     max-width: 200px;
 
     }
  
@@ -245,6 +247,7 @@ White:
    background-repeat: no-repeat;
  background-attachment: fixed;
  background-size: cover;
+ overflow: auto;
 }
 
 .covidCard {
@@ -297,6 +300,36 @@ label {
  }
 
  .form-group {
-    margin-left: 20px;
-    margin-right: 80px;
+   margin: auto;
+   width: 80%;
+    margin-top: 30px;
  }
+
+ .accountCard {
+   
+   border-radius: 25px;
+   text-align: center;
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   color: Black;
+   box-shadow: 1.5px 4px 3px 4px #888888;
+   background-color: rgba(86, 102, 117, 0);
+
+
+}
+
+.profile {
+   width:80%;
+   margin:auto;
+}
+
+td { text-align: left;}
+
+.dobInput {
+   margin-right:500px;
+}
+
+
+
