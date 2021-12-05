@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Area } from 'src/app/models/rooms/area';
 import { Room } from 'src/app/models/rooms/room';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { DiagnosisFormService } from 'src/app/services/diagnosis-form.service';
+import { RoomService } from 'src/app/services/room.service';
 
 @Component({
   selector: 'app-rooms',
@@ -16,7 +18,7 @@ export class RoomsComponent implements OnInit {
   log:string = "";
 
   waitingroom:string[] = ["Mario Vidal", "Bob White", "Iron Man"];
-  constructor() { }
+  constructor(private diagService: DiagnosisFormService, private roomService: RoomService) { }
 
   ngOnInit(): void {
     this.getAllAreas();
@@ -43,23 +45,19 @@ export class RoomsComponent implements OnInit {
   }
 
   getRooms(){
-    this.rooms[0] = new Room(1, 1, this.areas[0] , 2, ["Patient Name"], false);
-    this.rooms[1] = new Room(2, 2, this.areas[0] , 2, ["Patient Name"], false);
-    this.rooms[2] = new Room(3, 3, this.areas[0] , 2, ["Patient Name"], false);
-    this.rooms[3] = new Room(4, 4, this.areas[0] , 1, [], false);
-    this.rooms[4] = new Room(5, 5, this.areas[0] , 1, [], false);
-    this.rooms[5] = new Room(6, 6, this.areas[0] , 1, [], false);
-    this.rooms[6] = new Room(7, 7, this.areas[1] , 2, [], false);
-    this.rooms[7] = new Room(8, 8, this.areas[1] , 1, [], false);
-    this.rooms[8] = new Room(9, 9, this.areas[3] , 1, [], false);
-    this.rooms[9] = new Room(10, 10, this.areas[4] , 2, ["Patient Name"], false);
-    this.rooms[10] = new Room(11, 11, this.areas[4] , 1, [], false);
-    this.rooms[11] = new Room(12, 12, this.areas[2] , 2, ["Patient Name"], false);
-    this.rooms[12] = new Room(13, 13, this.areas[2] , 2, ["Patient Name"], false);
-    this.rooms[13] = new Room(14, 14, this.areas[2] , 2, ["Patient Name"], false);
-    this.rooms[14] = new Room(15, 15, this.areas[2] , 2, ["Patient Name"], false);
-    this.rooms[15] = new Room(16, 16, this.areas[2] , 2, ["Patient Name"], false);
-    this.rooms[16] = new Room(17, 17, this.areas[2] , 1, [], false);
+    this.roomService.getAllRooms().forEach(room => {
+        this.rooms[room.roomNumber - 1] = room;
+    });
+
+    // populating rooms with current patients
+    this.diagService.getAllDiagnosisForms().subscribe(diags => {
+      diags.forEach(diag => {
+        if(!diag.getResolutionStatus()){ //resolutionStatus = false means that the patient is still in the room
+          this.rooms[diag.getRoom().roomNumber - 1].patients.push(diag.getPatient().firstName + " " + diag.getPatient().lastName);
+          this.rooms[diag.getRoom().roomNumber - 1].roomStatus = 2;
+        }
+      });
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
