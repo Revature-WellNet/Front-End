@@ -82,10 +82,9 @@ export class PatientService {
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
-/*
 
 
-http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
+// http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
 
   diagnosePatient(patient: Patient) {
     this.patient = patient;
