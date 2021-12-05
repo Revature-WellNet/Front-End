@@ -105,7 +105,9 @@ White:
    font-size: 16px;
    margin: 18px;
    transition-duration: 0.5s;
-
+   max-width:20em;
+   white-space:nowrap;
+   overflow:hidden;
   }
 
 .Button4:hover {
@@ -166,14 +168,19 @@ White:
  .input {
      border: 2px solid #566675;
      border-radius: 8px;
-     margin: 8px;
+     width:80%;
      outline: none;
      transition-duration: 0.5s;
      padding-left:10px;
+     
  }
 
  .input:focus {
     box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .input::placeholder {
+    color: black;
  }
 
  .searchInput {
@@ -258,6 +265,18 @@ label {
    padding-left: 3px;
 }
 
+.background2 {
+   position:absolute;
+ top:0px;
+ right:0px;
+ bottom:0px;
+ left:0px;
+   background-image: url('https://image.freepik.com/free-vector/abstract-medical-wallpaper-template-design_53876-61802.jpg');
+   background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+}
+
 
  /* table styling
    "container / body / card "
@@ -265,3 +284,19 @@ label {
     background
     
  */
+ .title {
+    text-align: center;
+ }
+
+ .logo {
+   background-image: url('assets/img/WellNetLogoClear.png');
+   background-color: rgba(255, 255, 255, 0.9);
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+ }
+
+ .form-group {
+    margin-left: 20px;
+    margin-right: 80px;
+ }
