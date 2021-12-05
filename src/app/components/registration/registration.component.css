@@ -1,5 +1,5 @@
 
-#RegistrationDiv {
+/*#RegistrationDiv {
 
   border-style : double;
 
@@ -8,12 +8,12 @@
   padding-top : 20px;
   padding-bottom : 20px;
 
-  background-color: rgba(200, 220, 180, 0.1);
+  background-color: rgba(200, 220, 180, 0.1);*/
 /* 
   align-self : center;
   justify-self : center; */
 
-  width : 40%;
+ /* width : 40%;
 
   margin : auto;
 
@@ -36,12 +36,12 @@
   margin-left : 10%;
   margin-right : 10%;
 
-  color : rgb(0, 38, 74);
+  color : rgb(0, 38, 74);*/
 
 /* 
   align-self : center;
   justify-self : center; */
-
+/*
   text-align : center;
 
 }
@@ -156,6 +156,34 @@
 
   
   text-align : center;
-
-
+}*/
+.container-full{
+  background-image: url('/assets/img/graybg.png');
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.registrationbox{
+  background: white url('/assets/img/regbg.jpg');
+  background-position:bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1024px;
+  border-radius: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.form-control:focus, .form-check-input:focus {
+  border-color: #3A7F3E;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(57, 126, 61, 0.6);
+}
+.form-check-input:checked {
+  background-color: #3A7F3E;
+  border-color: #3A7F3E;
+}
+a{
+  text-decoration: none;
+  color:#777777 !important;
+}
+a:hover{
+  color: #3A7F3E !important;
 }
