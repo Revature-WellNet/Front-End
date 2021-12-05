@@ -16,6 +16,7 @@
                 class= "form-control"
                 name= "firstName"
                 id= "firstName"
+                maxlength="50"
                 [(ngModel)] = "firstName"
                 required
             />
@@ -26,6 +27,7 @@
                     class= "form-control"
                     name= "lastName"
                     id= "lastName"
+                    maxlength="50"
                     [(ngModel)] = "lastName"
                     required
                 />
@@ -48,6 +50,8 @@
                     class= "form-control"
                     name= "feet"
                     id= "feet"
+                    min="0"
+                    max="10"
                     [(ngModel)] = "feet"
                 />
                 <label for= "inches">inches:</label>
@@ -57,6 +61,8 @@
                     class= "form-control"
                     name= "inches"
                     id= "inches"
+                    min="0"
+                    max="120"
                     [(ngModel)] = "inches"
                 />
             <br>
@@ -64,6 +70,7 @@
                 <input
                     type= "number"
                     min = "0"
+                    max="2000"
                     class= "form-control"
                     name= "weight"
                     id= "weight"
@@ -86,9 +93,9 @@
             <br>
             <span class = "asterix">*</span><label for="sex">Sex:</label>
                 <select id="sex" name="sex" class= "form-control" [(ngModel)] = "sex">
-                    <option value="M">M</option>
-                    <option value="F">F</option>
-                    <option value="NB">NB</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="NB">Other</option>
                 </select>
             <br>
             <div id = "allergyanchor">Allergies:</div>

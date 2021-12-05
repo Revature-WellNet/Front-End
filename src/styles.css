@@ -227,3 +227,41 @@ White:
  .radioButton {
      display: block;
  }
+
+ .background {
+   position:absolute;
+ top:0px;
+ right:0px;
+ bottom:0px;
+ left:0px;
+   background-image: url('https://image.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg');
+   background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+}
+
+.covidCard {
+   border: 2px solid #566675;
+   border-radius: 25px;
+   text-align: center;
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   color: Black;
+   box-shadow: 1.5px 4px 3px 4px #888888;
+   background-color: rgba(86, 102, 117, 0.1);
+
+}
+
+label {
+   padding-left: 3px;
+}
+
+
+ /* table styling
+   "container / body / card "
+   dropdown input, checkbox input
+    background
+    
+ */

@@ -32,6 +32,8 @@ import { LockoutComponent } from './lockout/lockout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Apihttpintercept } from './user-auth/services/apihttpintercept';
 import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
+import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 
 
@@ -52,7 +54,9 @@ import { StaticStyleTesterComponent } from './static-style-tester/static-style-t
     Covid19VerificationComponent,
     LockoutComponent,
     NavbarComponent,
-    StaticStyleTesterComponent
+    StaticStyleTesterComponent,
+    AddAllergiesVaccinesComponent,
+    ForgetPasswordComponent
 
   ],
   imports: [
