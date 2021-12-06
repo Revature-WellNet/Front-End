@@ -90,10 +90,10 @@
       > 
   
 <div class="btnRow">
-           <button id="searchId" class="Button2" (btnClick)="getAllPatients()" text="Display All Patients">Display all patients</button>
-          <button id="searchName"  class="Button2" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
-          <button id="searchFullName"  class="Button2" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
-          <button id="searchDOB" class="Button2" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
+        <button id="searchId" class="Button2" (click)="getAllPatients()" text="Display All Patients">Display all patients</button>
+          <button id="searchName"  class="Button2" (click)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
+          <button id="searchFullName"  class="Button2" (click)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
+          <button id="searchDOB" class="Button2" (click)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
       </div>
   </div>
 <!-- <app-navbar></app-navbar>
@@ -165,7 +165,7 @@
                 <!-- <td>{{patient.dob}}</td> -->
                 <td>
                     <ul>
-                        <li  *ngFor = "let allergy of patient.allergies">
+                        <li  *ngFor = "let allergy of patient.patientAllergies">
                             {{allergy.allergy}}
                         </li>
                     </ul>
@@ -174,14 +174,14 @@
                 <td>{{patient.weight}}</td>
                 <td>
                     <ul>
-                        <li  *ngFor = "let vax of patient.vaccinations">
+                        <li  *ngFor = "let vax of patient.patientVaccinations">
                             {{vax.vaccination}}
                         </li>
                     </ul>
                     <!-- {{patient.vaccinations[0].vaccination}} -->
                 </td>
-                <td>{{patient.bloodType.type}}</td>
-                <td>{{patient.sex.sex}}</td>
+                <td *ngIf="!patient.bloodType"></td>
+                <td *ngIf="patient.bloodType">{{patient.bloodType.type}}</td>                <td>{{patient.sex.sex}}</td>
                 <td>{{patient.doctor}}</td>
             </tr>
         </tbody>

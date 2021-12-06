@@ -66,12 +66,12 @@ export class DoctorComponent implements OnInit {
     this.doctorService.getPatientsByDocId();
   }
   
-  searchPatient(){
+  // searchPatient(){
 
-    this.searchingDoctor = false;
+  //   this.searchingDoctor = false;
 
-    this.nurseService.getPatientById(1);
-  }
+  //   this.nurseService.getPatientById(1);
+  // }
 
   searchPatByFName(firstName: string){
 
@@ -154,6 +154,9 @@ export class DoctorComponent implements OnInit {
 
 
   getAllPatients(){
+
+    this.searchingDoctor = false;
+
     this.nurseService.getPatients().subscribe(
       (response: Patient[])=> {
         this.patientsArray = response;
@@ -182,9 +185,12 @@ export class DoctorComponent implements OnInit {
     console.log("First Name : " + doctorFirstName);
     console.log("Last Name  : " + doctorLastName);
 
-    this.searchingDoctor = true;
 
-    this.doctorService.getPatientsByDoctorName(doctorFirstName, doctorLastName).subscribe((response)=>{this.patientsArray=response;
+    this.doctorService.getPatientsByDoctorName(doctorFirstName, doctorLastName).subscribe( (response)=>{
+      if (response.length > 0){
+      this.patientsArray=response;
+      this.searchingDoctor = true;
+      }
       console.log(this.patientsArray);
     });
   }
