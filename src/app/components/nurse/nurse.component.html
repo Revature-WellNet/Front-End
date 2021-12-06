@@ -67,7 +67,7 @@
   <div class="row"></div>
   
       <div class="search-area">
-      <div class="form-group">
+      <br class="form-group">
           <div class="title">
               <h3>Patient search</h3>
           </div>
@@ -89,7 +89,7 @@
           placeholder="Date of birth (mm/dd/yyyy)"
       > 
   
-      
+<div class="btnRow">
            <button id="searchId" class="Button2" (btnClick)="getAllPatients()" text="Display All Patients">Display all patients</button>
           <button id="searchName"  class="Button2" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
           <button id="searchFullName"  class="Button2" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>

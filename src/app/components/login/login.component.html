@@ -4,7 +4,7 @@
 
             <div class="CenterContainerContent">
                 <h1 class="RegistrationTitle">
-                    Sign in
+                   {{title}}
                 </h1>
             </div>
            
@@ -17,12 +17,12 @@
                     <label class="loginText">Password:</label>
                     <input type="password" #password class="loginInput">
                 </div>
-                <div><button (click)="onSignin(email.value, password.value)" class="Button4">Sign in</button></div>
+                <div><button (click)="onSignin(email.value, password.value)" id="btnLogin" class="Button4">Sign in</button></div>
             </div>
             <div>
                
-                <div><button (click)="register()" class="RegisterButton">Register</button> </div>
-                <div><button (click)="forgetPassword()" class="RegisterButton">Forget Password</button> </div>
+                <div><button (click)="register()" id="btnRegister"  class="RegisterButton">Register</button> </div>
+                <div><button (click)="forgetPassword()" class="RegisterButton" id="btnForget">Forget Password</button> </div>
                 <hr>
                 
                 <!--
