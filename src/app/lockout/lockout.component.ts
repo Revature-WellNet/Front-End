@@ -38,7 +38,7 @@ export class LockoutComponent implements OnInit {
     // Update the count down every 1 second
 
   setTime() {
-    let countDownDate = this.time.getTime()+1209600000;
+    let countDownDate = this.time.getTime()+1209600000-43200000;
     let now = new Date().getTime();
     let distance = countDownDate - now;
   
@@ -52,9 +52,10 @@ export class LockoutComponent implements OnInit {
     document.getElementById("timer")!.innerHTML = days + "d " + hours + "h "
     + minutes + "m " + seconds + "s ";
   
-    // If the count down is finished, write some text
+    // If the count down is finished, write some text and change covid status
     if (distance < 0) {
       document.getElementById("timer")!.innerHTML = "You may return to work";
+      
     };
  
 }

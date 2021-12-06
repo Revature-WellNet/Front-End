@@ -121,7 +121,7 @@ export class Covid19VerificationComponent implements OnInit {
     console.log(this.lastTest);
     let date = new Date(this.lastTest).getTime();
     console.log(now-date);
-    if ((now - date) > 1210000000){
+    if ((now - date) > 1210000000 || date>now){
       console.log("date error");
       this.inputError=true;
     }

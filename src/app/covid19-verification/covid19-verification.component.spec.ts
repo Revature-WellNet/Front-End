@@ -28,6 +28,7 @@ describe('Covid19VerificationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(Covid19VerificationComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
