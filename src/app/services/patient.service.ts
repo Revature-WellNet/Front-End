@@ -90,8 +90,8 @@ export class PatientService {
     this.patient = patient;
     this.router.navigate(["diagnosis"]);
   }
-/*
-  Not enough time to implement and not an MVP user story
+
+ /* Not enough time to implement and not an MVP user story
 
   updatePatient(){
     // implement logic to update info in backend
