@@ -88,11 +88,12 @@
         placeholder="Date of birth (mm/dd/yyyy)"
     > 
 
-    
-         <button id="searchId" class="Button2" (btnClick)="getAllPatients()" text="Display All Patients">Display all patients</button>
-        <button id="searchName"  class="Button2" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
-        <button id="searchFullName"  class="Button2" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
-        <button id="searchDOB" class="Button2" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
+    <div class="btnRow">
+         <button id="searchId" class="Button2" (click)="getAllPatients()" text="Display All Patients">Display all patients</button>
+        <button id="searchName"  class="Button2" (click)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
+        <button id="searchFullName"  class="Button2" (click)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
+        <button id="searchDOB" class="Button2" (click)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
+    </div>
     </div>
 </div>
 
@@ -105,7 +106,8 @@
         
         <!-- <label for="patient-search">Search for Patients</label> -->
         <input type="text" class="form-control" id="doctorFirstName" #doctorFirstName name="doctorFirstName" placeholder="Enter First Name" required>
-        <input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required><button id="searchDoctor" class="Button2" (btnClick)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor">Search by doctor</button>
+        <input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required>
+        <button id="searchDoctor" class="Button2" (click)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor">Search by doctor</button>
     </div>
 
 
@@ -135,7 +137,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let patient of patientsArray">
-                    <td><button (btnClick)="diagnosePatient(patient)"></button></td>
+                    <td><button (click)="diagnosePatient(patient)"></button></td>
                     <td *ngIf="searchingDoctor"> {{doctorName}}</td>
                     <td>{{patient.firstName}}</td>
                     <td>{{patient.lastName}}</td>

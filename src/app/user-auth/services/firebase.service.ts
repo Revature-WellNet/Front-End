@@ -137,9 +137,10 @@ export class FirebaseService {
 
   // method to refresh the token
   async refreshToken() {
-    firebase.auth().onAuthStateChanged((user) => {
+    await firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        user.getIdToken(true).then((idToken) => {});
+        user.getIdToken(true)
+        .then((idToken) => {});
       }
     });
     const userin = firebase.auth().currentUser;
@@ -181,7 +182,7 @@ export class FirebaseService {
       this.userInfo.next(loggedInUser);
       const expirDurationtimer = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
       console.log("Token expire after :", expirDurationtimer)
-      this.autoSignOut(expirDurationtimer);
+      this.autoRefresh(expirDurationtimer);
       console.log("Successfully automatically signed in with user information found in local storage.");
       return true;
     }
@@ -202,17 +203,18 @@ export class FirebaseService {
     });
   }
 
-  // either signout or refresh token
-  autoSignOut(expirDuration: number) {
+  // refresh token
+  autoRefresh(expirDuration: number) {
     this.tokenExpireTime = setTimeout(() => {
-      var answer = confirm(
-        'Your token is about to expire. Press cancel to refresh it'
-      );
-      if (answer) {
-        this.logout();
-      } else {
-        this.refreshToken();
-      }
+      // var answer = confirm(
+      //   'Your token is about to expire. Press cancel to refresh it'
+      // );
+      // if (answer) {
+      //   this.logout();
+      // } else {
+      //   this.refreshToken();
+      // }
+      this.refreshToken();
     }, expirDuration );
   }
 
@@ -241,7 +243,7 @@ export class FirebaseService {
     this.userInfo.next(userInfo);
     const expirDurationtimer = new Date(expirationDate).getTime() - new Date().getTime();
         console.log("Token expire after:", expirDurationtimer)
-    this.autoSignOut(expirDurationtimer);
+    this.autoRefresh(expirDurationtimer);
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
   }
 

@@ -35,6 +35,7 @@ export class RegistrationComponent implements OnInit {
   public userId: string = '';
 
   public emailValidated: boolean | null = null;
+  public success: boolean = false;
   public roleValidated: boolean | null = null;
 
   public registrationButtonSetting: boolean = true;
@@ -155,8 +156,9 @@ export class RegistrationComponent implements OnInit {
 
           this.registrationSender.postRegistration(user).then((data) => {
             this.firebaseService.logout();
-            alert('Registration successful.');
+            //alert('Registration successful.');
            // console.log(data);
+           this.success = true;
           });
         }
       })

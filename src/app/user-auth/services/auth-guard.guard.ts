@@ -31,9 +31,17 @@ export class AuthGuardGuard implements CanActivate {
     }
     if(covidData.covid == true)
     {
-      console.warn("User has COVID and is attempting to route an authorized page: '" + route.url + "'. Rerouting to 'lockout'.");
-      return this.router.createUrlTree(['lockout']);
+      let now = new Date().getTime();
+      let date = new Date(covidData.timestamp).getTime();
+      if(now-date>=1209600000){
+        console.warn("User has COVID and is attempting to route an authorized page: '" + route.url + "'. Rerouting to 'covid-verification'.");
+        return this.router.createUrlTree(['covid-verification']);
+      }
+      else{
+        return this.router.createUrlTree(['lockout']);
+      }
     }
+    
     
     let now = new Date().getTime();
     let date = new Date(covidData.timestamp).getTime();
