@@ -1,7 +1,20 @@
-<div class= "background" >
-   <div class= "patientCheckIn">
-
-    <p><span class = "asterix">*</span> marks required fields.</p>
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-5">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+                            <h4 class="mb-4">New patient</h4>
+   
+   
+   <p><span class = "asterix">*</span> marks required fields.</p>
        
         <form
         
@@ -9,7 +22,7 @@
         class= "form-check-in "
         (ngSubmit)= "onSubmit(firstName, lastName, dob, feet, inches, weight, bloodtype, sex, allergies, vaccinations)">  
 
-        <div class= "form-group">
+        <div style="width: 50%;">
             <span class = "asterix">*</span><label for= "firstName">First Name:</label>
             <input
                 type= "text"
@@ -101,24 +114,14 @@
             <div id = "allergyanchor">Allergies:</div>
             <br>
             <div id = "vaccinationanchor">Vaccinations:</div>
-
+            <button type= "submit" class= "btn btn-outline-success mt-3">Add Patient</button>
         </div>
-        <button type= "submit" class= "Button3">Add Patient</button>
+        
     </form>
-<br>
-
-    <a routerLink= "/nurse" ><app-button class="btn" text="Navigate Home will be deleted after navbar is made"></app-button></a>
-    <!-- </div>
-    <ng-template #NewPatient>
-      <p>This is where the new patient registration goes</p>
-    </ng-template> 
-
-
-
-  public allergies! : object[];
-  public vaccinations! : object[];
--->
+</div>                
 </div>
-
-
-
+</div>
+</div>
+</div>
+</div>
+</div>

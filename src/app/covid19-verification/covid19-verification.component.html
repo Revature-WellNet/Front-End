@@ -1,47 +1,9 @@
 <div class="container-full">
     <div class="container-fluid h100">
         <div class="row h100">
-
-            <div class="col-md-2 d-flex flex-column flex-shrink-0 p-3 bg-light">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                    
-                    <span class="fs-4"><i class="bi bi-brightness-alt-high"></i> Welcome Doctor</span>
-                  </a>
-                  <hr>
-<ul class="nav nav-pills flex-column mb-auto">
-    <li class="nav-item">
-        <a href="#" class="nav-link link-dark" aria-current="page">
-            <i class="bi bi-house"></i>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-            <i class="bi bi-person"></i>
-          Profile
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-            <i class="bi bi-shield-lock"></i>
-            Change password
-        </a>
-      </li>
-      <li>
-        <a class="nav-link link-dark" (click)="logout()">
-            <i class="bi bi-box-arrow-in-left"></i>
-          Logout 
-        </a>
-      </li>
-</ul>
-<div class="dropdown">
-    <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="fs-4"><i class="bi bi-box-arrow-in-right me-2"></i></span> 
-      <strong>user email here</strong>
-    </a>
-  </div>
+            <div class="col-md-2 p-3 bg-light">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
             </div>
-
             <div class="col-md-10 align-self-center">
                 <div class="mainbox">
                     <div class="row">
@@ -49,7 +11,7 @@
                             <div class="mb-5">
                                 <img src="/assets/img/WellNetLogo.jpg" alt="">
                             </div>
-                            <h4 class="mb-4">Covid Verification</h4>
+                            <h4 class="mb-4">Covid-19 Verification</h4>
                             
                             <div *ngIf="testedPositiveQuestions=='true'">
                                 <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>

@@ -1,16 +1,26 @@
-<ul class="nav navbar-expand-lg navbar-light">
-    <li class="nav-item">
-      <a class="nav-link text-dark" [routerLink]="['/lockout']">Home page</a>
-    </li>
-    <li class="nav-item">
-        
-      </li>
-    
-   
-  </ul>
-  <div class="background">
-  <div class="timer">
-<h2>Hi! Due to your answers to the Covid-19 Screening Form you have been locked out of your account. </h2>
-<h2>Please take care and focus on rest and recovery.</h2>
-<h1>You can start work in:</h1>
-<p id="timer" style="font-size:64px;font-family:arial" class="w3-center"></p></div><button class="Button3" (click)="logout()" type="button">Logout</button></div>
+<div class="container-full">
+  <div class="container-fluid h100">
+      <div class="row h100">
+          <div class="col-md-2 p-3 bg-light">
+            <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+          </div>
+          <div class="col-md-10 align-self-center">
+              <div class="mainbox">
+                  <div class="row">
+                      <div class="col-md-12 p-5">
+                          <div class="mb-5">
+                              <img src="/assets/img/WellNetLogo.jpg" alt="">
+                          </div>
+                              <h4 class="mb-4">Covid-19 safety restriction</h4>
+                              <p>Hi! Due to your answers to the Covid-19 Screening Form you have been locked out of your account. </p>
+                              <p class="mb-4">Please take care and focus on rest and recovery.</p>
+                              <h4><i class="bi bi-hourglass-split"></i> You can start work in:</h4>
+                              <p id="timer" style="font-size:35px;font-family:arial" class="w3-center"></p>
+                              
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -35,6 +35,7 @@ import { StaticStyleTesterComponent } from './static-style-tester/static-style-t
 import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 
 
@@ -58,7 +59,8 @@ import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
     StaticStyleTesterComponent,
     AddAllergiesVaccinesComponent,
     ForgetPasswordComponent,
-    WellnetLogoComponent
+    WellnetLogoComponent,
+    SideBarComponent
 
   ],
   imports: [
