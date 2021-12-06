@@ -7,6 +7,7 @@ import { RoomService } from 'src/app/services/room.service';
 import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/models/patient';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -23,12 +24,15 @@ export class RoomsComponent implements OnInit {
 
   waitingroom:string[] = ["Mario Vidal", "Bob White", "Iron Man"];
   
-  constructor(private diagService: DiagnosisFormService, private roomService: RoomService, private patientService: PatientService, private fbservice: FirebaseService) { }
+  constructor(private router:Router, private diagService: DiagnosisFormService, private service: FirebaseService, private roomService: RoomService, private patientService: PatientService) { }
   
   ngOnInit(): void {
+    
+    if(!this.service.autoSignIn()){
+      this.router.navigate(['login'])
+    }
     this.getAllAreas();
     this.getRooms();
-    this.fbservice.autoSignIn();
   }
 
   getAllAreas(){
@@ -56,8 +60,15 @@ export class RoomsComponent implements OnInit {
   */
 
   getRooms(){
-    this.roomService.getAllRooms().forEach(room => {
+    /*this.roomService.getAllRooms().forEach(room => {
         this.rooms[room.roomNumber - 1] = room;
+    });*/
+
+    this.roomService.getAllRooms().subscribe(roomList => {
+      console.log(JSON.stringify(roomList));
+      roomList.forEach((room: any) => {
+        this.rooms[room.roomNumber-1] = (new Room(room.roomId, room.roomNumber, new Area(room.area.id, room.area.name), 1, [], false));
+      });
     });
 
     // populating rooms with current patients

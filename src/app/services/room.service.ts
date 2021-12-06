@@ -15,8 +15,10 @@ export class RoomService {
   }
 
   //Mismatch between front and backend room models means this must manually rectify that
-  getAllRooms(): Room[]{
+  /*getAllRooms(): Room[]{
       let rooms: Observable<any> = this.http.get<{roomId: number, roomNumber: number, area: Area}[]>(this.backendUrl);
+      //let rooms: Observable<any> = this.http.get<any[]>(this.backendUrl);
+      console.log("rooms: " + JSON.stringify(rooms));
       let finalRooms: Room[] = [];
       rooms.subscribe(roomList => {
           for(let i = 0; i < roomList.length; i++){
@@ -24,5 +26,10 @@ export class RoomService {
           }
       });
       return finalRooms;
+  }*/
+  
+  getAllRooms(): Observable<any>{
+    let rooms: Observable<any> = this.http.get<{roomId: number, roomNumber: number, area: Area}[]>(this.backendUrl);
+    return rooms;
   }
 }
