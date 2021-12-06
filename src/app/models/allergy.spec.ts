@@ -1,7 +1,7 @@
-import { Allergy } from './allergy';
+// import { Allergy } from './allergy';
 
-describe('Allergy', () => {
-  it('should create an instance', () => {
-    expect(new Allergy()).toBeTruthy();
-  });
-});
+// describe('Allergy', () => {
+//   it('should create an instance', () => {
+//     expect(new Allergy()).toBeTruthy();
+//   });
+// });

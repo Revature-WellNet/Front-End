@@ -1,7 +1,7 @@
-import { Apihttpintercept } from './apihttpintercept';
+// import { Apihttpintercept } from './apihttpintercept';
 
-describe('Apihttpintercept', () => {
-  it('should create an instance', () => {
-    expect(new Apihttpintercept()).toBeTruthy();
-  });
-});
+// describe('Apihttpintercept', () => {
+//   it('should create an instance', () => {
+//     expect(new Apihttpintercept()).toBeTruthy();
+//   });
+// });

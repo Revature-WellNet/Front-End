@@ -1,7 +1,7 @@
-import { DiagnosisDTO } from './diagnosis-dto';
+// import { DiagnosisDTO } from './diagnosis-dto';
 
-describe('DiagnosisDTO', () => {
-  it('should create an instance', () => {
-    expect(new DiagnosisDTO()).toBeTruthy();
-  });
-});
+// describe('DiagnosisDTO', () => {
+//   it('should create an instance', () => {
+//     expect(new DiagnosisDTO()).toBeTruthy();
+//   });
+// });

@@ -1,7 +1,7 @@
-import { Vaccination } from './vaccination';
+// import { Vaccination } from './vaccination';
 
-describe('Vaccination', () => {
-  it('should create an instance', () => {
-    expect(new Vaccination()).toBeTruthy();
-  });
-});
+// describe('Vaccination', () => {
+//   it('should create an instance', () => {
+//     expect(new Vaccination()).toBeTruthy();
+//   });
+// });
