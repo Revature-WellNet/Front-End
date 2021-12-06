@@ -88,11 +88,12 @@
         placeholder="Date of birth (mm/dd/yyyy)"
     > 
 
-    
+    <div class="btnRow">
          <button id="searchId" class="Button2" (btnClick)="getAllPatients()" text="Display All Patients">Display all patients</button>
         <button id="searchName"  class="Button2" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
         <button id="searchFullName"  class="Button2" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
         <button id="searchDOB" class="Button2" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
+    </div>
     </div>
 </div>
 

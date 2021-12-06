@@ -137,9 +137,10 @@ export class FirebaseService {
 
   // method to refresh the token
   async refreshToken() {
-    firebase.auth().onAuthStateChanged((user) => {
+    await firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        user.getIdToken(true).then((idToken) => {});
+        user.getIdToken(true)
+        .then((idToken) => {});
       }
     });
     const userin = firebase.auth().currentUser;
