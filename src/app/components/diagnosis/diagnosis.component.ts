@@ -64,7 +64,7 @@ export class DiagnosisComponent implements OnInit {
 
         this.diagnosisService.postDiagnosisForm(this.diagForm).subscribe(
           (success) => {
-            console.log('form was submitted');
+            console.log('form was submitted as ', this.diagForm);
             this.router.navigate(['nurse']);
           },
           (error) => {
@@ -83,8 +83,8 @@ export class DiagnosisComponent implements OnInit {
 
          this.diagnosisService.putDiagnosisForm(this.diagForm).subscribe(
           (success) => {
-            this.router.navigate(['doctor']);
             console.log('form was submitted as ', this.diagForm);
+            this.router.navigate(['doctor']);
           },
           (error) => {
             alert("There was an issue submitting the treatment. Please try again.")
