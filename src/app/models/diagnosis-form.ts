@@ -44,4 +44,16 @@ export class DiagnosisForm {
     // this.doctor = doctor;
 
 }
+
+    public getResolutionStatus(): boolean{
+        return this.resolutionStatus;
+    }
+
+    public getRoom(): Room{
+        return this.room;
+    }
+
+    public getPatient(): Patient{
+        return this.patient;
+    }
 }

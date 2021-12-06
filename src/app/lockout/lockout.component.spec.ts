@@ -1,25 +1,54 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Covid19VerificationService } from '../services/covid19-verification.service';
+import { FirebaseService } from '../user-auth/services/firebase.service';
 
-// import { LockoutComponent } from './lockout.component';
+import { LockoutComponent } from './lockout.component';
 
-// describe('LockoutComponent', () => {
-//   let component: LockoutComponent;
-//   let fixture: ComponentFixture<LockoutComponent>;
+import { Observable, of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { environment } from 'src/environments/environment';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AngularFireModule } from '@angular/fire/compat';
+import { DebugElement } from '@angular/core';
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [ LockoutComponent ]
-//     })
-//     .compileComponents();
-//   });
+describe('LockoutComponent', () => {
+  let component: LockoutComponent;
+  let fixture: ComponentFixture<LockoutComponent>;
+  let de: DebugElement;
+  let service: Covid19VerificationService;
+  let serviceStub: any;
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LockoutComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(async () => {
+    serviceStub = {
+      getFormServByString(id:string):Observable<Object>{
+        return of()
+      }
+    }
+  
+    await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        HttpClientTestingModule,
+      ],
+      declarations: [ LockoutComponent ], 
+      providers:[{provide: FirebaseService, useValue: serviceStub}, {provide: Covid19VerificationService}]
+    })
+    .compileComponents();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(LockoutComponent);
+    component = fixture.componentInstance;
+    de = fixture.debugElement;
+    service = TestBed.inject(Covid19VerificationService);
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+it('should call ')
