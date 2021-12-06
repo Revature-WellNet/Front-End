@@ -1,7 +1,60 @@
-<div class= "background" >
-    <app-button class="btn btn-top-left" (btnClick)="goBack()" text="Back"></app-button>
+<app-button class="btn btn-top-left" (btnClick)="goBack()" text="Back"></app-button>
 
-    <div class= "addAllergiesVaccines">
+<div class= "container" >
+
+    <div class= "addAllergiesVaccines" id = "initialPage">
+
+        <!-- <form
+         
+         #formDemo= "ngForm"
+         class= "form-check-in"
+         (ngSubmit)= "generatePatientEdit(fName, lName, dob2.value)">  
+         <u><h5>Find Patient to Edit:</h5></u>
+         <div class= "form-group">
+             
+             <label for= "fName">First Name:</label> 
+             <input
+                 type= "text"
+                 class= "form-control"
+                 name= "fName"
+                 id= "fName"
+                 maxlength="50"
+                 [(ngModel)] = "fName"
+                 required
+             />
+            </div>
+            <br>
+            <div class= "form-group">
+             
+                <label for= "lName">Last Name:</label> 
+                <input
+                    type= "text"
+                    class= "form-control"
+                    name= "lName"
+                    id= "lName"
+                    maxlength="50"
+                    [(ngModel)] = "lName"
+                    required
+                />
+               </div>
+               <br>
+            <div class= "form-group">
+             
+                <label for= "dob">Date of Birth:</label> 
+                <input
+                    type= "date"
+                    class= "form-control"
+                    name= "dob"
+                    id= "dob"
+                    [(ngModel)] = "dob"
+                    required
+                    #dob2
+                />
+               </div>
+               <br>
+            <button type= "submit" class= "btn btn-success submit-button">Find Patient</button>
+        </form> -->
+        <br>
         
          <form
          
@@ -9,7 +62,7 @@
          class= "form-check-in"
          (ngSubmit)= "submitAllergy(newAllergy)">  
  
-         <div class= "form-group">
+         <div >
              <!-- <label for= "newAllergy">Add Allergy:</label> -->
              <u><h5>Add Allergy:</h5></u>
              <input
@@ -32,7 +85,7 @@
          class= "form-check-in"
          (ngSubmit)= "submitVaccine(newVaccine)">  
  
-         <div class= "form-group">
+         <div>
              <!-- <label for= "newVaccine">Add Vaccine:</label> -->
              <u><h5>Add Vaccination:</h5></u>
                  <input
@@ -77,6 +130,113 @@
      </form>
  <br>
 
- </div>
+ <!-- </div>
 
- </div>
+ 
+    <div class= "patientCheckIn" id="editPage" hidden>
+        
+         <form
+         
+         #formDemo= "ngForm"
+         class= "form-check-in "
+         (ngSubmit)= "onSubmit(firstName, lastName, dob, feet, inches, weight, bloodtype, sex)">  
+ 
+         <div class= "form-group">
+             <label for= "firstName">First Name:</label>
+             <input
+                 type= "text"
+                 class= "form-control"
+                 name= "firstName"
+                 id= "firstName"
+                 maxlength="50"
+                 [(ngModel)] = "firstName"
+             />
+             <br>
+             <label for= "lastName">Last Name:</label>
+                 <input
+                     type= "text"
+                     class= "form-control"
+                     name= "lastName"
+                     id= "lastName"
+                     maxlength="50"
+                     [(ngModel)] = "lastName"
+                 />
+             <br>
+                 <label for= "dob">Date of Birth:</label>
+                 <input
+                     type= "date"
+                     class= "form-control"
+                     name= "dob"
+                     id= "dob"
+                     [(ngModel)] = "dob"
+                 />
+             <br>
+                 <p>Height: </p>
+                 <label for= "feet">feet:</label>
+                 <input
+                     type= "number"
+                     min = ".5"
+                     class= "form-control"
+                     name= "feet"
+                     id= "feet"
+                     min="0"
+                     max="10"
+                     [(ngModel)] = "feet"
+                 />
+                 <label for= "inches">inches:</label>
+                 <input
+                     type= "number"
+                     min = "0"
+                     class= "form-control"
+                     name= "inches"
+                     id= "inches"
+                     min="0"
+                     max="120"
+                     [(ngModel)] = "inches"
+                 />
+             <br>
+                 <label for= "weight">Weight (lbs.):</label>
+                 <input
+                     type= "number"
+                     min = "0"
+                     max="2000"
+                     class= "form-control"
+                     name= "weight"
+                     id= "weight"
+                     [(ngModel)] = "weight"
+                 />
+                 <span></span>
+             <br>
+             <label for="bloodtype">Bloodtype:</label>
+                 <select id="bloodtype" name="bloodtype" class= "form-control" [(ngModel)] = "bloodtype">
+                     <option value=""></option>
+                     <option value="O-">O-</option>
+                     <option value="O+">O+</option>
+                     <option value="B-">B-</option>
+                     <option value="B+">B+</option>
+                     <option value="A-">A-</option>
+                     <option value="A+">A+</option>
+                     <option value="AB-">AB-</option>
+                     <option value="AB+">AB+</option>
+                 </select>
+             <br>
+             <span class = "asterix">*</span><label for="sex">Sex:</label>
+                 <select id="sex" name="sex" class= "form-control" [(ngModel)] = "sex">
+                     <option value="M">Male</option>
+                     <option value="F">Female</option>
+                     <option value="NB">Other</option>
+                 </select>
+             <br>
+             <div id = "allergyanchor2">Allergies:</div>
+             <br>
+             <div id = "vaccinationanchor2">Vaccinations:</div>
+ 
+         </div>
+         <button type= "submit" class = "btn btn-success submit-button">Edit Patient</button>
+     </form>
+ <br>
+
+
+</div> -->
+
+</div>

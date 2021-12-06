@@ -1,11 +1,7 @@
-import { SignupResponse } from './signup-response';
-
-import { TestBed } from '@angular/core/testing';
+// import { SignupResponse } from './signup-response';
 
 // describe('SignupResponse', () => {
-
-
-//   it('should be created', () => {
-//     expect(response).toBeTruthy();
+//   it('should create an instance', () => {
+//     expect(new SignupResponse()).toBeTruthy();
 //   });
 // });
