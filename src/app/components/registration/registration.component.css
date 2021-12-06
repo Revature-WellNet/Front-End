@@ -155,12 +155,7 @@
   
   text-align : center;
 }*/
-.container-full{
-  background-image: url('/assets/img/graybg.png');
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
+
 .registrationbox{
   background: white url('/assets/img/regbg.jpg');
   background-position:bottom right;
@@ -170,18 +165,4 @@
   border-radius: 25px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-.form-control:focus, .form-check-input:focus {
-  border-color: #3A7F3E;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(57, 126, 61, 0.6);
-}
-.form-check-input:checked {
-  background-color: #3A7F3E;
-  border-color: #3A7F3E;
-}
-a{
-  text-decoration: none;
-  color:#777777 !important;
-}
-a:hover{
-  color: #3A7F3E !important;
-}
+
