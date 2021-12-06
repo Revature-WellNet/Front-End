@@ -12,14 +12,14 @@ import { PatientService } from 'src/app/services/patient.service';
   styleUrls: ['./patient-check-in.component.css']
 })
 export class PatientCheckInComponent implements OnInit {
-  public patientCheck: boolean = false;
+  //public patientCheck: boolean = false;
   public firstName!: string;
   public lastName!: string;
   public dob!: Date;
   public feet!: number;
   public inches!: number;
   public weight!: number;
-  public height!: number;
+  public height: number = 0;
   public bloodtype! : string;
   public sex! : string;
   public allergies : Allergy[] = [];
@@ -51,9 +51,9 @@ export class PatientCheckInComponent implements OnInit {
     
     if(feet){
       this.height = (feet*12);
-      if(inches){
-        this.height += inches;
-      }
+    }
+    if(inches){
+      this.height += inches;
     }
     if(sex && firstName && lastName && dob && bloodtype && this.height && weight){
       this.patientService.getSex(sex).subscribe((responseSex : any) => {
@@ -71,9 +71,7 @@ export class PatientCheckInComponent implements OnInit {
           let patient : Patient = new Patient(0, firstName, lastName, dob, this.height, weight, bloodObj, sexObj, vaccinations, allergies);
 
           console.log(patient);
-          
-          
-          
+
           this.patientService.createPatient(patient);
         
           })
@@ -183,27 +181,27 @@ generateChecklists(){
 
     
   }
-  async checkInPatient(firstName: string, lastName: string, dob: Date ){
-    const response = await this.patientService.getPatient(firstName, lastName, dob).toPromise();
-    this.patient = response;
-    this.patientCheck = true;
-    if(this.patient == null){
-      console.log("null patient");
-      //create new or try again?
-    }
-    else {
-      this.patientService.patient = this.patient;
-      console.log(`patient updated to ${this.patientService.patient}`)
-    }
-  }
+
+  // async checkInPatient(firstName: string, lastName: string, dob: Date ){
+  //   const response = await this.patientService.getPatient(firstName, lastName, dob).toPromise();
+  //   this.patient = response;
+  //   this.patientCheck = true;
+  //   if(this.patient == null){
+  //     console.log("null patient");
+  //     //create new or try again?
+  //   }
+  //   else {
+  //     this.patientService.patient = this.patient;
+  //     console.log(`patient updated to ${this.patientService.patient}`)
+  //   }
+  // }
 
   addAllergy(allergy : string){
 
     this.patientService.getAllergies().subscribe((response: any) => {
 
     for(let a of response){
-      if(a.allergy == allergy){
-        
+      if(a.allergy == allergy){      
 
         this.allergies.push(a);
       }

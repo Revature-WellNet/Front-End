@@ -168,7 +168,7 @@ export class DoctorComponent implements OnInit {
   }
 
   diagnosePatient(patient: Patient){
-    this.patientService.diagnosePatient(patient);
+    //this.patientService.diagnosePatient(patient);
   }
 
   logout(){
