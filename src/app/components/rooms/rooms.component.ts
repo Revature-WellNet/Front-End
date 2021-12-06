@@ -6,6 +6,8 @@ import { DiagnosisFormService } from 'src/app/services/diagnosis-form.service';
 import { RoomService } from 'src/app/services/room.service';
 import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/models/patient';
+import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -22,9 +24,13 @@ export class RoomsComponent implements OnInit {
 
   waitingroom:string[] = ["Mario Vidal", "Bob White", "Iron Man"];
   
-  constructor(private diagService: DiagnosisFormService, private roomService: RoomService, private patientService: PatientService) { }
+  constructor(private router:Router, private diagService: DiagnosisFormService, private service: FirebaseService, private roomService: RoomService, private patientService: PatientService) { }
   
   ngOnInit(): void {
+    
+    if(!this.service.autoSignIn()){
+      this.router.navigate(['login'])
+    }
     this.getAllAreas();
     this.getRooms();
   }
