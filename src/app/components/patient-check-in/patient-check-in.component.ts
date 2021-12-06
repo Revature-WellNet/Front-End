@@ -100,7 +100,7 @@ generateChecklists(){
           label.htmlFor = "checkbox";
 
           let breaker = document.createElement("p");
-          document.getElementById("vaccinationanchor")!.appendChild(breaker);
+          document.getElementById("allergyanchor")!.appendChild(breaker);
           document.getElementById("allergyanchor")!.appendChild(label);
           document.getElementById("allergyanchor")!.appendChild(checkbox);
 

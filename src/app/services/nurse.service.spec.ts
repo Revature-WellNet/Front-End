@@ -7,7 +7,11 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Patient } from '../models/patient';
-
+import { PatientCheckInComponent } from '../components/patient-check-in/patient-check-in.component';
+import { routes } from '../app-routing.module';
+import { AuthGuardGuard } from '../user-auth/services/auth-guard.guard';
+import { ProfileComponent } from '../components/profile/profile.component';
+import { RegistrationComponent } from '../components/registration/registration.component';
 
 describe('NurseService', () => {
   let service: NurseService;
@@ -266,6 +270,47 @@ describe('getPatientById', () => {
     });
   });
 
+
+  // addPatients(): void{
+  //     this.router.navigate(['patientcheckin']);
+  //   // return this.http.post<Patient>(`${this.patientApiServerUrl}/diagnosis/patient`, patient);
+  // }
+  describe('addPatients', () => {
+    it('#addPatients should route to Patient Check In', () =>{
+      
+      const expectedRoute = { path:"patientcheckin", canActivate:[AuthGuardGuard], component:PatientCheckInComponent }
+
+      expect(routes).toContain(expectedRoute);
+      
+    });
+  })
+
+  
+  // getUserInfo(){
+  //   this.router.navigate(['profile']);
+  // }
+  describe('getUserInfo', () => {
+    it('#getUserInfo should route to Profile', () =>{
+      
+      const expectedRoute = { path: "profile", canActivate:[AuthGuardGuard], component: ProfileComponent }
+
+      expect(routes).toContain(expectedRoute);
+      
+    });
+  })
+
+  // logout(){
+  //   this.router.navigate(["registration"]);
+  // }
+  describe('logout', () => {
+    it('#logout should route to Registration', () =>{
+      
+      const expectedRoute = { path: "registration", component: RegistrationComponent }
+
+      expect(routes).toContain(expectedRoute);
+      
+    });
+  })
 
 
 })

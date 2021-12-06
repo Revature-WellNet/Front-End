@@ -7,6 +7,7 @@ import { Patient } from '../models/patient';
 import { environment } from 'src/environments/environment';
 
 
+
 // const APIURL="http://localHost:8081/"
 @Injectable({
   providedIn: 'root'
@@ -55,10 +56,12 @@ export class NurseService {
     this.router.navigate(['profile']);
   }
 
+  // VV May Remove
   logout(){
     this.router.navigate(["registration"]);
   }
 
+  // VV May Remove
   goBack(): void {
     this.location.back();
   }
