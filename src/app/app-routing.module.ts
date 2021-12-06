@@ -18,7 +18,7 @@ import { StaticStyleTesterComponent } from './static-style-tester/static-style-t
 import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
   {path:"patientcheckin", canActivate:[AuthGuardGuard], component:PatientCheckInComponent},

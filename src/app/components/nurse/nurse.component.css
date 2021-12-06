@@ -1,14 +1,14 @@
-* {
+/* * {
     box-sizing: border-box;
     position: relative;
     color: rgb(0, 38, 74);
-}
-
+} */
+/*
 table td{
     text-align: center;
-}
+}*/
 
-.background {
+/* .background {
     background:  rgba(200, 220, 180, 0.1);
 }
 
@@ -68,8 +68,8 @@ input {
     display: flex;
     margin-top: 3em;
     margin-bottom: 3em;
-}
-
+} */
+/*
 .table{
     display: flex;
     justify-content: center;
@@ -85,6 +85,7 @@ table th {
 table th:last-child {
     border-right: none;
 }
-
-
-
+*/
+.mainbox{
+    width: 80%;
+}

@@ -66,9 +66,20 @@ White:
      font-size: 16px;
      margin: 18px;
      transition-duration: 0.5s;
-
+     width:100%;
+     max-width: 200px;
+    
     }
- 
+    .btnRow{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+  
+  }
+  .btnRow>.Button2{
+   height: 90px;
+  }
  .Button2:hover {
     background-color: white;
     border: 2px solid #239507;
@@ -105,7 +116,9 @@ White:
    font-size: 16px;
    margin: 18px;
    transition-duration: 0.5s;
-
+   max-width:20em;
+   white-space:nowrap;
+   overflow:hidden;
   }
 
 .Button4:hover {
@@ -166,14 +179,19 @@ White:
  .input {
      border: 2px solid #566675;
      border-radius: 8px;
-     margin: 8px;
+     width:80%;
      outline: none;
      transition-duration: 0.5s;
      padding-left:10px;
+     
  }
 
  .input:focus {
     box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .input::placeholder {
+    color: black;
  }
 
  .searchInput {
@@ -238,6 +256,7 @@ White:
    background-repeat: no-repeat;
  background-attachment: fixed;
  background-size: cover;
+ overflow: auto;
 }
 
 .covidCard {
@@ -254,8 +273,20 @@ White:
 
 }
 
-label {
+/* label {
    padding-left: 3px;
+} */
+
+.background2 {
+   position:absolute;
+ top:0px;
+ right:0px;
+ bottom:0px;
+ left:0px;
+   background-image: url('https://image.freepik.com/free-vector/abstract-medical-wallpaper-template-design_53876-61802.jpg');
+   background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
 }
 
 
@@ -265,3 +296,116 @@ label {
     background
     
  */
+ .title {
+    text-align: center;
+ }
+
+ .logo {
+   background-image: url('assets/img/WellNetLogoClear.png');
+   background-color: rgba(255, 255, 255, 0.9);
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+ }
+
+ .form-group {
+   margin: auto;
+   width: 80%;
+    margin-top: 30px;
+ }
+
+ .accountCard {
+   
+   border-radius: 25px;
+   text-align: center;
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   color: Black;
+   box-shadow: 1.5px 4px 3px 4px #888888;
+   background-color: rgba(86, 102, 117, 0);
+
+
+}
+
+.profile {
+   width:80%;
+   margin:auto;
+}
+
+td { text-align: left;}
+
+.dobInput {
+   margin-right:500px;
+}
+
+.timer {
+   text-align: center;
+   padding-top: 50px;
+}
+
+.diagnosisTable {
+   margin-top:80px;
+   margin-left:auto;
+   margin-right:auto;
+   width:40%;
+}
+/*Template theme*/
+.container-full{
+   background-image: url('/assets/img/graybg.png');
+   background-size: cover;
+   width: 100%;
+   height: 100%;
+ }
+ .h100{
+    height: 100%;
+ }
+ .mainbox{
+   margin-left: auto;
+   margin-right: auto;
+   min-height: 590px;
+   background-color: white;
+   width: 1024px;
+   border-radius: 25px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+ }
+ .mainbox-bg{
+   background: white url('/assets/img/loginboxbg.jpg');
+   background-position: right;
+   background-repeat: no-repeat;
+ }
+ .mainbox-bg2{
+   background: white url('/assets/img/regbg.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+ }
+ .links ul {
+   list-style: none; /* Remove default bullets */
+ }
+
+ .links ul li::before {
+   content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+   color:#3A7F3E; /* Change the color */
+   font-weight: bold; /* If you want it to be bold */
+   display: inline-block; /* Needed to add space between the bullet and the text */
+   width: 1em; /* Also needed for space (tweak if needed) */
+   margin-left: -1em; /* Also needed for space (tweak if needed) */
+   font-size: large;
+ }
+ .form-control:focus, .form-check-input:focus {
+   border-color: #3A7F3E !important;
+   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(57, 126, 61, 0.6) !important;
+ }
+ .form-check-input:checked {
+   background-color: #3A7F3E !important;
+   border-color: #3A7F3E !important;
+ }
+ a{
+   text-decoration: none;
+   color:#777777 !important;
+   cursor: pointer;
+ }
+ a:hover{
+   color: #3A7F3E !important;
+ }

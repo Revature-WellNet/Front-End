@@ -1,3 +1,9 @@
 .asterix{
     color:red;
 }
+.mainbox{
+    border-radius: 0;
+}
+.container-full{
+    height: auto;
+}

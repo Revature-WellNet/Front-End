@@ -24,7 +24,7 @@ export class Apihttpintercept implements HttpInterceptor {
         return this.service.userInfo.pipe(
             take(1),
             exhaustMap((user) => {
-
+            console.log(user)
                 if (!user) {
                     console.warn("User attempting to send an HTTP request without stored credentials. Sending request without attached headers.")
                     return next.handle(req);

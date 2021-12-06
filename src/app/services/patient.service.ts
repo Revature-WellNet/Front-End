@@ -84,7 +84,6 @@ export class PatientService {
 }
 
 
-
 // http://localhost:8081/wellnet/patient?firstname=Captain&lastname=America&dob=1920-03-31
 
   diagnosePatient(patient: Patient) {

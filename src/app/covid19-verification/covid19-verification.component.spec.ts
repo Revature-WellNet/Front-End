@@ -9,9 +9,9 @@ import { UserService } from '../services/user.service';
 import { Covid19VerificationComponent } from './covid19-verification.component';
 import { of } from 'rxjs';
 
-describe('Covid19VerificationComponent', () => {
-  let component: Covid19VerificationComponent;
-  let fixture: ComponentFixture<Covid19VerificationComponent>;
+// describe('Covid19VerificationComponent', () => {
+//   let component: Covid19VerificationComponent;
+//   let fixture: ComponentFixture<Covid19VerificationComponent>;
 
   let serviceStub: any;
 
@@ -25,13 +25,13 @@ describe('Covid19VerificationComponent', () => {
     .compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(Covid19VerificationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(Covid19VerificationComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
