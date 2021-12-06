@@ -22,7 +22,7 @@ export class RoomsComponent implements OnInit {
   log:string = "";
   patient: Patient = this.patientService.patient; 
 
-  waitingroom:string[] = ["Mario Vidal", "Bob White", "Iron Man"];
+  waitingroom:Patient[] = [];
   
   constructor(private router:Router, private diagService: DiagnosisFormService, private service: FirebaseService, private roomService: RoomService, private patientService: PatientService) { }
   
@@ -72,9 +72,14 @@ export class RoomsComponent implements OnInit {
     // populating rooms with current patients
     this.diagService.getAllDiagnosisForms().subscribe(diags => {
       diags.forEach(diag => {
-        if(!diag.getResolutionStatus()){ //resolutionStatus = false means that the patient is still in the room
-          this.rooms[diag.getRoom().roomNumber - 1].patients.push(diag.getPatient().firstName + " " + diag.getPatient().lastName);
-          this.rooms[diag.getRoom().roomNumber - 1].roomStatus = 2;
+        if(!diag.getResolutionStatus()){ //resolutionStatus = false means that the patient is still in the room;
+          if(diag.getRoom()){
+            this.rooms[diag.getRoom().roomNumber - 1].patients.push(diag.getPatient());
+            this.rooms[diag.getRoom().roomNumber - 1].roomStatus = 2;
+          }
+          else{
+            this.waitingroom.push(diag.getPatient());
+          }
         }
       });
     });

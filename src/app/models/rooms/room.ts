@@ -1,3 +1,4 @@
+import { Patient } from "../patient";
 import { Area } from "./area";
 /*12*/
 export class Room {
@@ -5,10 +6,10 @@ export class Room {
     roomNumber:number;
     roomStatus:number;
     area:Area;
-    patients:string[];
+    patients:Patient[];
     highlighted:boolean;
 
-    constructor(roomId:number, roomNumber:number, area:Area, roomStatus:number, patients:string[], highlighted:boolean){
+    constructor(roomId:number, roomNumber:number, area:Area, roomStatus:number, patients:Patient[], highlighted:boolean){
         this.roomId = roomId;
         this.roomNumber = roomNumber;
         this.area = area;
