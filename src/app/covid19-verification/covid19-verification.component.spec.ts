@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+// import { Covid19VerificationComponent } from './covid19-verification.component';
+=======
 import { async, ComponentFixture, TestBed, inject, tick, fakeAsync } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -8,11 +13,20 @@ import { UserService } from '../services/user.service';
 
 import { Covid19VerificationComponent } from './covid19-verification.component';
 import { of } from 'rxjs';
+>>>>>>> e515d2dce64a0a86b4880279b96592bffee900c8
 
-describe('Covid19VerificationComponent', () => {
-  let component: Covid19VerificationComponent;
-  let fixture: ComponentFixture<Covid19VerificationComponent>;
+// describe('Covid19VerificationComponent', () => {
+//   let component: Covid19VerificationComponent;
+//   let fixture: ComponentFixture<Covid19VerificationComponent>;
 
+<<<<<<< HEAD
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       declarations: [ Covid19VerificationComponent ]
+//     })
+//     .compileComponents();
+//   });
+=======
   let serviceStub: any;
 
   beforeEach(async () => {
@@ -24,14 +38,15 @@ describe('Covid19VerificationComponent', () => {
     })
     .compileComponents();
   });
+>>>>>>> e515d2dce64a0a86b4880279b96592bffee900c8
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(Covid19VerificationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(Covid19VerificationComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
