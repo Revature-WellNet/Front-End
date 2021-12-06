@@ -189,4 +189,8 @@ export class DoctorComponent implements OnInit {
     });
   }
 
+  routeToAdd(){
+    this.router.navigate(["addAllergiesVaccines"]);
+  }
+
 }

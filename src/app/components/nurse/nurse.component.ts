@@ -114,4 +114,8 @@ export class NurseComponent implements OnInit {
     this.firebaseService.logout();
   }
 
+  routeToAdd(){
+    this.router.navigate(["addAllergiesVaccines"]);
+  }
+
 }

@@ -32,7 +32,9 @@ import { LockoutComponent } from './lockout/lockout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Apihttpintercept } from './user-auth/services/apihttpintercept';
 import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
+import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
 
 
 
@@ -54,7 +56,9 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     LockoutComponent,
     NavbarComponent,
     StaticStyleTesterComponent,
-    ForgetPasswordComponent
+    AddAllergiesVaccinesComponent,
+    ForgetPasswordComponent,
+    WellnetLogoComponent
 
   ],
   imports: [
