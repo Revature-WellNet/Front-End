@@ -30,7 +30,7 @@
                 <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
                 <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
                 <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
-                    <i class='bx bx-user'></i> {{item}}
+                    <i class='bx bx-user'></i> {{ item }}
                 </div>
                 </div>
                 </ng-container>

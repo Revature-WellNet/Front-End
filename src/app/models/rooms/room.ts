@@ -6,10 +6,10 @@ export class Room {
     roomNumber:number;
     roomStatus:number;
     area:Area;
-    patients:Patient[];
+    patients:string[];
     highlighted:boolean;
 
-    constructor(roomId:number, roomNumber:number, area:Area, roomStatus:number, patients:Patient[], highlighted:boolean){
+    constructor(roomId:number, roomNumber:number, area:Area, roomStatus:number, patients:string[], highlighted:boolean){
         this.roomId = roomId;
         this.roomNumber = roomNumber;
         this.area = area;
