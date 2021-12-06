@@ -38,6 +38,10 @@ export class Patient {
             this.patientVaccinations = vaccinations;
             this.patientAllergies = allergies;
         }
+    
+    public fullName(): string {
+        return this.firstName + " " + this.lastName;
+    }
 
 
 
