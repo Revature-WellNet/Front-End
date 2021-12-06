@@ -1,6 +1,4 @@
-
-#RegistrationDiv {
-
+/*#RegistrationDiv {
   border-style : double;
 
   padding-left : 3%;
@@ -8,12 +6,12 @@
   padding-top : 20px;
   padding-bottom : 20px;
 
-  background-color: rgba(200, 220, 180, 0.1);
+  background-color: rgba(200, 220, 180, 0.1);*/
 /* 
   align-self : center;
   justify-self : center; */
 
-  width : 40%;
+ /* width : 40%;
 
   margin : auto;
 
@@ -36,12 +34,12 @@
   margin-left : 10%;
   margin-right : 10%;
 
-  color : rgb(0, 38, 74);
+  color : rgb(0, 38, 74);*/
 
 /* 
   align-self : center;
   justify-self : center; */
-
+/*
   text-align : center;
 
 }
@@ -156,6 +154,4 @@
 
   
   text-align : center;
-
-
-}
+}*/

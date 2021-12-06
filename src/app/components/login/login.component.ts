@@ -13,10 +13,11 @@ import { Covid19VerificationService } from 'src/app/services/covid19-verificatio
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  log: boolean = false;
+  title="Sign in";
+  
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router,
+    public router: Router,
     public userService: UserService,
     public cvs: Covid19VerificationService
   ) {}
@@ -31,13 +32,9 @@ export class LoginComponent implements OnInit {
 
   onSignin(email: string, password: string) {
     // console.log('sign in');
-    this.firebaseService
-      .login(email, password)
-      .then(
-        (res) => 
-        {
+    this.firebaseService.login(email, password).then(res => {
           const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-          this.userService.getUser(userData.id).subscribe((data) => {
+         // this.userService.getUser(userData.id).subscribe((data) => {
             this.cvs.getFormServByString(userData.id).subscribe((formData) => {
                 localStorage.setItem('covidInfo', JSON.stringify(formData));
                 if (userData.role == 'nurse') {
@@ -48,29 +45,31 @@ export class LoginComponent implements OnInit {
                   this.router.navigate(['doctor']);
                 } else {
                   // user does not have a role / could not find users role
-                  console.error('This account properly registered. Please register again');
+                  console.error('This account is not properly registered. Please register again');
                 }
-              })
+          //    })
             });
         }).catch((err) => {
         alert(err);
       });
   }
-             
-  logout() {
-    this.firebaseService.logout();
-  }
+  //Depricated functions           
+  // logout() {
+  //   this.firebaseService.logout();
+  // }
 
-  //dummy example of sending an http request requiring an authorization header
-  getUser() {
-    this.firebaseService.userInfo.subscribe((res) => {
-      console.log(res);
-    });
-    this.firebaseService.gettest().subscribe((data) => {
-      console.log(data);
-    });
-  }
-
+  // //dummy example of sending an http request requiring an authorization header
+  // getUser() {
+  //   this.firebaseService.userInfo.subscribe((res) => {
+  //     console.log(res);
+  //   });
+  //   this.firebaseService.gettest().subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
+  // refreshToken() {
+  //   this.firebaseService.refreshToken();
+  // }
   ngOnInit(): void {
     //to check the status of login
     this.firebaseService.userInfo.subscribe((res) => {
@@ -94,7 +93,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  refreshToken() {
-    this.firebaseService.refreshToken();
-  }
+  
 }

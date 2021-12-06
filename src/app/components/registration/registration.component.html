@@ -1,166 +1,150 @@
+<div class="container-full d-flex align-items-center">
+  <div class="container">
+      <div class="row">
+          <div class="d-flex justify-content-center col-md-12">
+            <div class="mainbox mainbox-bg2">
+              <div class="row">
+                <div class="col-md-12 mt-4 ps-5">
+                  <div>
+                    <img src="/assets/img/WellNetLogo.jpg" alt="">
+                </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 p-5">
+                  <h4 class="mb-4">
+                    New User Registration
+                  </h4>
+                  <form>
+                    <!-- <label for="RegistrationFirstName">
+                      First Name
+                    </label>  -->
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
+                          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                      </span>                    
+                      <input type="text" #RegistrationFirstName class="form-control"
+                        (keyup.enter)="updateFirstName(RegistrationFirstName.value)"
+                        (blur)="updateFirstName(RegistrationFirstName.value);"
+                        onkeydown="return event.key != 'Enter';"
+                        autocomplete = "off" placeholder="First name" >
+                    </div>
+                    <!-- <label for="RegistrationLastName">
+                      Last Name
+                    </label> -->
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                      </span>                      
+                      <input type="text" class="form-control"
+                        #RegistrationLastName
+                        (keyup.enter)="updateLastName(RegistrationLastName.value)"
+                        (blur)="updateLastName(RegistrationLastName.value);"
+                        onkeydown="return event.key != 'Enter';"
+                        autocomplete = "off" placeholder="Last name">
+                    </div>
+                    <!-- <label for="RegistrationEmail">
+                      Email
+                    </label> -->
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" >
+                        @
+                      </span>
+                      <input type="text" class="form-control"
+                        #RegistrationEmail
+                        
+                        (blur)="updateEmail(RegistrationEmail.value)"
+                        onkeydown="return event.key != 'Enter';"
+                        autocomplete = "off" placeholder="Email address">
+                      
+                    </div>
+                    <!-- <label for="RegistrationPassword">Password</label> -->
+                    <div class="input-group mb-3">                      
+                      <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
+                            <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+                            <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+                          </svg>
+                      </span>
+                      <input type="password" class="form-control"
+                        #RegistrationPassword
+                        (keyup.enter)="updatePassword(RegistrationPassword.value)"
+                        (blur)="updatePassword(RegistrationPassword.value)"
+                        onkeydown="return event.key != 'Enter';"
+                        autocomplete = "off" placeholder="Password">
+                    </div>
+                  
+                      <div class="mb-4">
+                        <span class="d-block">
+                          Hospital Role
+                        </span>
+                        <div class="form-check form-check-inline ">
+                        <input type = "radio" class="form-check-input"
+                          #RegistrationRole1
+                          name="Role" value="nurse"
+                          (click)="updateRole(RegistrationRole1.value)">
+                        <label for="RegistrationRole1">
+                          Nurse
+                        </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input type = "radio" class="form-check-input"
+                          #RegistrationRole2
+                          name="Role" value="doctor"
+                          (click)="updateRole(RegistrationRole2.value)">
+                        <label for="RegistrationRole2">
+                          Doctor
+                        </label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <button type="button" (click)="updateValues()" 
+                          class="btn btn-outline-success" [disabled] = "registrationButtonSetting"
+                          *ngIf="covidStatus == false">
+                          Register User
+                        </button>
+                        </div>
+                        <div class="col-md-8">
+                          <span *ngIf="success" class="text-success"> 
+                            Registration successful. Please <a [routerLink]="['/login']">Login</a>
+                          </span>
+                          <span *ngIf="emailValidated == false" class="text-danger"> 
+                            Please enter a valid email
+                          </span>
+                        </div>
+                        
+                      </div>
+                  </form>
+                </div>
+                <div class="col-md-6">
+                  
+                    <!-- Validate Entry -->
+                    <div *ngIf = "debugging == true;">
 
-<!-- <p class="col-sm-4"> -->
-<div id = "RegistrationDiv" class="col-sm-4">
-
-  <div class = "CenterContainerContent">
-    <h1 class="RegistrationTitle">
-      New User <br> Registration
-    </h1>
-  </div>
-
-  <form class = "d-flex col-sm-4" class = "RegistrationForm">
-
-    <label for="RegistrationFirstName">
-      First Name
-    </label>  
-    <input type="text" class="RegistrationFirstName" 
-      #RegistrationFirstName 
-      (keyup.enter)="updateFirstName(RegistrationFirstName.value)"
-      (blur)="updateFirstName(RegistrationFirstName.value);"
-      onkeydown="return event.key != 'Enter';"
-      autocomplete = "off">
-  
-    <br>
-    <label for="RegistrationLastName">
-      Last Name
-    </label>
-    <input type="text" class="RegistrationLastName"
-      #RegistrationLastName
-      (keyup.enter)="updateLastName(RegistrationLastName.value)"
-      (blur)="updateLastName(RegistrationLastName.value);"
-      onkeydown="return event.key != 'Enter';"
-      autocomplete = "off">
-
-    <!-- <br>
-    <label for="RegistrationUsername">
-      Username
-    </label>
-    <input type="text" class="RegistrationUsername"
-      #RegistrationUsername
-      (keyup.enter)="updateUsername(RegistrationUsername.value)"
-      (blur)="updateUsername(RegistrationUsername.value)"
-      onkeydown="return event.key != 'Enter';"
-      autocomplete = "off"> -->
-
-    <br>
-    <label for="RegistrationPassword">
-      Password
-    </label>
-    <input type="password" class="RegistrationPassword"
-      #RegistrationPassword
-      (keyup.enter)="updatePassword(RegistrationPassword.value)"
-      (blur)="updatePassword(RegistrationPassword.value)"
-      onkeydown="return event.key != 'Enter';"
-      autocomplete = "off">
-    <br>
-    <br>
-<!-- 
-    <label for="RegistrationRole">
-      Company Role
-    </label>
-    <input type="text" id="RegistrationRole"
-      #RegistrationRole
-      (keyup.enter)="updateRole(RegistrationRole.value)"
-      (blur)="updateRole(RegistrationRole.value)"
-      onkeydown="return event.key != 'Enter';"
-      autocomplete = "off">
-    <p *ngIf="roleValidated == false" id="RegistrationValidationMessage">
-      Please Enter A Valid Role : Nurse or Doctor
-    </p>
-    <p id="RegistrationSpacer"></p>
-    <p id="RegistrationSpacer" *ngIf="roleValidated == true || roleValidated === null"></p> -->
-    
-    <div class="RegistrationRoleRadios">
-      <p for="RoleValidation" class="RegistrationRoleTitle">
-        Hospital Role
-      </p>
-      <input type = "radio" class="RegistrationRole1"
-        #RegistrationRole1
-        name="Role" value="nurse"
-        (click)="updateRole(RegistrationRole1.value)">
-      <label for="RegistrationRole1">
-        Nurse
-      </label>
-
-      <input type = "radio" class="RegistrationRole2"
-        #RegistrationRole2
-        name="Role" value="doctor"
-        (click)="updateRole(RegistrationRole2.value)">
-      <label for="RegistrationRole2">
-        Doctor
-      </label>
+                      <h3> VV For Debugging VV </h3>
+                      <p> Entered First Name : {{firstName}} </p>
+                      <p> Entered Last Name : {{lastName}} </p>
+                      <p> Entered Username : {{username}} </p>
+                      <p> Entered Password : {{password}} </p>
+                      <p> Entered Role : {{role}} </p>
+                      <p> Entered Email : {{email}} </p>
+                    
+                      <!-- <button type="button" (click)="rng()">
+                        rng
+                      </button> -->
+                    
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-    <br>
-
-    <label for="RegistrationEmail">
-      Email
-    </label>
-    <input type="text" class="RegistrationEmail"
-      #RegistrationEmail
-      
-      (blur)="updateEmail(RegistrationEmail.value)"
-      onkeydown="return event.key != 'Enter';"
-      autocomplete = "off">
-    <p *ngIf="emailValidated == false" class="RegistrationValidationMessage"> 
-      Please enter a valid email
-    </p>
-    <p class="RegistrationSpacer"></p>
-    <p class="RegistrationSpacer" *ngIf="emailValidated == true || emailValidated === null"></p>
-
-    <!-- <div id="RegistrationCovidRadios">
-      <p for="CovidValidation" clas="RegistrationCovidTitle">
-        Do you currently have Covid-19 Symptoms?
-      </p>
-      <input type = "radio" class="RegistrationCovidStatus1"
-        #RegistrationCovidStatus1
-        name="Covid" value="Yes"
-        (click)="updateCovidStatus(RegistrationCovidStatus1.value)">
-      <label for="RegistrationCovidStatus1">
-        Yes
-      </label>
-
-      <input type = "radio" class="RegistrationCovidStatus2"
-        #RegistrationCovidStatus2
-        name="Covid" value="No"
-        (click)="updateCovidStatus(RegistrationCovidStatus2.value)">
-      <label for="RegistrationCovidStatus2">
-        No
-      </label>
-    </div> -->
-
-    <div class="CenterContainerContent">
-      <button type="button" (click)="updateValues()" 
-      class="RegisterButton" [disabled] = "registrationButtonSetting"
-      *ngIf="covidStatus == false">
-      Register User
-    </button>
-
-    <!-- <p id="RegistrationCovidNotice"
-      *ngIf="covidStatus == true">
-      You Have Covid <br> Go Home!! <br> Login Denied
-    </p> -->
-
     </div>
-
-  </form>
-
-  <!-- Validate Entry -->
-  <div *ngIf = "debugging == true;">
-
-  <h3> VV For Debugging VV </h3>
-  <p> Entered First Name : {{firstName}} </p>
-  <p> Entered Last Name : {{lastName}} </p>
-  <p> Entered Username : {{username}} </p>
-  <p> Entered Password : {{password}} </p>
-  <p> Entered Role : {{role}} </p>
-  <p> Entered Email : {{email}} </p>
-
-  <!-- <button type="button" (click)="rng()">
-    rng
-  </button> -->
-
-  </div>
-</div>
-<!-- <p class="col-sm-4"> -->
-
-
