@@ -60,13 +60,11 @@ export class RoomsComponent implements OnInit {
   */
 
   getRooms(){
-    /*this.roomService.getAllRooms().forEach(room => {
-        this.rooms[room.roomNumber - 1] = room;
-    });*/
 
     this.roomService.getAllRooms().subscribe(roomList => {
       console.log(JSON.stringify(roomList));
       roomList.forEach((room: any) => {
+        //mismatch between frontend and backend representations of rooms requires this constructor stuff
         this.rooms[room.roomNumber-1] = (new Room(room.roomId, room.roomNumber, new Area(room.area.id, room.area.name), 1, [], false));
       });
     });
