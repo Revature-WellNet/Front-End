@@ -26,18 +26,18 @@ export class AddAllergiesVaccinesComponent implements OnInit {
   public fName! : string;
   public lName! : string;
   //public dob! : Date;
-  public editedPatient! : Patient;
-  public allergies : Allergy[] = [];
-  public vaccinations : Vaccination[] = [];
-  public firstName!: string;
-  public lastName!: string;
-  public dob!: Date;
-  public feet!: number;
-  public inches!: number;
-  public weight!: number;
-  public height: number = 0;
-  public bloodtype! : string;
-  public sex! : string;
+  // public editedPatient! : Patient;
+  // public allergies : Allergy[] = [];
+  // public vaccinations : Vaccination[] = [];
+  // public firstName!: string;
+  // public lastName!: string;
+  // public dob!: Date;
+  // public feet!: number;
+  // public inches!: number;
+  // public weight!: number;
+  // public height: number = 0;
+  // public bloodtype! : string;
+  // public sex! : string;
 
   
 
@@ -137,6 +137,8 @@ export class AddAllergiesVaccinesComponent implements OnInit {
       let allergies : Allergy[] = response;
       this.currentAllergies = response;
 
+      
+
         for(let a of allergies){
           
           let label = document.createElement("label");
@@ -150,13 +152,15 @@ export class AddAllergiesVaccinesComponent implements OnInit {
           label.htmlFor = "checkbox";
 
           let breaker = document.createElement("p");
+
+          console.log(checkbox.value)
           document.getElementById("allergyanchor")!.appendChild(breaker);
           document.getElementById("allergyanchor")!.appendChild(label);
           document.getElementById("allergyanchor")!.appendChild(checkbox);
 
-          document.getElementById("allergyanchor2")!.appendChild(breaker);
-          document.getElementById("allergyanchor2")!.appendChild(label);
-          document.getElementById("allergyanchor2")!.appendChild(checkbox);
+          // document.getElementById("allergyanchor2")!.appendChild(breaker2);
+          // document.getElementById("allergyanchor2")!.appendChild(label2);
+          // document.getElementById("allergyanchor2")!.appendChild(checkbox2);
 
           var self = this;
           checkbox.addEventListener('change', function() {
@@ -169,8 +173,6 @@ export class AddAllergiesVaccinesComponent implements OnInit {
                  
                   const index = self.oldAllergies.indexOf(a.allergy);
                   self.oldAllergies.splice(index, 1);
-                    
-             
 
             }
           });
@@ -200,13 +202,14 @@ export class AddAllergiesVaccinesComponent implements OnInit {
           label.htmlFor = "checkbox";
 
           let breaker = document.createElement("p");
+  
           document.getElementById("vaccinationanchor")!.appendChild(breaker);
           document.getElementById("vaccinationanchor")!.appendChild(label);
           document.getElementById("vaccinationanchor")!.appendChild(checkbox);
 
-          document.getElementById("vaccinationanchor2")!.appendChild(breaker);
-          document.getElementById("vaccinationanchor2")!.appendChild(label);
-          document.getElementById("vaccinationanchor2")!.appendChild(checkbox);
+          // document.getElementById("vaccinationanchor2")!.appendChild(breaker2);
+          // document.getElementById("vaccinationanchor2")!.appendChild(label2);
+          // document.getElementById("vaccinationanchor2")!.appendChild(checkbox2);
 
           var self = this;
           checkbox.addEventListener('change', function() {
@@ -231,89 +234,89 @@ export class AddAllergiesVaccinesComponent implements OnInit {
     
   }
 
-  generatePatientEdit(fName : string, lName : string, dob : string){
+  // generatePatientEdit(fName : string, lName : string, dob : string){
 
-    this.nurseService.getPatientByNameDOB(fName, lName, dob).subscribe(
-      (response: Patient[])=> {
+  //   this.nurseService.getPatientByNameDOB(fName, lName, dob).subscribe(
+  //     (response: Patient[])=> {
 
-        if(response[0]){
+  //       if(response[0]){
 
-          let editedPatient : Patient = response[0];
-          console.log(editedPatient);
-          this.hideCheckboxes(document.getElementById("initialPage")!)
-          this.editPatient(editedPatient);
+  //         let editedPatient : Patient = response[0];
+  //         console.log(editedPatient);
+  //         this.hideCheckboxes(document.getElementById("initialPage")!)
+  //         this.editPatient(editedPatient);
 
-        }else{
-          alert("Patient not found.")
-        }
-      })
+  //       }else{
+  //         alert("Patient not found.")
+  //       }
+  //     })
 
-  }
+  // }
 
-  editPatient(editedPatient : Patient){
+  // editPatient(editedPatient : Patient){
 
-    this.oldAllergies = [];
-    this.oldVaccines = [];
-    document.getElementById("editPage")!.style.visibility = 'visible';
-    this.editedPatient = editedPatient;
+  //   this.oldAllergies = [];
+  //   this.oldVaccines = [];
+  //   document.getElementById("editPage")!.style.visibility = 'visible';
+  //   this.editedPatient = editedPatient;
 
-  }
+  // }
 
-  onSubmit(firstName: string | null, lastName: string | null, dob: Date | null,
+  // onSubmit(firstName: string | null, lastName: string | null, dob: Date | null,
 
 
-    feet : number | null,
-    inches : number | null,
-    weight : number | null,
-    bloodtype : string | null,
-    sex : string | null){
+  //   feet : number | null,
+  //   inches : number | null,
+  //   weight : number | null,
+  //   bloodtype : string | null,
+  //   sex : string | null){
 
-    var height : number = 0;
+  //   var height : number = 0;
 
-    if(feet){
-      height = (feet*12);
-    }
-    if(inches){
-      height += inches;
-    }
+  //   if(feet){
+  //     height = (feet*12);
+  //   }
+  //   if(inches){
+  //     height += inches;
+  //   }
 
-    if(firstName){
-      this.editedPatient.firstName = firstName;
-    }
-    if(lastName){
-      this.editedPatient.lastName = lastName;
-    }
-    if(dob){
-      this.editedPatient.dob = dob;
-    }
-    if(height){
-      this.editedPatient.height = height;
-    }
-    if(weight){
-      this.editedPatient.weight = weight;
-    }
-    if(this.oldAllergies){
-      for(let i of this.oldAllergies){
-        this.addAllergy(i)
-      }
-      this.editedPatient.patientAllergies = this.allergies;
-    }
-    if(this.oldVaccines){
-      for(let i of this.oldVaccines){
-        this.addVaccination(i)
-      }
-      this.editedPatient.patientVaccinations = this.vaccinations;
-    }
-    if(bloodtype){
-      this.patientService.getBloodType(bloodtype).subscribe((responseBloodType: any) => { this.setBloodType(responseBloodType)})
-    }
-    if(sex){
-      this.patientService.getSex(sex).subscribe((response: any) => { this.setSex(response)});
-    }
+  //   if(firstName){
+  //     this.editedPatient.firstName = firstName;
+  //   }
+  //   if(lastName){
+  //     this.editedPatient.lastName = lastName;
+  //   }
+  //   if(dob){
+  //     this.editedPatient.dob = dob;
+  //   }
+  //   if(height){
+  //     this.editedPatient.height = height;
+  //   }
+  //   if(weight){
+  //     this.editedPatient.weight = weight;
+  //   }
+  //   if(this.oldAllergies){
+  //     for(let i of this.oldAllergies){
+  //       this.addAllergy(i)
+  //     }
+  //     this.editedPatient.patientAllergies = this.allergies;
+  //   }
+  //   if(this.oldVaccines){
+  //     for(let i of this.oldVaccines){
+  //       this.addVaccination(i)
+  //     }
+  //     this.editedPatient.patientVaccinations = this.vaccinations;
+  //   }
+  //   if(bloodtype){
+  //     this.patientService.getBloodType(bloodtype).subscribe((responseBloodType: any) => { this.setBloodType(responseBloodType)})
+  //   }
+  //   if(sex){
+  //     this.patientService.getSex(sex).subscribe((response: any) => { this.setSex(response)});
+  //   }
 
-      this.patientService.createPatient(this.editedPatient);    
+  //     this.patientService.createPatient(this.editedPatient);    
     
-  }
+  // }
 
   hideCheckboxes(body : HTMLElement) {
 
@@ -322,40 +325,40 @@ export class AddAllergiesVaccinesComponent implements OnInit {
     }
   }
 
-  addAllergy(allergy : string){
+  // addAllergy(allergy : string){
 
-    this.patientService.getAllergies().subscribe((response: any) => {
+  //   this.patientService.getAllergies().subscribe((response: any) => {
 
-    for(let a of response){
-      if(a.allergy == allergy){      
+  //   for(let a of response){
+  //     if(a.allergy == allergy){      
 
-        this.allergies.push(a);
-      }
-    }
+  //       this.allergies.push(a);
+  //     }
+  //   }
 
-    })
-  }
+  //   })
+  // }
 
-  addVaccination(vaccination : string){
+  // addVaccination(vaccination : string){
 
-    this.patientService.getVaccinations().subscribe((response: any) => {
+  //   this.patientService.getVaccinations().subscribe((response: any) => {
 
-      for(let v of response){
-        if(v.vaccination === vaccination){
+  //     for(let v of response){
+  //       if(v.vaccination === vaccination){
           
-          this.vaccinations.push(v);
-        }
-      }
+  //         this.vaccinations.push(v);
+  //       }
+  //     }
   
-      })
-  }
+  //     })
+  // }
 
-  setBloodType(type : Bloodtype){
-    this.editedPatient.bloodType = type;
-  }
+  // setBloodType(type : Bloodtype){
+  //   this.editedPatient.bloodType = type;
+  // }
 
-  setSex(sex : Sex){
-    this.editedPatient.sex = sex;
-  }
+  // setSex(sex : Sex){
+  //   this.editedPatient.sex = sex;
+  // }
 
 }
