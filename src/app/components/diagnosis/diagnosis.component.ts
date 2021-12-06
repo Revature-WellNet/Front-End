@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DiagnosisForm } from 'src/app/models/diagnosis-form';
 import { Patient } from 'src/app/models/patient';
 import { Room } from 'src/app/models/rooms/room';
@@ -26,6 +27,7 @@ export class DiagnosisComponent implements OnInit {
     private patientService: PatientService,
     private diagnosisService: DiagnosisFormService,
     private userService: UserService,
+    private router: Router,
   ) {}
 
   ngAfterViewInit(){
@@ -63,9 +65,10 @@ export class DiagnosisComponent implements OnInit {
         this.diagnosisService.postDiagnosisForm(this.diagForm).subscribe(
           (success) => {
             console.log('form was submitted');
+            this.router.navigate(['nurse']);
           },
           (error) => {
-            console.log('there was an error', this.diagForm);
+            alert("There was an issue submitting the diagnosis. Please try again.")
           }
         );
         break;
@@ -80,10 +83,11 @@ export class DiagnosisComponent implements OnInit {
 
          this.diagnosisService.putDiagnosisForm(this.diagForm).subscribe(
           (success) => {
+            this.router.navigate(['doctor']);
             console.log('form was submitted as ', this.diagForm);
           },
           (error) => {
-            console.log('there was an error');
+            alert("There was an issue submitting the treatment. Please try again.")
           }
         );
         break;
