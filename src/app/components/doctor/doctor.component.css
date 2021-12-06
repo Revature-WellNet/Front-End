@@ -1,18 +1,18 @@
-* {
+/* * {
     box-sizing: border-box;
     position: relative;
-    color: rgb(0, 38, 74);
-}
+ 
+} */
 
 table td{
     text-align: center;
 }
 
-.background {
+/* .background {
     background:  rgba(200, 220, 180, 0.1);
-}
+} */
 
-.container{
+/* .container{
     display: flex;
     justify-content: center;
 }
@@ -48,9 +48,9 @@ table td{
 .button-group{
     display: block;
     
-}
+} */
 
-input {
+/* input {
     width: 100%;
     margin-right: 0px;
     padding-left: 10px;
@@ -58,9 +58,9 @@ input {
     border: 1px transparent;
     border-radius: 5px;
     background: rgba(196, 230, 83, 0.2);
-}
+} */
 
-.btn-add-patient {
+/* .btn-add-patient {
     margin: auto;
 }
 
@@ -68,7 +68,7 @@ input {
     display: flex;
     margin-top: 3em;
     margin-bottom: 3em;
-}
+} */
 
 .table{
     display: flex;

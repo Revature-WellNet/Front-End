@@ -1,233 +1,310 @@
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
 
- 
-     <div class='background'>
-      <div class='form-check container covidCard'>  
-<div *ngIf="testedPositiveQuestions=='true'">
-    <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
-    <br>
-    <br>
-<div>
-<input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>  
-<label for='yes'>yes</label>
-</div>
-<div>              
-<input type='radio'   [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'> 
-<label for='no'>no</label>
-</div>
-<br>
-<button type='button' class='Button2' class='Button2' (click)='testedPositiveSubmit()'>Next question</button>
-</div>
+            <div class="col-md-2 d-flex flex-column flex-shrink-0 p-3 bg-light">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    
+                    <span class="fs-4"><i class="bi bi-brightness-alt-high"></i> Welcome Doctor</span>
+                  </a>
+                  <hr>
+<ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+        <a href="#" class="nav-link link-dark" aria-current="page">
+            <i class="bi bi-house"></i>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+            <i class="bi bi-person"></i>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+            <i class="bi bi-shield-lock"></i>
+            Change password
+        </a>
+      </li>
+      <li>
+        <a class="nav-link link-dark" (click)="logout()">
+            <i class="bi bi-box-arrow-in-left"></i>
+          Logout 
+        </a>
+      </li>
+</ul>
+<div class="dropdown">
+    <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="fs-4"><i class="bi bi-box-arrow-in-right me-2"></i></span> 
+      <strong>user email here</strong>
+    </a>
+  </div>
+            </div>
 
-<div *ngIf="diagnosedQuestions=='true'">
-    <label for='diagnosedResults'>Have you been diagnosed with COVID-19 by a licensed healthcare
-        provider (for example, a doctor, nurse, pharmacist, or other) in the
-        past 14 days?</label>
-    <br>
-    <br>
-    <div>
-        <input type='radio'  [(ngModel)]='diagnosedResults' name='diagnosedResults' value='true'>  
-        <label for='yes'>yes</label>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-5">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+                            <h4 class="mb-4">Covid Verification</h4>
+                            
+                            <div *ngIf="testedPositiveQuestions=='true'">
+                                <label for='testedPositive'>Have you tested positive for Covid-19 in the past 14 days?</label>
+                                <br>
+                                <br>
+                            <div class="form-check" >
+                            <input type='radio' class="form-check-input"  [(ngModel)]='testedPositive' name='testedPositive' value='true'>
+                            <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check" >
+                            <input type='radio' class="form-check-input"  [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'>
+                            <label for='no'>No</label>
+                            </div>
+                            <br>
+                            <button type='button' class='Button2' class='btn btn-outline-success' (click)='testedPositiveSubmit()'>Next question</button>
+                            </div>
+
+                            <div *ngIf="diagnosedQuestions=='true'">
+                                <label for='diagnosedResults'>Have you been diagnosed with COVID-19 by a licensed healthcare
+                                    provider (for example, a doctor, nurse, pharmacist, or other)<br>in the
+                                    past 14 days?</label>
+                                <br>
+                                <br>
+                                <div class="form-check">
+                                <input type='radio' class="form-check-input"  [(ngModel)]='diagnosedResults' name='diagnosedResults' value='true'>
+                                <label for='Yes'>Yes</label>
+                                </div>
+                                <div class="form-check">
+                                <input type='radio' class="form-check-input"  [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value='false'>
+                                <label for='no'>No</label>
+                                </div>
+                                <br>
+                            <button type='button' class='btn btn-outline-success' (click)='diagnosedPrevious()'>Previous question</button>
+                            <button type='button' class='btn btn-outline-success ms-1' (click)='diagnosedSubmit()'>Next question</button>
+
+                            </div>
+
+                            <div *ngIf="symptomQuestions == 'true'">
+                            <div>
+                                Have you experienced any of the following symptoms in the past 24 hours?
+                            </div>
+                            <br>
+                            <label for=feverChills class="d-block" >Fever or Chills</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="feverChills" [(ngModel)]="feverChills" type="radio" value="true" class="form-check-input"
+                                    name="feverChills">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="feverChills" [(ngModel)]="feverChills" type="radio" value="false"
+                                    name="feverChills" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=cough class="d-block mt-2" >Cough</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="cough" [(ngModel)]="cough" type="radio" value="true"
+                                    name="cough" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="cough" [(ngModel)]="cough" type="radio" value="false"
+                                    name="cough" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=shortnessOfBreath class="d-block mt-2">Shortness of breathe or difficulty breathing</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="shortnessOfBreath" [(ngModel)]="shortnessOfBreath" type="radio" value="true"
+                                    name="shortnessOfBreath" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="shortnessOfBreath" [(ngModel)]="shortnessOfBreath" type="radio" value="false"
+                                    name="shortnessOfBreath" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=fatigue class="d-block mt-2">Fatigue</label>
+                            <div class="form-check form-check-inline">
+                                <input for="fatigue" [(ngModel)]="fatigue" type="radio" value="true"
+                                    name="fatigue" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="fatigue" [(ngModel)]="fatigue" type="radio" value="false"
+                                    name="fatigue" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=muscleOrBodyAches class="d-block mt-2">Muscle or body aches</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="muscleOrBodyAches" [(ngModel)]="muscleOrBodyAches" type="radio" value="true"
+                                    name="muscleOrBodyAches" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input for="muscleOrBodyAches" [(ngModel)]="muscleOrBodyAches" type="radio" value="false"
+                                    name="muscleOrBodyAches" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=lossOfTasteSmell class="d-block mt-2">New loss of taste or smell</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="lossOfTasteSmell" [(ngModel)]="lossOfTasteSmell" type="radio" value="true"
+                                    name="lossOfTasteSmell" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="lossOfTasteSmell" [(ngModel)]="lossOfTasteSmell" type="radio" value="false"
+                                    name="lossOfTasteSmell" checked=checked class="form-check-input">
+                                    <label for='no' >No</label>
+                            </div>
+                            <br>
+
+                            <label for=soreThroat class="d-block mt-2">Sore throat</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="soreThroat" [(ngModel)]="soreThroat" type="radio" value="true"
+                                    name="soreThroat" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="soreThroat" [(ngModel)]="soreThroat" type="radio" value="false"
+                                    name="soreThroat" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=nauseaVomiting class="d-block mt-2">Nausea</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="nauseaVomiting" [(ngModel)]="nauseaVomiting" type="radio" value="true"
+                                    name="nauseaVomiting" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="nauseaVomiting" [(ngModel)]="nauseaVomiting" type="radio" value="false"
+                                    name="nauseaVomiting" checked=checked class="form-check-input" >
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+
+                            <label for=diarrhea class="d-block mt-2">Diarrhea</label>
+                            <div class="form-check form-check-inline">
+
+                                <input for="diarrhea" [(ngModel)]="diarrhea" type="radio" value="true"
+                                    name="diarrhea" class="form-check-input">
+                                    <label for='Yes'>Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+
+                                <input for="diarrhea" [(ngModel)]="diarrhea" type="radio" value="false"
+                                    name="diarrhea" checked=checked class="form-check-input">
+                                    <label for='no'>No</label>
+                            </div>
+                            <br>
+                            <br>
+                            <button type='button' class='btn btn-outline-success' (click)='symptomPrevious()'>Previous question</button>
+                            <button type='button' class='btn btn-outline-success ms-1' (click)='symptomSubmit()'>Next question</button>
+
+                            </div>
+
+                            <div *ngIf="contactQuestions=='true'">
+                                <label for='testedPositive'>Have you  had close contact with someone with confirmed or suspected COVID-19 within
+                                    the last 14 days?</label>
+                                <br>
+                                <br>
+                                <div class="form-check">
+                                <input type='radio'  [(ngModel)]='contactCheck' name='contactCheck' value='true' class="form-check-input">
+                                <label for='Yes'>Yes</label>
+                                </div>
+                                <div class="form-check">
+                                <input type='radio'   [(ngModel)]='contactCheck' checked=checked name='contactCheck' value='false' class="form-check-input">
+                                <label for='no'>No</label>
+                                </div>
+                                <br>
+                            <button type='button' class='btn btn-outline-success' (click)='contactPrevious()'>Previous question</button>
+                            <button type='button' class='btn btn-outline-success ms-1' (click)='contactSubmit()'>Submit</button>
+
+                            </div>
+
+
+                            <div *ngIf="testedQuestions=='true'">
+                                <label for='testedPositive'>Have you been tested for Covid-19 in the past 14 days?</label>
+                                <br>
+                                <br>
+                                <div class="form-check">
+                                <input type='radio'  [(ngModel)]='tested' name='tested' value='true' class="form-check-input">
+                                <label for='Yes'>Yes</label>
+                                </div>
+                                <div class="form-check">
+                                <input type='radio'   [(ngModel)]='tested' checked=checked name='tested' value='false' class="form-check-input">
+                                <label for='no'>No</label>
+                                </div>
+                                <br>
+                            <br>
+                            <button *ngIf="previous3=='true'" type='button' class='btn btn-outline-success' (click)='havePrevious3()'>Previous question</button>
+                            <button type='button' class='btn btn-outline-success' (click)='testedSubmit()'>Select answer</button>
+                            </div>
+
+                            <div *ngIf="testedQuestionsResult=='true'">
+                                <label for='testedQuestionResults'>What were the the results of this test?</label>
+                                <br>
+                                <br>
+                                <div>
+                                <input type='radio'  [(ngModel)]='testedPositive' name='testedPositive' value='true'>
+                                <label for='Yes'>Positive</label>
+                                </div>
+                                <div>
+                                <input type='radio'   [(ngModel)]='testedPositive' checked=checked name='testedPositive' value='false'>
+                                <label for='no'>Negative</label>
+                                </div>
+                                <br>
+                            <br>
+                            <button type='button' class='btn btn-outline-success' (click)='testedResultSubmit()'>Select answer</button>
+                            <button type='button' class='btn btn-outline-success' (click)='testedQuestionsResultPrevious()'>Previous question</button>
+                            </div>
+
+                            <div *ngIf="lastPositiveTest=='true'">
+                                Please enter the date of your last positive COVID-19 test or diagnosis:
+                                <div class="mb-3 col-3">
+                                    <input type='date' class="form-control" [(ngModel)]='lastTest'>
+                                </div>
+                               <div>
+                                <button *ngIf="previous1=='true'" type='button' class='btn btn-outline-success' (click)='datePrevious1()'>Previous question</button>
+                                <button *ngIf="previous2=='true'" type='button' class='btn btn-outline-success' (click)='datePrevious2()'>Previous question</button>
+                                <button type='button' class='btn btn-outline-success ms-1' (click)='formSubmitFun()'>Submit</button>
+                               </div>
+                                
+                            </div>
+
+                            </div>
+                            
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>              
-        <input type='radio'   [(ngModel)]='diagnosedResults' checked=checked name='diagnosedResults' value='false'> 
-        <label for='no'>no</label>
-        </div>
-        <br>
-<br>
-<button type='button' class='Button2' class='Button2' (click)='diagnosedPrevious()'>Previous question</button>
-<button type='button' class='Button2' class='Button2' (click)='diagnosedSubmit()'>Next question</button>
-
+    </div>
 </div>
-
-<div *ngIf="symptomQuestions == 'true'">
-<div>
-    Have you experienced any of the following symptoms in the past 24 hours?
-</div>
-<br>
-<label for=feverChills>Fever or Chills </label>
-<label>
-    Yes
-    <input for="feverChills" [(ngModel)]="feverChills" type="radio" value="true"
-        name="feverChills" class="yesButton">
-</label>
-<label>
-    No
-    <input for="feverChills" [(ngModel)]="feverChills" type="radio" value="false"
-        name="feverChills" checked=checked>
-</label>
-<br>
-
-<label for=cough>Cough </label>
-<label>
-    Yes
-    <input for="cough" [(ngModel)]="cough" type="radio" value="true"
-        name="cough">
-</label>
-<label>
-    No
-    <input for="cough" [(ngModel)]="cough" type="radio" value="false"
-        name="cough" checked=checked>
-</label>
-<br>
-
-<label for=shortnessOfBreath>Shortness of breathe or difficulty breathing </label>
-<label>
-    Yes
-    <input for="shortnessOfBreath" [(ngModel)]="shortnessOfBreath" type="radio" value="true"
-        name="shortnessOfBreath">
-</label>
-<label>
-    No
-    <input for="shortnessOfBreath" [(ngModel)]="shortnessOfBreath" type="radio" value="false"
-        name="shortnessOfBreath" checked=checked>
-</label>
-<br>
-
-<label for=fatigue>Fatigue </label>
-<label>
-    Yes
-    <input for="fatigue" [(ngModel)]="fatigue" type="radio" value="true"
-        name="fatigue">
-</label>
-<label>
-    No
-    <input for="fatigue" [(ngModel)]="fatigue" type="radio" value="false"
-        name="fatigue" checked=checked>
-</label>
-<br>
-
-<label for=muscleOrBodyAches>Muscle or body aches </label>
-<label>
-    Yes
-    <input for="muscleOrBodyAches" [(ngModel)]="muscleOrBodyAches" type="radio" value="true"
-        name="muscleOrBodyAches">
-</label>
-<label>
-    No
-    <input for="muscleOrBodyAches" [(ngModel)]="muscleOrBodyAches" type="radio" value="false"
-        name="muscleOrBodyAches" checked=checked>
-</label>
-<br>
-
-<label for=lossOfTasteSmell>New loss of taste or smell </label>
-<label>
-    Yes
-    <input for="lossOfTasteSmell" [(ngModel)]="lossOfTasteSmell" type="radio" value="true"
-        name="lossOfTasteSmell">
-</label>
-<label>
-    No
-    <input for="lossOfTasteSmell" [(ngModel)]="lossOfTasteSmell" type="radio" value="false"
-        name="lossOfTasteSmell" checked=checked>
-</label>
-<br>
-
-<label for=soreThroat>Sore throat </label>
-<label>
-    Yes
-    <input for="soreThroat" [(ngModel)]="soreThroat" type="radio" value="true"
-        name="soreThroat">
-</label>
-<label>
-    No
-    <input for="soreThroat" [(ngModel)]="soreThroat" type="radio" value="false"
-        name="soreThroat" checked=checked>
-</label>
-<br>
-
-<label for=nauseaVomiting>Nausea </label>
-<label>
-    Yes
-    <input for="nauseaVomiting" [(ngModel)]="nauseaVomiting" type="radio" value="true"
-        name="nauseaVomiting">
-</label>
-<label>
-    No
-    <input for="nauseaVomiting" [(ngModel)]="nauseaVomiting" type="radio" value="false"
-        name="nauseaVomiting" checked=checked>
-</label>
-<br>
-
-<label for=diarrhea>Diarrhea </label>
-<label>
-    Yes
-    <input for="diarrhea" [(ngModel)]="diarrhea" type="radio" value="true"
-        name="diarrhea">
-</label>
-<label>
-    No
-    <input for="diarrhea" [(ngModel)]="diarrhea" type="radio" value="false"
-        name="diarrhea" checked=checked>
-</label>
-<br>
-<br>
-<button type='button' class='Button2' (click)='symptomPrevious()'>Previous question</button>
-<button type='button' class='Button2' (click)='symptomSubmit()'>Next question</button>
-
-</div>
-
-<div *ngIf="contactQuestions=='true'">
-    <label for='testedPositive'>Have you  had close contact with someone with confirmed or suspected COVID-19 within
-        the last 14 days?</label>
-    <br>
-<input type='radio'  [(ngModel)]='contactCheck' name='contactCheck' value="true">  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='contactCheck' checked=checked name='contactCheck' value="false"> 
-<label for='no'>no</label>
-<br>
-<button type='button' class='Button2' (click)='contactPrevious()'>Previous question</button>
-<button type='button' class='Button2' (click)='contactSubmit()'>Submit</button>
-
-</div>
-
-
-<div *ngIf="testedQuestions=='true'">
-    <label for='testedPositive'>Have you been tested for Covid-19 in the past 14 days?</label>
-    <br>
-<input type='radio'  [(ngModel)]='tested' name='tested' value='true'>  
-<label for='yes'>yes</label>              
-<input type='radio'  [(ngModel)]='tested' checked=checked name='tested' value='false'> 
-<label for='no'>no</label>
-<br>
-<button *ngIf="previous3=='true'" type='button' class='Button2' (click)='havePrevious3()'>Previous question</button>
-<button type='button' class='Button2' (click)='testedSubmit()'>Select answer</button>
-</div>
-
-<div *ngIf="testedQuestionsResult=='true'">
-    <label for='testedQuestionResults'>What were the the results of this test?</label>
-    <br>
-<input type='radio'  [(ngModel)]='testedPositive' name='tested' value='true'>  
-<label for='yes'>positive</label>              
-<input type='radio'  [(ngModel)]='testedPositive' checked=checked name='tested' value='false'> 
-<label for='no'>negative</label>
-<br>
-<button type='button' class='Button2' (click)='testedResultSubmit()'>Select answer</button>
-<button type='button' class='Button2' (click)='testedQuestionsResultPrevious()'>Previous question</button>
-</div>
-
-<div *ngIf="lastPositiveTest=='true'">
-    Please enter the date of your last positive COVID-19 test or diagnosis:
-    <input type='date' [(ngModel)]='lastTest'> 
-    <button type='button' class='Button2' (click)='formSubmitFun()'>Submit</button>
-    <br> 
-    <button *ngIf="previous1=='true'" (click)='datePrevious1()'>Previous question</button>
-    <button *ngIf="previous2=='true'" (click)='datePrevious2()'>Previous question</button>  
-   
-    
-</div>
-
-</div>
-
-
-
-
-<div><button class='Button3' (click)="logout()">Logout</button></div>
-
-<div *ngIf="inputError" class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Please enter a date within the last 14 days</strong> 
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-</div>
-
-</div>
-

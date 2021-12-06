@@ -1,14 +1,18 @@
-<app-navbar></app-navbar>
+
 <div class="background">
-    <div class="container">
-        <h1>Doctor</h1>
-    </div>
 
-    <app-button class="btn btn-top-left" (btnClick) = "goBack()" text = "Back"></app-button>
+  <br>
+  <div class = "row">
+      <div class="col-sm-5 logo">
+  </div>
+<div class= title><h1>Doctor</h1></div>
+    <button class="btn btn-top-left" (btnClick) = "goBack()" text = "Back"></button>
 
-    <div class="top-right">
-    <app-button class="btn" (btnClick) = "viewUserInfo()" text = "View User Info"></app-button>
-    <app-button class="btn" (btnClick) = "logout()" text = "Logout"></app-button>
+    <div class="row">
+        <div class="col-sm-7"></div>
+    <button class="Button3 col-sm-2" type="button" (click) = "routeToAdd()" >Add patient options</button>
+    <button class="Button3 col-sm-2" type="button" (click) = "viewUserInfo()" >View user info will go away after navbar is added</button>
+    
     </div>
 
 
@@ -32,7 +36,7 @@
 
         <tbody>
 
-       VVV From Patient Model VVV     
+       VVV From Patient Model VVV
     public patientId: number|null;
     public firstName: string;
     public lastName: string;
@@ -49,7 +53,7 @@
                 <td style="text-align : center;">{{t.firstName}}</td>
                 <td style="text-align : center;">{{t.lastName}}</td>
                 <td style="text-align : center;">{{t.dob}}</td>
-                VV Can Not Pull Out Without Sex Model Because Patient Currently STores As 
+                VV Can Not Pull Out Without Sex Model Because Patient Currently STores As
                         The String sex_id In DBeaver Database And Does Not Map To Their
                         Patient
                <td style="text-align : center;">{{t.sex}}</td>
@@ -60,13 +64,19 @@
     </table>
 
     </div> -->
-
+<div class="row"></div>
     <div class="search-area">
     <div class="form-group">
+        <div class="title">
+            <h3>Patient search</h3>
+        </div>
+        
         <!-- <label for="patient-search">Search for Patients</label> -->
-        <input type="text" class="form-control" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
-        <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>           
-    </div>
+        First name:
+        <input type="text" class="form-control Input" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
+        Last name:
+        <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>
+   
 
     <label for= "dob">Date of Birth:</label>
     <input
@@ -75,33 +85,41 @@
         name= "dob"
         id= "dob"
         #dobField
-    >
+        placeholder="Date of birth (mm/dd/yyyy)"
+    > 
 
-    <div class="button-group">
-         <app-button id="searchId" class="btn btn-search" (btnClick)="getAllPatients()" text="Display All Patients"></app-button>
-        <app-button id="searchName"  class="btn btn-search" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name"></app-button>
-        <app-button id="searchFullName"  class="btn btn-search" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name"></app-button>
-        <app-button id="searchDOB" class="btn btn-search" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth"></app-button>
+    <div class="btnRow">
+         <button id="searchId" class="Button2" (btnClick)="getAllPatients()" text="Display All Patients">Display all patients</button>
+        <button id="searchName"  class="Button2" (btnClick)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
+        <button id="searchFullName"  class="Button2" (btnClick)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
+        <button id="searchDOB" class="Button2" (btnClick)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
+    </div>
     </div>
 </div>
 
 <div class="DoctorSearchArea">
-    
+
     <div class="form-group">
+        <div class="title">
+            <h3>Patient search (by Doctor)</h3>
+        </div>
+        
         <!-- <label for="patient-search">Search for Patients</label> -->
         <input type="text" class="form-control" id="doctorFirstName" #doctorFirstName name="doctorFirstName" placeholder="Enter First Name" required>
-        <input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required>           
+        <input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required><button id="searchDoctor" class="Button2" (btnClick)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor">Search by doctor</button>
     </div>
 
 
-    <app-button id="searchDoctor" class="btn btn-search" (btnClick)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor"></app-button> 
+    
 
 </div>
-
+<div class="title"><h3>Patients</h3></div>
     <div class="table">
+        
         <table>
             <thead>
                 <tr>
+                    <th>Prescribe Treatment</th>
                     <th *ngIf="searchingDoctor"> Doctor </th>
                     <th>Patient First Name</th>
                     <th>Patient Last Name</th>
@@ -118,6 +136,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let patient of patientsArray">
+                    <td><button (btnClick)="diagnosePatient(patient)"></button></td>
                     <td *ngIf="searchingDoctor"> {{doctorName}}</td>
                     <td>{{patient.firstName}}</td>
                     <td>{{patient.lastName}}</td>
@@ -145,8 +164,9 @@
                     <td>{{patient.sex.sex}}</td>
                     <td>{{patient.doctor}}</td>
                 </tr>
-            </tbody> 
+            </tbody>
         </table>
     </div>
 
 </div>
+<button class="Button3 col-sm-2" type="button" (click) = "logout()" >Logout will go away once navbar is made</button>

@@ -1,8 +1,10 @@
-<div class="container" id ="favs">
+<div class="background">
+<div class="accountCard" id ="favs">
 
-    <app-button class="btn" (click)="navigateHome()" text="Back to Home"></app-button>
+    
 
-    <h1>Account Information</h1>
+   <div class="title"><h3>Account Information</h3></div>
+   <br> 
 
     <table class="profile"> 
         <thead></thead>
@@ -26,5 +28,6 @@
         </tbody>
     </table>
 
-    <a routerLink= "/profileEdit" ><app-button class="btn" text="Edit Information"></app-button></a>
-</div>
+    <a routerLink= "/profileEdit" ><button class="Button2" text="Edit Information">Edit information</button></a>
+    <button class="Button2" (click)="navigateHome()" text="Back to Home">Home</button>
+</div></div>
