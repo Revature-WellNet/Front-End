@@ -237,6 +237,34 @@ describe('getPatientById', () => {
   });
 
 
+  describe('getPatientByNameDOB', () => {
+    it('#getPatientByNameDOB should return all patients', () =>{
+      
+      const dateToUse : Date = new Date();
+
+      const singularPatient : Patient[] = 
+        [{ patientId: 1, firstName: 'johnny', lastName: 'test', dob: dateToUse, 
+        height: 72, weight: 200, 
+        bloodType: { typeId : 4, type : "A+" },
+        sex: { sexId: 1, sex: 'male' },
+        patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
+        patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        }];
+
+      let response : Patient[];
+      
+      spyOn(service, 'getPatientByNameDOB')
+        .withArgs("johnny", "test", dateToUse.toString()).and.returnValue(of(singularPatient));
+      
+      service.getPatientByNameDOB("johnny", "test", dateToUse.toString()).subscribe( (res) => { 
+        response = res; 
+        expect(response).toEqual(singularPatient);
+      });
+
+      httpMock.verify();
+      
+    });
+  });
 
 
 

@@ -76,15 +76,19 @@ export class FirebaseService {
       });
   }
 
+
   async ResetPass(email: string) {
     await firebase
       .auth().sendPasswordResetEmail(email).then(res=>{
         console.log(res)
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      // .catch((error) => {
+      //   alert(error);
+      //   console.error(error);
+      // });
   }
+
+  
 
   setPassword(password: string) {
     firebase
@@ -133,9 +137,10 @@ export class FirebaseService {
 
   // method to refresh the token
   async refreshToken() {
-    firebase.auth().onAuthStateChanged((user) => {
+    await firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        user.getIdToken(true).then((idToken) => {});
+        user.getIdToken(true)
+        .then((idToken) => {});
       }
     });
     const userin = firebase.auth().currentUser;
@@ -175,9 +180,8 @@ export class FirebaseService {
     );
     if (loggedInUser.token) {
       this.userInfo.next(loggedInUser);
-      const expirDurationtimer =
-        new Date(userData._tokenExpirationDate).getTime() -
-        new Date().getTime();
+      const expirDurationtimer = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      console.log("Token expire after :", expirDurationtimer)
       this.autoSignOut(expirDurationtimer);
       console.log("Successfully automatically signed in with user information found in local storage.");
       return true;
@@ -210,7 +214,7 @@ export class FirebaseService {
       } else {
         this.refreshToken();
       }
-    }, expirDuration);
+    }, expirDuration );
   }
 
   // authenticated user's data saving to localstorage and userinfo model class
@@ -236,7 +240,9 @@ export class FirebaseService {
     );
     // console.log('User Info>', userInfo);
     this.userInfo.next(userInfo);
-    this.autoSignOut(expirationDate.getTime());
+    const expirDurationtimer = new Date(expirationDate).getTime() - new Date().getTime();
+        console.log("Token expire after:", expirDurationtimer)
+    this.autoSignOut(expirDurationtimer);
     localStorage.setItem('userinfo', JSON.stringify(userInfo));
   }
 

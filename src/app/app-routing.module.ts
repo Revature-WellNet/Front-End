@@ -15,6 +15,8 @@ import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 
 import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
+import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
@@ -25,13 +27,15 @@ const routes: Routes = [
   {path: "profile", canActivate:[AuthGuardGuard], component: ProfileComponent},
   {path: "diagnosis", canActivate:[AuthGuardGuard], component: DiagnosisComponent},
   {path: "checkin", canActivate:[AuthGuardGuard], component: PatientCheckInComponent},
- 
+  {path: "addAllergiesVaccines", canActivate:[AuthGuardGuard], component: AddAllergiesVaccinesComponent},
   {path: 'profileEdit', canActivate:[AuthGuardGuard], component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
   {path: "login", component:LoginComponent}, 
   {path:"rooms", canActivate:[AuthGuardGuard], component:RoomsComponent},
-  {path: 'styles', component: StaticStyleTesterComponent}
+  {path: 'styles', component: StaticStyleTesterComponent},
+  {path: 'forget-password', component: ForgetPasswordComponent}
+
 ];
 
 @NgModule({

@@ -1,7 +1,16 @@
-// import { DiagnosisForm } from './diagnosis-form';
+import { TestBed } from '@angular/core/testing';
+import { DiagnosisForm } from './diagnosis-form';
 
-// describe('DiagnosisForm', () => {
-//   it('should create an instance', () => {
-//     expect(new DiagnosisForm()).toBeTruthy();
-//   });
-// });
+describe('DiagnosisForm', () => {
+
+  let diagForm: DiagnosisForm;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    diagForm = TestBed.inject(DiagnosisForm);
+  });
+
+  it('should be created', () => {
+    expect(diagForm).toBeTruthy();
+  });
+});

@@ -1,7 +1,16 @@
-// import { Area } from './area';
+import { TestBed } from '@angular/core/testing';
+import { Area } from './area';
 
-// describe('Area', () => {
-//   it('should create an instance', () => {
-//     expect(new Area()).toBeTruthy();
-//   });
-// });
+describe('Area', () => {
+
+  let area: Area;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    area = TestBed.inject(Area);
+  });
+  
+  it('should be created', () => {
+    expect(area).toBeTruthy();
+  });
+});

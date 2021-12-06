@@ -1,45 +1,124 @@
-<div class= "container" >
-    <div class= "patientDiagnosis">
-        <form
-        #formDemo= "ngForm"
-        class= "form-diagnose "
-        (ngSubmit)= "onSubmit(symptoms, diagnosis)">
-
-        <div class= "form-group">
-            <div class="symptomInput">
-                <label for= "symptom">Symptoms</label>
-                <!-- <button type="button" class="btn btn-add-symptom" (click)="addSymptom()"><b>+</b></button> -->
-                <textarea
-                rows = "4"
-                cols= "40"
-                class= "form-control"
-                name= "symptoms"
-                id= "diagnosis"
-                [(ngModel)]= "symptoms"
-                required
-            ></textarea>
-                <br>
-            </div>
-            <label for ="diagnosis">Diagnosis</label>
-            <textarea
-                rows = "4"
-                cols= "40"
-                class= "form-control"
-                name= "diagnosis"
-                id= "diagnosis"
-                [(ngModel)]= "diagnosis"
-                required
-            >
-            </textarea>
-            <!-- <span
+<app-navbar></app-navbar>
+<br />
+<div class="background">
+  <div>
+    <table class="diagnosisTable">
+      <thead>
+        <tr>
+          <th class="col-sm-6 patient-info">
+            {{ patient.firstName }} {{ patient.lastName }}
+          </th>
+          <th class="col-sm-6 patient-info">DOB: {{ patient.dob }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sm-6 patient-info">Sex</td>
+          <td class="col-sm-6 patient-info">{{ patient.sex.sex }}</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6 patient-info">Height</td>
+          <td class="col-sm-6 patient-info">{{ patient.height }} inches</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6 patient-info">Weight</td>
+          <td class="col-sm-6 patient-info">{{ patient.weight }} pounds</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6 patient-info">Blood Type</td>
+          <td class="col-sm-6 patient-info">{{ patient.bloodType.type }}</td>
+        </tr>
+        <tr>
+          <td class="col-sm-6 patient-info">Allergies</td>
+          <td class="col-sm-6 patient-info">
+            <ul *ngFor="let allergy of patient.patientAllergies">
+              <li>{{ allergy.allergy }}</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-sm-6 patient-info">Vaccinations</td>
+          <td class="col-sm-6 patient-info">
+            <ul *ngFor="let vax of patient.patientVaccinations">
+              <li>{{ vax.vaccination }}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+  </div>
+  <div class="patientDiagnosis">
+    <form
+      #formDemo="ngForm"
+      class="form-diagnose"
+      (ngSubmit)="onSubmit(symptoms, diagnosis, treatment)"
+    >
+      <div class="form-group">
+        <div class="symptomInput">
+          <label for="symptom">Symptoms</label>
+          <!-- <button type="button" class="btn btn-add-symptom" (click)="addSymptom()"><b>+</b></button> -->
+          <textarea
+            rows="4"
+            cols="40"
+            class="form-control"
+            name="symptoms"
+            id="diagnosis"
+            [(ngModel)]="symptoms"
+            required
+          ></textarea>
+          <br />
+        </div>
+        <div class="diagnosisInput">
+          <label for="diagnosis">Diagnosis</label>
+          <textarea
+            rows="4"
+            cols="40"
+            class="form-control"
+            name="diagnosis"
+            id="diagnosis"
+            [(ngModel)]="diagnosis"
+            required
+          >
+          </textarea>
+        </div>
+        <br />
+        <div *ngIf="user.role.role == 'doctor'" class="add-treatment">
+          <label for="treatment">Treatment</label>
+          <textarea
+            rows="4"
+            cols="40"
+            class="form-control"
+            name="treatment"
+            id="treatment"
+            [(ngModel)]="treatment"
+            required
+          ></textarea>
+        </div>
+        <!-- <span
           class= "help-block"
           *ngIf= "!symptoms.valid"
           >Please enter patient symptoms</span> -->
-        </div>
-    <br>
-    <button type= "submit" class= "btn btn-success submit-button" [disabled]= "!formDemo.valid">Submit Diagnosis</button>
+      </div>
+      <br />
+      <div [ngSwitch]="user.role.role">
+        <button
+          *ngSwitchCase="'nurse'"
+          type="submit"
+          class="btn Button2"
+          [disabled]="!formDemo.valid"
+        >
+          Submit Diagnosis
+        </button>
+        <button
+          *ngSwitchCase="'doctor'"
+          type="submit"
+          class="btn Button2"
+          [disabled]="!formDemo.valid"
+        >
+          Submit Treatment
+        </button>
+      </div>
     </form>
-
-    </div>
+  </div>
 </div>
-

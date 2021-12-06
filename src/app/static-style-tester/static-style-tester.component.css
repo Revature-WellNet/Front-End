@@ -57,6 +57,7 @@ White:
      margin: 18px;
      transition-duration: 0.5s;
 
+   
     }
  
  .Button2:hover {
@@ -130,6 +131,7 @@ White:
      text-align: center;
      margin: 20px;
      color: Black;
+     
  }
 
  .input {

@@ -13,10 +13,11 @@ import { Covid19VerificationService } from 'src/app/services/covid19-verificatio
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  log: boolean = false;
+  title="Sign in";
+  
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router,
+    public router: Router,
     public userService: UserService,
     public cvs: Covid19VerificationService
   ) {}
@@ -25,52 +26,50 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['registration']);
   }
 
+  forgetPassword(){
+    this.router.navigate(['forget-password']);
+  }
+
   onSignin(email: string, password: string) {
     // console.log('sign in');
-    this.firebaseService
-      .login(email, password)
-      .then(
-        (res) => 
-        {
+    this.firebaseService.login(email, password).then(res => {
           const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-          this.userService.getUser(userData.id).subscribe((data) => {
+         // this.userService.getUser(userData.id).subscribe((data) => {
             this.cvs.getFormServByString(userData.id).subscribe((formData) => {
                 localStorage.setItem('covidInfo', JSON.stringify(formData));
-                if (data.role.role == 'nurse') {
+                if (userData.role == 'nurse') {
                   // nurseUI()
                   this.router.navigate(['nurse']);
-                } else if (data.role.role == 'doctor') {
+                } else if (userData.role == 'doctor') {
                   console.log("should route to doctor");
                   this.router.navigate(['doctor']);
                 } else {
                   // user does not have a role / could not find users role
-                  console.error('This user account does not have an associated role.');
+                  console.error('This account is not properly registered. Please register again');
                 }
-              })
+          //    })
             });
         }).catch((err) => {
         alert(err);
       });
   }
+  //Depricated functions           
+  // logout() {
+  //   this.firebaseService.logout();
+  // }
 
-  logout() {
-    this.firebaseService.logout();
-  }
-  forgetPassword(){
-  
-  }
-
-  //dummy example of sending an http request requiring an authorization header
-  getUser() {
-    this.firebaseService.userInfo.subscribe((res) => {
-      console.log(res);
-    });
-    this.firebaseService.gettest().subscribe((data) => {
-      console.log(data);
-    });
-  }
-  
-
+  // //dummy example of sending an http request requiring an authorization header
+  // getUser() {
+  //   this.firebaseService.userInfo.subscribe((res) => {
+  //     console.log(res);
+  //   });
+  //   this.firebaseService.gettest().subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
+  // refreshToken() {
+  //   this.firebaseService.refreshToken();
+  // }
   ngOnInit(): void {
     //to check the status of login
     this.firebaseService.userInfo.subscribe((res) => {
@@ -94,7 +93,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  refreshToken() {
-    this.firebaseService.refreshToken();
-  }
+  
 }

@@ -1,7 +1,16 @@
 // import { Userinfo } from './userinfo';
 
-// describe('Userinfo', () => {
-//   it('should create an instance', () => {
-//     expect(new Userinfo()).toBeTruthy();
-//   });
-// });
+import { TestBed } from '@angular/core/testing';
+
+describe('Userinfo', () => {
+
+  let userInfo: Userinfo;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    userInfo = TestBed.inject(Userinfo);
+  });
+  it('should be created', () => {
+    expect(userInfo).toBeTruthy();
+  });
+});
