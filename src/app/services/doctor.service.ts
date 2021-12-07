@@ -33,7 +33,7 @@ export class DoctorService {
 
   getResolvedPatients(): Observable<Patient[]>{
     console.log("This will return patients");
-
+    console.log(`${this.patientApiServerUrl}patient/resolved`);
     return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/resolved`);
 
   }

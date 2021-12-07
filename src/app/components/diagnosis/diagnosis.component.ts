@@ -23,6 +23,8 @@ export class DiagnosisComponent implements OnInit {
   room: RoomDto = this.patientService.room; // = this.patientService.room
   public user!: User;
   patient: Patient = this.patientService.patient;
+  roomNumber: string = "Not assigned";
+  public hiddenmsg:boolean = true;
 
   constructor(
     private patientService: PatientService,
@@ -48,6 +50,10 @@ export class DiagnosisComponent implements OnInit {
       (error) => {
         console.log("error", error);
       });
+
+      if(this.room){
+        this.roomNumber = this.room.roomNumber.toString();
+      }
   }
 
  onSubmit(symptoms: string, diagnosis: string, treatment: string) {
@@ -66,6 +72,7 @@ export class DiagnosisComponent implements OnInit {
         this.diagnosisService.postDiagnosisForm(this.diagForm).subscribe(
           (success) => {
             console.log('form was submitted');
+            this.hiddenmsg = false;
             
           },
           (error) => {
@@ -85,6 +92,7 @@ export class DiagnosisComponent implements OnInit {
          this.diagnosisService.putDiagnosisForm(this.diagForm).subscribe(
           (success) => {
             console.log('form was submitted as ', this.diagForm);
+            this.hiddenmsg = false;
           },
           (error) => {
             console.log('there was an error');

@@ -12,9 +12,6 @@
                                 <img src="/assets/img/WellNetLogo.jpg" alt="">
                             </div>
                             <h4 class="mb-4">New patient</h4>
-   
-   
-   <p><span class = "asterix">*</span> marks required fields.</p>
        
         <form
         
@@ -23,6 +20,7 @@
         (ngSubmit)= "onSubmit(firstName, lastName, dob, feet, inches, weight, bloodtype, sex, allergies, vaccinations)">  
 
         <div style="width: 50%;">
+            <p style="text-align: right;"><span class = "asterix" >*</span> marks required fields.</p>
             <span class = "asterix">*</span><label for= "firstName">First Name:</label>
             <input
                 type= "text"
@@ -111,12 +109,40 @@
                     <option value="NB">Other</option>
                 </select>
             <br>
+<<<<<<< HEAD
             <u><h5>Allergies: </h5></u>
             <div id = "allergyanchor"></div>
             <br>
             <u><h5>Vaccinations: </h5></u>
             <div id = "vaccinationanchor"></div>
             <button type= "submit" class= "btn btn-outline-success mt-3">Add Patient</button>
+=======
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">
+                    <u><h5> Allergies: </h5></u>
+                    <div id = "allergyanchor"></div>
+                </li>
+                <li class="list-group-item">
+                    <u><h5> Vaccinations:</h5></u>
+                    <div id = "vaccinationanchor"></div>
+                </li>
+            </ul>
+            <br>
+            <div class="row">
+                <div class="col-4">
+                    <button type= "submit" class= "btn btn-outline-success mt-3">Add Patient</button>
+                </div>
+                <div class="col-8">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert" [hidden]="hiddenmsg">
+                        <strong>Patient created successfully</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    
+                    </div>
+
+                </div>
+            </div>
+            
+>>>>>>> 5234c407887c2548d09a26e8dde6054226214911
         </div>
         
     </form>

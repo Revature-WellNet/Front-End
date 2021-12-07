@@ -74,18 +74,26 @@ export class RoomsComponent implements OnInit {
 
     // populating rooms with current patients
     this.diagService.getAllDiagnosisForms().subscribe(diags => {
+      if(diags == null){
+        console.log('diags is null')
+        this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
+      }
+      else{console.log("populate wating room");
+            this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
+      console.log("below if statement")
       diags.forEach(diag => {
         console.log(diag);
         if(!diag.resolutionStatus){ //resolutionStatus = false means that the patient is still in the room;
           if(diag.room){
             this.rooms[diag.room.roomNumber - 1].patients.push(diag.patient.patientId + ' - ' + diag.patient.firstName + ' ' + diag.patient.lastName);
             this.rooms[diag.room.roomNumber - 1].roomStatus = 2;
+           
           }
-          else{
-            this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
-          }
-        }
-      });
+         
+        } 
+            
+          
+      });}
     });
   }
 
@@ -112,15 +120,16 @@ export class RoomsComponent implements OnInit {
       let p:string = event.container.data[0];
       let pid:number = Number(p.substring(0, p.indexOf(' - ')));
       
-      console.log(pid);
+      
       
 
       let newindex:number = Number(newRoom) - 1;
       let previndex:number = Number(event.previousContainer.element.nativeElement.dataset.rn) - 1;
-      if(previndex > 0){
+      console.log(newindex);
+      if(previndex >= 0){
         this.rooms[previndex].roomStatus = 1; 
       }
-      if(newindex > 0){
+      if(newindex >= 0){
         this.rooms[newindex].roomStatus = 2;
         this.updateDForm(pid, newindex);
         
@@ -129,6 +138,7 @@ export class RoomsComponent implements OnInit {
         this.showLink =  false;
       }else{
         this.log = "Patient returned to waiting room";
+        this.showLink =  true;
       }
     }
   }
