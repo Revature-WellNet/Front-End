@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DiagnosisForm } from 'src/app/models/diagnosis-form';
 import { Patient } from 'src/app/models/patient';
 import { Room } from 'src/app/models/rooms/room';
+import { RoomDto } from 'src/app/models/rooms/room-dto';
 import { User } from 'src/app/models/user';
 import { DiagnosisFormService } from 'src/app/services/diagnosis-form.service';
 import { PatientService } from 'src/app/services/patient.service';
@@ -18,7 +20,7 @@ export class DiagnosisComponent implements OnInit {
   symptoms: string = '';
   treatment: string = '';
   diagForm!: DiagnosisForm;
-  room!: Room; // = this.patientService.room
+  room: RoomDto = this.patientService.room; // = this.patientService.room
   public user!: User;
   patient: Patient = this.patientService.patient;
 
@@ -58,11 +60,13 @@ export class DiagnosisComponent implements OnInit {
         this.diagForm.checkIn = new Date();
         this.diagForm.patient = this.patient;
         this.diagForm.nurse=this.user;
-        //this.diagForm.room = this.room;
-
+        this.diagForm.room = this.room;
+        console.log(this.diagForm);
+   
         this.diagnosisService.postDiagnosisForm(this.diagForm).subscribe(
           (success) => {
             console.log('form was submitted');
+            
           },
           (error) => {
             console.log('there was an error', this.diagForm);

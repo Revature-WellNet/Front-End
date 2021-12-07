@@ -142,6 +142,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
         for(let a of allergies){
           
           let label = document.createElement("label");
+          label.className = "me-1";
           label.innerHTML = a.allergy+": ";
 
           let checkbox = document.createElement("input");
@@ -192,6 +193,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
         for(let v of vaccinations){
           
           let label = document.createElement("label");
+          label.className = "me-1";
           label.innerHTML = v.vaccination+": ";
 
           let checkbox = document.createElement("input");

@@ -8,6 +8,7 @@ import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/models/patient';
 import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 import { Router } from '@angular/router';
+import { RoomDto } from 'src/app/models/rooms/room-dto';
 
 @Component({
   selector: 'app-rooms',
@@ -20,9 +21,10 @@ export class RoomsComponent implements OnInit {
   areas:Area[] = [];
   rooms:Room[] = [];
   log:string = "";
-  patient: Patient = this.patientService.patient; 
+  patient: Patient = this.patientService.patient;
+  showLink: boolean = true;
 
-  waitingroom:string[] = ["Mario Vidal", "Bob White", "Iron Man"];
+  waitingroom:string[] = [];
   
   constructor(private router:Router, private diagService: DiagnosisFormService, private service: FirebaseService, private roomService: RoomService, private patientService: PatientService) { }
   
@@ -33,6 +35,7 @@ export class RoomsComponent implements OnInit {
     }
     this.getAllAreas();
     this.getRooms();
+    this.patient=this.patientService.patient;
   }
 
   getAllAreas(){
@@ -72,9 +75,15 @@ export class RoomsComponent implements OnInit {
     // populating rooms with current patients
     this.diagService.getAllDiagnosisForms().subscribe(diags => {
       diags.forEach(diag => {
-        if(!diag.getResolutionStatus()){ //resolutionStatus = false means that the patient is still in the room
-          this.rooms[diag.getRoom().roomNumber - 1].patients.push(diag.getPatient().firstName + " " + diag.getPatient().lastName);
-          this.rooms[diag.getRoom().roomNumber - 1].roomStatus = 2;
+        console.log(diag);
+        if(!diag.resolutionStatus){ //resolutionStatus = false means that the patient is still in the room;
+          if(diag.room){
+            this.rooms[diag.room.roomNumber - 1].patients.push(diag.patient.patientId + ' - ' + diag.patient.firstName + ' ' + diag.patient.lastName);
+            this.rooms[diag.room.roomNumber - 1].roomStatus = 2;
+          }
+          else{
+            this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
+          }
         }
       });
     });
@@ -100,6 +109,12 @@ export class RoomsComponent implements OnInit {
         event.currentIndex
       );
 
+      let p:string = event.container.data[0];
+      let pid:number = Number(p.substring(0, p.indexOf(' - ')));
+      
+      console.log(pid);
+      
+
       let newindex:number = Number(newRoom) - 1;
       let previndex:number = Number(event.previousContainer.element.nativeElement.dataset.rn) - 1;
       if(previndex > 0){
@@ -107,10 +122,25 @@ export class RoomsComponent implements OnInit {
       }
       if(newindex > 0){
         this.rooms[newindex].roomStatus = 2;
+        this.updateDForm(pid, newindex);
+        
         this.log = "Patient assigned to room " + newRoom;
+        //this.router.navigate(['diagnosis']);
+        this.showLink =  false;
       }else{
         this.log = "Patient returned to waiting room";
       }
     }
   }
+
+  updateDForm(pid:number, newindex:number){
+    let newr:Room = this.rooms[newindex];
+            console.log(newr);
+            let newrDto:RoomDto = new RoomDto(newr.roomNumber, newr.roomNumber, newr.area);
+            console.log(newrDto);
+            console.log(newr.area);
+            this.patientService.room=newrDto;
+            console.log(this.patientService.room);
+  }
+
 }

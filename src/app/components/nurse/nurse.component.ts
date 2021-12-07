@@ -103,6 +103,8 @@ export class NurseComponent implements OnInit {
   }
 
   diagnosePatient(patient: Patient){
+    this.patientService.patient=patient;
+    console.log(patient);
     this.patientService.diagnosePatient(patient);
   }
 
@@ -116,6 +118,28 @@ export class NurseComponent implements OnInit {
 
   routeToAdd(){
     this.router.navigate(["addAllergiesVaccines"]);
+  }
+
+  applyfilter(firstName: string, lastName:string, dobField : string, filter:string){
+
+    console.log(filter);
+
+    switch(filter){
+
+      case "1":
+        this.getAllPatients();
+        break;
+      case "2":
+        this.searchPatByFName(firstName);
+          break;
+      case "3":
+        this.searchPatByFullName(firstName, lastName);
+        break;
+      case "4":
+        this.searchPatNameDate(firstName, lastName, dobField);
+        break;
+    }
+
   }
 
 }

@@ -1,12 +1,21 @@
-<div class="background">
-<div class="accountCard" id ="favs">
 
-    
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light sidebar">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-5">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+   <h4 class="mb-4">Account Information</h4>
+   
 
-   <div class="title"><h3>Account Information</h3></div>
-   <br> 
-
-    <table class="profile"> 
+    <table class="profile mb-3"> 
         <thead></thead>
         <tbody>
             <tr>
@@ -27,7 +36,12 @@
             </tr>
         </tbody>
     </table>
-
-    <a routerLink= "/profileEdit" ><button class="Button2" text="Edit Information">Edit information</button></a>
-    <button class="Button2" (click)="navigateHome()" text="Back to Home">Home</button>
-</div></div>
+    <a routerLink= "/profileEdit" ><button class="btn btn-outline-success" text="Edit Information">Edit information</button></a>
+     
+                        
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,7 +1,7 @@
 
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         
-        <span class="fs-4"><i class="bi bi-brightness-alt-high"></i> Welcome Nurse</span>
+        <span class="fs-4"><i class="bi bi-brightness-alt-high"></i> Welcome {{role}}</span>
       </a>
       <hr>
 <ul class="nav nav-pills flex-column mb-auto">
@@ -11,37 +11,46 @@
 Home
 </a>
 </li>
-<li>
+<li class="nav-item">
 <a [routerLink]="['/profile']" class="nav-link link-dark">
 <i class="bi bi-person"></i>
 Profile
 </a>
 </li>
-<li>
+<li class="nav-item">
   <a [routerLink]="['/patientcheckin']" class="nav-link link-dark">
     <i class="bi bi-person-plus"></i>
   Add patient
   </a>
   </li>
-  <li>
+  <li class="nav-item">
     <a [routerLink]="['/addAllergiesVaccines']" class="nav-link link-dark">
       <i class="bi bi-clipboard-plus"></i>
     Add patient options
     </a>
     </li>
-    <li>
+    <li class="nav-item">
       <a [routerLink]="['/rooms']" class="nav-link link-dark">
         <i class="bi bi-door-open"></i>
       Assign patient to room
       </a>
       </li>
+<<<<<<< HEAD
 <!-- <li>
+=======
+<li class="nav-item">
+>>>>>>> 4abd2ab30145ee8b79bbcb720d6193d83050e25e
 <a href="#" class="nav-link link-dark">
 <i class="bi bi-shield-lock"></i>
 Change password
 </a>
+<<<<<<< HEAD
 </li> -->
 <li>
+=======
+</li>
+<li class="nav-item">
+>>>>>>> 4abd2ab30145ee8b79bbcb720d6193d83050e25e
 <a class="nav-link link-dark" (click)="logout()">
 <i class="bi bi-box-arrow-in-left"></i>
 Logout 
@@ -51,6 +60,6 @@ Logout
 <div class="dropdown">
 <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
 <span class="fs-4"><i class="bi bi-box-arrow-in-right me-2"></i></span> 
-<strong>user email here</strong>
+<strong>{{email}}</strong>
 </a>
 </div>

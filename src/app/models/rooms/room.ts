@@ -1,3 +1,4 @@
+import { Patient } from "../patient";
 import { Area } from "./area";
 /*12*/
 export class Room {

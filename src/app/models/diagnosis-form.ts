@@ -1,6 +1,7 @@
 import { Timestamp } from "rxjs";
 import { Patient } from "./patient";
 import { Room } from "./rooms/room";
+import { RoomDto } from "./rooms/room-dto";
 import { User } from "./user";
 
 
@@ -14,7 +15,7 @@ export class DiagnosisForm {
     public checkIn!:Date;
     public checkOut!:Date;
     public patient!:Patient;
-    public room!:Room;
+    public room!:RoomDto;
     public nurse!:User;
     public doctor!:User;
 
@@ -49,7 +50,7 @@ export class DiagnosisForm {
         return this.resolutionStatus;
     }
 
-    public getRoom(): Room{
+    public getRoom(): RoomDto{
         return this.room;
     }
 

@@ -1,11 +1,23 @@
-<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-<div class="container" >
-    <div class="row">
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light sidebar">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-4">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+<div class="container-fluid" >
+     <div class="row">
         <div class="col-md-12">
             <h3>Room assignment</h3>
         </div>
     </div>
-    <div class="row mt-5" cdkDropListGroup>
+    <div class="row mt-4" cdkDropListGroup>
         <div class="col-md-1 p-0">
             <div style="height: 10%;">
 
@@ -30,7 +42,7 @@
                 <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
                 <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
                 <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
-                    <i class='bx bx-user'></i> {{item}}
+                    <i class='bx bx-user'></i> {{ item }}
                 </div>
                 </div>
                 </ng-container>
@@ -68,6 +80,7 @@
                         <div  style="height: 45%;">
                             <h6>Nurse station</h6>
                             <p>{{log}}</p>
+                            <p> <a [routerLink]="['/diagnosis']"  [hidden]="showLink" >Proceed to diagnosis</a> </p>
                         </div>
                         <div style="height: 45%;" class="bt">
                             <h6>Lab</h6>
@@ -146,6 +159,9 @@
         </div>
     </div>
 </div>
-<div style="height: 100px;">
-
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
