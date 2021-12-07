@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DiagnosisForm } from 'src/app/models/diagnosis-form';
 import { Patient } from 'src/app/models/patient';
 import { Room } from 'src/app/models/rooms/room';
@@ -61,10 +62,11 @@ export class DiagnosisComponent implements OnInit {
         this.diagForm.nurse=this.user;
         this.diagForm.room = this.room;
         console.log(this.diagForm);
-        console.log(this.diagForm.room.area);
+   
         this.diagnosisService.postDiagnosisForm(this.diagForm).subscribe(
           (success) => {
             console.log('form was submitted');
+            
           },
           (error) => {
             console.log('there was an error', this.diagForm);

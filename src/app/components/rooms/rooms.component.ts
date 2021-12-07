@@ -123,6 +123,7 @@ export class RoomsComponent implements OnInit {
       if(newindex > 0){
         this.rooms[newindex].roomStatus = 2;
         this.updateDForm(pid, newindex);
+        
         this.log = "Patient assigned to room " + newRoom;
         //this.router.navigate(['diagnosis']);
         this.showLink =  false;
@@ -133,42 +134,13 @@ export class RoomsComponent implements OnInit {
   }
 
   updateDForm(pid:number, newindex:number){
-    this.diagService.getDiagnosisForm(pid).subscribe(diags => {
-      diags.forEach(diag => {
-        
-        if(!diag.resolutionStatus){ //resolutionStatus = false means that the patient is still in the room;
-          
-          
-
-          if(diag.room == null){
-
-           
-            
-            
-            let newr:Room = this.rooms[newindex];
+    let newr:Room = this.rooms[newindex];
             console.log(newr);
             let newrDto:RoomDto = new RoomDto(newr.roomNumber, newr.roomNumber, newr.area);
             console.log(newrDto);
             console.log(newr.area);
-            diag.room = newrDto;
             this.patientService.room=newrDto;
-            
-            
-
-            // console.log(diag);
-
-            // this.diagService.putDiagnosisForm(diag).subscribe(
-            //   (success) => {
-            //     console.log('Room updated ');
-            //   },
-            //   (error) => {
-            //     console.log('there was an error');
-            //   }
-            // );
-          }          
-        }
-      });
-    } );
+            console.log(this.patientService.room);
   }
 
 }
