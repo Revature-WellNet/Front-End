@@ -25,7 +25,7 @@ export class PatientCheckInComponent implements OnInit {
   public allergies : Allergy[] = [];
   public vaccinations : Vaccination[] = [];
   public patient! : Patient;
-
+  public hiddenmsg:boolean = true;
   constructor(private patientService: PatientService) { }
 
   ngOnInit(): void {
@@ -73,7 +73,7 @@ export class PatientCheckInComponent implements OnInit {
           console.log(patient);
 
           this.patientService.createPatient(patient);
-        
+          this.hiddenmsg = false;
           })
         }
       })
