@@ -104,6 +104,7 @@
 
 
     <div  hidden>
+        
          <button id="searchId" class="Button2" (click)="getAllPatients()" text="Display All Patients">Display all patients</button>
         <button id="searchName"  class="Button2" (click)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
         <button id="searchFullName"  class="Button2" (click)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
@@ -120,6 +121,7 @@
                 <li class="list-group-item"><input type="text" class="form-control" id="doctorFirstName" #doctorFirstName name="doctorFirstName" placeholder="Enter First Name" required></li>
                 <li class="list-group-item"><input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required></li>
                 <li class="list-group-item"><button id="searchDoctor" class="btn btn-outline-success" (click)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor">Search by doctor</button></li>
+                <li class="list-group-item"><button id="searchDoctor" class="btn btn-outline-success" (click)="getAllUnresolvedPatients()" text="Search By Doctor">Show patient queue</button></li>
             </ul>    
     </div>
 

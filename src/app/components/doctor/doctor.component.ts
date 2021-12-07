@@ -39,7 +39,7 @@ export class DoctorComponent implements OnInit {
     if(userData.role == "nurse")
       this.router.navigate(['nurse']);
     //before we get doctor: 
-    this.getAllPatients();
+    this.getAllUnresolvedPatients();
 
 
    // getPatientsByDoctor(doctorId){
