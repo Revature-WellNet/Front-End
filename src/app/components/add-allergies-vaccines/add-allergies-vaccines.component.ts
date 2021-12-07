@@ -94,7 +94,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
           this.hideCheckboxes(document.getElementById("allergyanchor")!)
           this.generateChecklists();
 
-          alert(oldAllergy+" deleted!");
+          alert("Allergy deleted!");
         }else if(oldAllergy.length>0){
           alert("You can't delete an allergy currently attributed to a patient.");
         }
@@ -117,7 +117,7 @@ export class AddAllergiesVaccinesComponent implements OnInit {
           this.hideCheckboxes(document.getElementById("vaccinationanchor")!)
           this.hideCheckboxes(document.getElementById("allergyanchor")!)
           this.generateChecklists();
-          alert(oldVaccine+" deleted!");
+          alert("Vaccination deleted!");
         }else if(oldVaccine.length>0){
           alert("You can't delete a vaccination currently attributed to a patient.");
         }

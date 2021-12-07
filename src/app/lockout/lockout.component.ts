@@ -38,7 +38,7 @@ export class LockoutComponent implements OnInit {
     // Update the count down every 1 second
 
   setTime() {
-    let countDownDate = this.time.getTime()+1209600000-43200000;
+    let countDownDate = this.time.getTime()+1209600000-43200000+86400000;
     let now = new Date().getTime();
     let distance = countDownDate - now;
   
