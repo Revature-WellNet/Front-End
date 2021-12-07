@@ -11,7 +11,7 @@
                           <div class="mb-5">
                               <img src="/assets/img/WellNetLogo.jpg" alt="">
                           </div>
-                          <h4 class="mb-4">Patient Diagnosis</h4>
+                          <h4 class="mb-5">Patient Diagnosis</h4>
   <div>
     <table class="diagnosisTable">
       <thead>
@@ -23,6 +23,14 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td class="col-sm-6 patient-info">
+            At Room number
+          </td>
+          <td class="col-sm-6 patient-info">
+            {{ roomNumber }} 
+          </td>
+        </tr>
         <tr>
           <td class="col-sm-6 patient-info">Sex</td>
           <td class="col-sm-6 patient-info">{{ patient.sex.sex }}</td>
@@ -112,24 +120,36 @@
           >Please enter patient symptoms</span> -->
       </div>
       <br />
-      <div [ngSwitch]="user.role.role">
-        <button
-          *ngSwitchCase="'nurse'"
-          type="submit"
-          class="btn btn-outline-success"
-          [disabled]="!formDemo.valid"
-        >
-          Submit Diagnosis
-        </button>
-        <button
-          *ngSwitchCase="'doctor'"
-          type="submit"
-          class="btn btn-outline-success"
-          [disabled]="!formDemo.valid"
-        >
-          Submit Treatment
-        </button>
+      <div class="row">
+        <div class="col-4">
+          <div [ngSwitch]="user.role.role">
+          <button
+            *ngSwitchCase="'nurse'"
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="!formDemo.valid"
+          >
+            Submit Diagnosis
+          </button>
+          <button
+            *ngSwitchCase="'doctor'"
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="!formDemo.valid"
+          >
+            Submit Treatment
+          </button>
+        </div>
+        </div>
+        <div class="col-4">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" [hidden]="hiddenmsg">
+            <strong>Diagnosis saved successfully</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        
+          </div>
+        </div>
       </div>
+      
     </form>
   </div>
 </div>                

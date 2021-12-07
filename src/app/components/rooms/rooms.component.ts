@@ -119,15 +119,16 @@ export class RoomsComponent implements OnInit {
       let p:string = event.container.data[0];
       let pid:number = Number(p.substring(0, p.indexOf(' - ')));
       
-      console.log(pid);
+      
       
 
       let newindex:number = Number(newRoom) - 1;
       let previndex:number = Number(event.previousContainer.element.nativeElement.dataset.rn) - 1;
+      console.log(newindex);
       if(previndex > 0){
         this.rooms[previndex].roomStatus = 1; 
       }
-      if(newindex > 0){
+      if(newindex >= 0){
         this.rooms[newindex].roomStatus = 2;
         this.updateDForm(pid, newindex);
         
@@ -136,6 +137,7 @@ export class RoomsComponent implements OnInit {
         this.showLink =  false;
       }else{
         this.log = "Patient returned to waiting room";
+        this.showLink =  true;
       }
     }
   }
