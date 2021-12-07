@@ -1,6 +1,17 @@
-<app-button class="btn btn-top-left" (btnClick)="goBack()" text="Back"></app-button>
-
-<div class= "container" >
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light sidebar">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-5">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+                            <h4 class="mb-4">Patient options</h4>
 
     <div class= "addAllergiesVaccines" id = "initialPage">
 
@@ -54,81 +65,92 @@
                <br>
             <button type= "submit" class= "btn btn-success submit-button">Find Patient</button>
         </form> -->
-        <br>
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item" style="width: 400px;">
+                <form
+         
+                #formDemo= "ngForm"
+                class= "form-check-in"
+                (ngSubmit)= "submitAllergy(newAllergy)">  
         
-         <form
+                <div >
+                    <!-- <label for= "newAllergy">Add Allergy:</label> -->
+                    <u><h5>Add Allergy:</h5></u>
+                    <input
+                        type= "text"
+                        class= "form-control"
+                        name= "newAllergy"
+                        id= "newAllergy"
+                        maxlength="50"
+                        [(ngModel)] = "newAllergy"
+                        required
+                    />
+                    <br>
+                   </div>
+                   <button type= "submit" class= "btn btn-outline-success">Add</button>
+               </form>
+            </li>
+            <li class="list-group-item" style="width: 400px;">
+                <form
          
-         #formDemo= "ngForm"
-         class= "form-check-in"
-         (ngSubmit)= "submitAllergy(newAllergy)">  
- 
-         <div >
-             <!-- <label for= "newAllergy">Add Allergy:</label> -->
-             <u><h5>Add Allergy:</h5></u>
-             <input
-                 type= "text"
-                 class= "form-control"
-                 name= "newAllergy"
-                 id= "newAllergy"
-                 maxlength="50"
-                 [(ngModel)] = "newAllergy"
-                 required
-             />
-             <br>
-            </div>
-            <button type= "submit" class= "Button3">Add</button>
-        </form>
-        <br>
-        <form
+                #formDemo= "ngForm"
+                class= "form-check-in"
+                (ngSubmit)= "deleteAllergy(oldAllergies)">  
+        
+                <u><h5>Delete Allergy:</h5></u>
+               <div id = "allergyanchor" style = "display:block; align-items : center; justify-content : center;"></div>
+                   <br>
+                <button type= "submit" class= "btn btn-outline-success">Delete</button>
+            </form>
+            </li>
+            <li class="list-group-item" style="width: 400px;">
+                <form
          
-         #formDemo= "ngForm"
-         class= "form-check-in"
-         (ngSubmit)= "submitVaccine(newVaccine)">  
- 
-         <div>
-             <!-- <label for= "newVaccine">Add Vaccine:</label> -->
-             <u><h5>Add Vaccination:</h5></u>
-                 <input
-                     type= "text"
-                     class= "form-control"
-                     name= "newVaccine"
-                     id= "newVaccine"
-                     maxlength="100"
-                     [(ngModel)] = "newVaccine"
-                     required
-                 />
-             <br>
- 
-         </div>
-         <button type= "submit" class= "Button3">Add</button>
-     </form>
+                #formDemo= "ngForm"
+                class= "form-check-in"
+                (ngSubmit)= "submitVaccine(newVaccine)">  
+        
+                <div>
+                    <!-- <label for= "newVaccine">Add Vaccine:</label> -->
+                    <u><h5>Add Vaccination:</h5></u>
+                        <input
+                            type= "text"
+                            class= "form-control"
+                            name= "newVaccine"
+                            id= "newVaccine"
+                            maxlength="100"
+                            [(ngModel)] = "newVaccine"
+                            required
+                        />
+                    <br>
+        
+                </div>
+                <button type= "submit" class= "btn btn-outline-success">Add</button>
+            </form>
+            </li>
+            <li class="list-group-item" style="width: 400px;">
+                <form
+         
+                #formDemo= "ngForm"
+                class= "form-check-in"
+                (ngSubmit)= "deleteVaccine(oldVaccines)">  
+        
+                <u><h5>Delete Vaccinations:</h5></u>
+               <div id = "vaccinationanchor"></div>
+               <br>
+                <button type= "submit" class= "btn btn-outline-success">Delete</button>
+            </form>
+            </li>
+        </ul>
+        
+         
 
-     <form
-         
-         #formDemo= "ngForm"
-         class= "form-check-in"
-         (ngSubmit)= "deleteAllergy(oldAllergies)">  
- 
-         <br>
-         <u><h5>Delete Allergy:</h5></u>
-        <div id = "allergyanchor" style = "display:block; align-items : center; justify-content : center;"></div>
-            <br>
-         <button type= "submit" class= "Button3">Delete</button>
-     </form>
+       
 
-     <form
-         
-         #formDemo= "ngForm"
-         class= "form-check-in"
-         (ngSubmit)= "deleteVaccine(oldVaccines)">  
- 
-         <br>
-         <u><h5>Delete Vaccinations:</h5></u>
-        <div id = "vaccinationanchor"></div>
-        <br>
-         <button type= "submit" class= "Button3">Delete</button>
-     </form>
- <br>
+     
+
+
+
 
  <!-- </div>
 
@@ -239,4 +261,9 @@
 
 </div> -->
 
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container-full">
     <div class="container-fluid h100">
         <div class="row h100">
-            <div class="col-md-2 p-3 bg-light">
+            <div class="col-md-2 p-3 bg-light sidebar">
                 <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
             </div>
             <div class="col-md-10 align-self-center">
@@ -36,16 +36,16 @@
                 </li>
                 <li class="list-group-item">
                     Search by
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Display all patients</option>
-                        <option value="1">First name</option>
-                        <option value="2">First name and last name</option>
-                        <option value="3">First name, last name and date of birth</option>
+                    <select class="form-select" #filter aria-label="Default select example">
+                        <option value="1">Display all patients</option>
+                        <option value="2">First name</option>
+                        <option value="3">First name and last name</option>
+                        <option value="4">First name, last name and date of birth</option>
                       </select>
                 </li>
                 <li class="list-group-item">
                     <br>
-                    <button id="searchId" class="btn btn-outline-success" (btnClick)="getAllPatients()" text="Display All Patients">Search</button>
+                    <button id="searchId" class="btn btn-outline-success" (click)="applyfilter(firstName.value, lastName.value, dobField.value, filter.value)" >Search</button>
                 </li>
             </ul>
             

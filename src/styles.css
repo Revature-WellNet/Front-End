@@ -361,6 +361,9 @@ td { text-align: left;}
  .h100{
     height: 100%;
  }
+ .sidebar{
+   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+ }
  .mainbox{
    margin-left: auto;
    margin-right: auto;
@@ -408,4 +411,7 @@ td { text-align: left;}
  }
  a:hover{
    color: #3A7F3E !important;
+ }
+ .nav-item:hover{
+   background-color:#efefef;
  }
