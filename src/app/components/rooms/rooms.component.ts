@@ -74,6 +74,9 @@ export class RoomsComponent implements OnInit {
 
     // populating rooms with current patients
     this.diagService.getAllDiagnosisForms().subscribe(diags => {
+      if(diags == null){
+        this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
+      }
       diags.forEach(diag => {
         console.log(diag);
         if(!diag.resolutionStatus){ //resolutionStatus = false means that the patient is still in the room;
