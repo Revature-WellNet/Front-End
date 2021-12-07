@@ -75,19 +75,23 @@ export class RoomsComponent implements OnInit {
     // populating rooms with current patients
     this.diagService.getAllDiagnosisForms().subscribe(diags => {
       if(diags == null){
+        console.log('diags is null')
         this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
-      }
+      }console.log("populate wating room");
+            this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
+      console.log("below if statement")
       diags.forEach(diag => {
         console.log(diag);
         if(!diag.resolutionStatus){ //resolutionStatus = false means that the patient is still in the room;
           if(diag.room){
             this.rooms[diag.room.roomNumber - 1].patients.push(diag.patient.patientId + ' - ' + diag.patient.firstName + ' ' + diag.patient.lastName);
             this.rooms[diag.room.roomNumber - 1].roomStatus = 2;
+           
           }
-          else{
-            this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
-          }
-        }
+         
+        } 
+            
+          
       });
     });
   }
