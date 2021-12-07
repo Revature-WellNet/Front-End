@@ -4,7 +4,7 @@
  
 } */
 
-table td{
+.tdc{
     text-align: center;
 }
 
@@ -69,7 +69,7 @@ table td{
     margin-top: 3em;
     margin-bottom: 3em;
 } */
-
+/*
 .table{
     display: flex;
     justify-content: center;
@@ -84,7 +84,12 @@ table th {
 
 table th:last-child {
     border-right: none;
+}*/
+
+
+
+.mainbox{
+    width: 95%;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
-
-
-

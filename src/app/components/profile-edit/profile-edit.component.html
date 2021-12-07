@@ -1,15 +1,27 @@
-<app-navbar></app-navbar>
-<div class="background">
-    <div>
-      <br>
-        <div class="title"><h1>Edit Information</h1></div> 
-            <div class="form-group">
+
+
+<div class="container-full">
+  <div class="container-fluid h100">
+      <div class="row h100">
+          <div class="col-md-2 p-3 bg-light sidebar">
+              <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+          </div>
+          <div class="col-md-10 align-self-center">
+              <div class="mainbox">
+                  <div class="row">
+                      <div class="col-md-12 p-5">
+                          <div class="mb-5">
+                              <img src="/assets/img/WellNetLogo.jpg" alt="">
+                          </div>
+
+        <h4 class="mb-4">Edit Information</h4>
+            <div class="form-group col-4 mb-3">
                 <label for="firstName">First name</label>
                 <input type="text" class="form-control" #firstname id="firstName" maxlength="20"
                  name="firstName" placeholder="Change your first name">
 
             </div>
-            <div class="form-group">
+            <div class="form-group mb-4 col-4">
                 <label for="lastName">Last name</label>
                 <input type="text" class="form-control" #lastname id="lastName" maxlength="20"
                   name="lastName" placeholder="Change your last name" >
@@ -44,9 +56,16 @@
                   name="email" placeholder="Change your email">
             </div> -->
 
-    </div>
+  
 
-    <button text="Submit" class="Button3"
+    <button text="Submit" class="btn btn-outline-success"
         (click)="submit(firstname.value, lastname.value)">Submit</button>
 
+
+
+      </div>
+    </div>
+</div>
+</div>
+</div>
 </div>

@@ -21,7 +21,8 @@ export class RoomsComponent implements OnInit {
   areas:Area[] = [];
   rooms:Room[] = [];
   log:string = "";
-  patient: Patient = this.patientService.patient; 
+  patient: Patient = this.patientService.patient;
+  showLink: boolean = true;
 
   waitingroom:string[] = [];
   
@@ -123,7 +124,8 @@ export class RoomsComponent implements OnInit {
         this.rooms[newindex].roomStatus = 2;
         this.updateDForm(pid, newindex);
         this.log = "Patient assigned to room " + newRoom;
-        this.router.navigate(['diagnosis']);
+        //this.router.navigate(['diagnosis']);
+        this.showLink =  false;
       }else{
         this.log = "Patient returned to waiting room";
       }

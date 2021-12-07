@@ -221,4 +221,26 @@ this.router.navigate(['diagnosis']);
     this.router.navigate(["addAllergiesVaccines"]);
   }
 
+  applyfilter(firstName: string, lastName:string, dobField : string, filter:string){
+
+    console.log(filter);
+
+    switch(filter){
+
+      case "1":
+        this.getAllPatients();
+        break;
+      case "2":
+        this.searchPatByFName(firstName);
+          break;
+      case "3":
+        this.searchPatByFullName(firstName, lastName);
+        break;
+      case "4":
+        this.searchPatNameDate(firstName, lastName, dobField);
+        break;
+    }
+
+  }
+
 }

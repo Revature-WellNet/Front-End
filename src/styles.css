@@ -308,12 +308,6 @@ White:
    background-size: cover;
  }
 
- .form-group {
-   margin: auto;
-   width: 80%;
-    margin-top: 30px;
- }
-
  .accountCard {
    
    border-radius: 25px;
@@ -331,7 +325,6 @@ White:
 
 .profile {
    width:80%;
-   margin:auto;
 }
 
 td { text-align: left;}

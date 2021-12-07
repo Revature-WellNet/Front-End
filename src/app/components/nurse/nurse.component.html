@@ -61,8 +61,8 @@
     </div>
     
   
-  <div>
-      <table class="table .table-striped">
+    <h4 class="mb-4">Patients</h4>
+      <table class="table table-striped">
           <thead>
               <tr>
                   <th>Diagnose Patient</th>
@@ -81,10 +81,10 @@
           </thead>
           <tbody>
               <tr *ngFor="let patient of patientsArray">
-                <td><app-button (btnClick)="diagnosePatient(patient)"></app-button></td>
+                <td class="tdc"><a style="font-size: larger;" (click)="diagnosePatient(patient)"><i class="bi bi-activity"></i></a></td>
                   <td>{{patient.firstName}}</td>
                   <td>{{patient.lastName}}</td>
-                  <td>{{patient.dob}}</td>
+                  <td class="tdc" >{{patient.dob}}</td>
                   <!-- <td>{{patient.dob}}</td> -->
                   <td>
                       <ul>
@@ -93,8 +93,8 @@
                           </li>
                       </ul>
                   </td>
-                  <td>{{patient.height}}</td>
-                  <td>{{patient.weight}}</td>
+                  <td class="tdc">{{patient.height}}</td>
+                  <td class="tdc">{{patient.weight}}</td>
                   <td>
                       <ul>
                           <li  *ngFor = "let vax of patient.patientVaccinations">
@@ -103,18 +103,12 @@
                       </ul>
                       <!-- {{patient.vaccinations[0].vaccination}} -->
                   </td>
-                  <td>{{patient.bloodType.type}}</td>
-                  <td>{{patient.sex.sex}}</td>
+                  <td class="tdc">{{patient.bloodType.type}}</td>
+                  <td class="tdc">{{patient.sex.sex}}</td>
                   <td>{{patient.doctor}}</td>
               </tr>
           </tbody>
       </table>
-  </div>
- 
-  
-                           
-
-                         
                             
                         
                     </div>
