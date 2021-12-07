@@ -77,7 +77,8 @@ export class RoomsComponent implements OnInit {
       if(diags == null){
         console.log('diags is null')
         this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
-      }console.log("populate wating room");
+      }
+      else{console.log("populate wating room");
             this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
       console.log("below if statement")
       diags.forEach(diag => {
@@ -92,7 +93,7 @@ export class RoomsComponent implements OnInit {
         } 
             
           
-      });
+      });}
     });
   }
 
@@ -125,7 +126,7 @@ export class RoomsComponent implements OnInit {
       let newindex:number = Number(newRoom) - 1;
       let previndex:number = Number(event.previousContainer.element.nativeElement.dataset.rn) - 1;
       console.log(newindex);
-      if(previndex > 0){
+      if(previndex >= 0){
         this.rooms[previndex].roomStatus = 1; 
       }
       if(newindex >= 0){
