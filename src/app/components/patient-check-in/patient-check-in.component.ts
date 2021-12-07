@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Allergy } from 'src/app/models/allergy';
 import { Bloodtype } from 'src/app/models/bloodtype';
 import { Patient } from 'src/app/models/patient'
@@ -26,7 +27,7 @@ export class PatientCheckInComponent implements OnInit {
   public vaccinations : Vaccination[] = [];
   public patient! : Patient;
 
-  constructor(private patientService: PatientService) { }
+  constructor(private patientService: PatientService, private router : Router) { }
 
   ngOnInit(): void {
     this.generateChecklists();
@@ -73,12 +74,12 @@ export class PatientCheckInComponent implements OnInit {
           console.log(patient);
 
           this.patientService.createPatient(patient);
-        
+          this.router.navigate(["/nurse"]);
           })
         }
       })
     }else{
-      alert("First and last name, dob, bloodtype, and sex is required to add a new patient to Wellnet.")
+      alert("Please check you have filled out all required fields.")
     }
   }
 

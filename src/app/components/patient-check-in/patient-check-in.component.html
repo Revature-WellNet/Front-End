@@ -55,7 +55,7 @@
                     required
                 />
             <br>
-                <p>Height: </p>
+            <span class = "asterix">*</span><p>Height: </p>
                 <label for= "feet">feet:</label>
                 <input
                     type= "number"
@@ -67,7 +67,7 @@
                     max="10"
                     [(ngModel)] = "feet"
                 />
-                <label for= "inches">inches:</label>
+                <span class = "asterix">*</span><label for= "inches">inches:</label>
                 <input
                     type= "number"
                     min = "0"
@@ -79,7 +79,7 @@
                     [(ngModel)] = "inches"
                 />
             <br>
-                <label for= "weight">Weight (lbs.):</label>
+            <span class = "asterix">*</span><label for= "weight">Weight (lbs.):</label>
                 <input
                     type= "number"
                     min = "0"
@@ -91,7 +91,7 @@
                 />
                 <span></span>
             <br>
-            <label for="bloodtype">Bloodtype:</label>
+            <span class = "asterix">*</span><label for="bloodtype">Bloodtype:</label>
                 <select id="bloodtype" name="bloodtype" class= "form-control" [(ngModel)] = "bloodtype">
                     <option value=""></option>
                     <option value="O-">O-</option>
@@ -111,10 +111,11 @@
                     <option value="NB">Other</option>
                 </select>
             <br>
-            <u><h5> Allergies: </h5></u>
+            <u><h5>Allergies: </h5></u>
             <div id = "allergyanchor"></div>
             <br>
-            <div id = "vaccinationanchor">Vaccinations:</div>
+            <u><h5>Vaccinations: </h5></u>
+            <div id = "vaccinationanchor"></div>
             <button type= "submit" class= "btn btn-outline-success mt-3">Add Patient</button>
         </div>
         
