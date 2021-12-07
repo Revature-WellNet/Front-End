@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient';
 import { Room } from '../models/rooms/room';
+import { RoomDto } from '../models/rooms/room-dto';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,7 +21,7 @@ export class PatientService {
 
   private backendUrl = 'http://localhost:8081/wellnet/patient'
   public patient!: Patient;  
-  public room!: Room;
+  public room!: RoomDto;
   constructor(private router: Router, private http: HttpClient) {
  
   }
@@ -88,7 +89,8 @@ export class PatientService {
 
   diagnosePatient(patient: Patient) {
     this.patient = patient;
-    this.router.navigate(["diagnosis"]);
+
+    this.router.navigate(["rooms"]);
   }
 
  /* Not enough time to implement and not an MVP user story

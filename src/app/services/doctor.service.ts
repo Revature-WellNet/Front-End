@@ -31,6 +31,15 @@ export class DoctorService {
 
   }
 
+  getResolvedPatients(): Observable<Patient[]>{
+    console.log("This will return patients");
+
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/resolved`);
+
+  }
+
+
+
    // getPatientById(id){
   //   this.http.get(APIURL + "* not this: select patient where id = ?");
   // }

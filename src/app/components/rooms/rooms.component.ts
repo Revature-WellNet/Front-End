@@ -34,6 +34,7 @@ export class RoomsComponent implements OnInit {
     }
     this.getAllAreas();
     this.getRooms();
+    this.patient=this.patientService.patient;
   }
 
   getAllAreas(){
@@ -80,7 +81,7 @@ export class RoomsComponent implements OnInit {
             this.rooms[diag.room.roomNumber - 1].roomStatus = 2;
           }
           else{
-            this.waitingroom.push(diag.patient.patientId + ' - ' + diag.patient.firstName + ' ' + diag.patient.lastName);
+            this.waitingroom.push(this.patientService.patient.patientId + ' - ' + this.patientService.patient.firstName + ' ' + this.patientService.patient.lastName);
           }
         }
       });
@@ -122,6 +123,7 @@ export class RoomsComponent implements OnInit {
         this.rooms[newindex].roomStatus = 2;
         this.updateDForm(pid, newindex);
         this.log = "Patient assigned to room " + newRoom;
+        this.router.navigate(['diagnosis']);
       }else{
         this.log = "Patient returned to waiting room";
       }
@@ -140,21 +142,27 @@ export class RoomsComponent implements OnInit {
 
            
             
-
+            
             let newr:Room = this.rooms[newindex];
+            console.log(newr);
             let newrDto:RoomDto = new RoomDto(newr.roomNumber, newr.roomNumber, newr.area);
+            console.log(newrDto);
+            console.log(newr.area);
             diag.room = newrDto;
+            this.patientService.room=newrDto;
+            
+            
 
-            console.log(diag);
+            // console.log(diag);
 
-            this.diagService.putDiagnosisForm(diag).subscribe(
-              (success) => {
-                console.log('Room updated ');
-              },
-              (error) => {
-                console.log('there was an error');
-              }
-            );
+            // this.diagService.putDiagnosisForm(diag).subscribe(
+            //   (success) => {
+            //     console.log('Room updated ');
+            //   },
+            //   (error) => {
+            //     console.log('there was an error');
+            //   }
+            // );
           }          
         }
       });

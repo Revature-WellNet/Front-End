@@ -157,7 +157,7 @@ export class DoctorComponent implements OnInit {
 
     this.searchingDoctor = false;
 
-    this.nurseService.getPatients().subscribe(
+    this.doctorService.getPatients().subscribe(
       (response: Patient[])=> {
         this.patientsArray = response;
                 console.log(this.patientsArray);
@@ -171,8 +171,29 @@ export class DoctorComponent implements OnInit {
   }
 
   diagnosePatient(patient: Patient){
-    this.patientService.diagnosePatient(patient);
+    this.patientService.patient=patient;
+this.router.navigate(['diagnosis']);
+   
   }
+
+  getAllUnresolvedPatients(){
+
+    this.searchingDoctor = false;
+
+    this.doctorService.getResolvedPatients().subscribe(
+      (response: Patient[])=> {
+        this.patientsArray = response;
+                console.log(this.patientsArray);
+        console.log(response);
+        console.log(typeof response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  
 
   logout(){
     this.firebaseService.logout();
@@ -188,6 +209,7 @@ export class DoctorComponent implements OnInit {
 
     this.doctorService.getPatientsByDoctorName(doctorFirstName, doctorLastName).subscribe( (response)=>{
       if (response.length > 0){
+      
       this.patientsArray=response;
       this.searchingDoctor = true;
       }

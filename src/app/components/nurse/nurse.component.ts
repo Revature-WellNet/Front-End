@@ -103,6 +103,8 @@ export class NurseComponent implements OnInit {
   }
 
   diagnosePatient(patient: Patient){
+    this.patientService.patient=patient;
+    console.log(patient);
     this.patientService.diagnosePatient(patient);
   }
 
