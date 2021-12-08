@@ -1,7 +1,5 @@
 # WellNet
 
-## Team 3
-
 Endpoints: 
 
 - '/covid-verification' 
@@ -11,15 +9,37 @@ Endpoints:
   - If the employee shows covid symptoms or has tested positive they are prompted to enter the date of their last positive and their covid status is updated to true.
   - If the employee is covid negative they are able to login into their home page
 
+- '/diagnosis'
+  - This endpoint displays a form for a nurse or doctor to keep track of a checked-in patient
+  - Nurses will be redirected here after checking a patient into a room
+  - Nurses are able to see all of a patient's information and can describe the patient's symptoms and suggest a diagnosis
+  - Doctors will be able to look at a patient's information here
+  - Doctors will be able to see everything a nurse does, plus an extra field for prescribing a treatment
+  - Prescription of treatment effectively checks a patient out of the hospital
+
 - '/lockout'
-    - This endpoint displays for employees who are covid positive in place of their home page
-    - Employees who are covid positive are locked out of their main account until 14 days have past since their last positive test
-    - Lockout counts down the time from 14 days since an employee's last positive test
-    - When the time expires the employees are redirected to retake the covid-verification form upon login
+  - This endpoint displays for employees who are covid positive in place of their home page
+  - Employees who are covid positive are locked out of their main account until 14 days have past since their last positive test
+  - Lockout counts down the time from 14 days since an employee's last positive test
+  - When the time expires the employees are redirected to retake the covid-verification form upon login
 
 Models:
 - Covid-Verification
   - Contains formKey(primary key), lastTest(timestamp), covidStatus(boolean)
+- Diagnosis-Form
+  - Contains:
+    - diagnosis Id (primary key)
+    - diagnosis (string)
+    - symptoms (string)
+    - treatment (string)
+    - resolution status (boolean)
+    - check-in (date)
+    - check-out (date)
+    - patient (Patient object)
+    - room (Room object)
+    - nurse (User object)
+    - doctor (User object)
+
 
 Testing automation:
 - Employees are required to take a test if they have not been tested in the last 24 hours
