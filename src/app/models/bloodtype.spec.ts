@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-import { Bloodtype } from './bloodtype';
+// import { TestBed } from '@angular/core/testing';
+// import { Bloodtype } from './bloodtype';
 
-describe('Bloodtype', () => {
+// describe('Bloodtype', () => {
 
-  let bloodType: Bloodtype;
+//   let bloodType: Bloodtype;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    bloodType = TestBed.inject(Bloodtype);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     bloodType = TestBed.inject(Bloodtype);
+//   });
 
-  it('should be created', () => {
-    expect(bloodType).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(bloodType).toBeTruthy();
+//   });
+// });

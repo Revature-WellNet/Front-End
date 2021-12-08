@@ -84,6 +84,7 @@ describe('NurseService', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
         },
       { patientId: 2, firstName: 'johnny2', lastName: 'test2', dob: new Date, 
         height: 72, weight: 200, 
@@ -91,6 +92,7 @@ describe('NurseService', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
       },
       { patientId: 3, firstName: 'johnny3', lastName: 'test3', dob: new Date, 
         height: 72, weight: 200, 
@@ -98,6 +100,7 @@ describe('NurseService', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
       }
     ];
 
@@ -130,6 +133,7 @@ describe('getPatientById', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
         }
 
       let response : Patient;
@@ -160,6 +164,7 @@ describe('getPatientById', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
         }];
 
       let response : Patient[];
@@ -191,6 +196,7 @@ describe('getPatientById', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
         }];
 
       let response : Patient[];
@@ -223,6 +229,7 @@ describe('getPatientById', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
         }];
 
       let response : Patient[];
@@ -253,6 +260,7 @@ describe('getPatientById', () => {
         sex: { sexId: 1, sex: 'male' },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
         }];
 
       let response : Patient[];

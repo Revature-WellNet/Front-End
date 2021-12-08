@@ -66,15 +66,6 @@ describe('SemiUniqueStringsService', () => {
 
       expect(startLength).not.toEqual(endLength);
 
-      
-
-      expect(appendednum > 0).toEqual(true);
-      console.log(endString); 
-      console.log(appended);
-      console.log(appendednum);
-
-      
-
     });
 
   });

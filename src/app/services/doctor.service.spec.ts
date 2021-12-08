@@ -69,6 +69,7 @@ describe('DoctorService', () => {
       },
       patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
       patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+      fullName():string{return (this.firstName + " " + this.lastName);}
     },
     {
       patientId: 2,
@@ -86,6 +87,7 @@ describe('DoctorService', () => {
     },
       patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
       patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+      fullName():string{return (this.firstName + " " + this.lastName);}
     },
     {
       patientId: 3,
@@ -103,6 +105,7 @@ describe('DoctorService', () => {
       },  //{new Vaccination(1, "Walrus Pox")},
       patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
       patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+      fullName():string{return (this.firstName + " " + this.lastName);}
   }
   ];
 
@@ -169,6 +172,7 @@ describe('DoctorService', () => {
         },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
       },
       {
         patientId: 2,
@@ -186,6 +190,7 @@ describe('DoctorService', () => {
       },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
       },
       {
         patientId: 3,
@@ -203,6 +208,7 @@ describe('DoctorService', () => {
         },  //{new Vaccination(1, "Walrus Pox")},
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
     }
     ];
 
@@ -241,6 +247,7 @@ describe('DoctorService', () => {
         },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
       },
       {
         patientId: 2,
@@ -258,6 +265,7 @@ describe('DoctorService', () => {
       },
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
       },
       {
         patientId: 3,
@@ -275,6 +283,7 @@ describe('DoctorService', () => {
         },  //{new Vaccination(1, "Walrus Pox")},
         patientVaccinations: [{vaccinationId : 1, vaccination : "Walrus Pox"}],
         patientAllergies: [{allergyId : 1, allergy : "Serpentine"}],
+        fullName():string{return (this.firstName + " " + this.lastName);}
     }
     ];
 

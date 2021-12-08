@@ -26,13 +26,8 @@ export class PatientCheckInComponent implements OnInit {
   public allergies : Allergy[] = [];
   public vaccinations : Vaccination[] = [];
   public patient! : Patient;
-<<<<<<< HEAD
-
-  constructor(private patientService: PatientService, private router : Router) { }
-=======
   public hiddenmsg:boolean = true;
   constructor(private patientService: PatientService) { }
->>>>>>> 5234c407887c2548d09a26e8dde6054226214911
 
   ngOnInit(): void {
     this.generateChecklists();
@@ -79,11 +74,7 @@ export class PatientCheckInComponent implements OnInit {
           console.log(patient);
 
           this.patientService.createPatient(patient);
-<<<<<<< HEAD
-          this.router.navigate(["/nurse"]);
-=======
           this.hiddenmsg = false;
->>>>>>> 5234c407887c2548d09a26e8dde6054226214911
           })
         }
       })

@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-import { Role } from './role';
+// import { TestBed } from '@angular/core/testing';
+// import { Role } from './role';
 
-describe('Role', () => {
+// describe('Role', () => {
 
-  let role: Role;
+//   let role: Role;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    role = TestBed.inject(Role);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     role = TestBed.inject(Role);
+//   });
 
-  it('should be created', () => {
-    expect(role).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(role).toBeTruthy();
+//   });
+// });

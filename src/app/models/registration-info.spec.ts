@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-import { RegistrationInfo } from './registration-info';
+// import { TestBed } from '@angular/core/testing';
+// import { RegistrationInfo } from './registration-info';
 
-describe('RegistrationInfo', () => {
+// describe('RegistrationInfo', () => {
 
-  let regInfo: RegistrationInfo;
+//   let regInfo: RegistrationInfo;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    regInfo = TestBed.inject(RegistrationInfo);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     regInfo = TestBed.inject(RegistrationInfo);
+//   });
 
-  it('should be created', () => {
-    expect(regInfo).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(regInfo).toBeTruthy();
+//   });
+// });
