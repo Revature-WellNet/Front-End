@@ -64,8 +64,7 @@ export class NurseComponent implements OnInit {
 
   /* Method Name : searchPatient
     Description : This method calls an other method in the nurse service to get a
-      patient by their id : this is a deprecated method because upon integration of
-      firebase into the project the primary key stopped being an integer
+      patient by their id : not currently in use
     : No Known references
     Calls : nurse.servcie.ts getPatientById
   */
@@ -202,7 +201,7 @@ export class NurseComponent implements OnInit {
 
   /* Method Name : logout
       Description : Was intended to log out the user
-    : Not currently in use
+    : Usage unknown
   */
   logout(){
     this.firebaseService.logout();
@@ -210,7 +209,7 @@ export class NurseComponent implements OnInit {
 
   /* Method Name : routeToAdd
       Description : Was indended to route the user to the add allergies and vaccines page
-    : Not currently in use
+    : usage Unknown
   */
   routeToAdd(){
     this.router.navigate(["addAllergiesVaccines"]);
