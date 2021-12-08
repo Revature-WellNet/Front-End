@@ -67,7 +67,13 @@ Endpoints:
     - A user can add new vaccines to the hospita system
     - A user can delete unused allergies from the hospital system
     - A user can delete unused vaccines from the hospital system
- 
+ - '/rooms'
+    - This route directs the user to assigning a patient to a room 
+    - A user can assign a patient to a Hospital Room by dragging his name card from the waiting room and dropping it to an available hospital room.
+    - A room can only have one patient at a time
+    - After assigning a patient to a hospital room the user can proceed to the diagnosis 
+
+
 
 Models:
 - Covid-Verification
@@ -99,6 +105,10 @@ Models:
     - Contains sexId (primary Key), sex
   - registration-info
     - Contains firstname, lastname, email, role (foreign key)
+- Room
+  - Contains roomId (primary key), roomNumber (number), area (Area foreign key)
+- Area
+  - Contains areaId (primary key), name (String)
 
 
 Testing automation:
