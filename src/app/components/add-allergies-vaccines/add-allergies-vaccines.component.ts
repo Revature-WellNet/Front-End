@@ -15,6 +15,10 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class AddAllergiesVaccinesComponent implements OnInit {
 
+  //The adds are easy. The gist of the deletes is to run through all the allergies/ vaccines 
+  //in the database and add event listeners to add or remove them from a list on being checked or unchecked.
+  //Once the button is pressed, the list is sent off to the farm. Similar strategy used to add allegies/ vaccines
+  //on the patient check in.
   constructor(private location: LocationStrategy, private patientService: PatientService, private nurseService : NurseService) { }
 
   public newAllergy!: string;
@@ -235,6 +239,10 @@ export class AddAllergiesVaccinesComponent implements OnInit {
     })
     
   }
+
+ // Hello UWU!!!! Welcome to my failure!!! Basically tried to add the ability to edit patients on the last
+  // day and ran out of time to figure out all the bugs. Plan was to have 3 search bars to find the patient
+  // and once found, the entire page's elements are hidden and a form for editing the patient is shown.
 
   // generatePatientEdit(fName : string, lName : string, dob : string){
 
