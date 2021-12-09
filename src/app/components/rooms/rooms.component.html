@@ -1,0 +1,167 @@
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light sidebar">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-4">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+<div class="container-fluid" >
+     <div class="row">
+        <div class="col-md-12">
+            <h3>Room assignment</h3>
+        </div>
+    </div>
+    <div class="row mt-4" cdkDropListGroup>
+        <div class="col-md-1 p-0">
+            <div style="height: 10%;">
+
+            </div>
+            <div class="other p-1" style="height: 80%;border-right: none;">
+ <h6 class="p-1">Area</h6>
+ <ul class="list-group mt-3">
+    <li *ngFor="let area of areas" class="list-group-item shadow-pop-bl" (click)="selectArea(area.areaId)" >
+        {{area.name}}
+    </li>
+</ul>
+            </div>
+             <div style="height: 10%">
+ 
+             </div>
+        </div>
+        <div  class="col-md-9">
+           <div class="row">
+               <ng-container *ngFor="let item of rooms">
+               <div *ngIf="item.roomNumber <= 6"  cdkDropList #room{{item.roomNumber}}List="cdkDropList" [attr.data-rn]="item.roomNumber" [attr.data-selected]="item.highlighted"  [cdkDropListData]="item.patients" (cdkDropListDropped)="drop($event)" class="col-md-2 room pt-2">                  
+                <span class="badge bg-dark">{{item.roomNumber}}</span>
+                <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
+                <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
+                <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
+                    <i class='bx bx-user'></i> {{ item }}
+                </div>
+                </div>
+                </ng-container>
+           </div>
+           <div class="row">
+            <div class="col-md-12 hall">
+                <!--Hall-->
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2 p-0">
+                        <ng-container *ngFor="let item of rooms">
+                            <div *ngIf="item.roomNumber == 7 || item.roomNumber == 8"  cdkDropList #room{{item.roomNumber}}List="cdkDropList" [attr.data-selected]="item.highlighted"  [attr.data-rn]="item.roomNumber"  [cdkDropListData]="item.patients" (cdkDropListDropped)="drop($event)" class="room p-2">                  
+                             <span class="badge bg-dark">{{item.roomNumber}}</span>
+                             <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
+                             <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
+                             <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
+                                 <i class='bx bx-user'></i> {{item}}
+                             </div>
+                             </div>
+                             </ng-container>
+                    <div class="other smallroom">
+                        <div style="height: 45%;"><h6>Restroom</h6></div>                         
+                         <div style="height: 50%;">
+                            <img src="assets/_r4_c2.jpg" alt="">
+                         </div>                         
+                    </div>
+                    </div>
+                    <div class="col-md-1">
+<!--Hall-->
+                    </div>
+                    <div class="col-md-4 other p-2">
+                        <div  style="height: 45%;">
+                            <h6>Nurse station</h6>
+                            <p>{{log}}</p>
+                            <p> <a [routerLink]="['/diagnosis']"  [hidden]="showLink" >Proceed to diagnosis</a> </p>
+                        </div>
+                        <div style="height: 45%;" class="bt">
+                            <h6>Lab</h6>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1">
+<!--Hall12-->
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <ng-container *ngFor="let item of rooms">
+                            <div *ngIf="item.roomNumber == 9 || item.roomNumber == 10"  cdkDropList #room{{item.roomNumber}}List="cdkDropList" [attr.data-selected]="item.highlighted"  [attr.data-rn]="item.roomNumber"  [cdkDropListData]="item.patients" (cdkDropListDropped)="drop($event)" class="other tallroom p-2">                  
+                             <span class="badge bg-dark">{{item.roomNumber}}</span>
+                             <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
+                             <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
+                             <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
+                                 <i class='bx bx-user'></i> {{item}}
+                             </div>
+                             </div>
+                             </ng-container>
+                    </div>
+                 
+                    <div class="col-md-2 p-0">
+                        <div class="other checkin">
+                            <div style="height: 30%"><h6>Check-In Station</h6></div>                             
+                             <div class="d-flex flex-row-reverse" style="height: 34%;">
+                                 <img src="assets/_r2_c2.jpg" alt="">
+                             </div>
+                             <div style="height: 30%"></div>
+                            </div>
+                            <ng-container *ngFor="let item of rooms">
+                                <div *ngIf="item.roomNumber == 11"  cdkDropList #room{{item.roomNumber}}List="cdkDropList" [attr.data-selected]="item.highlighted"  [attr.data-rn]="item.roomNumber" [cdkDropListData]="item.patients" (cdkDropListDropped)="drop($event)" class="other tallroom p-2">                  
+                                 <span class="badge bg-dark">{{item.roomNumber}}</span>
+                                 <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
+                                 <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
+                                 <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
+                                     <i class='bx bx-user'></i> {{item}}
+                                 </div>
+                                 </div>
+                                 </ng-container>
+                    </div>
+                </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-12 hall">
+                <!--Hall-->
+            </div>
+           </div>
+           <div class="row">
+            <ng-container *ngFor="let item of rooms">
+                <div *ngIf="item.roomNumber > 11"  cdkDropList #room{{item.roomNumber}}List="cdkDropList" [attr.data-selected]="item.highlighted"  [attr.data-rn]="item.roomNumber" [cdkDropListData]="item.patients" (cdkDropListDropped)="drop($event)" class="col-md-2 room pt-2">                  
+                 <span class="badge bg-dark">{{item.roomNumber}}</span>
+                 <span *ngIf="item.roomStatus==1; else elseBlock" class="ms-2 badge bg-info text-dark">Available</span>
+                 <ng-template #elseBlock><span class="ms-2 badge bg-secondary">Occupied</span></ng-template>
+                 <div  *ngFor="let item of item.patients" class="patient" cdkDrag>
+                     <i class='bx bx-user'></i> {{item}}
+                 </div>
+                 </div>
+                 </ng-container>
+            </div>
+        </div>
+        <div class="col-md-2 p-0">
+           <div style="height: 10%;">
+
+           </div>
+           <div cdkDropList #waitingroomList="cdkDropList"  [cdkDropListData]="waitingroom" [attr.data-rn]="0" (cdkDropListDropped)="drop($event)"  class="other waitingroom p-2" style="height: 80%; border-left: none;">
+            <h6>Waiting room</h6>
+            <div  *ngFor="let item of waitingroom" class="patient" cdkDrag>
+                <i class='bx bx-user'></i>{{item}}
+            </div>
+           </div>
+            <div style="height: 10%">
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

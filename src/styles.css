@@ -1,1 +1,407 @@
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*
+Green:
+#194140
+#239507
+#8ec342
+#bbd999
+Blue:
+#566675
+#7f969c
+#a1aeba
+#b9c9d2
+White: 
+#f5f9f6
+*/
+
+#Green2 {
+    background-color: #239507;
+ }
+ #Green3 {
+    background-color: #8ec342;
+ }
+ #Green4 {
+     background-color: #bbd999;
+ }
+ #Blue1 {
+    background-color: #566675;
+ }
+ #Blue2 {
+    background-color: #7f969c;
+ }
+ #Blue3 {
+    background-color: #a1aeba;
+ }
+ #Blue4 {
+    background-color: #b9c9d2;
+ }
+
+ #White {
+    background-color: #f5f9f6;
+ }
+
+ .Button1 {
+     background-color: #566675;
+     border: none;
+     padding: 30px;
+     color: white;
+     font-size: 20px;
+ }
+
+ .Button2 {
+     background-color: #239507;
+     border: none;
+     padding: 9px;
+     border-radius: 8px;
+     color: white;
+     font-size: 16px;
+     margin: 18px;
+     transition-duration: 0.5s;
+     width:100%;
+     max-width: 200px;
+    
+    }
+    .btnRow{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+  
+  }
+  .btnRow>.Button2{
+   height: 90px;
+  }
+ .Button2:hover {
+    background-color: white;
+    border: 2px solid #239507;
+    color: #239507;
+    box-shadow: 3px 8px 6px 8px #888888;
+  
+     
+ }
+
+ .Button3 {
+    background-color: white;
+    border: 2px solid #239507;
+    padding: 9px;
+    border-radius: 8px;
+    color: #239507;
+    font-size: 16px;
+    margin: 18px;
+    transition-duration: 0.5s;
+       }
+ 
+ .Button3:hover {
+    background-color: #239507;
+    border: 2px solid White;
+    color: White;
+    box-shadow: 3px 8px 6px 8px #888888;
+ }
+
+ .Button4 {
+   background-color: #8ec342;
+   border: none;
+   padding: 9px;
+   border-radius: 8px;
+   color: white;
+   font-size: 16px;
+   margin: 18px;
+   transition-duration: 0.5s;
+   max-width:20em;
+   white-space:nowrap;
+   overflow:hidden;
+  }
+
+.Button4:hover {
+  background-color: white;
+  border: 2px solid #8ec342;
+  color: #239507;
+  box-shadow: 3px 8px 6px 8px #888888;
+
+   
+}
+ 
+ #dot {
+        height: 25px;
+        width: 25px;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+        align-items: center;
+      }
+
+ .MenuButton{
+     font-size: 16px;
+     background-color: white;
+ }
+
+ .font1 {
+    font-family: Verdana,Geneva,sans-serif;
+ }
+
+ .font2 {
+     font-family: Lora, sans-serif;
+ }
+
+ .font3 {
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+ }
+
+ .font4 {
+     font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+ }
+
+ .font5 {
+    font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+ }
+
+ .font6 {
+    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+ }
+
+ .box {
+     border: 2px solid #566675;
+     border-radius: 25px;
+     text-align: center;
+     margin: 20px;
+     color: Black;
+ }
+
+ .input {
+     border: 2px solid #566675;
+     border-radius: 8px;
+     width:80%;
+     outline: none;
+     transition-duration: 0.5s;
+     padding-left:10px;
+     
+ }
+
+ .input:focus {
+    box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .input::placeholder {
+    color: black;
+ }
+
+ .searchInput {
+    border: 2px solid #566675;
+    border-radius: 8px;
+    margin: 8px;
+    outline: none;
+    transition-duration: 0.5s;
+    background-image: url('src/assets/img/Search.png');
+    background-position: 8px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+  
+ }
+
+ .searchInput:focus {
+    box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .navbarItem {
+     
+    background: rgba(0,0,0,0);
+    padding: 9px;
+    font-size: 16px;
+    margin: 18px;
+    white-space: nowrap;
+ }
+
+ .navbarItem:hover #dot{
+    box-shadow: 1.5px 4px 3px 4px #888888;
+    text-decoration: underline;
+    transition-duration: 0.5s;
+ }
+
+ .navbarItem:hover {
+    text-decoration: underline;
+    transition-duration: 0.5s;
+ }
+
+ .covidCard {
+     margin-left: 300px;
+     margin-right: 300px;
+     margin-top: 1000px;
+     padding-top:25px;
+     padding-left:25px;
+     border: 6px solid #566675;
+     border-radius: 25px;
+    
+ }
+
+ .radioButton {
+     display: block;
+ }
+
+ .background {
+   position:absolute;
+ top:0px;
+ right:0px;
+ bottom:0px;
+ left:0px;
+   background-image: url('https://image.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg');
+   background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+ overflow: auto;
+}
+
+.covidCard {
+   border: 2px solid #566675;
+   border-radius: 25px;
+   text-align: center;
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   color: Black;
+   box-shadow: 1.5px 4px 3px 4px #888888;
+   background-color: rgba(86, 102, 117, 0.1);
+
+}
+
+/* label {
+   padding-left: 3px;
+} */
+
+.background2 {
+   position:absolute;
+ top:0px;
+ right:0px;
+ bottom:0px;
+ left:0px;
+   background-image: url('https://image.freepik.com/free-vector/abstract-medical-wallpaper-template-design_53876-61802.jpg');
+   background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+}
+
+
+ /* table styling
+   "container / body / card "
+   dropdown input, checkbox input
+    background
+    
+ */
+ .title {
+    text-align: center;
+ }
+
+ .logo {
+   background-image: url('assets/img/WellNetLogoClear.png');
+   background-color: rgba(255, 255, 255, 0.9);
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+ }
+
+ .accountCard {
+   
+   border-radius: 25px;
+   text-align: center;
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   color: Black;
+   box-shadow: 1.5px 4px 3px 4px #888888;
+   background-color: rgba(86, 102, 117, 0);
+
+
+}
+
+.profile {
+   width:80%;
+}
+
+td { text-align: left;}
+
+.dobInput {
+   margin-right:500px;
+}
+
+.timer {
+   text-align: center;
+   padding-top: 50px;
+}
+
+.diagnosisTable {
+   width:40%;
+}
+/*Template theme*/
+.container-full{
+   background-image: url('/assets/img/graybg.png');
+   background-size: cover;
+   width: 100%;
+   height: 100%;
+ }
+ .h100{
+    height: 100%;
+ }
+ .sidebar{
+   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+ }
+ .mainbox{
+   margin-left: auto;
+   margin-right: auto;
+   min-height: 590px;
+   background-color: white;
+   width: 1024px;
+   border-radius: 25px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+ }
+ .mainbox-bg{
+   background: white url('/assets/img/loginboxbg.jpg');
+   background-position: right;
+   background-repeat: no-repeat;
+ }
+ .mainbox-bg2{
+   background: white url('/assets/img/regbg.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+ }
+ .links ul {
+   list-style: none; /* Remove default bullets */
+ }
+
+ .links ul li::before {
+   content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+   color:#3A7F3E; /* Change the color */
+   font-weight: bold; /* If you want it to be bold */
+   display: inline-block; /* Needed to add space between the bullet and the text */
+   width: 1em; /* Also needed for space (tweak if needed) */
+   margin-left: -1em; /* Also needed for space (tweak if needed) */
+   font-size: large;
+ }
+ .form-control:focus, .form-check-input:focus {
+   border-color: #3A7F3E !important;
+   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(57, 126, 61, 0.6) !important;
+ }
+ .form-check-input:checked {
+   background-color: #3A7F3E !important;
+   border-color: #3A7F3E !important;
+ }
+ a{
+   text-decoration: none;
+   color:#777777 !important;
+   cursor: pointer;
+ }
+ a:hover{
+   color: #3A7F3E !important;
+ }
+ .nav-item:hover{
+   background-color:#efefef;
+ }
