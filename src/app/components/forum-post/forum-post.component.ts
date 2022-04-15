@@ -29,6 +29,8 @@ export class ForumPostComponent implements OnInit {
 
   back() {
     this.showPost = false;
+    this.showComment = false;
+    this.size = '52vh';
   }
 
   makeComment() {

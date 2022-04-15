@@ -5,6 +5,7 @@
 
 .overflow-auto {
     overflow-y: scroll;
+    overflow-x: hidden !important;
 }
 
 .post {
@@ -15,6 +16,12 @@
 
 .card {
     margin-top: 15px;
+}
+
+.card:hover {
+    cursor: pointer;
+    /* transform: scale(110%);
+    transition: 0.5s; */
 }
 
 button {
