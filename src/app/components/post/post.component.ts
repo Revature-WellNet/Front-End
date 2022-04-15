@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { POSTS } from 'src/app/EXAMPLEPOSTS';
 import { Post } from 'src/app/models/post';
+import { Comment } from 'src/app/models/comment';
+import { COMMENTS } from 'src/app/EXAMPLECOMMENTS';
 
 @Component({
   selector: 'app-post',
@@ -10,6 +11,7 @@ import { Post } from 'src/app/models/post';
 export class PostComponent implements OnInit {
   @Input() post!: Post;
   @Input() size!: string;
+  comments: Comment[] = COMMENTS;
 
   constructor() { }
 

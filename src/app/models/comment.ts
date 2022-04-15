@@ -1,9 +1,7 @@
-import { Post } from "./post";
-
 export interface Comment {
     cId: number;
-    body: string;
+    body: string | null;
     created: Date;
     author: string;
-    // root: Post;
+    root: number;
 }

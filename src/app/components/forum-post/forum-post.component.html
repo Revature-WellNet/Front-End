@@ -9,19 +9,26 @@
                 <div class="mainbox">
                     <div id="buttons">
                         <button class="btn btn-outline-info" (click)="addPost()" *ngIf="showPost == false">Add Post</button>
-                        <button class="btn btn-outline-success" (click)="submitPost()" *ngIf="showNewPost">Submit</button>
+                        <button class="btn btn-outline-success" (click)="submitPost()" *ngIf="showNewPost" [disabled]="postTitle == null || postBody == null">Submit</button>
                         <button class="btn btn-outline-secondary" (click)="back()" *ngIf="showNewPost">Back</button>
                     </div>
                     
                     <div *ngIf="showNewPost">
-                        <textarea class="form-control" [(ngModel)]="newPost" placeholder="Add a new post"></textarea>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingTitle" placeholder="Title" [(ngModel)]="postTitle" required>
+                            <label for="floatingTitle">Title</label>
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control" id="floatingBody" placeholder="Add a new post" [(ngModel)]="postBody" required></textarea>
+                            <label for="floatingBody">Post Content</label>
+                        </div>
                         <hr>
                     </div>
 
                     <div class="post overflow-auto" style="height: {{ newPostSize }};" *ngIf="showPost == false">
-                        <div class="card" *ngFor="let post of posts">
+                        <div class="card" *ngFor="let post of posts | reverse">
                                 <div class="card-body" (click)="onClick(post)">
-                                    {{ post.posted | date : 'shortDate' }} {{ post.author }}
+                                    {{ post.posted | date : 'shortDate' }} - {{ post.author }}
                                     <br>{{ post.title }}
                                     <br>{{ post.description }}
                                 </div>
@@ -32,8 +39,11 @@
                         <button class="btn btn-outline-secondary" (click)="back()">Back to Forum</button>
                         <button class="btn btn-outline-info" (click)="addComment()">Comment</button>
                         <app-post [post]="post" [size]="postSize"></app-post>
-                        <textarea class="form-control" [(ngModel)]="comment" *ngIf="showComment" placeholder="Add a comment"></textarea>
-                        <button class="btn btn-outline-success" (click)="submitComment()" *ngIf="showComment">Submit</button>
+                        <div class="form-floating" *ngIf="showComment">
+                            <textarea class="form-control" id="floatingBody" placeholder="Add a comment" [(ngModel)]="commentBody" required></textarea>
+                            <label for="floatingBody">Add a Comment</label>
+                        </div>
+                        <button class="btn btn-outline-success" (click)="submitComment()" *ngIf="showComment" [disabled]="commentBody == null">Submit</button>
                     </div>
                 </div>
             </div>

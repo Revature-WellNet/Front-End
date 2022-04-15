@@ -1,10 +1,7 @@
-import { Comment } from "./comment";
-
 export interface Post {
     pId: number;
-    title: string;
-    description: string;
+    title: string | null;
+    description: string | null;
     posted: Date;
-    // comments: Comment[];
     author: string;
 }

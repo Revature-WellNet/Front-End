@@ -38,6 +38,7 @@ import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ForumPostComponent } from './components/forum-post/forum-post.component';
 import { PostComponent } from './components/post/post.component';
+import { ReversePipe } from './models/reverse.pipe';
 
 
 
@@ -64,7 +65,8 @@ import { PostComponent } from './components/post/post.component';
     WellnetLogoComponent,
     SideBarComponent,
     ForumPostComponent,
-    PostComponent
+    PostComponent,
+    ReversePipe
 
   ],
   imports: [

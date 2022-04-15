@@ -9,3 +9,7 @@
 .overflow-auto {
     overflow-y: scroll;
 }
+
+.col, p {
+    text-align: left;
+}

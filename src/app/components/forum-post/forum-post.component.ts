@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { COMMENTS } from 'src/app/EXAMPLECOMMENTS';
 import { POSTS } from 'src/app/EXAMPLEPOSTS';
 import { Post } from 'src/app/models/post';
+import { Comment } from 'src/app/models/comment';
 
 @Component({
   selector: 'app-forum-post',
@@ -15,9 +17,10 @@ export class ForumPostComponent implements OnInit {
   post!: Post;
   postSize: string = '52vh';
   newPostSize: string = '70vh';
-  comment?: string;
-  newPost?: string;
-  
+  commentBody!: string | null;
+  postBody!: string | null;
+  postTitle!: string | null;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -35,26 +38,44 @@ export class ForumPostComponent implements OnInit {
     this.showNewPost = false;
     this.postSize = '52vh';
     this.newPostSize = '70vh';
-    this.newPost = '';
-    this.comment = '';
+    this.postBody = null;
+    this.postTitle = null;
+    this.commentBody = null;
   }
 
   addComment() {
-    this.postSize = '38vh';
+    this.postSize = '36vh';
     this.showComment = true;
   }
 
   submitComment() {
+    var comment: Comment = {
+      cId: 101,
+      body: this.commentBody,
+      created: new Date,
+      author: 'user',
+      root: this.post.pId
+    }
+    COMMENTS.push(comment);
     this.showComment = false;
     this.postSize = '52vh';
   }
 
   addPost() {
     this.showNewPost = true;
-    this.newPostSize = '55vh';
+    this.newPostSize = '45vh';
   }
 
   submitPost() {
+    var post: Post = {
+      pId: 100,
+      title: this.postTitle,
+      posted: new Date,
+      description: this.postBody,
+      author: 'user'
+    }
+    POSTS.push(post);
+    window.alert('Successfully posted');
     this.showNewPost = false;
     this.newPostSize = '70vh';
   }
