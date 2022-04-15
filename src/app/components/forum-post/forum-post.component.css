@@ -1,0 +1,29 @@
+.mainbox {
+    padding: 1%;
+    height: 70vh;
+}
+
+.overflow-auto {
+    overflow-y: scroll;
+}
+
+.post {
+    text-align: center;
+    padding: 1%;
+    height: 100%;
+}
+
+.card {
+    margin-top: 15px;
+}
+
+button {
+    height: 5vh;
+    margin: 5px;
+}
+
+textarea {
+    height: 8vh;
+    margin-top: 17px;
+    margin-bottom: 5px;
+}

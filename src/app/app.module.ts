@@ -36,6 +36,8 @@ import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccin
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { ForumPostComponent } from './components/forum-post/forum-post.component';
+import { PostComponent } from './components/post/post.component';
 
 
 
@@ -60,7 +62,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     AddAllergiesVaccinesComponent,
     ForgetPasswordComponent,
     WellnetLogoComponent,
-    SideBarComponent
+    SideBarComponent,
+    ForumPostComponent,
+    PostComponent
 
   ],
   imports: [

@@ -1,0 +1,11 @@
+#title {
+    height: 5vh;
+}
+
+#description {
+    height: 5vh;
+}
+
+.overflow-auto {
+    overflow-y: scroll;
+}

@@ -17,6 +17,7 @@ import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
 import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ForumPostComponent } from './components/forum-post/forum-post.component';
 
 export const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
@@ -34,7 +35,8 @@ export const routes: Routes = [
   {path: "login", component:LoginComponent}, 
   {path:"rooms", canActivate:[AuthGuardGuard], component:RoomsComponent},
   {path: 'styles', component: StaticStyleTesterComponent},
-  {path: 'forget-password', component: ForgetPasswordComponent}
+  {path: 'forget-password', component: ForgetPasswordComponent},
+  {path: 'forum', component: ForumPostComponent}
 
 ];
 
