@@ -7,7 +7,18 @@
 
             <div class="col-md-10 align-self-center">
                 <div class="mainbox">
-                    <div class="post overflow-auto" *ngIf="showPost == false">
+                    <div id="buttons">
+                        <button class="btn btn-outline-info" (click)="addPost()" *ngIf="showPost == false">Add Post</button>
+                        <button class="btn btn-outline-success" (click)="submitPost()" *ngIf="showNewPost">Submit</button>
+                        <button class="btn btn-outline-secondary" (click)="back()" *ngIf="showNewPost">Back</button>
+                    </div>
+                    
+                    <div *ngIf="showNewPost">
+                        <textarea class="form-control" [(ngModel)]="newPost" placeholder="Add a new post"></textarea>
+                        <hr>
+                    </div>
+
+                    <div class="post overflow-auto" style="height: {{ newPostSize }};" *ngIf="showPost == false">
                         <div class="card" *ngFor="let post of posts">
                                 <div class="card-body" (click)="onClick(post)">
                                     {{ post.posted | date : 'shortDate' }} {{ post.author }}
@@ -19,10 +30,10 @@
 
                     <div class="post" *ngIf="showPost">
                         <button class="btn btn-outline-secondary" (click)="back()">Back to Forum</button>
-                        <button class="btn btn-outline-info" (click)="makeComment()">Comment</button>
-                        <app-post [post]="post" [size]="size"></app-post>
-                        <textarea class="form-control" [(ngModel)]="comment" *ngIf="showComment"></textarea>
-                        <button class="btn btn-outline-success" (click)="submit()" *ngIf="showComment">Submit</button>
+                        <button class="btn btn-outline-info" (click)="addComment()">Comment</button>
+                        <app-post [post]="post" [size]="postSize"></app-post>
+                        <textarea class="form-control" [(ngModel)]="comment" *ngIf="showComment" placeholder="Add a comment"></textarea>
+                        <button class="btn btn-outline-success" (click)="submitComment()" *ngIf="showComment">Submit</button>
                     </div>
                 </div>
             </div>

@@ -10,12 +10,14 @@ import { Post } from 'src/app/models/post';
 export class ForumPostComponent implements OnInit {
   posts = POSTS;
   showPost: boolean = false;
-  postID?: number;
-  post!: Post;
-  size: string = '52vh';
-  comment?: string;
   showComment: boolean = false;
-
+  showNewPost: boolean = false;
+  post!: Post;
+  postSize: string = '52vh';
+  newPostSize: string = '70vh';
+  comment?: string;
+  newPost?: string;
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -30,17 +32,31 @@ export class ForumPostComponent implements OnInit {
   back() {
     this.showPost = false;
     this.showComment = false;
-    this.size = '52vh';
+    this.showNewPost = false;
+    this.postSize = '52vh';
+    this.newPostSize = '70vh';
+    this.newPost = '';
+    this.comment = '';
   }
 
-  makeComment() {
-    this.size = '38vh';
+  addComment() {
+    this.postSize = '38vh';
     this.showComment = true;
   }
 
-  submit() {
+  submitComment() {
     this.showComment = false;
-    this.size = '52vh';
+    this.postSize = '52vh';
+  }
+
+  addPost() {
+    this.showNewPost = true;
+    this.newPostSize = '55vh';
+  }
+
+  submitPost() {
+    this.showNewPost = false;
+    this.newPostSize = '70vh';
   }
 
 }
