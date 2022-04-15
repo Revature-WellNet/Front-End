@@ -1,0 +1,189 @@
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light sidebar">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-5">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+                            <h4 class="mb-4">Patient search</h4>
+ 
+      
+    <!-- <div id = "TempDiv">
+        <h1> All Patients Available (Displaying Available Fields) </h1>
+
+        <table class="table table-striped table-light table-hover
+        table-sm"
+        id="TempAllPatients">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col"> First Name </th>
+            <th scope="col"> Last Name </th>
+            <th scope="col"> Patient ID </th>
+            <th scope="col"> DOB </th>
+            <th scope="col"> Sex </th>
+            <th scope="col"> Height </th>
+            <th scope="col"> Weight </th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+       VVV From Patient Model VVV
+    public patientId: number|null;
+    public firstName: string;
+    public lastName: string;
+    public dob: Date;
+    public height: number;
+    public weight: number;
+    public bloodType: string;
+    public sex: string;
+    public vaccinations?: object[];
+    public allergies?: object[];
+
+            <tr *ngFor="let t of tempAllPatients">
+                <td style="text-align : center;">{{t.patientId}}</td>
+                <td style="text-align : center;">{{t.firstName}}</td>
+                <td style="text-align : center;">{{t.lastName}}</td>
+                <td style="text-align : center;">{{t.dob}}</td>
+                VV Can Not Pull Out Without Sex Model Because Patient Currently STores As
+                        The String sex_id In DBeaver Database And Does Not Map To Their
+                        Patient
+               <td style="text-align : center;">{{t.sex}}</td>
+                <td style="text-align : center;">{{t.height}}</td>
+                <td style="text-align : center;">{{t.weight}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div> -->
+
+
+    <div class="mb-4">
+
+        
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">
+                First name:
+                <input type="text" class="form-control Input" id="firstName" #firstName name="firstName" placeholder="Enter First Name" required>
+            </li>
+            <li class="list-group-item">
+                Last name:
+                <input type="text" class="form-control" id="lastName" #lastName  name="lastName" placeholder="Enter Last Name" required>
+            </li>
+            <li class="list-group-item">
+                <label for= "dob">Date of Birth:</label>
+                <input size=12
+                    type= "date"
+                    class= "form-control "
+                    name= "dob"
+                    id= "dob"
+                    #dobField
+                    placeholder="Date of birth (mm/dd/yyyy)"
+                > 
+            </li>
+            <li class="list-group-item">
+                Search by
+                <select class="form-select" #filter aria-label="Default select example">
+                    <option value="1">Display all patients</option>
+                    <option value="2">First name</option>
+                    <option value="3">First name and last name</option>
+                    <option value="4">First name, last name and date of birth</option>
+                  </select>
+            </li>
+            <li class="list-group-item">
+                <br>
+                <button id="searchId" class="btn btn-outline-success" (click)="applyfilter(firstName.value, lastName.value, dobField.value, filter.value)" >Search</button>
+            </li>
+        </ul>
+
+
+    <div  hidden>
+        
+         <button id="searchId" class="Button2" (click)="getAllPatients()" text="Display All Patients">Display all patients</button>
+        <button id="searchName"  class="Button2" (click)="searchPatByFName(firstName.value)" text="Search for Patients by First Name">Search for patients by first name</button>
+        <button id="searchFullName"  class="Button2" (click)="searchPatByFullName(firstName.value, lastName.value)" text="Search for Patients by Last Name">Search for patients by first name and last name</button>
+        <button id="searchDOB" class="Button2" (click)="searchPatNameDate(firstName.value, lastName.value, dobField.value)" text="Search for Patients by First, Last, and Date of Birth">Search for patients by first name, last name and date of birth</button>
+    </div>
+    </div>
+
+
+    <h4 class="mb-4" >Patient search (by Doctor)</h4>
+
+    <div class="mb-4">
+        
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item"><input type="text" class="form-control" id="doctorFirstName" #doctorFirstName name="doctorFirstName" placeholder="Enter First Name" required></li>
+                <li class="list-group-item"><input type="text" class="form-control" id="doctorLastName" #doctorLastName  name="doctorLastName" placeholder="Enter Last Name" required></li>
+                <li class="list-group-item"><button id="searchDoctor" class="btn btn-outline-success" (click)="searchByDoctor(doctorFirstName.value, doctorLastName.value)" text="Search By Doctor">Search by doctor</button></li>
+                <li class="list-group-item"><button id="searchDoctor" class="btn btn-outline-success" (click)="getAllUnresolvedPatients()" text="Search By Doctor">Show patient queue</button></li>
+            </ul>    
+    </div>
+
+<h4 class="mb-4">Patients</h4>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Prescribe Treatment</th>
+                    <th *ngIf="searchingDoctor"> Doctor </th>
+                    <th>Patient First Name</th>
+                    <th>Patient Last Name</th>
+                    <th>Date of Birth</th>
+                    <!-- <th>Age</th> -->
+                    <th>Allergies</th>
+                    <th>Height (in.)</th>
+                    <th>Weight (lbs.)</th>
+                    <th>Vaccinations</th>
+                    <th>Blood Type</th>
+                    <th>Sex</th>
+                    <!-- <th>Doctor</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let patient of patientsArray">
+                    <td class="tdc"><a style="font-size: larger;" (click)="diagnosePatient(patient)"><i class="bi bi-bandaid"></i></a></td>
+                    <td *ngIf="searchingDoctor"> {{doctorName}}</td>
+                    <td>{{patient.firstName}}</td>
+                    <td>{{patient.lastName}}</td>
+                    <td class="tdc">{{patient.dob}}</td>
+                    <!-- <td>{{patient.dob}}</td> -->
+                    <td>
+                        <ul>
+                            <li  *ngFor = "let allergy of patient.patientAllergies">
+                                {{allergy.allergy}}
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="tdc">{{patient.height}}"</td>
+                    <td class="tdc">{{patient.weight}} lbs</td>
+                    <td>
+                        <ul>
+                            <li  *ngFor = "let vax of patient.patientVaccinations">
+                                {{vax.vaccination}}
+                            </li>
+                        </ul>
+                        <!-- {{patient.vaccinations[0].vaccination}} -->
+                    </td>
+                    <td class="tdc" *ngIf="!patient.bloodType"></td>
+                    <td class="tdc" *ngIf="patient.bloodType">{{patient.bloodType.type}}</td>
+                    <td class="tdc" >{{patient.sex.sex}}</td>
+                    <td>{{patient.doctor}}</td>
+                </tr>
+            </tbody>
+        </table>
+  
+
+         
+                        
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
