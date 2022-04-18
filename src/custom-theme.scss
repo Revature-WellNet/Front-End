@@ -26,7 +26,7 @@ $WellNet-theme: mat.define-light-theme((
     accent: $WellNet-accent,
     warn: $WellNet-warn,
   )
-  
+
 ));
 $WellNet-dark-theme: mat.define-dark-theme((
   color: (
@@ -40,7 +40,7 @@ $WellNet-dark-theme: mat.define-dark-theme((
   span.mat-slide-toggle-thumb{
     background-color: #239507;
   }
-  
+
   .mainbox{
     background: black;
     color:white;
@@ -48,7 +48,7 @@ $WellNet-dark-theme: mat.define-dark-theme((
     background-repeat: no-repeat;
    }
    .mainbox-bg{
-    background: black url('/assets/img/WellNetDocBg.png');
+    background: #1C1C1C url('/assets/img/WellNetDocBg.png');
     background-position: right;
     background-repeat: no-repeat;
   }
@@ -60,7 +60,7 @@ $WellNet-dark-theme: mat.define-dark-theme((
   color: white;
 }
 .accountCard {
-   
+
   border-radius: 25px;
   text-align: center;
   margin-top: 30px;
@@ -73,6 +73,7 @@ $WellNet-dark-theme: mat.define-dark-theme((
 
 
 }
+//color suggestions instead of black #1C1C1C or a #161616
 .list-group-item{
   background: #1d1e1c;
   color: white;
@@ -94,7 +95,7 @@ img{
   opacity: 1;
 
   .d-flex.align-items-center{
-    background: black;
+    background: #161616;
   }
 }
 
