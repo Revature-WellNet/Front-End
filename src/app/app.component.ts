@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  
+
   public title = "WellNet";
-<<<<<<< HEAD
   //User Preference API
   //saved DarkTheme is true or else false
   isDarkTheme = false;
@@ -17,7 +16,4 @@ export class AppComponent {
   toggleTheme(){
     this.isDarkTheme = !this.isDarkTheme;
   }
-=======
-
->>>>>>> main
 }
