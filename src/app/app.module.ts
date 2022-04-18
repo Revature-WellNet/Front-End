@@ -26,7 +26,7 @@ import { NurseService } from './services/nurse.service';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//imported 
+//imported
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 
@@ -87,7 +87,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     useClass: Apihttpintercept,
     multi: true
 },
-FirebaseService,  
+FirebaseService,
 ],
   bootstrap: [AppComponent]
 })
