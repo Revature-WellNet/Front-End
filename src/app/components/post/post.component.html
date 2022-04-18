@@ -1,8 +1,6 @@
-<h4 id="title m-2">
-    {{ post.posted | date : 'short' }} - {{ post.author }}
-    <br>{{ post.title }}
-</h4>
-<h5 id="description m-2">{{ post.description }}</h5>
+<h4 class="title">{{ post.title }}</h4>
+<h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author }}</h5>
+<h6 id="description">{{ post.description }}</h6>
 <hr>
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">

@@ -28,9 +28,9 @@
                     <div class="post overflow-auto" style="height: {{ newPostSize }};" *ngIf="showPost == false">
                         <div class="card" *ngFor="let post of posts | reverse">
                                 <div class="card-body" (click)="onClick(post)">
-                                    {{ post.posted | date : 'shortDate' }} - {{ post.author }}
-                                    <br>{{ post.title }}
-                                    <br>{{ post.description }}
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <h6 class="card-subtitle text-muted">{{ post.posted | date : 'shortDate' }} - {{ post.author }}</h6>
+                                    <p class="card-text">{{ post.description }}</p>
                                 </div>
                         </div>
                     </div>
