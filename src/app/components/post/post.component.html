@@ -5,7 +5,7 @@
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">
         <div class="row" *ngFor="let com of comments | reverse">
-            <div class="col-3">
+            <div class="col-4">
                 <p>{{ com.created | date : 'short' }}-{{ com.author }}:</p>
             </div>
 
