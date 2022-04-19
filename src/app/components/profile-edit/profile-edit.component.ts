@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/models/role';
+import { Specialization } from 'src/app/models/Specialization';
 import { User } from 'src/app/models/user';
 import { EmailValidationService } from 'src/app/services/email-validation.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,6 +18,7 @@ export class ProfileEditComponent implements OnInit {
   @Input() lastName!: string;
   @Input() role!: string;
   @Input() email!: string;
+  @Input() specialization!: string;
  
 
   constructor(private userService : UserService, private emailValidator : EmailValidationService, private router : Router, private firebaseService : FirebaseService) { }
@@ -29,7 +31,7 @@ export class ProfileEditComponent implements OnInit {
       this.router.navigate(['/login']); 
   }
 
-  submit(fName: any, lName: any){
+  submit(fName: any, lName: any, spec: any){
     
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
@@ -53,6 +55,31 @@ export class ProfileEditComponent implements OnInit {
     if(lName){
       user.lastname = lName;
     }
+    console.log("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkhfhfhwslkafhiowhfihjfidsahjflkahfiehfihfhfiadjfajfajff")
+    console.log(spec)
+    if(spec) {
+      console.log("specialize")
+      switch(spec) {
+        case "primary_care": {
+          user.specialization = new Specialization(1, spec)
+          break
+        }
+        case "pediatrician": {
+          user.specialization = new Specialization(2, spec)
+          break
+        }
+        case "radiologist": {
+          user.specialization = new Specialization(3, spec)
+          break
+        }
+        case "general_surgeon": {
+          user.specialization = new Specialization(4, spec)
+          break
+        }
+      }
+      
+    }
+      console.log(user.specialization)
     if(document.querySelector('input[name="role"]:checked')){
     let newRole =  (<HTMLInputElement>document.querySelector('input[name="role"]:checked'))!.value
       let userRole = new Role(888, newRole);
@@ -65,6 +92,8 @@ export class ProfileEditComponent implements OnInit {
       user.role = userRole;
       console.log("being called in query selector");
     }
+    
+    
 
     console.log("called before setting email");
     this.firebaseService.setEmail(user.email).then(()=>{

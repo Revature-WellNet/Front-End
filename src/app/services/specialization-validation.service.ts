@@ -9,10 +9,10 @@ export class SpecializationValidationService {
 
     //console.log(role);
 
-    let primaryCareRegularExpression : RegExp = new RegExp('^primaryCare$', 'i');
+    let primaryCareRegularExpression : RegExp = new RegExp('^primary_care$', 'i');
     let pediatricianRegularExpression : RegExp = new RegExp('^pediatrician$', 'i');
     let radiologistRegularExpression : RegExp = new RegExp('^radiologist$', 'i');
-    let generalSurgeonRegularExpression : RegExp = new RegExp('^generalSurgeon$', 'i');
+    let generalSurgeonRegularExpression : RegExp = new RegExp('^general_surgeon$', 'i');
 
     let test1 : boolean = primaryCareRegularExpression.test(specialization);
     let test2 : boolean = pediatricianRegularExpression.test(specialization);

@@ -1,11 +1,11 @@
-export class specialization {
+export class Specialization {
 
-    public specializationId : number;
+    public specialization_Id : number;
     public specialization : string;
   
-    constructor(specializationId : number, specialization : string) {
+    constructor(Specialization_Id : number, specialization : string) {
   
-      this.specializationId = specializationId;
+      this.specialization_Id = Specialization_Id;
       this.specialization = specialization;
   
     }
