@@ -9,7 +9,7 @@
                 <div class="mainbox">
                     <div id="buttons">
                         <button class="btn btn-outline-info" (click)="addPost()" *ngIf="showPost == false">Add Post</button>
-                        <button class="btn btn-outline-success" (click)="submitPost()" *ngIf="showNewPost" [disabled]="postTitle == null || postBody == null">Submit</button>
+                        <button class="btn btn-outline-success" (click)="submitPost()" *ngIf="showNewPost" [disabled]="postTitle == null || postBody == null || postTitle == '' || postBody == '' ">Submit</button>
                         <button class="btn btn-outline-secondary" (click)="back()" *ngIf="showNewPost">Back</button>
                     </div>
                     
@@ -29,7 +29,7 @@
                         <div class="card" *ngFor="let post of posts | reverse">
                                 <div class="card-body" (click)="onClick(post)">
                                     <h5 class="card-title">{{ post.title }}</h5>
-                                    <h6 class="card-subtitle text-muted">{{ post.posted | date : 'shortDate' }} - {{ post.author }}</h6>
+                                    <h6 class="card-subtitle text-muted">{{ post.posted | date : 'shortDate' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h6>
                                     <p class="card-text">{{ post.description }}</p>
                                 </div>
                         </div>
@@ -43,7 +43,7 @@
                             <textarea class="form-control" id="floatingBody" placeholder="Add a comment" [(ngModel)]="commentBody" required></textarea>
                             <label for="floatingBody">Add a Comment</label>
                         </div>
-                        <button class="btn btn-outline-success" (click)="submitComment()" *ngIf="showComment" [disabled]="commentBody == null">Submit</button>
+                        <button class="btn btn-outline-success" (click)="submitComment()" *ngIf="showComment" [disabled]="commentBody == null || commentBody == '' ">Submit</button>
                     </div>
                 </div>
             </div>

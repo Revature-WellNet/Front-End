@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { COMMENTS } from 'src/app/EXAMPLECOMMENTS';
-import { POSTS } from 'src/app/EXAMPLEPOSTS';
 import { Post } from 'src/app/models/post';
 import { Comment } from 'src/app/models/comment';
 import { PostService } from 'src/app/services/post.service';
@@ -13,7 +11,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./forum-post.component.css']
 })
 export class ForumPostComponent implements OnInit {
-  // posts = POSTS;
   posts!: Post[];
   showPost: boolean = false;
   showComment: boolean = false;
@@ -62,16 +59,26 @@ export class ForumPostComponent implements OnInit {
   }
 
   submitComment() {
+    this.user = {
+      id: '1',
+      firstname: 'Jane',
+      lastname: 'Doe',
+      email: 'test@mail.com',
+      role: {
+        roleId: 1,
+        role: 'nurse'
+      }
+    }
     var comment: Comment = {
       cId: 0,
       body: this.commentBody,
       created: new Date(),
-      author: 'user',
-      root: this.post.pId
+      author: this.user,
+      root: this.post
     }
-    // COMMENTS.push(comment);
 
-    this.commentService.addComment(comment);
+    this.commentService.addComment(comment).subscribe();
+    window.location.reload()
     this.commentBody = null;
     this.showComment = false;
     this.postSize = '52vh';
@@ -100,14 +107,9 @@ export class ForumPostComponent implements OnInit {
       description: this.postBody,
       author: this.user
     }
-    // POSTS.push(post);
 
-    this.postService.addPost(post).subscribe(
-      (p: Post) => {
-        this.posts.push(p);
-      }
-    );
-    window.alert('Successfully posted');
+    this.postService.addPost(post).subscribe();
+    window.location.reload();
     this.postBody = null;
     this.postTitle = null;
     this.showNewPost = false;

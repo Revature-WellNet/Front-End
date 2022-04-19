@@ -1,12 +1,12 @@
 <h4 class="title">{{ post.title }}</h4>
-<h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author }}</h5>
+<h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h5>
 <h6 id="description">{{ post.description }}</h6>
 <hr>
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">
         <div class="row" *ngFor="let com of comments | reverse">
             <div class="col-4">
-                <p>{{ com.created | date : 'short' }}-{{ com.author }}:</p>
+                <p>{{ com.created | date : 'short' }}-{{ com.author.firstname }} {{ com.author.lastname }}:</p>
             </div>
 
             <div class="col">

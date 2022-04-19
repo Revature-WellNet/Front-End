@@ -22,7 +22,7 @@ export class PostService {
   }
 
   findCommentsByPost(id: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>('http://localhost:8082/comments/' + id);
+    return this.http.get<Comment[]>(this.url + '/comments/' + id);
   }
 
   addPost(post: Post): Observable<Post> {

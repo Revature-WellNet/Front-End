@@ -1,7 +1,10 @@
+import { Post } from "./post";
+import { User } from "./user";
+
 export interface Comment {
-    cId: number;
+    cId?: number;
     body: string | null;
     created: Date;
-    author: string;
-    root: number;
+    author: User | null;
+    root: Post;
 }

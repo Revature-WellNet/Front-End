@@ -42,6 +42,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ForumPostComponent } from './components/forum-post/forum-post.component';
 import { PostComponent } from './components/post/post.component';
 import { ReversePipe } from './models/reverse.pipe';
+import { SpecializationComponent } from './models/specialization/specialization.component';
 
 
 
@@ -69,7 +70,8 @@ import { ReversePipe } from './models/reverse.pipe';
     SideBarComponent,
     ForumPostComponent,
     PostComponent,
-    ReversePipe
+    ReversePipe,
+    SpecializationComponent
 
   ],
   imports: [
