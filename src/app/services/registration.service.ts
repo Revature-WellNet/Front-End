@@ -15,7 +15,7 @@ export class RegistrationService {
 
   // private registrationValues! : Registration;
 
-  private url : string = "http://localhost:8099/wellnet/";
+  private url : string = environment.apiBaseUrl;
 
   // getRegistrationValues(values : Registration) {
 
