@@ -60,7 +60,7 @@ export class ForumPostComponent implements OnInit {
 
   submitComment() {
     this.user = {
-      id: '1',
+      id: '2',
       firstname: 'Jane',
       lastname: 'Doe',
       email: 'test@mail.com',
