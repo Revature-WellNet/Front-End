@@ -19,7 +19,7 @@ Blue:
 #7f969c
 #a1aeba
 #b9c9d2
-White: 
+White:
 #f5f9f6
 */
 
@@ -68,14 +68,14 @@ White:
      transition-duration: 0.5s;
      width:100%;
      max-width: 200px;
-    
+
     }
     .btnRow{
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: center;
-  
+
   }
   .btnRow>.Button2{
    height: 90px;
@@ -85,8 +85,8 @@ White:
     border: 2px solid #239507;
     color: #239507;
     box-shadow: 3px 8px 6px 8px #888888;
-  
-     
+
+
  }
 
  .Button3 {
@@ -99,7 +99,7 @@ White:
     margin: 18px;
     transition-duration: 0.5s;
        }
- 
+
  .Button3:hover {
     background-color: #239507;
     border: 2px solid White;
@@ -127,9 +127,9 @@ White:
   color: #239507;
   box-shadow: 3px 8px 6px 8px #888888;
 
-   
+
 }
- 
+
  #dot {
         height: 25px;
         width: 25px;
@@ -153,19 +153,19 @@ White:
  }
 
  .font3 {
-    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
  }
 
  .font4 {
-     font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+     font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
  }
 
  .font5 {
-    font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif;
  }
 
  .font6 {
-    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif;
  }
 
  .box {
@@ -183,7 +183,7 @@ White:
      outline: none;
      transition-duration: 0.5s;
      padding-left:10px;
-     
+
  }
 
  .input:focus {
@@ -204,7 +204,7 @@ White:
     background-position: 8px;
     background-repeat: no-repeat;
     padding-left: 30px;
-  
+
  }
 
  .searchInput:focus {
@@ -212,7 +212,7 @@ White:
  }
 
  .navbarItem {
-     
+
     background: rgba(0,0,0,0);
     padding: 9px;
     font-size: 16px;
@@ -239,7 +239,7 @@ White:
      padding-left:25px;
      border: 6px solid #566675;
      border-radius: 25px;
-    
+
  }
 
  .radioButton {
@@ -294,7 +294,7 @@ White:
    "container / body / card "
    dropdown input, checkbox input
     background
-    
+
  */
  .title {
     text-align: center;
@@ -309,7 +309,7 @@ White:
  }
 
  .accountCard {
-   
+
    border-radius: 25px;
    text-align: center;
    margin-top: 30px;
@@ -355,10 +355,7 @@ td { text-align: left;}
    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
  }
  .mainbox{
-<<<<<<< HEAD
    color: black;
-=======
->>>>>>> main
    margin-left: auto;
    margin-right: auto;
    min-height: 590px;
