@@ -26,9 +26,6 @@ import { NurseService } from './services/nurse.service';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//imported
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatCardModule} from '@angular/material/card';
 
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
@@ -42,7 +39,6 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ForumPostComponent } from './components/forum-post/forum-post.component';
 import { PostComponent } from './components/post/post.component';
 import { ReversePipe } from './models/reverse.pipe';
-import { SpecializationComponent } from './models/specialization/specialization.component';
 
 
 
@@ -70,8 +66,7 @@ import { SpecializationComponent } from './models/specialization/specialization.
     SideBarComponent,
     ForumPostComponent,
     PostComponent,
-    ReversePipe,
-    SpecializationComponent
+    ReversePipe
 
   ],
   imports: [
@@ -86,16 +81,14 @@ import { SpecializationComponent } from './models/specialization/specialization.
     AngularFireModule.initializeApp(environment.firebase),
     UserAuthModule,
     HttpClientModule,
-    NgbModule,
-    MatSlideToggleModule,
-    MatCardModule
+    NgbModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass: Apihttpintercept,
     multi: true
 },
-FirebaseService,
+FirebaseService,  
 ],
   bootstrap: [AppComponent]
 })

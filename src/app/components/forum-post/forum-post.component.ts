@@ -11,6 +11,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./forum-post.component.css']
 })
 export class ForumPostComponent implements OnInit {
+  // posts = POSTS;
   posts!: Post[];
   showPost: boolean = false;
   showComment: boolean = false;
@@ -78,7 +79,7 @@ export class ForumPostComponent implements OnInit {
     }
 
     this.commentService.addComment(comment).subscribe();
-    window.location.reload()
+    window.location.reload();
     this.commentBody = null;
     this.showComment = false;
     this.postSize = '52vh';
