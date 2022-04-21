@@ -1,8 +1,11 @@
 # WellNet
-![FirebaseReconfigured](https://user-images.githubusercontent.com/99214724/164515407-f7ebac26-edc1-4c6d-8d93-c3e0c3a5374a.jpg)
+![Reconfigured](https://user-images.githubusercontent.com/99214724/164518060-c0e1884c-0f72-464c-bf0b-252e8a7ebb3a.jpg)
 ![darkMode01](https://user-images.githubusercontent.com/99214724/164515493-8dd3620f-1d6c-4a0e-abe2-ad425b1ede22.jpg)
 ![darkMode02](https://user-images.githubusercontent.com/99214724/164515505-8217059f-1826-455b-a121-6827153a986c.jpg)
 ![darkMode03](https://user-images.githubusercontent.com/99214724/164515529-919ae657-732d-4999-afc0-2288d47e24c7.jpg)
+![GoogleAnalyticsFirebaseDashboard](https://user-images.githubusercontent.com/99214724/164518123-4e06521b-f288-49d0-a5b5-5e0424814be8.jpg)
+![AnalyticsLocation](https://user-images.githubusercontent.com/99214724/164518147-3fe2b7b0-d076-44f6-934a-1077c8160ae8.jpg)
+![Analytics2](https://user-images.githubusercontent.com/99214724/164518164-6ab34d7a-a6f6-4949-92dc-a67a086af778.jpg)
 
 Endpoints: 
 
