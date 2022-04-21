@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "wellnet-reva",
+    "private_key_id": "2d1024955160e40ea260a6b8005c3afe8b1083f3",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDq2m1fYjKD6laI\nmP2T4e44ut0AfJwJfjLc4ni2kuXVWJhMxGleWdYYNC3Y6BspFWE7sH0ByRxc7vSy\nZSf9p0PKlLuUjtUmBWn75BWcoP3xsi1E4MkYU7v8vBv0ZdbXNJgJepi6zRkt2LkW\nFVlYEOgEb/zBmTVT2qWhFit5rmGlIYM+p4OBD1k9ZTNBH37g8LkKuhob78uut7lG\nhlOXXnNlTe/uxgjWJixOb/Ji0ij19Y4S4Z/NMcvLqvFjD45bEwrvt2gjgX+IWszF\nBfFvOeyT2PMxzDn0nCSPYcLU6CFv6nKub+CtdQo3rvYxM2IwCWZhDWl4pPiB9KcM\nG1TR5mJDAgMBAAECggEAFzbMBNeiAqQRNaNZvVphv73IxpmKmu2cfXTtVa6jhTki\npMPtXmQm43GU7pHSzXbNi6bgVGLaqNz91vxkvY/hBY86E28i5oU2eq2K7VaEg3WH\nP/2wIvVz6YF2ievfFpqeRKGXoy9Ow9deRC6MDEZviLDBHSnVuZotMQUN+xMfl8DN\nx1IqMEk0MLzpgXnSX7jtI61DChLS27H+Qkods0q66cNXWHxGafzS/B0IfNWVF4LL\nHv+uBGijd60+rpDCagocOGyQpauuJ+lDFpM7NJ06TfI9KsV6XatrIWtK6OuXajRc\nxUSZziKAafoTPqqNMO/RE6pIbwVoCKX1AJwP9HKNwQKBgQD8sd+KjriDl/BNjZlF\nJA/HjwHbTu9/SzNIoIgowJbgvBMulbPAjcYecSL5Q6exfT8M+XrksEY8NEVatT6b\ndo9xpdUbYnXJcXmOqTMjbfU7Ku19YFR9BMK3u069/BAVf4vS0oTztzS3vdqaDEW3\nF2CbpjxFNql1Z0j6fGeNdo2lkwKBgQDt7NAh8uqdS6CYTxhe0vUkhGXcWObPzmuf\n0nnH/Md8Wmt6JIbnsH8n/RKeyblycvKgU7Lh1mS6p2nDa9e1DeiY84t5ozxnnz3B\nUOxr2PFF35yJndTMYfyk1RXFsDMBMrC0gJN39V6mjVUQAKiYivxVTTfir0vuCepI\n8+D3J2Y+kQKBgGKTiR7mOjirpwS5/laokLdKpHDHREqmLWVhqnwrVTBqbhk4MR0m\nsWjivb/7kol80IHhOP3JfjyyL3QJTFkdUSwGgzHhoQ1qhP8QJnDlzkq8nlTQpWT3\n3HYMTdVzZVrdnNAra84fZCNhnsuFihS4u+k8Wjqt7kFsf12n9kWLQAqdAoGBALou\nWiB2yokUKTOGkXeCdTqCMINhPhzXVvjV515LvH7e8sO92aNsRdSxAOUozel1cc9s\nL8rxzhkR8H1v4nhXzfAChN5Gknoz7ktcW+V4+jTHauN1kpPtCZqi9EqiOwdw9z4I\nb12rsMl8R1gia8wS1qqZpmXI7w3yzFcSILTHLAdBAoGAZiQ2QbKCkU6tU9b4mbKn\nwfMS3yI4n9py9PMTlIAMDepMfgdTZYfun9sIfCZoqan065EKBB1NBycsgdSQfheO\nlgmt5DT1+dLyHvcw1ap9Mcz+mZfS0l50EXf/mFISYdlIRhgAQh7m4nt3qgiTFeFy\nNd/mj1CyADj4tYrcz+oPp5w=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-drbog@wellnet-reva.iam.gserviceaccount.com",
+    "client_id": "117136290807163462827",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-drbog%40wellnet-reva.iam.gserviceaccount.com"
+  }
