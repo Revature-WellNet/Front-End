@@ -2,6 +2,15 @@
     overflow-y: scroll;
 }
 
-.col, p {
+p {
     text-align: left;
+}
+
+i {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+i:hover {
+    cursor: pointer;
 }

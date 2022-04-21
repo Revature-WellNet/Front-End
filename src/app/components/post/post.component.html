@@ -1,3 +1,27 @@
+<!-- <button class="btn btn-outline-danger" (click)="deletePost()">Delete</button> -->
+<!-- <div class="container">
+    <div class="row">
+        <div class="col">
+            <h4 class="title">{{ post.title }}</h4>
+        </div>
+        <div class="col-md-auto">
+            <i class="bi bi-pen"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h6 id="description">{{ post.description }}</h6>
+        </div>
+        <div class="col-md-auto">
+            <i class="bi bi-pen"></i>
+        </div>
+    </div>
+</div> -->
 <h4 class="title">{{ post.title }}</h4>
 <h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h5>
 <h6 id="description">{{ post.description }}</h6>
@@ -5,12 +29,25 @@
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">
         <div class="row" *ngFor="let com of comments | reverse">
-            <div class="col-4">
+            <div class="col-3">
                 <p>{{ com.created | date : 'short' }}-{{ com.author.firstname }} {{ com.author.lastname }}:</p>
             </div>
 
-            <div class="col">
-                <p>{{ com.body }}</p>
+            <div class="col-7">
+                <p *ngIf="editComment == false || id != com.cId">{{ com.body }}</p>
+                <textarea name="body" class="form-control" [(ngModel)]="newBody" *ngIf="editComment && id == com.cId">{{ com.body }}</textarea>
+            </div>
+
+            <div class="col-md-auto">
+                <p>
+                    <i class="bi bi-x-circle" (click)="deleteComment(com.cId)"></i>
+
+                    <i class="bi bi-pen" (click)="editMyComment(com.cId, com.body)"></i>
+
+                    <i class="bi bi-send-plus" (click)="updateComment(com)" *ngIf="editComment && id == com.cId"></i>
+
+                    <i class="bi bi-arrow-counterclockwise" (click)="back()" *ngIf="editComment && id == com.cId"></i>
+                </p>
             </div>
         </div>
     </div>

@@ -13,6 +13,7 @@
                         <button class="btn btn-outline-secondary" (click)="back()" *ngIf="showNewPost">Back</button>
                     </div>
                     
+                    <!-- NEW FORUM POST AREA -->
                     <div *ngIf="showNewPost">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingTitle" placeholder="Title" [(ngModel)]="postTitle" required>
@@ -25,6 +26,7 @@
                         <hr>
                     </div>
 
+                    <!-- FORUM POSTS AREA -->
                     <div class="post overflow-auto" style="height: {{ newPostSize }};" *ngIf="showPost == false">
                         <div class="card" *ngFor="let post of posts | reverse">
                                 <div class="card-body" (click)="onClick(post)">
@@ -35,10 +37,12 @@
                         </div>
                     </div>
 
+                    <!-- INDIVIDUAL POST SECTION -->
                     <div class="post" *ngIf="showPost">
                         <button class="btn btn-outline-secondary" (click)="back()">Back to Forum</button>
                         <button class="btn btn-outline-info" (click)="addComment()">Comment</button>
-                        <app-post [post]="post" [size]="postSize"></app-post>
+                        <app-post [post]="post" [size]="postSize" [newComment]="newComment"></app-post>
+                        <!-- NEW POST COMMENT SECTION -->
                         <div class="form-floating" *ngIf="showComment">
                             <textarea class="form-control" id="floatingBody" placeholder="Add a comment" [(ngModel)]="commentBody" required></textarea>
                             <label for="floatingBody">Add a Comment</label>

@@ -23,8 +23,8 @@
 
 .card:hover {
     cursor: pointer;
-    /* transform: scale(110%);
-    transition: 0.5s; */
+    transform: scale(110%);
+    transition: 0.5s;
 }
 
 button {
