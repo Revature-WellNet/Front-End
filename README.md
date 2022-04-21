@@ -1,4 +1,8 @@
 # WellNet
+![FirebaseReconfigured](https://user-images.githubusercontent.com/99214724/164515407-f7ebac26-edc1-4c6d-8d93-c3e0c3a5374a.jpg)
+![darkMode01](https://user-images.githubusercontent.com/99214724/164515493-8dd3620f-1d6c-4a0e-abe2-ad425b1ede22.jpg)
+![darkMode02](https://user-images.githubusercontent.com/99214724/164515505-8217059f-1826-455b-a121-6827153a986c.jpg)
+![darkMode03](https://user-images.githubusercontent.com/99214724/164515529-919ae657-732d-4999-afc0-2288d47e24c7.jpg)
 
 Endpoints: 
 
