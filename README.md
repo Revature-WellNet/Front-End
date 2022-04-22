@@ -1,4 +1,6 @@
 # WellNet
+This configuration only works with the original monolithic backend. The BACK-END folder includes the code needed for the firebase_config.json file on the original backend.
+
 ![Reconfigured](https://user-images.githubusercontent.com/99214724/164518060-c0e1884c-0f72-464c-bf0b-252e8a7ebb3a.jpg)
 ![darkMode01](https://user-images.githubusercontent.com/99214724/164515493-8dd3620f-1d6c-4a0e-abe2-ad425b1ede22.jpg)
 ![darkMode02](https://user-images.githubusercontent.com/99214724/164515505-8217059f-1826-455b-a121-6827153a986c.jpg)
