@@ -4,6 +4,7 @@ import { Comment } from 'src/app/models/comment';
 import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-post',
@@ -11,11 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  user!: User;
   @Input() post!: Post;
   @Input() size!: string;
   comments!: Comment[];
   @Input() newComment: boolean = false;
+  editPost: boolean = false;
   editComment: boolean = false;
+  newTitle!: string | null;
+  newDescription!: string | null;
   id!: number;
   newBody!: string;
 
@@ -41,13 +46,32 @@ export class PostComponent implements OnInit {
     );
   }
 
+  editMyPost() {
+    this.newTitle = this.post.title;
+    this.newDescription = this.post.description;
+    this.editPost = true;
+    this.size = '47vh';
+  }
+
+  updatePost() {
+    this.post.title = this.newTitle;
+    this.post.description = this.newDescription;
+    this.postService.updatePost(this.post.pId, this.post).subscribe(
+      () => {
+        this.postService.findPostById(this.post.pId);
+      }
+    );
+    this.editPost = false;
+    this.size = '52vh';
+  }
+
   deletePost() {
     for(var element of this.comments) {
       var id = element.cId;
       this.commentService.deleteComment(id);
     }
     this.postService.deletePost(this.post.pId);
-    this.route.navigate(['/forum']);
+    this.route.navigate(['/']).then( () => this.route.navigate(['/forum']));
   }
 
   deleteComment(id: number) {
@@ -76,6 +100,8 @@ export class PostComponent implements OnInit {
 
   back() {
     this.editComment = false;
+    this.editPost = false;
+    this.size = '52vh';
   }
 
 }

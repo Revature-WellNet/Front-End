@@ -2,8 +2,17 @@
     overflow-y: scroll;
 }
 
+button {
+    margin: 5px;
+}
+
 p {
     text-align: left;
+}
+
+input {
+    width: 100%;
+    text-align: center;
 }
 
 i {
