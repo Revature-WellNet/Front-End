@@ -29,8 +29,10 @@
             </div>
 
             <div>
-                <label for="specialization">Select Specialization: </label>
+                <label for="specialization">Select Specialization:</label>
                 <select name="specialization" #specialization id="specialization">
+                  <option value="" disabled selected>Select your specialization</option>
+                  <option value="general_practicioner">General Practitioner</option>
                   <option value="primary_care">Primary Care</option>
                   <option value="pediatrician">Pediatrician</option>
                   <option value="radiologist">Radiologist</option>

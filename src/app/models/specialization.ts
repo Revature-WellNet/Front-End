@@ -1,13 +1,3 @@
-export class Specialization {
-
-    public specialization_Id : number;
-    public specialization : string;
-  
-    constructor(Specialization_Id : number, specialization : string) {
-  
-      this.specialization_Id = Specialization_Id;
-      this.specialization = specialization;
-  
-    }
-  
+export enum Specialization {
+  General_Practicioner, Primary_Care, Pediatrician, Radiologist, General_Surgeon
 }

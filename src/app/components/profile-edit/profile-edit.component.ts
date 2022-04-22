@@ -60,20 +60,24 @@ export class ProfileEditComponent implements OnInit {
     if(specialization) {
       console.log("specialize")
       switch(specialization) {
+        case "general_practitioner": {
+          user.specialization = Specialization.General_Practicioner
+          break
+        }
         case "primary_care": {
-          user.specialization = new Specialization(1, specialization)
+          user.specialization = Specialization.Primary_Care
           break
         }
         case "pediatrician": {
-          user.specialization = new Specialization(2, specialization)
+          user.specialization = Specialization.Pediatrician
           break
         }
         case "radiologist": {
-          user.specialization = new Specialization(3, specialization)
+          user.specialization = Specialization.Radiologist
           break
         }
         case "general_surgeon": {
-          user.specialization = new Specialization(4, specialization)
+          user.specialization = Specialization.General_Surgeon
           break
         }
       }

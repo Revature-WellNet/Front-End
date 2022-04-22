@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
         firstName.innerHTML = response.firstname
         lastName.innerHTML = response.lastname
         role.innerHTML = response.role.role
-        specialization.innerHTML = response.specialization.specialization
+        specialization.innerHTML = response.specialization.toString()
         email.innerHTML = response.email
 
         document.getElementById("firstName")!.appendChild(firstName);

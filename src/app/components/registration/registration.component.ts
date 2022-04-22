@@ -141,7 +141,7 @@ export class RegistrationComponent implements OnInit {
               this.lastName,
               this.email,
               new Role(1, this.role),
-              new Specialization(0, "")
+              Specialization.General_Practicioner
             );
           }
           if (this.role == 'doctor') {
@@ -151,7 +151,7 @@ export class RegistrationComponent implements OnInit {
               this.lastName,
               this.email,
               new Role(2, this.role),
-              new Specialization(0, "")
+              Specialization.General_Practicioner
             );
           }
 
