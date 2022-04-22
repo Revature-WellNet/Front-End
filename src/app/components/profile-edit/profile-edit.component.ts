@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/models/role';
-import { Specialization } from 'src/app/models/Specialization';
+import { Specialization } from 'src/app/models/specialization';
 import { User } from 'src/app/models/user';
 import { EmailValidationService } from 'src/app/services/email-validation.service';
 import { UserService } from 'src/app/services/user.service';
@@ -31,7 +31,7 @@ export class ProfileEditComponent implements OnInit {
       this.router.navigate(['/login']); 
   }
 
-  submit(fName: any, lName: any, spec: any){
+  submit(fName: any, lName: any, specialization: any){
     
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
@@ -56,24 +56,24 @@ export class ProfileEditComponent implements OnInit {
       user.lastname = lName;
     }
     console.log("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkhfhfhwslkafhiowhfihjfidsahjflkahfiehfihfhfiadjfajfajff")
-    console.log(spec)
-    if(spec) {
+    console.log(specialization)
+    if(specialization) {
       console.log("specialize")
-      switch(spec) {
+      switch(specialization) {
         case "primary_care": {
-          user.specialization = new Specialization(1, spec)
+          user.specialization = new Specialization(1, specialization)
           break
         }
         case "pediatrician": {
-          user.specialization = new Specialization(2, spec)
+          user.specialization = new Specialization(2, specialization)
           break
         }
         case "radiologist": {
-          user.specialization = new Specialization(3, spec)
+          user.specialization = new Specialization(3, specialization)
           break
         }
         case "general_surgeon": {
-          user.specialization = new Specialization(4, spec)
+          user.specialization = new Specialization(4, specialization)
           break
         }
       }

@@ -36,15 +36,18 @@ export class ProfileComponent implements OnInit {
         let firstName = document.createElement("span");
         let lastName = document.createElement("span");
         let role = document.createElement("span");
+        let specialization = document.createElement("span");
         let email = document.createElement("span");
         firstName.innerHTML = response.firstname
         lastName.innerHTML = response.lastname
         role.innerHTML = response.role.role
+        specialization.innerHTML = response.specialization.specialization
         email.innerHTML = response.email
 
         document.getElementById("firstName")!.appendChild(firstName);
         document.getElementById("lastName")!.appendChild(lastName);
         document.getElementById("role")!.appendChild(role);
+        document.getElementById("specialization")!.appendChild(specialization);
         document.getElementById("email")!.appendChild(email);
         
       })

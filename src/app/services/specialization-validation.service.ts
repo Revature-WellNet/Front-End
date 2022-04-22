@@ -5,7 +5,7 @@ export class SpecializationValidationService {
 
   constructor() { }
 
-  public validateRole (specialization : string) {
+  public validateSpecialization (specialization : string) {
 
     //console.log(role);
 
@@ -19,9 +19,9 @@ export class SpecializationValidationService {
     let test3 : boolean = radiologistRegularExpression.test(specialization);
     let test4 : boolean = generalSurgeonRegularExpression.test(specialization);
 
-    console.log(test1);
-    console.log(test2); 
-    console.log(test1 && test2);
+    // console.log(test1);
+    // console.log(test2); 
+    // console.log(test1 && test2);
 
     return (test1 || test2 || test3 || test4);
 

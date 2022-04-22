@@ -13,7 +13,7 @@ import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Covid19VerificationModel } from 'src/app/models/covid19-verification-model';
 import { Covid19VerificationService } from 'src/app/services/covid19-verification.service';
-import { Specialization } from 'src/app/models/Specialization';
+import { Specialization } from 'src/app/models/specialization';
 
 @Component({
   selector: 'app-registration',
