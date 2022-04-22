@@ -2,6 +2,24 @@
     overflow-y: scroll;
 }
 
-.col, p {
+button {
+    margin: 5px;
+}
+
+p {
     text-align: left;
+}
+
+input {
+    width: 100%;
+    text-align: center;
+}
+
+i {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+i:hover {
+    cursor: pointer;
 }

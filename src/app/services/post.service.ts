@@ -33,7 +33,7 @@ export class PostService {
     return this.http.put<Post>(this.url + '/' + id, post);
   }
 
-  deletPost(id: number): Observable<any> {
+  deletePost(id: number): Observable<any> {
     return this.http.delete<any>(this.url + '/' + id);
   }
 }

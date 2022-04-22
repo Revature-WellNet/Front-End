@@ -1,16 +1,54 @@
-<h4 class="title">{{ post.title }}</h4>
-<h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h5>
-<h6 id="description">{{ post.description }}</h6>
+<button class="btn btn-outline-danger" (click)="deletePost()" *ngIf="post.author.id == '0'">Delete</button>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h4 class="title" *ngIf="editPost == false">{{ post.title }}</h4>
+            <input type="text" class="form-control" [(ngModel)]="newTitle" *ngIf="editPost">
+        </div>
+        <div class="col">
+            <i class="bi bi-pen" (click)="editMyPost()" *ngIf="post.author.id == '0'"></i>
+
+            <i class="bi bi-send-plus" (click)="updatePost()" *ngIf="editPost"></i>
+            
+            <i class="bi bi-arrow-counterclockwise" (click)="back()" *ngIf="editPost"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5 class="title text-muted">{{ post.posted | date : 'short' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h6 id="description" *ngIf="editPost == false">{{ post.description }}</h6>
+            <textarea class="form-control" [(ngModel)]="newDescription" *ngIf="editPost"></textarea>
+        </div>
+    </div>
+</div>
 <hr>
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">
         <div class="row" *ngFor="let com of comments | reverse">
-            <div class="col-4">
+            <div class="col-3">
                 <p>{{ com.created | date : 'short' }}-{{ com.author.firstname }} {{ com.author.lastname }}:</p>
             </div>
 
-            <div class="col">
-                <p>{{ com.body }}</p>
+            <div class="col-7">
+                <p *ngIf="editComment == false || id != com.cId">{{ com.body }}</p>
+                <textarea class="form-control" [(ngModel)]="newBody" *ngIf="editComment && id == com.cId"></textarea>
+            </div>
+
+            <div class="col-md-auto" *ngIf="post.author.id == '0'">
+                <p>
+                    <i class="bi bi-x-circle" (click)="deleteComment(com.cId)"></i>
+
+                    <i class="bi bi-pen" (click)="editMyComment(com.cId, com.body)"></i>
+
+                    <i class="bi bi-send-plus" (click)="updateComment(com)" *ngIf="editComment && id == com.cId"></i>
+
+                    <i class="bi bi-arrow-counterclockwise" (click)="back()" *ngIf="editComment && id == com.cId"></i>
+                </p>
             </div>
         </div>
     </div>
