@@ -1,4 +1,5 @@
-<button class="btn btn-outline-danger" (click)="deletePost()" *ngIf="post.author.id == '0'">Delete</button>
+<!-- <button class="btn btn-outline-danger" (click)="deletePost()" *ngIf="post.author.id == '1'">Delete</button> -->
+<!-- LOAD POST CONTENT -->
 <div class="container">
     <div class="row">
         <div class="col"></div>
@@ -6,8 +7,9 @@
             <h4 class="title" *ngIf="editPost == false">{{ post.title }}</h4>
             <input type="text" class="form-control" [(ngModel)]="newTitle" *ngIf="editPost">
         </div>
+        <!-- BUTTONS FOR USER IF POST IS THEIRS -->
         <div class="col">
-            <i class="bi bi-pen" (click)="editMyPost()" *ngIf="post.author.id == '0'"></i>
+            <i class="bi bi-pen" (click)="editMyPost()" *ngIf="post.author.id == '1'"></i>
 
             <i class="bi bi-send-plus" (click)="updatePost()" *ngIf="editPost"></i>
             
@@ -27,6 +29,8 @@
     </div>
 </div>
 <hr>
+
+<!-- LOAD POST COMMENTS -->
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">
         <div class="row" *ngFor="let com of comments | reverse">
@@ -38,8 +42,8 @@
                 <p *ngIf="editComment == false || id != com.cId">{{ com.body }}</p>
                 <textarea class="form-control" [(ngModel)]="newBody" *ngIf="editComment && id == com.cId"></textarea>
             </div>
-
-            <div class="col-md-auto" *ngIf="post.author.id == '0'">
+            <!-- BUTTONS FOR USER IF COMMENT IS THEIRS -->
+            <div class="col-md-auto" *ngIf="com.author.id == '1'">
                 <p>
                     <i class="bi bi-x-circle" (click)="deleteComment(com.cId)"></i>
 

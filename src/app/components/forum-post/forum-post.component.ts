@@ -33,6 +33,14 @@ export class ForumPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
+
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.userService.getUser(userData.id).subscribe(
+      (response : User) => {
+        this.user = response;
+        console.log(response);
+      }
+    );
   }
 
   getPosts() {
@@ -96,18 +104,9 @@ export class ForumPostComponent implements OnInit {
   }
 
   addPost() {
-    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
-    console.log(userData);
-    this.userService.getUser(userData.id).subscribe(
-      (user : User) => {
-        this.user = user;
-        console.log(user);
-      }
-    );
-    console.log(this.user);
-
     this.showNewPost = true;
     this.newPostSize = '45vh';
+    console.log(this.user);
   }
 
   submitPost() {
