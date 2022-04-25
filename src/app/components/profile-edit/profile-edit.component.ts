@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/models/role';
+import { Specialization } from 'src/app/models/specialization';
 import { User } from 'src/app/models/user';
 import { EmailValidationService } from 'src/app/services/email-validation.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,6 +18,7 @@ export class ProfileEditComponent implements OnInit {
   @Input() lastName!: string;
   @Input() role!: string;
   @Input() email!: string;
+  @Input() specialization!: string;
  
 
   constructor(private userService : UserService, private emailValidator : EmailValidationService, private router : Router, private firebaseService : FirebaseService) { }
@@ -29,7 +31,7 @@ export class ProfileEditComponent implements OnInit {
       this.router.navigate(['/login']); 
   }
 
-  submit(fName: any, lName: any){
+  submit(fName: any, lName: any, specialization: any){
     
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
 
@@ -53,6 +55,35 @@ export class ProfileEditComponent implements OnInit {
     if(lName){
       user.lastname = lName;
     }
+    console.log("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffkhfhfhwslkafhiowhfihjfidsahjflkahfiehfihfhfiadjfajfajff")
+    console.log(specialization)
+    if(specialization) {
+      console.log("specialize")
+      switch(specialization) {
+        case "general_practitioner": {
+          user.specialization = Specialization.General_Practicioner
+          break
+        }
+        case "primary_care": {
+          user.specialization = Specialization.Primary_Care
+          break
+        }
+        case "pediatrician": {
+          user.specialization = Specialization.Pediatrician
+          break
+        }
+        case "radiologist": {
+          user.specialization = Specialization.Radiologist
+          break
+        }
+        case "general_surgeon": {
+          user.specialization = Specialization.General_Surgeon
+          break
+        }
+      }
+      
+    }
+      console.log(user.specialization)
     if(document.querySelector('input[name="role"]:checked')){
     let newRole =  (<HTMLInputElement>document.querySelector('input[name="role"]:checked'))!.value
       let userRole = new Role(888, newRole);
@@ -65,6 +96,8 @@ export class ProfileEditComponent implements OnInit {
       user.role = userRole;
       console.log("being called in query selector");
     }
+    
+    
 
     console.log("called before setting email");
     this.firebaseService.setEmail(user.email).then(()=>{

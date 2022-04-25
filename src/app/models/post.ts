@@ -5,5 +5,5 @@ export interface Post {
     title: string | null;
     description: string | null;
     posted: Date;
-    author: User;
+    authorId: string;
 }

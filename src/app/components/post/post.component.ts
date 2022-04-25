@@ -5,6 +5,9 @@ import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+import { Userpost } from 'src/app/models/userpost';
+import { Usercomment } from 'src/app/models/usercomment';
 
 @Component({
   selector: 'app-post',
@@ -13,25 +16,33 @@ import { User } from 'src/app/models/user';
 })
 export class PostComponent implements OnInit {
   user!: User;
-  @Input() post!: Post;
+  @Input() post!: Userpost;
   @Input() size!: string;
-  comments!: Comment[];
+  comments: Usercomment[] = [];
   @Input() newComment: boolean = false;
   editPost: boolean = false;
   editComment: boolean = false;
   newTitle!: string | null;
   newDescription!: string | null;
   id!: number;
-  newBody!: string;
+  newBody!: string | null;
 
   constructor(
     private postService : PostService,
     private commentService : CommentService,
+    private userService : UserService,
     private route : Router
   ) { }
 
   ngOnInit(): void {
     this.getComments();
+
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    this.userService.getUser(userData.id).subscribe(
+      (response : User) => {
+        this.user = response;
+      }
+    );
   }
 
   ngOnChanges(): void {
@@ -39,9 +50,26 @@ export class PostComponent implements OnInit {
   }
 
   getComments() {
+    this.comments = [];
     this.postService.findCommentsByPost(this.post.pId).subscribe(
       (c : Comment[]) => {
-        this.comments = c;
+        c.forEach(
+          (i: Comment) => {
+            this.userService.getUser(i.authorId).subscribe(
+              (u: User) => {
+                var com: Usercomment = {
+                  cId: i.cId,
+                  body: i.body,
+                  authorId: i.authorId,
+                  author: u,
+                  created: i.created,
+                  root: i.root
+                }
+                this.comments.unshift(com);
+              }
+            );
+          }
+        );
       }
     );
   }

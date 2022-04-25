@@ -15,7 +15,7 @@ export class RegistrationService {
 
   // private registrationValues! : Registration;
 
-  private url : string = environment.apiBaseUrl;
+  private url : string = 'http://localhost:8099/wellnet';
 
   // getRegistrationValues(values : Registration) {
 
@@ -32,7 +32,7 @@ export class RegistrationService {
 
   postRegistration(values : User) : Promise<User[]>{
 
-    return this.http.post<User[]>(this.url + "public/registration", values).toPromise<User[]>();
+    return this.http.post<User[]>(this.url + "/public/registration", values).toPromise<User[]>();
 
   }
 
