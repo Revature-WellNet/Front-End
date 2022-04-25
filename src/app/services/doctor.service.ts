@@ -9,14 +9,14 @@ import { Patient } from '../models/patient';
 
 
 
-const APIURL = environment.apiBaseUrl;
+const APIURL = 'http://user-service/' //environment.apiBaseUrl;
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
   [x: string]: any;
 
-  private patientApiServerUrl = environment.apiBaseUrl;
+  private patientApiServerUrl = 'http://patient-service/' //environment.apiBaseUrl;
 
   constructor (private http : HttpClient, private location: LocationStrategy, private router : Router) {}
 

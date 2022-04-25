@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NurseService {
 
-  private patientApiServerUrl = environment.apiBaseUrl;
+  private patientApiServerUrl = 'http://patient-service:8095/' //environment.apiBaseUrl;
   // APIURL = "http://localHost:8081//patient"
 
   constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
