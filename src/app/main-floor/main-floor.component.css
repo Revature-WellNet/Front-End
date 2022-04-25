@@ -1,0 +1,222 @@
+.container {
+    width: 100vw;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+  }
+  
+  .floor-holder {
+    position: absolute;
+    top: 60%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 120vh;
+    border: 3px solid #e3e3e3;
+  }
+  
+  .waiting-room {
+    position: absolute;
+    top: 60%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    width: 8%;
+    height: 60vh;
+    border: 3px solid #e3e3e3;
+    background-color: #ecebf0;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    padding-top: 10px;
+    z-index: 1;
+  
+  }
+  
+  .list {
+  
+    border: solid 1px #ccc;
+      min-height: 60px;
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      display: block;
+  
+  }
+  
+  .tab-holder {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .tab {
+    margin-top: 30px;
+    padding-top: 10px;
+    height: 60px;
+    width: 200px;
+    background-color: white;
+    border-radius: 20px;
+    transform: skew(-20deg);
+    font-size: 1.5rem;
+    z-index: 0;
+    cursor: pointer;
+    border: 3px solid #e3e3e3;
+    transition: 0.3s;
+  }
+  
+  .tab:hover {
+    background-color: #00bbf3;
+    color: white;
+    transition: 0.3s;
+    transform: scale3d(1.1, 1.1, 1.1) skew(-25deg);
+    border-color: #212428;
+  }
+  
+  .floor-header {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+  }
+  
+  .floor {
+    position: fixed;
+    width: 100%;
+    height: 90%;
+    padding-top: 20px;
+    bottom: 0;
+    z-index: 0;
+    background-color: white;
+  }
+  
+  .hospital-room {
+    display: inline-block;
+    height: 165px;
+    width: 165px;
+    background-color: #f7f7f7;
+    border: 3px solid #e3e3e3;
+  }
+  
+  .hospital-room-column {
+    display: block;
+  }
+  
+  .hospital-room-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .restroom {
+    text-align: left;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    padding-top: 10px;
+    height: 100px;
+    width: 165px;
+    background-color: #ecebf0;
+    border: 3px solid #e3e3e3;
+  }
+  
+  .room-number {
+    font-size: 1rem;
+    width: 40px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-top: 4px;
+    background-color: #212428;
+    border-radius: 8px;
+    color: white;
+  }
+  
+  .room-row-2 {
+    margin-top: 40px;
+  }
+  
+  .middle-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .room-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .room-column-2,
+  .room-column-3 {
+    padding-top: 40px;
+  }
+  
+  .room-row-special {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .center-room {
+    height: 220px;
+    width: 220px;
+    text-align: left;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    padding-top: 10px;
+    background-color: #ecebf0;
+    border: 3px solid #e3e3e3;
+  }
+  
+  .check-in-station {
+    text-align: left;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    padding-top: 10px;
+    background-color: #ecebf0;
+  }
+  
+  .room-status {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+  }
+  
+  .room-status-available {
+    background-color: #00bbf3;
+    color: black;
+  }
+  
+  .room-status-occupied {
+    background-color: #6c7480;
+    color: white;
+  }
+  
+  .current-caregiver {
+    margin: 5px;
+    width: 150px;
+    height: 30px;
+    border-radius: 8px;
+  }
+  
+  .current-caregiver-unassigned {
+    background-color: red;
+  }
+  
+  .current-patient {
+    margin: 5px;
+    width: 150px;
+    height: 70px;
+    border: 3px solid #e3e3e3;
+    border-radius: 8px;
+  
+    /* Container for patient drop */
+    display: inline-block;
+    vertical-align: top;
+  
+  }
+  
+  .active {
+    z-index: 1;
+  }
+  
+  .inactive {
+    z-index: 0;
+  }
+  
