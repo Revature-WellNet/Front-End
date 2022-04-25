@@ -26,6 +26,9 @@ import { NurseService } from './services/nurse.service';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//imported
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
 
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
@@ -75,14 +78,16 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     AngularFireModule.initializeApp(environment.firebase),
     UserAuthModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatSlideToggleModule,
+    MatCardModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass: Apihttpintercept,
     multi: true
 },
-FirebaseService,  
+FirebaseService,
 ],
   bootstrap: [AppComponent]
 })
