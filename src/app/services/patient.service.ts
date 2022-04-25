@@ -9,7 +9,7 @@ import { RoomDto } from '../models/rooms/room-dto';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:8081/'
+    'Access-Control-Allow-Origin': 'http://localhost:8095/'
   })
 };
 
@@ -19,7 +19,7 @@ const httpOptions = {
 
 export class PatientService {
 
-  private backendUrl = 'http://localhost:8081/wellnet/patient'
+  private backendUrl = 'http://localhost:8095/patient'
   public patient!: Patient;  
   public room!: RoomDto;
   constructor(private router: Router, private http: HttpClient) {
@@ -28,24 +28,24 @@ export class PatientService {
 
   createPatient(patient : Patient){
 
-    return this.http.post<Patient>('http://localhost:8081/wellnet/patient', patient).subscribe((response : any) => {console.log(response)});
+    return this.http.post<Patient>(this.backendUrl, patient).subscribe((response : any) => {console.log(response)});
   }
 
   getAllergies(){
-    return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/allergies');
+    return this.http.get<Object[]>(this.backendUrl+'/allergies');
   }
 
   getVaccinations(){
-    return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/vaccinations');
+    return this.http.get<Object[]>(this.backendUrl+'/vaccinations');
 
   }
 
   getBloodType(name :string){
-    return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/bloodtype/'+name);
+    return this.http.get<Object[]>(this.backendUrl+'/bloodtype/'+name);
   }
 
   getSex(name :string){
-    return this.http.get<Object[]>('http://localhost:8081/wellnet/patient/sex/'+name);
+    return this.http.get<Object[]>(this.backendUrl+'/sex/'+name);
 
   }
 
@@ -55,19 +55,19 @@ export class PatientService {
 
   createAllergy(allergy : string){
 
-    return this.http.post<string>('http://localhost:8081/wellnet/patient/allergies', allergy).subscribe((response : any) => {console.log(response)});
+    return this.http.post<string>(this.backendUrl+'/allergies', allergy).subscribe((response : any) => {console.log(response)});
   }
 
   createVaccination(vaccine : string){
 
-    return this.http.post<string>('http://localhost:8081/wellnet/patient/vaccinations', vaccine).subscribe((response : any) => {console.log(response)});
+    return this.http.post<string>(this.backendUrl+'/vaccinations', vaccine).subscribe((response : any) => {console.log(response)});
   }
 
   deleteAllergy(oldAllergies : string[]){
     
     for(let i of oldAllergies){
       console.log(i)
-      this.http.delete('http://localhost:8081/wellnet/patient/allergies/'+i).subscribe((response : any) => {console.log(response)});
+      this.http.delete(this.backendUrl+'/allergies/'+i).subscribe((response : any) => {console.log(response)});
       
       }
   }
@@ -76,7 +76,7 @@ export class PatientService {
 
     for(let i of oldVaccines){
       console.log(i)
-    this.http.delete('http://localhost:8081/wellnet/patient/vaccinations/'+i).subscribe((response : any) => {console.log(response)});
+    this.http.delete(this.backendUrl+'/vaccinations/'+i).subscribe((response : any) => {console.log(response)});
     }
   }
 
