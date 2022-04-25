@@ -22,11 +22,5 @@ export class UserService {
 
     return this.http.put<User>('http://localhost:8081/wellnet/user/updateprofile', user).subscribe((response : any) => {console.log(response)});
   }
-
-  getAll() {
-
-    return this.http.get<User[]>(this.BASE_URL);
-  } 
-  
            
 }
