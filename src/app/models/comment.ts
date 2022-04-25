@@ -5,6 +5,6 @@ export interface Comment {
     cId: number;
     body: string | null;
     created: Date;
-    author: User;
+    authorId: string;
     root: Post;
 }

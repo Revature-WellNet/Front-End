@@ -5,6 +5,7 @@ import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { Userpost } from 'src/app/models/userpost';
 
 @Component({
   selector: 'app-forum-post',
@@ -13,8 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ForumPostComponent implements OnInit {
   user!: User;
-  posts!: Post[];
-  post!: Post;
+  posts: Userpost[] = [];
+  post!: Userpost;
   newComment: boolean = false;
   showPost: boolean = false;
   showComment: boolean = false;
@@ -38,20 +39,36 @@ export class ForumPostComponent implements OnInit {
     this.userService.getUser(userData.id).subscribe(
       (response : User) => {
         this.user = response;
-        console.log(response);
       }
     );
   }
 
   getPosts() {
+    this.posts = [];
     this.postService.findAllPost().subscribe(
       (p : Post[]) => {
-        this.posts = p;
+        p.forEach(
+          (i: Post) => {
+            this.userService.getUser(i.authorId).subscribe(
+              (u: User) => {
+                var userpost: Userpost = {
+                  pId: i.pId,
+                  title: i.title,
+                  description: i.description,
+                  posted: i.posted,
+                  authorId: i.authorId,
+                  author: u
+                }
+                this.posts.unshift(userpost);
+              }
+            );
+          }
+        );
       }
     );
   }
 
-  onClick(post: Post) {
+  onClick(post: Userpost) {
     this.showPost = true;
     this.showNewPost = false;
     this.post = post;
@@ -74,21 +91,11 @@ export class ForumPostComponent implements OnInit {
   }
 
   submitComment() {
-    this.user = {
-      id: '1',
-      firstname: 'Jane',
-      lastname: 'Doe',
-      email: 'test@mail.com',
-      role: {
-        roleId: 1,
-        role: 'nurse'
-      }
-    }
     var comment: Comment = {
       cId: 0,
       body: this.commentBody,
       created: new Date(),
-      author: this.user,
+      authorId: this.user.id,
       root: this.post
     }
 
@@ -106,26 +113,15 @@ export class ForumPostComponent implements OnInit {
   addPost() {
     this.showNewPost = true;
     this.newPostSize = '45vh';
-    console.log(this.user);
   }
 
   submitPost() {
-    this.user = {
-      id: '1',
-      firstname: 'Jane',
-      lastname: 'Doe',
-      email: 'test@mail.com',
-      role: {
-        roleId: 1,
-        role: 'nurse'
-      }
-    }
     var post: Post = {
       pId: 0,
       title: this.postTitle,
       posted: new Date(),
       description: this.postBody,
-      author: this.user
+      authorId: this.user.id
     }
 
     this.postService.addPost(post).subscribe(

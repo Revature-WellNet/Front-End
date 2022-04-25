@@ -28,7 +28,7 @@
 
                     <!-- FORUM POSTS AREA -->
                     <div class="post overflow-auto" style="height: {{ newPostSize }};" *ngIf="showPost == false">
-                        <div class="card" *ngFor="let post of posts | reverse">
+                        <div class="card" *ngFor="let post of posts">
                                 <div class="card-body" (click)="onClick(post)">
                                     <h5 class="card-title">{{ post.title }}</h5>
                                     <h6 class="card-subtitle text-muted">{{ post.posted | date : 'shortDate' }} - {{ post.author.firstname }} {{ post.author.lastname }}</h6>

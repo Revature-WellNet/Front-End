@@ -1,4 +1,4 @@
-<!-- <button class="btn btn-outline-danger" (click)="deletePost()" *ngIf="post.author.id == '1'">Delete</button> -->
+<!-- <button class="btn btn-outline-danger" (click)="deletePost()" *ngIf="post.author.id == user.id">Delete</button> -->
 <!-- LOAD POST CONTENT -->
 <div class="container">
     <div class="row">
@@ -9,7 +9,7 @@
         </div>
         <!-- BUTTONS FOR USER IF POST IS THEIRS -->
         <div class="col">
-            <i class="bi bi-pen" (click)="editMyPost()" *ngIf="post.author.id == '1'"></i>
+            <i class="bi bi-pen" (click)="editMyPost()" *ngIf="post.author.id == user.id"></i>
 
             <i class="bi bi-send-plus" (click)="updatePost()" *ngIf="editPost"></i>
             
@@ -33,7 +33,7 @@
 <!-- LOAD POST COMMENTS -->
 <div class="overflow-auto" style="height: {{size}}">
     <div class="container">
-        <div class="row" *ngFor="let com of comments | reverse">
+        <div class="row" *ngFor="let com of comments">
             <div class="col-3">
                 <p>{{ com.created | date : 'short' }}-{{ com.author.firstname }} {{ com.author.lastname }}:</p>
             </div>
@@ -43,11 +43,11 @@
                 <textarea class="form-control" [(ngModel)]="newBody" *ngIf="editComment && id == com.cId"></textarea>
             </div>
             <!-- BUTTONS FOR USER IF COMMENT IS THEIRS -->
-            <div class="col-md-auto" *ngIf="com.author.id == '1'">
+            <div class="col-md-auto" *ngIf="com.author.id == user.id">
                 <p>
                     <i class="bi bi-x-circle" (click)="deleteComment(com.cId)"></i>
 
-                    <i class="bi bi-pen" (click)="editMyComment(com.cId, com.body)"></i>
+                    <i class="bi bi-pen" (click)="editMyComment(com.cId, com.body || '')"></i>
 
                     <i class="bi bi-send-plus" (click)="updateComment(com)" *ngIf="editComment && id == com.cId"></i>
 
