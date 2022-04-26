@@ -16,7 +16,7 @@ const APIURL = 'http://user-service/' //environment.apiBaseUrl;
 export class DoctorService {
   [x: string]: any;
 
-  private patientApiServerUrl = 'http://patient-service/' //environment.apiBaseUrl;
+  private patientApiServerUrl = 'http://localhost:8095/' //environment.apiBaseUrl;
 
   constructor (private http : HttpClient, private location: LocationStrategy, private router : Router) {}
 
