@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false, 
-  apiBaseUrl: 'http://localhost:8081/wellnet/',
+  apiBaseUrl: 'http://user-service/wellnet/',
   firebase : {
     apiKey: "AIzaSyDTzgCaK2cYqraEg9fn-X92cNZnU5ZDC-k",
     authDomain: "sandbox-project-a5abb.firebaseapp.com",

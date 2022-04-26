@@ -52,7 +52,7 @@ export class Apihttpintercept implements HttpInterceptor {
                             .set('Authorization', 'Bearer ' + user.token)
                             .set('Content-Type', 'application/json')
                             .set('Access-Control-Allow-Origin', '*')
-                            .set('Access-Control-Allow-Headers', 'Content-Type')
+                            .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
 
                     });
                 //    console.log(modifiedReq)
