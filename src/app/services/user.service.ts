@@ -10,7 +10,7 @@ export class UserService {
   constructor( private http : HttpClient) { }
 
   BASE_URL='http://localhost:8099/wellnet/user/';
-  
+
   // Get all
   getAll() {
     return this.http.get<User[]>(this.BASE_URL);
@@ -29,5 +29,5 @@ export class UserService {
    return this.http.put<User>('http://localhost:8099/wellnet/user/updateprofile', user).subscribe((response : any) => {console.log(response)});
 
   }
-           
+
 }

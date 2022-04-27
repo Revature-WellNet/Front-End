@@ -8,7 +8,7 @@ import { Patient } from '../models/patient';
 
 
 
-const APIURL = environment.apiBaseUrl;
+const APIURL = "http://localhost:8095/patient/resolved";
 
 
 @Injectable({
@@ -16,9 +16,9 @@ const APIURL = environment.apiBaseUrl;
 })
 export class CallBootstrapDBService {
 
-  private patientApiServerUrl = environment.apiBaseUrl;
+  private patientApiServerUrl = "";
 
-  constructor(private http: HttpClient, private location: LocationStrategy, 
+  constructor(private http: HttpClient, private location: LocationStrategy,
     private ttp: HttpClientModule, private router : Router) { }
 
 

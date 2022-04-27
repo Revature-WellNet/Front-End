@@ -37,7 +37,7 @@ export const routes: Routes = [
   {path: 'profileEdit', canActivate:[AuthGuardGuard], component: ProfileEditComponent},
   {path: 'covid-verification', component:Covid19VerificationComponent, pathMatch: 'full'},
   {path: 'lockout', component:LockoutComponent, pathMatch: 'full'},
-  {path: "login", component:LoginComponent}, 
+  {path: "login", component:LoginComponent},
   {path: "rooms", canActivate:[AuthGuardGuard], component:RoomsComponent},
   {path: 'styles', component: StaticStyleTesterComponent},
   {path: 'forget-password', component: ForgetPasswordComponent},

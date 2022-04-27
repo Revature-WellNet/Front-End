@@ -374,6 +374,9 @@ td { text-align: left;}
    background-size: cover;
    background-repeat: no-repeat;
  }
+ .mat-card{
+    height: 100vh;
+ }
  .links ul {
    list-style: none; /* Remove default bullets */
  }
@@ -413,7 +416,7 @@ td { text-align: left;}
      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
    font-weight: 500;
  }
- 
+
  .floor-holder {
    position: absolute;
    top: 60%;
@@ -423,7 +426,7 @@ td { text-align: left;}
    height: 120vh;
    border: 3px solid #e3e3e3;
  }
- 
+
  .waiting-room {
    position: absolute;
    top: 60%;
@@ -437,25 +440,25 @@ td { text-align: left;}
    padding-left: 5px;
    padding-top: 10px;
    z-index: 1;
- 
+
  }
 
  .list {
- 
+
    border: solid 1px #ccc;
      min-height: 60px;
      background: white;
      border-radius: 4px;
      overflow: hidden;
      display: block;
- 
+
  }
- 
+
  .tab-holder {
    display: flex;
    justify-content: space-evenly;
  }
- 
+
  .tab {
    margin-top: 30px;
    padding-top: 10px;
@@ -476,12 +479,12 @@ td { text-align: left;}
    padding-left: 5px;
    padding-top: 10px;
    background-color: #ffffff;
- }  
+ }
 
  .doc {
    opacity: 100;
  }
- 
+
  .tab:hover {
    background-color: #00bbf3;
    color: white;
@@ -489,12 +492,12 @@ td { text-align: left;}
    transform: scale3d(1.1, 1.1, 1.1) skew(-25deg);
    border-color: #212428;
  }
- 
+
  .floor-header {
    font-size: 1.5rem;
    padding-bottom: 10px;
  }
- 
+
  .floor {
    position: fixed;
    width: 100%;
@@ -504,7 +507,7 @@ td { text-align: left;}
    z-index: 0;
    background-color: white;
  }
- 
+
  .hospital-room {
    display: inline-block;
    height: 165px;
@@ -512,17 +515,17 @@ td { text-align: left;}
    background-color: #f7f7f7;
    border: 3px solid #e3e3e3;
  }
- 
+
  .hospital-room-column {
    display: block;
  }
- 
+
  .hospital-room-content {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
  }
- 
+
  .restroom {
    text-align: left;
    font-size: 1.2rem;
@@ -533,7 +536,7 @@ td { text-align: left;}
    background-color: #ecebf0;
    border: 3px solid #e3e3e3;
  }
- 
+
  .room-number {
    font-size: 1rem;
    width: 40px;
@@ -545,32 +548,32 @@ td { text-align: left;}
    border-radius: 8px;
    color: white;
  }
- 
+
  .room-row-2 {
    margin-top: 40px;
  }
- 
+
  .middle-container {
    display: flex;
    flex-direction: row;
    justify-content: space-between;
  }
- 
+
  .room-column {
    display: flex;
    flex-direction: column;
  }
- 
+
  .room-column-2,
  .room-column-3 {
    padding-top: 40px;
  }
- 
+
  .room-row-special {
    display: flex;
    flex-direction: row;
  }
- 
+
  .center-room {
    height: 220px;
    width: 220px;
@@ -581,7 +584,7 @@ td { text-align: left;}
    background-color: #ecebf0;
    border: 3px solid #e3e3e3;
  }
- 
+
  .check-in-station {
    text-align: left;
    font-size: 1.2rem;
@@ -589,7 +592,7 @@ td { text-align: left;}
    padding-top: 10px;
    background-color: #ecebf0;
  }
- 
+
  .room-status {
    margin-left: 5px;
    margin-top: 5px;
@@ -597,46 +600,45 @@ td { text-align: left;}
    height: 30px;
    border-radius: 8px;
  }
- 
+
  .room-status-available {
    background-color: #00bbf3;
    color: black;
  }
- 
+
  .room-status-occupied {
    background-color: #6c7480;
    color: white;
  }
- 
+
  .current-caregiver {
    margin: 5px;
    width: 150px;
    height: 30px;
    border-radius: 8px;
  }
- 
+
  .current-caregiver-unassigned {
    background-color: red;
  }
- 
+
  .current-patient {
    margin: 5px;
    width: 150px;
    height: 70px;
    border: 3px solid #e3e3e3;
    border-radius: 8px;
- 
+
    /* Container for patient drop */
    display: inline-block;
    vertical-align: top;
- 
+
  }
- 
+
  .active {
    z-index: 1;
  }
- 
+
  .inactive {
    z-index: 0;
  }
- 

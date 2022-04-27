@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NurseService {
 
-  private patientApiServerUrl = environment.apiBaseUrl;
+  private patientApiServerUrl = "http://localhost:8095/patient";
   // APIURL = "http://localHost:8081//patient"
 
   constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
@@ -23,13 +23,13 @@ export class NurseService {
     Description : performs a http get request to obtain all the patients from the
       project back-end
     : no arguments
-    Returns : returns an Observable object containing an array of Patient objects 
+    Returns : returns an Observable object containing an array of Patient objects
       obtained from the back end http get request
     References : Referenced in the nurse.component.ts getAllPatients() method
   */
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}`);
   }
 
   /* Method Name : getPatientsById

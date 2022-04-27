@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient';
 import { Room } from '../models/rooms/room';
@@ -20,10 +20,10 @@ const httpOptions = {
 export class PatientService {
 
   private backendUrl = 'http://localhost:8095/patient'
-  public patient!: Patient;  
+  public patient!: Patient;
   public room!: RoomDto;
   constructor(private router: Router, private http: HttpClient) {
- 
+
   }
 
   // Get all
@@ -69,11 +69,11 @@ export class PatientService {
   }
 
   deleteAllergy(oldAllergies : string[]){
-    
+
     for(let i of oldAllergies){
       console.log(i)
       this.http.delete(this.backendUrl+'/allergies/'+i).subscribe((response : any) => {console.log(response)});
-      
+
       }
   }
 

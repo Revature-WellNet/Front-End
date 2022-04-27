@@ -25,11 +25,11 @@ export class RoomsComponent implements OnInit {
   showLink: boolean = true;
 
   waitingroom:string[] = [];
-  
+
   constructor(private router:Router, private diagService: DiagnosisFormService, private service: FirebaseService, private roomService: RoomService, private patientService: PatientService) { }
-  
+
   ngOnInit(): void {
-    
+
     if(!this.service.autoSignIn()){
       this.router.navigate(['login'])
     }
@@ -44,7 +44,7 @@ export class RoomsComponent implements OnInit {
     this.areas[1] = new Area(2,"Trauma");
     this.areas[2] = new Area(3,"ER");
     this.areas[3] = new Area(4,"Physical Therapy");
-    this.areas[4] = new Area(5,"Pediatrics");/*12*/ 
+    this.areas[4] = new Area(5,"Pediatrics");/*12*/
   }
 
   selectArea(areaId:number){
@@ -87,12 +87,12 @@ export class RoomsComponent implements OnInit {
           if(diag.room){
             this.rooms[diag.room.roomNumber - 1].patients.push(diag.patient.patientId + ' - ' + diag.patient.firstName + ' ' + diag.patient.lastName);
             this.rooms[diag.room.roomNumber - 1].roomStatus = 2;
-           
+
           }
-         
-        } 
-            
-          
+
+        }
+
+
       });}
     });
   }
@@ -100,9 +100,9 @@ export class RoomsComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    
+
     } else {
-      
+
       let newRoom = event.container.element.nativeElement.dataset.rn;
 
       if(event.container.data.length > 0 && Number(newRoom) > 0){
@@ -119,20 +119,20 @@ export class RoomsComponent implements OnInit {
 
       let p:string = event.container.data[0];
       let pid:number = Number(p.substring(0, p.indexOf(' - ')));
-      
-      
-      
+
+
+
 
       let newindex:number = Number(newRoom) - 1;
       let previndex:number = Number(event.previousContainer.element.nativeElement.dataset.rn) - 1;
       console.log(newindex);
       if(previndex >= 0){
-        this.rooms[previndex].roomStatus = 1; 
+        this.rooms[previndex].roomStatus = 1;
       }
       if(newindex >= 0){
         this.rooms[newindex].roomStatus = 2;
         this.updateDForm(pid, newindex);
-        
+
         this.log = "Patient assigned to room" + newRoom;
         //this.router.navigate(['diagnosis']);
         this.showLink =  false;

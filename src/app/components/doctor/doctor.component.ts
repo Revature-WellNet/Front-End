@@ -22,10 +22,10 @@ export class DoctorComponent implements OnInit {
   public patientsArray : any = [];
   public searchingDoctor : boolean = false;
 
-  constructor(private doctorService: DoctorService, 
-    private nurseService : NurseService, 
-    private firebaseService : FirebaseService, 
-    private patientService: PatientService, 
+  constructor(private doctorService: DoctorService,
+    private nurseService : NurseService,
+    private firebaseService : FirebaseService,
+    private patientService: PatientService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class DoctorComponent implements OnInit {
     const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
     if(userData.role == "nurse")
       this.router.navigate(['nurse']);
-    //before we get doctor: 
+    //before we get doctor:
     this.getAllUnresolvedPatients();
 
 
@@ -62,7 +62,7 @@ export class DoctorComponent implements OnInit {
    getPatientsByDoctor(doctorId: string){
     this.doctorService.getPatientsByDocId();
   }
-  
+
   // searchPatient(){
 
   //   this.searchingDoctor = false;
@@ -89,7 +89,7 @@ export class DoctorComponent implements OnInit {
 
   searchPatByFullName(firstName: string, lastName: string){
 
-    this.searchingDoctor = false;  
+    this.searchingDoctor = false;
 
   this.nurseService.getPatientByFullName(firstName, lastName).subscribe((response: Patient[])=> {
         this.patientsArray = response;
@@ -127,8 +127,8 @@ export class DoctorComponent implements OnInit {
     console.log(inputString);
 
     this.doctorService.getPatientsByDocIdUser(inputString).subscribe(
-      data => { 
-        console.log(Object(data)); 
+      data => {
+        console.log(Object(data));
 
         let length : number = data.length;
 
@@ -145,9 +145,9 @@ export class DoctorComponent implements OnInit {
     );
 
   }
- 
 
-  
+
+
 
 
   getAllPatients(){
@@ -170,7 +170,7 @@ export class DoctorComponent implements OnInit {
   diagnosePatient(patient: Patient){
     this.patientService.patient=patient;
 this.router.navigate(['diagnosis']);
-   
+
   }
 
   getAllUnresolvedPatients(){
@@ -190,7 +190,7 @@ this.router.navigate(['diagnosis']);
     );
   }
 
-  
+
 
   logout(){
     this.firebaseService.logout();
@@ -206,7 +206,7 @@ this.router.navigate(['diagnosis']);
 
     this.doctorService.getPatientsByDoctorName(doctorFirstName, doctorLastName).subscribe( (response)=>{
       if (response.length > 0){
-      
+
       this.patientsArray=response;
       this.searchingDoctor = true;
       }
