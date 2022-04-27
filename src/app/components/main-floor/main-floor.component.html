@@ -36,6 +36,7 @@
         It is also only holding strings, not patient objects
       -->
       <div class="current-patient current-patient-unassigned">
+        
         <div class="list"
         cdkDropList 
         
@@ -44,6 +45,7 @@
         (cdkDropListDropped)="drop($event)">
         <div *ngFor="let item of room1" cdkDrag>{{item.firstName}}</div>
         </div>
+
     </div>
     </div>
   </div>
@@ -320,7 +322,7 @@ cdkDropList
 [cdkDropListData]="doctors"
 (cdkDropListDropped)="drop($event)"
 *ngFor="let item of doctors">
-<div class="box" *ngIf="item.spec === pc" cdkDrag>
+<div class="box" *ngIf="item.specialization === pc" cdkDrag>
 {{item.firstname}}
 </div>
 </div>

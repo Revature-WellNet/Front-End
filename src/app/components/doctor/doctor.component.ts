@@ -28,9 +28,6 @@ export class DoctorComponent implements OnInit {
     private patientService: PatientService, 
     private router: Router) { }
 
-
-
-
   ngOnInit(): void {
     console.log("calling auto sign in from doctor");
     if(!this.firebaseService.autoSignIn())

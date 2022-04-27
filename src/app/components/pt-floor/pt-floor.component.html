@@ -315,7 +315,7 @@ cdkDropList
 [cdkDropListData]="pdoctors"
 (cdkDropListDropped)="drop($event)"
 *ngFor="let item of pdoctors">
-<div class="box" *ngIf="item.spec === pt" cdkDrag>
+<div class="box" *ngIf="item.specialization === pt" cdkDrag>
 {{item.firstname}}
 </div>
 </div>
@@ -634,7 +634,6 @@ cdkDropList
   </div>
   </div>
 </div>
-
 
 <div class="hospital-room">
   <div class="hospital-room-content">
