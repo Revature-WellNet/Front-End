@@ -254,7 +254,7 @@ export class FirebaseService {
     console.log(userData._token);
 
     return this.httpClient.post<any>(
-      'http://localhost:8081/wellnet/public/signup',
+      'http://localhost:8099/wellnet/public/signup',
       tkn
     ) as Observable<any>;
   }

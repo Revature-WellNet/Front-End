@@ -7,7 +7,7 @@ import { DiagnosisForm } from '../models/diagnosis-form';
   providedIn: 'root'
 })
 export class DiagnosisFormService {
-  private backendUrl = 'http://localhost:8081/wellnet/diagnosis/'
+  private backendUrl = 'http://localhost:8097/wellnet/diagnosis/'
 
   constructor(private http: HttpClient) {}
 

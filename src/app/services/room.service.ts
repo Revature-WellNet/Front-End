@@ -8,7 +8,7 @@ import { Room } from '../models/rooms/room';
   providedIn: 'root'
 })
 export class RoomService {
-  private backendUrl = 'http://localhost:8081/wellnet/room/'
+  private backendUrl = 'http://localhost:8094/wellnet/room/'
 
   constructor(private http: HttpClient) { 
 
