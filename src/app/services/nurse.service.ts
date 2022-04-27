@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NurseService {
 
-  private patientApiServerUrl = environment.apiBaseUrl;
+  private patientApiServerUrl = "http://localhost:8095/patient";
   // APIURL = "http://localHost:8081//patient"
 
   constructor(private http: HttpClient, private router: Router, private location: LocationStrategy) { }
@@ -29,7 +29,7 @@ export class NurseService {
   */
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}`);
   }
 
   /* Method Name : getPatientsById

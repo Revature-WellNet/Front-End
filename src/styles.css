@@ -206,7 +206,7 @@ White:
     padding-left: 30px;
 
  }
-
+ 
  .searchInput:focus {
     box-shadow: 1.5px 4px 3px 4px #888888;
  }
@@ -373,6 +373,9 @@ td { text-align: left;}
    background: white url('/assets/img/regbg.jpg');
    background-size: cover;
    background-repeat: no-repeat;
+ }
+ .mat-card{
+    height: 100vh;
  }
  .links ul {
    list-style: none; /* Remove default bullets */

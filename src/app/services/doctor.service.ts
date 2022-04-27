@@ -16,7 +16,7 @@ const APIURL = environment.apiBaseUrl;
 export class DoctorService {
   [x: string]: any;
 
-  private patientApiServerUrl = environment.apiBaseUrl;
+  private patientApiServerUrl = "http://localhost:8095/";
 
   constructor (private http : HttpClient, private location: LocationStrategy, private router : Router) {}
 
@@ -27,7 +27,7 @@ export class DoctorService {
   getPatients(): Observable<Patient[]>{
     console.log("This will return patients");
 
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}/patient/`);
 
   }
 
