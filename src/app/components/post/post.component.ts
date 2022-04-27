@@ -19,6 +19,8 @@ export class PostComponent implements OnInit {
   @Input() post!: Userpost;
   @Input() size!: string;
   comments: Usercomment[] = [];
+  showComment: boolean = false;
+  @Input() commentBody!: string | null;
   @Input() newComment: boolean = false;
   editPost: boolean = false;
   editComment: boolean = false;
@@ -45,10 +47,6 @@ export class PostComponent implements OnInit {
     );
   }
 
-  ngOnChanges(): void {
-    this.getComments();
-  }
-
   getComments() {
     this.comments = [];
     this.postService.findCommentsByPost(this.post.pId).subscribe(
@@ -65,7 +63,7 @@ export class PostComponent implements OnInit {
                   created: i.created,
                   root: i.root
                 }
-                this.comments.unshift(com);
+                this.comments.push(com);
               }
             );
           }
@@ -111,6 +109,8 @@ export class PostComponent implements OnInit {
   }
 
   editMyComment(id: number, text: string) {
+    this.showComment = false;
+    this.size = '52vh';
     this.editComment = true;
     this.id = id;
     this.newBody = text;
@@ -129,6 +129,31 @@ export class PostComponent implements OnInit {
   back() {
     this.editComment = false;
     this.editPost = false;
+    this.size = '52vh';
+  }
+
+  addComment() {
+    this.size = '36vh';
+    this.showComment = true;
+    this.editComment = false;
+  }
+
+  submitComment() {
+    var comment: Comment = {
+      cId: 0,
+      body: this.commentBody,
+      created: new Date(),
+      authorId: this.user.id,
+      root: this.post
+    }
+
+    this.commentService.addComment(comment).subscribe(
+      () => {
+        this.getComments();
+      }
+    );
+    this.commentBody = null;
+    this.showComment = false;
     this.size = '52vh';
   }
 

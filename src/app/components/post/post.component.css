@@ -3,7 +3,14 @@
 }
 
 button {
+    height: 5vh;
     margin: 5px;
+}
+
+textarea {
+    height: 10vh !important;
+    margin-top: 17px;
+    margin-bottom: 5px;
 }
 
 p {

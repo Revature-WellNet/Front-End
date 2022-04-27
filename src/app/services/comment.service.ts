@@ -17,6 +17,10 @@ export class CommentService {
     return this.http.get<Comment[]>(this.url);
   }
 
+  findCommentsByPost(id: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.url + '/post/' + id);
+  }
+
   findCommentById(id: number): Observable<Comment> {
     return this.http.get<Comment>(this.url + '/' + id);
   }

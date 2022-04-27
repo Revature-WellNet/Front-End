@@ -40,14 +40,7 @@
                     <!-- INDIVIDUAL POST SECTION -->
                     <div class="post" *ngIf="showPost">
                         <button class="btn btn-outline-secondary" (click)="back()">Back to Forum</button>
-                        <button class="btn btn-outline-info" (click)="addComment()">Comment</button>
-                        <app-post [post]="post" [size]="postSize" [newComment]="newComment"></app-post>
-                        <!-- NEW POST COMMENT SECTION -->
-                        <div class="form-floating" *ngIf="showComment">
-                            <textarea class="form-control" id="floatingBody" placeholder="Add a comment" [(ngModel)]="commentBody" required></textarea>
-                            <label for="floatingBody">Add a Comment</label>
-                        </div>
-                        <button class="btn btn-outline-success" (click)="submitComment()" *ngIf="showComment" [disabled]="commentBody == null || commentBody == '' ">Submit</button>
+                        <app-post [post]="post" [size]="postSize" [commentBody]="commentBody"></app-post>
                     </div>
                 </div>
             </div>
