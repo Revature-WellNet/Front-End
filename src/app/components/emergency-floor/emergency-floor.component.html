@@ -1,0 +1,672 @@
+<div class="floor-header">
+  <h2>Emergency Floor
+  </h2>
+  </div>
+
+<div class="room-row room-row-1">
+  <!-- Room Div -->
+  <div class="hospital-room">
+    <!-- Container 101 -->
+    <div class = "101-container"> 
+  <div class="hospital-room-content">
+    <div class="room-number">301</div>
+
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+     
+      [cdkDropListData]="room301"
+      
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room301" cdkDrag>{{item.firstName}}</div>
+      </div>
+  </div>
+  </div>
+</div>
+<!-- Container Div -->
+</div>
+<!-- Room Div -->
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">302</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+     <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room302"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room302" cdkDrag>{{item.firstName}}</div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">303</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+    <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room303"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room303" cdkDrag>{{item.firstName}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">304</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+    <div class="list"
+    cdkDropList 
+
+    [cdkDropListData]="room304"
+
+    (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of room304" cdkDrag>{{item.firstName}}</div>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">305</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room305"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room305" cdkDrag>{{item.firstName}}</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">306</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room306"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room306" cdkDrag>{{item.firstName}}</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- end of the first row container -->
+
+<div class="middle-container">
+<div class="room-column room-column-1">
+  <div class="hospital-room-column hospital-room">
+    <div class="hospital-room-content">
+      <div class="room-number">307</div>
+      <div class="room-status room-status-available">
+        <div class="doc"
+        cdkDropList
+        [cdkDropListData]="emFloor"
+        (cdkDropListDropped)="drop($event)"
+        *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+      </div>
+      </div>
+      <div class="current-caregiver current-caregiver-unassigned">
+        <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+       </div>
+      <div class="current-patient current-patient-unassigned">
+        <div class="list"
+        cdkDropList 
+   
+        [cdkDropListData]="room307"
+
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of room307" cdkDrag>{{item.firstName}}</div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hospital-room-column hospital-room">
+    <div class="hospital-room-content">
+      <div class="room-number">308</div>
+      <div class="room-status room-status-available">
+        <div class="doc"
+        cdkDropList
+        [cdkDropListData]="emFloor"
+        (cdkDropListDropped)="drop($event)"
+        *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+      </div>
+      </div>
+      <div class="current-caregiver current-caregiver-unassigned">
+        <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+       </div>
+      <div class="current-patient current-patient-unassigned">
+        <div class="list"
+        cdkDropList 
+   
+        [cdkDropListData]="room308"
+
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of room308" cdkDrag>{{item.firstName}}</div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="restroom">Restroom</div>
+</div>
+<div class="room-column room-column-2">
+ 
+  <div class="hospital-room-column center-room">Nurse's Station
+  <div class="list"
+  cdkDropList
+  [cdkDropListData]="enurses"
+  (cdkDropListDropped)="drop($event)">
+  <div class="box" *ngFor="let item of enurses" cdkDrag>{{item.firstname}}</div>
+  </div>
+  </div>
+
+<div class="hospital-room-column center-room">Lab
+<div class="list"
+cdkDropList
+[cdkDropListData]="edoctors"
+(cdkDropListDropped)="drop($event)"
+*ngFor="let item of edoctors">
+<div class="box" *ngIf="item.spec === em" cdkDrag>
+{{item.firstname}}
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="room-column room-column-3">
+  
+  
+  <div class="room-row-special">
+    
+    
+    <div class="hospital-room-column hospital-room">
+      
+      <!-- finally gets to the actual room div here -->
+      <div class="hospital-room-content">
+        <div class="room-number">309</div>
+        <div class="room-status room-status-available">
+          <div class="doc"
+          cdkDropList
+          [cdkDropListData]="emFloor"
+          (cdkDropListDropped)="drop($event)"
+          *ngFor="let item of emFloor">
+          <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+        </div>
+        </div>
+        <div class="current-caregiver current-caregiver-unassigned">
+          <div class="doc"
+          cdkDropList 
+          [cdkDropListData]="emFloor"
+          (cdkDropListDropped)="drop($event)"
+          *ngFor="let item of emFloor">
+            <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+         </div>
+         </div>
+        <div class="current-patient current-patient-unassigned">
+          <div class="list"
+          cdkDropList 
+     
+          [cdkDropListData]="room309"
+  
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of room309" cdkDrag>{{item.firstName}}</div>
+        </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hospital-room-column hospital-room check-in-station">
+      Check-In Station
+      <div class="button"
+cdkDropList 
+     
+[cdkDropListData]="emFloor"
+
+(cdkDropListDropped)="drop($event)">
+</div>
+    </div>
+  </div>
+  <div class="room-row-special">
+    <div class="hospital-room-column hospital-room">
+      
+      
+      <div class="hospital-room-content">
+        <div class="room-number">310</div>
+        <div class="room-status room-status-available">
+          <div class="doc"
+          cdkDropList
+          [cdkDropListData]="emFloor"
+          (cdkDropListDropped)="drop($event)"
+          *ngFor="let item of emFloor">
+          <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+        </div>
+        </div>
+        <div class="current-caregiver current-caregiver-unassigned">
+          <div class="doc"
+          cdkDropList 
+          [cdkDropListData]="emFloor"
+          (cdkDropListDropped)="drop($event)"
+          *ngFor="let item of emFloor">
+            <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+         </div>
+         </div>
+        <div class="current-patient current-patient-unassigned">
+          <div class="list"
+          cdkDropList 
+     
+          [cdkDropListData]="room310"
+  
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of room310" cdkDrag>{{item.firstName}}</div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="hospital-room-column hospital-room">
+      <div class="hospital-room-content">
+        <div class="room-number">311</div>
+        <div class="room-status room-status-available">
+          <div class="doc"
+          cdkDropList
+          [cdkDropListData]="emFloor"
+          (cdkDropListDropped)="drop($event)"
+          *ngFor="let item of emFloor">
+          <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+        </div>
+        </div>
+        <div class="current-caregiver current-caregiver-unassigned">
+          <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+         </div>
+        <div class="current-patient current-patient-unassigned">
+          <div class="list"
+          cdkDropList 
+     
+          [cdkDropListData]="room311"
+  
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of room311" cdkDrag>{{item.firstName}}</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  
+  <!-- room row div -->
+  </div>
+
+<!-- room column div -->
+</div>
+
+<!-- middle container div -->
+</div>
+
+
+<div class="room-row room-row-2">
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">312</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room312"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room312" cdkDrag>{{item.firstName}}</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">313</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room313"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room313" cdkDrag>{{item.firstName}}</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">314</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room314"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room314" cdkDrag>{{item.firstName}}</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">315</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room315"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room315" cdkDrag>{{item.firstName}}</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">316</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient current-patient-unassigned">
+    <div class="list"
+    cdkDropList 
+
+    [cdkDropListData]="room316"
+
+    (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of room316" cdkDrag>{{item.firstName}}</div>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="hospital-room">
+  <div class="hospital-room-content">
+    <div class="room-number">317</div>
+    <div class="room-status room-status-available">
+      <div class="doc"
+      cdkDropList
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+      <div *ngIf="item.role === roleNurse" cdkDrag>{{item.firstname}}</div>
+    </div>
+    </div>
+    <div class="current-caregiver current-caregiver-unassigned">
+      <div class="doc"
+      cdkDropList 
+      [cdkDropListData]="emFloor"
+      (cdkDropListDropped)="drop($event)"
+      *ngFor="let item of emFloor">
+        <div *ngIf="item.role === roleDoc" cdkDrag>{{item.firstname}}</div>
+     </div>
+     </div>
+    <div class="current-patient c2urrent-patient-unassigned">
+      <div class="list"
+      cdkDropList 
+ 
+      [cdkDropListData]="room317"
+
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of room317" cdkDrag>{{item.firstName}}</div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>

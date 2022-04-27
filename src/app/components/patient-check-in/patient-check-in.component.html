@@ -1,0 +1,146 @@
+<div class="container-full">
+    <div class="container-fluid h100">
+        <div class="row h100">
+            <div class="col-md-2 p-3 bg-light sidebar">
+                <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+            </div>
+            <div class="col-md-10 align-self-center">
+                <div class="mainbox">
+                    <div class="row">
+                        <div class="col-md-12 p-5">
+                            <div class="mb-5">
+                                <img src="/assets/img/WellNetLogo.jpg" alt="">
+                            </div>
+                            <h4 class="mb-4">New patient</h4>
+       
+        <form
+        
+        #formDemo= "ngForm"
+        class= "form-check-in "
+        (ngSubmit)= "onSubmit(firstName, lastName, dob, feet, inches, weight, bloodtype, sex, allergies, vaccinations)">  
+
+        <div style="width: 50%;">
+            <p style="text-align: right;"><span class = "asterix" >*</span> marks required fields.</p>
+            <span class = "asterix">*</span><label for= "firstName">First Name:</label>
+            <input
+                type= "text"
+                class= "form-control"
+                name= "firstName"
+                id= "firstName"
+                maxlength="50"
+                [(ngModel)] = "firstName"
+                required
+            />
+            <br>
+            <span class = "asterix">*</span><label for= "lastName">Last Name:</label>
+                <input
+                    type= "text"
+                    class= "form-control"
+                    name= "lastName"
+                    id= "lastName"
+                    maxlength="50"
+                    [(ngModel)] = "lastName"
+                    required
+                />
+            <br>
+                <span class = "asterix">*</span><label for= "dob">Date of Birth:</label>
+                <input
+                    type= "date"
+                    class= "form-control"
+                    name= "dob"
+                    id= "dob"
+                    [(ngModel)] = "dob"
+                    required
+                />
+            <br>
+            <span class = "asterix">*</span><p>Height: </p>
+                <label for= "feet">feet:</label>
+                <input
+                    type= "number"
+                    min = ".5"
+                    class= "form-control"
+                    name= "feet"
+                    id= "feet"
+                    min="0"
+                    max="10"
+                    [(ngModel)] = "feet"
+                />
+                <span class = "asterix">*</span><label for= "inches">inches:</label>
+                <input
+                    type= "number"
+                    min = "0"
+                    class= "form-control"
+                    name= "inches"
+                    id= "inches"
+                    min="0"
+                    max="120"
+                    [(ngModel)] = "inches"
+                />
+            <br>
+            <span class = "asterix">*</span><label for= "weight">Weight (lbs.):</label>
+                <input
+                    type= "number"
+                    min = "0"
+                    max="2000"
+                    class= "form-control"
+                    name= "weight"
+                    id= "weight"
+                    [(ngModel)] = "weight"
+                />
+                <span></span>
+            <br>
+            <span class = "asterix">*</span><label for="bloodtype">Bloodtype:</label>
+                <select id="bloodtype" name="bloodtype" class= "form-control" [(ngModel)] = "bloodtype">
+                    <option value=""></option>
+                    <option value="O-">O-</option>
+                    <option value="O+">O+</option>
+                    <option value="B-">B-</option>
+                    <option value="B+">B+</option>
+                    <option value="A-">A-</option>
+                    <option value="A+">A+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="AB+">AB+</option>
+                </select>
+            <br>
+            <span class = "asterix">*</span><label for="sex">Sex:</label>
+                <select id="sex" name="sex" class= "form-control" [(ngModel)] = "sex">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="NB">Other</option>
+                </select>
+            <br>
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">
+                    <u><h5> Allergies: </h5></u>
+                    <div id = "allergyanchor"></div>
+                </li>
+                <li class="list-group-item">
+                    <u><h5> Vaccinations:</h5></u>
+                    <div id = "vaccinationanchor"></div>
+                </li>
+            </ul>
+            <br>
+            <div class="row">
+                <div class="col-4">
+                    <button type= "submit" class= "btn btn-outline-success mt-3">Add Patient</button>
+                </div>
+                <div class="col-8">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert" [hidden]="hiddenmsg">
+                        <strong>Patient created successfully</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        
+    </form>
+</div>                
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

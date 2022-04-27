@@ -1,0 +1,83 @@
+
+
+<div class="container-full">
+  <div class="container-fluid h100">
+      <div class="row h100">
+          <div class="col-md-2 p-3 bg-light sidebar">
+              <app-side-bar class="d-flex flex-column flex-shrink-0 h100"></app-side-bar>
+          </div>
+          <div class="col-md-10 align-self-center">
+              <div class="mainbox">
+                  <div class="row">
+                      <div class="col-md-12 p-5">
+                          <div class="mb-5">
+                              <img src="/assets/img/WellNetLogo.jpg" alt="">
+                          </div>
+        
+      
+        <h4 class="mb-4">Edit Information</h4>
+            <div class="form-group col-4 mb-3">
+                <label for="firstName">First name: </label>
+                <input type="text" class="form-control" #firstname id="firstName" maxlength="20"
+                 name="firstName" placeholder="Change your first name">
+
+            </div>
+            <div class="form-group mb-4 col-4">
+                <label for="lastName">Last name: </label>
+                <input type="text" class="form-control" #lastname id="lastName" maxlength="20"
+                  name="lastName" placeholder="Change your last name" >
+            </div>
+
+            <div>
+                <label for="specialization">Select Specialization:</label>
+                <select name="specialization" #specialization id="specialization">
+                  <option value="" disabled selected>Select your specialization</option>
+                  <option value="general_practicioner">General Practitioner</option>
+                  <option value="primary_care">Primary Care</option>
+                  <option value="pediatrician">Pediatrician</option>
+                  <option value="radiologist">Radiologist</option>
+                  <option value="general_surgeon">General Surgeon</option>
+                  
+                  </select>
+
+            </div>
+
+            <!-- <div id="RoleRadios">
+                <p id="roleTitle">
+                  Hospital Role
+                </p>
+                <input type = "radio" id="role1"
+                  #role
+                  name="role" value="nurse"
+                  >
+                <label for="role1">
+                  Nurse
+                </label>
+          
+                <input type = "radio" id="role2"
+                  #role
+                  name="role" value="doctor"
+                  >
+                <label for="RegistrationRole2">
+                  Doctor
+                </label>
+              </div> -->
+
+
+            <!-- <div class="form-group">
+                <label for="lastName">Email</label>
+                <input type="text" class="form-control" #email  id="email" maxlength="200"
+                  name="email" placeholder="Change your email">
+            </div> -->
+
+  
+
+    <button text="Submit" class="btn btn-outline-success"
+        (click)="submit(firstname.value, lastname.value, specialization.value)">Submit</button>
+
+      </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

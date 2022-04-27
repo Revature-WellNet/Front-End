@@ -1,0 +1,190 @@
+/*
+Green:
+#194140
+#239507
+#8ec342
+#bbd999
+Blue:
+#566675
+#7f969c
+#a1aeba
+#b9c9d2
+White: 
+#f5f9f6
+*/
+
+#Green2 {
+    background-color: #239507;
+ }
+ #Green3 {
+    background-color: #8ec342;
+ }
+ #Green4 {
+     background-color: #bbd999;
+ }
+ #Blue1 {
+    background-color: #566675;
+ }
+ #Blue2 {
+    background-color: #7f969c;
+ }
+ #Blue3 {
+    background-color: #a1aeba;
+ }
+ #Blue4 {
+    background-color: #b9c9d2;
+ }
+
+ #White {
+    background-color: #f5f9f6;
+ }
+
+ .Button1 {
+     background-color: #566675;
+     border: none;
+     padding: 30px;
+     color: white;
+     font-size: 20px;
+ }
+
+ .Button2 {
+     background-color: #239507;
+     border: none;
+     padding: 9px;
+     border-radius: 8px;
+     color: white;
+     font-size: 16px;
+     margin: 18px;
+     transition-duration: 0.5s;
+
+   
+    }
+ 
+ .Button2:hover {
+    background-color: white;
+    border: 2px solid #239507;
+    color: #239507;
+    box-shadow: 3px 8px 6px 8px #888888;
+  
+     
+ }
+
+ .Button3 {
+    background-color: white;
+    border: 2px solid #239507;
+    padding: 9px;
+    border-radius: 8px;
+    color: #239507;
+    font-size: 16px;
+    margin: 18px;
+    transition-duration: 0.5s;
+       }
+ 
+ .Button3:hover {
+    background-color: #239507;
+    border: 2px solid White;
+    color: White;
+    box-shadow: 3px 8px 6px 8px #888888;
+ }
+
+ #dot {
+        height: 25px;
+        width: 25px;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+        align-items: center;
+      }
+
+ .MenuButton{
+     font-size: 16px;
+     background-color: white;
+ }
+
+ .font1 {
+    font-family: Verdana,Geneva,sans-serif;
+ }
+
+ .font2 {
+     font-family: Lora, sans-serif;
+ }
+
+ .font3 {
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+ }
+
+ .font4 {
+     font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+ }
+
+ .font5 {
+    font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+ }
+
+ .font6 {
+    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+ }
+
+ .box {
+     border: 2px solid #566675;
+     border-radius: 25px;
+     text-align: center;
+     margin: 20px;
+     color: Black;
+     
+ }
+
+ .input {
+     border: 2px solid #566675;
+     border-radius: 8px;
+     margin: 8px;
+     outline: none;
+     transition-duration: 0.5s;
+     padding-left:10px;
+ }
+
+ .input:focus {
+    box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .searchInput {
+    border: 2px solid #566675;
+    border-radius: 8px;
+    margin: 8px;
+    outline: none;
+    transition-duration: 0.5s;
+    background-image: url('src/assets/img/Search.png');
+    background-position: 8px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+  
+ }
+
+ .searchInput:focus {
+    box-shadow: 1.5px 4px 3px 4px #888888;
+ }
+
+ .navbarItem {
+     
+    background: rgba(0,0,0,0);
+    padding: 9px;
+    font-size: 16px;
+    margin: 18px;
+    white-space: nowrap;
+ }
+
+ .navbarItem:hover #dot{
+    box-shadow: 1.5px 4px 3px 4px #888888;
+    text-decoration: underline;
+    transition-duration: 0.5s;
+ }
+
+ .navbarItem:hover {
+    text-decoration: underline;
+    transition-duration: 0.5s;
+ }
+
+
+ 
+ 
+
