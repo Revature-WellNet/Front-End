@@ -16,7 +16,6 @@ export class ForumPostComponent implements OnInit {
   user!: User;
   posts: Userpost[] = [];
   post!: Userpost;
-  newComment: boolean = false;
   showPost: boolean = false;
   showComment: boolean = false;
   showNewPost: boolean = false;
@@ -59,7 +58,7 @@ export class ForumPostComponent implements OnInit {
                   authorId: i.authorId,
                   author: u
                 }
-                this.posts.unshift(userpost);
+                this.posts.push(userpost);
               }
             );
           }
@@ -83,31 +82,6 @@ export class ForumPostComponent implements OnInit {
     this.postBody = null;
     this.postTitle = null;
     this.commentBody = null;
-  }
-
-  addComment() {
-    this.postSize = '36vh';
-    this.showComment = true;
-  }
-
-  submitComment() {
-    var comment: Comment = {
-      cId: 0,
-      body: this.commentBody,
-      created: new Date(),
-      authorId: this.user.id,
-      root: this.post
-    }
-
-    this.commentService.addComment(comment).subscribe(
-      () => {
-        this.newComment = true;
-      }
-    );
-    this.newComment = false;
-    this.commentBody = null;
-    this.showComment = false;
-    this.postSize = '52vh';
   }
 
   addPost() {
