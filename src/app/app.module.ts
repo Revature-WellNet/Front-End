@@ -29,6 +29,9 @@ import { TraumaFloorComponent } from './components/trauma-floor/trauma-floor.com
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//imported
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
 
 import { Covid19VerificationComponent } from './covid19-verification/covid19-verification.component';
 import { LockoutComponent } from './lockout/lockout.component';
@@ -40,9 +43,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FloorsComponent } from './components/floors/floors.component';
-import { ForumPostComponent } from './components/forum-post/forum-post.component';
-import { PostComponent } from './components/post/post.component';
-import { ReversePipe } from './models/reverse.pipe';
+
 
 
 @NgModule({
@@ -70,10 +71,8 @@ import { ReversePipe } from './models/reverse.pipe';
     MainFloorComponent,
     PtFloorComponent,
     TraumaFloorComponent,
-    FloorsComponent,
-    ForumPostComponent,
-    PostComponent,
-    ReversePipe
+    FloorsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -87,7 +86,9 @@ import { ReversePipe } from './models/reverse.pipe';
     AngularFireModule.initializeApp(environment.firebase),
     UserAuthModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatSlideToggleModule,
+    MatCardModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

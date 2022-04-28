@@ -3,7 +3,7 @@ import { Specialization } from "./specialization";
 
 export class User {
 
-    public id : string;
+    public id : string | null;
     public firstname : string;
     public lastname : string;
     public email : string;

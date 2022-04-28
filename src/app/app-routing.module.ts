@@ -17,7 +17,6 @@ import { AuthGuardGuard } from './user-auth/services/auth-guard.guard';
 import { StaticStyleTesterComponent } from './static-style-tester/static-style-tester.component';
 import { AddAllergiesVaccinesComponent } from './components/add-allergies-vaccines/add-allergies-vaccines.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
-import { ForumPostComponent } from './components/forum-post/forum-post.component';
 
 import { MainFloorComponent } from './components/main-floor/main-floor.component';
 import { EmergencyFloorComponent } from './components/emergency-floor/emergency-floor.component';
@@ -47,7 +46,7 @@ export const routes: Routes = [
   {path: 'trauma', component: TraumaFloorComponent},
   {path: 'physical', component: PtFloorComponent},
   {path: 'floors', component: FloorsComponent}
-  {path: 'forum', component: ForumPostComponent}
+
 ];
 
 @NgModule({

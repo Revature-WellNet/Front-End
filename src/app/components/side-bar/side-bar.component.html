@@ -1,74 +1,55 @@
 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-  <span class="fs-4">
-    <i class="bi bi-brightness-alt-high"></i>
-    Welcome {{role}}
-  </span>
-</a>
-<hr>
+
+        <span class="fs-4"><i class="bi bi-brightness-alt-high"></i> Welcome {{role}}</span>
+      </a>
+      <hr>
 <ul class="nav nav-pills flex-column mb-auto">
-  <li class="nav-item">
-    <a [routerLink]="['/nurse']" class="nav-link link-dark" aria-current="page">
-      <i class="bi bi-house"></i>
-      Home
-    </a>
+<li class="nav-item">
+<a [routerLink]="['/nurse']" class="nav-link link-dark" aria-current="page">
+<i class="bi bi-house"></i>
+Home
+</a>
+</li>
+<li class="nav-item">
+<a [routerLink]="['/profile']" class="nav-link link-dark">
+<i class="bi bi-person"></i>
+Profile
+</a>
+</li>
+<li class="nav-item">
+  <a [routerLink]="['/patientcheckin']" class="nav-link link-dark">
+    <i class="bi bi-person-plus"></i>
+  Add patient
+  </a>
   </li>
-
-  <li class="nav-item">
-    <a routerLink="/forum" class="nav-link link-dark" aria-current="page">
-      <i class="bi bi-chat-right-text"></i>
-      Employee Forum
-    </a>
-  </li>
-
-  <li class="nav-item">
-    <a [routerLink]="['/profile']" class="nav-link link-dark">
-      <i class="bi bi-person"></i>
-      Profile
-    </a>
-  </li>
-
-  <li class="nav-item">
-    <a [routerLink]="['/patientcheckin']" class="nav-link link-dark">
-      <i class="bi bi-person-plus"></i>
-      Add patient
-    </a>
-  </li>
-
   <li class="nav-item">
     <a [routerLink]="['/addAllergiesVaccines']" class="nav-link link-dark">
       <i class="bi bi-clipboard-plus"></i>
-      Add patient options
+    Add patient options
     </a>
-  </li>
-
-  <!-- <li class="nav-item">
-    <a [routerLink]="['/rooms']" class="nav-link link-dark">
-      <i class="bi bi-door-open"></i>
+    </li>
+    <!-- <li class="nav-item">
+      <a [routerLink]="['/rooms']" class="nav-link link-dark">
+        <i class="bi bi-door-open"></i>
       Assign patient to room
-    </a>
-  </li> -->
-
-  <!-- <li class="nav-item">
-    <a href="#" class="nav-link link-dark">
-      <i class="bi bi-shield-lock"></i>
-      Change password
-    </a>
-  </li> -->
-
-  <li class="nav-item">
-    <a class="nav-link link-dark" (click)="logout()">
-      <i class="bi bi-box-arrow-in-left"></i>
-      Logout 
-    </a>
-  </li>
+      </a>
+      </li> -->
+<!-- <li class="nav-item">
+<a href="#" class="nav-link link-dark">
+<i class="bi bi-shield-lock"></i>
+Change password
+</a>
+</li> -->
+<li class="nav-item">
+<a class="nav-link link-dark" (click)="logout()">
+<i class="bi bi-box-arrow-in-left"></i>
+Logout 
+</a>
+</li>
 </ul>
 <div class="dropdown">
-  <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="fs-4">
-      <i class="bi bi-box-arrow-in-right me-2"></i>
-    </span> 
-    <strong>
-      {{email}}
-    </strong>
-  </a>
+<a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+<span class="fs-4"><i class="bi bi-box-arrow-in-right me-2"></i></span> 
+<strong>{{email}}</strong>
+</a>
 </div>
