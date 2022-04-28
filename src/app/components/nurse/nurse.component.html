@@ -88,22 +88,38 @@
                   <!-- <td>{{patient.dob}}</td> -->
                   <td>
                       <ul>
-                          <li  *ngFor = "let allergy of patient.patientAllergies">
+                          <div *ngIf= "patient.patientAllergies !== null">
+                          <li *ngFor = "let allergy of patient.patientAllergies">
                               {{allergy.allergy}}
                           </li>
+                        </div>
+                          <div *ngIf= "patient.patientAllergies === null">
+                              <li>
+                                  n/a
+                            </li>
+                        </div>
                       </ul>
                   </td>
                   <td class="tdc">{{patient.height}}</td>
                   <td class="tdc">{{patient.weight}}</td>
                   <td>
                       <ul>
+                        <div *ngIf= "patient.patientVaccinations !== null">
                           <li  *ngFor = "let vax of patient.patientVaccinations">
                               {{vax.vaccination}}
                           </li>
+                          </div>
+                          <div *ngIf= "patient.patientVaccinations === null">
+                            <li>
+                               n/a 
+                            </li>
+                            </div>
                       </ul>
                       <!-- {{patient.vaccinations[0].vaccination}} -->
                   </td>
+                  <div *ngIf="patient.bloodType.type != null"> 
                   <td class="tdc">{{patient.bloodType.type}}</td>
+                </div>
                   <td class="tdc">{{patient.sex.sex}}</td>
                   <td>{{patient.doctor}}</td>
               </tr>

@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ButtonComponent } from './components/button/button.component';

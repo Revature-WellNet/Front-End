@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-nurse',
   templateUrl: './nurse.component.html',
-  styleUrls: ['./nurse.component.css']
+  styleUrls: ['./nurse.component.css'],
 })
 export class NurseComponent implements OnInit {
 

@@ -76,7 +76,9 @@ export class PatientService {
 
       }
   }
-
+  getPatientById(id : string | null): Observable<Patient>{
+    return this.http.get<Patient>(this.backendUrl + '/' + id);
+  }
  deleteVaccine(oldVaccines :string[]){
 
     for(let i of oldVaccines){

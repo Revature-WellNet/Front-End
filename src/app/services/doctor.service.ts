@@ -16,7 +16,7 @@ const APIURL = environment.apiBaseUrl;
 export class DoctorService {
   [x: string]: any;
 
-  private patientApiServerUrl = "http://localhost:8095/";
+  private patientApiServerUrl = "http://localhost:8095";
 
   constructor (private http : HttpClient, private location: LocationStrategy, private router : Router) {}
 
@@ -40,13 +40,13 @@ export class DoctorService {
 
 
 
-   // getPatientById(id){
+  //  getPatientById(id){
   //   this.http.get(APIURL + "* not this: select patient where id = ?");
   // }
 
   // VV Likely Not In Use
   getPatientsByDocId(){
-    this.http.get(APIURL +"patient/doctor")
+    this.http.get(APIURL +"/patient/doctor")
   }
 
   // VV Might Not Be In Use
@@ -54,7 +54,7 @@ export class DoctorService {
 
     console.log("Sending String : " + inputString);
 
-    return this.http.get<Patient[]>(APIURL + "user/patient/doctor/" + inputString);
+    return this.http.get<Patient[]>(APIURL + "/user/patient/doctor/" + inputString);
 
   }
 
@@ -63,7 +63,7 @@ export class DoctorService {
 
     console.log("Getting Patients Of Doctor : " + doctorFirstName + "  " + doctorLastName);
     if(doctorFirstName && doctorLastName){
-    return this.http.get<Patient[]>(APIURL + "user/doctorPatientMap/" + doctorFirstName + "/" + doctorLastName);
+    return this.http.get<Patient[]>(APIURL + "/user/doctorPatientMap/" + doctorFirstName + "/" + doctorLastName);
     } else {
       let  returner: Observable<Patient[]> = new Observable<Patient[]>();
       return returner;

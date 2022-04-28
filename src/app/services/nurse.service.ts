@@ -42,7 +42,7 @@ export class NurseService {
   */
   getPatientById(patientId:number): Observable<Patient>{
     console.log("This will return patients");
-    return this.http.get<Patient>(`${this.patientApiServerUrl}patient/${patientId}`);
+    return this.http.get<Patient>(`${this.patientApiServerUrl}/${patientId}`);
   }
 
   /* Method Name : getPatientByFirstName
@@ -57,7 +57,7 @@ export class NurseService {
   getPatientByFirstName(firstName: string) :Observable<Patient[]>{
     console.log("in function");
     console.log(firstName);
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/firstname/${firstName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}/firstname/${firstName}`);
   }
 
   /* Method Name : getPatientByFullName
@@ -71,7 +71,7 @@ export class NurseService {
       by the doctor.component.ts searchPatByFullName method
   */
   getPatientByFullName(firstName: string, lastName: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/fullname/${firstName}/${lastName}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}/fullname/${firstName}/${lastName}`);
   }
 
   /* Method Name : getPatientByNameDOB
@@ -87,7 +87,7 @@ export class NurseService {
       by the doctor.component.ts searchPatNameDate method
   */
   getPatientByNameDOB(firstName: string, lastName: string, dob: string): Observable<Patient[]>{
-    return this.http.get<Patient[]>(`${this.patientApiServerUrl}patient/fullnamedob/${firstName}/${lastName}/${dob}`);
+    return this.http.get<Patient[]>(`${this.patientApiServerUrl}/fullnamedob/${firstName}/${lastName}/${dob}`);
   }
 
   /* Method name : addPatients

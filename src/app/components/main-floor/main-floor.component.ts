@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Patient } from '../../models/patient';
 import { PatientService } from '../../services/patient.service';
@@ -12,7 +12,10 @@ import { Allergy } from '../../models/allergy';
 import { Vaccination } from '../../models/vaccination';
 import { Bloodtype } from '../../models/bloodtype';
 import { Specialization } from '../../models/specialization';
-
+import { Room } from '../../models/rooms/room';
+import { Area } from '../../models/rooms/area';
+import {RoomService} from '../../services/room.service'
+import { sys } from 'typescript';
 @Component({
   selector: 'main-floor',
   templateUrl: 'main-floor.component.html',
@@ -166,7 +169,7 @@ export class MainFloorComponent{
   
   }
 
-  constructor(public patientService: PatientService, public userService: UserService) {
+  constructor(public patientService: PatientService, public userService: UserService, public roomService: RoomService) {
   }
 
 
@@ -252,8 +255,12 @@ export class MainFloorComponent{
 
   drop(event: CdkDragDrop<any []>) {
 
-
-    console.log(this.patientService.patient); 
+    console.log(event.container)
+    //let p: Patient = JSON.parse(event.container.data[0])
+    //console.log(p);
+    this.wasPlaced = true;
+    let room = new Room(1, 1, new Area(1, "Main Floor"), 1, ["Bob"], true);
+    this.roomService.putUpdateRoom(room, 1);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

@@ -44,7 +44,7 @@ export class RoomService {
 putUpdateRoom(room: Room, id: number){
 
 
-    return this.http.put<Room[]>(`http://localhost:8094/wellnet/update/${id}`, room);
+    return this.http.put<Room[]>(`${this.backendUrl}update/${id}`, room);
 
 
 }
