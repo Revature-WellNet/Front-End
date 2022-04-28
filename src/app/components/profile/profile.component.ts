@@ -14,10 +14,28 @@ import { FirebaseService } from 'src/app/user-auth/services/firebase.service';
 export class ProfileComponent implements OnInit {
 
 
+  isDoctor: boolean = false;
   constructor(private userService : UserService, private router : Router, private firebaseService : FirebaseService) { }
 
 
   ngOnInit(): void {
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    let myRole = "";
+    this.userService.getUser(userData.id).subscribe((user : User) => {
+      console.log(user)
+      myRole=user.role.role;
+      console.log(myRole);
+      if(myRole=== "doctor")
+      {
+        this.isDoctor = true;
+      }
+      else{
+        this.isDoctor = false;
+      }
+    }
+    )
+    console.log(myRole)
+
     if(this.firebaseService.autoSignIn())
       this.generateProfile();
     else
@@ -66,6 +84,7 @@ export class ProfileComponent implements OnInit {
 
 
           if(response.role.role.toLowerCase() === "doctor"){
+            this.isDoctor= true;
             this.router.navigate(["/doctor"]);
           }else{
             this.router.navigate(["/nurse"]);

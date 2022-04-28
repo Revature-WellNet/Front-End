@@ -20,11 +20,29 @@ export class ProfileEditComponent implements OnInit {
   @Input() email!: string;
   @Input() specialization!: string;
  
-
+  
   constructor(private userService : UserService, private emailValidator : EmailValidationService, private router : Router, private firebaseService : FirebaseService) { }
 
-
+  isDoctor: boolean = false;
   ngOnInit(): void {
+
+    const userData = JSON.parse(localStorage.getItem('userinfo') || '{}');
+    let myRole = "";
+    this.userService.getUser(userData.id).subscribe((user : User) => {
+      console.log(user)
+      myRole=user.role.role;
+      console.log(myRole)
+      console.log(myRole)
+      if(myRole === "doctor")
+      {
+        this.isDoctor = true;
+      }
+      else{
+        this.isDoctor = false;
+      }
+      console.log(this.isDoctor);
+    }
+    )
 
     console.log("First Name : " + this.firstName);
     if(!this.firebaseService.autoSignIn())
@@ -111,16 +129,7 @@ export class ProfileEditComponent implements OnInit {
     }).catch((error) => {
       alert(error);
     });
-
-    
     })
-
-        
-
-        
-
-
-
   }
 
 
