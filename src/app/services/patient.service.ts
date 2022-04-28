@@ -95,7 +95,7 @@ export class PatientService {
   diagnosePatient(patient: Patient) {
     this.patient = patient;
 
-    this.router.navigate(["rooms"]);
+    this.router.navigate(["floors"]);
   }
 
  /* Not enough time to implement and not an MVP user story

@@ -42,6 +42,8 @@ export class DiagnosisComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.patientService.patient)
+    console.log(this.patient)
     let data = JSON.parse(localStorage.getItem('userinfo') || '{}');
     this.userService.getUser(data.id).subscribe(
       (response:User) => {

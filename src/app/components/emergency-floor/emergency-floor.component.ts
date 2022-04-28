@@ -99,7 +99,7 @@ export class EmergencyFloorComponent implements OnInit {
 
   room317: any[] = [];
 
-  roleDoc: Role = { roleId: 0, role: 'doctor'};
+  roleDoc: Role = { roleId: 2, role: 'doctor'};
   roleNurse: Role = { roleId: 1, role: 'nurse'};
 
   em: Specialization = Specialization.General_Surgeon;

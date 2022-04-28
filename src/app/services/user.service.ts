@@ -13,7 +13,7 @@ export class UserService {
 
   // Get all
   getAll() {
-    return this.http.get<User[]>(this.BASE_URL);
+    return this.http.get<User[]>(this.BASE_URL + 'user');
   }
 
   getUser(id : string){

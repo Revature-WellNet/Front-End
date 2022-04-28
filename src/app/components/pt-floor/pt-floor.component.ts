@@ -99,7 +99,7 @@ export class PtFloorComponent implements OnInit {
 
   room417: any[] = [];
 
-  roleDoc: Role = { roleId: 0, role: 'doctor'};
+  roleDoc: Role = { roleId: 2, role: 'doctor'};
   roleNurse: Role = { roleId: 1, role: 'nurse'};
 
   sex: Sex = {sexId: 0, sex: 'male'};

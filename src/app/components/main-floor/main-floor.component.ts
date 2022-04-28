@@ -20,6 +20,7 @@ import { Specialization } from '../../models/specialization';
 })
 export class MainFloorComponent{
   title = 'rooms';
+  wasPlaced = false;
   @HostListener('click')
   bringToFront() {
     var main = document.getElementById('main');
@@ -203,7 +204,7 @@ export class MainFloorComponent{
 
   room17: any[] = [];
 
-  roleDoc: Role = { roleId: 0, role: 'doctor'};
+  roleDoc: Role = { roleId: 2, role: 'doctor'};
   roleNurse: Role = { roleId: 1, role: 'nurse'};
 
   sex: Sex = {sexId: 0, sex: 'male'};
@@ -211,18 +212,18 @@ export class MainFloorComponent{
   
   pc: Specialization = Specialization.Primary_Care;
 
-  // Dummy data 
-  doc: User = {id: '0', firstname: 'test', lastname: 'test', email: 'test', role: this.roleDoc, specialization: Specialization.Primary_Care};
-  doc1: User = {id: '1', firstname: 'test', lastname: 'test', email: 'test', role: this.roleDoc, specialization: Specialization.General_Practicioner};
-  doc2: User = {id: '2', firstname: 'second test', lastname: 'test', email: 'test', role: this.roleDoc, specialization: Specialization.General_Surgeon};
-  nurse: User = {id: '1', firstname: 'nurse', lastname: 'test', email: 'test', role: this.roleNurse, specialization : Specialization.General_Practicioner};
-  nurse2: User = {id: '2', firstname: 'sexy nurse', lastname: 'test', email: 'test', role: this.roleNurse, specialization: Specialization.Pediatrician};
-  patient1: Patient = {
-    patientId: 0, firstName: 'TestPatient', lastName: 'TestPatient', dob: new Date(), height: 60, weight: 100, bloodType: this.blood, sex: this.sex,
-    fullName: function (): string {
-      throw new Error('Function not implemented.');
-    }
-  }
+  // // Dummy data 
+  // doc: User = {id: '0', firstname: 'test', lastname: 'test', email: 'test', role: this.roleDoc, specialization: Specialization.Primary_Care};
+  // doc1: User = {id: '1', firstname: 'test', lastname: 'test', email: 'test', role: this.roleDoc, specialization: Specialization.General_Practicioner};
+  // doc2: User = {id: '2', firstname: 'second test', lastname: 'test', email: 'test', role: this.roleDoc, specialization: Specialization.General_Surgeon};
+  // nurse: User = {id: '1', firstname: 'nurse', lastname: 'test', email: 'test', role: this.roleNurse, specialization : Specialization.General_Practicioner};
+  // nurse2: User = {id: '2', firstname: 'sexy nurse', lastname: 'test', email: 'test', role: this.roleNurse, specialization: Specialization.Pediatrician};
+  // patient1: Patient = {
+  //   patientId: 0, firstName: 'TestPatient', lastName: 'TestPatient', dob: new Date(), height: 60, weight: 100, bloodType: this.blood, sex: this.sex,
+  //   fullName: function (): string {
+  //     throw new Error('Function not implemented.');
+  //   }
+  // }
   // End of Dummy data
 
   // Used to populate the rooms with nurses and doctors
@@ -231,25 +232,28 @@ export class MainFloorComponent{
   // Holds dummy data, comment out inside 
   doctors: any[] = [
 
-    this.doc,
-    this.doc2
+    // this.doc,
+    // this.doc2
   
   ];
 
   nurses: any[] = [
 
-    this.nurse,
-    this.nurse2
+    // this.nurse,
+    // this.nurse2
 
   ];
 
   patients: any[] = [
 
-    this.patient1
+    // this.patient1
 
   ];
 
   drop(event: CdkDragDrop<any []>) {
+
+
+    console.log(this.patientService.patient); 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

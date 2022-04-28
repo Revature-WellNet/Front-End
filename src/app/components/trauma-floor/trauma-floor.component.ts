@@ -45,7 +45,13 @@ export class TraumaFloorComponent implements OnInit{
             }
             else if(u.role.role == "doctor")
             {
-              this.tdoctors.push(u);    
+              let myInt: Number = u.specialization;
+
+              if(myInt === 3)
+              {
+                console.log("IOHJEWGFQOHIPQWFEIOP:HQFEP:OHIQDRWFPHOI :QFEWPHOIU: QFE PHO)I*:QFGWE H)P*O{I:QGFEWHPO)I:QGFEhp[oIQGFEHPO){I*QWFGETHQIPO:GEWFQFWEHOIP:QFWEHOIP{: QFEOHPI")
+               this.tdoctors.push(u);
+              }    
             }
           }
         )
@@ -103,7 +109,7 @@ export class TraumaFloorComponent implements OnInit{
 
   room217: any[] = [];
 
-  roleDoc: Role = { roleId: 0, role: 'doctor'};
+  roleDoc: Role = { roleId: 2, role: 'doctor'};
   roleNurse: Role = { roleId: 1, role: 'nurse'};
 
   sex: Sex = {sexId: 0, sex: 'male'};
