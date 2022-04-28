@@ -23,7 +23,7 @@ import { EmergencyFloorComponent } from './components/emergency-floor/emergency-
 import { PtFloorComponent } from './components/pt-floor/pt-floor.component';
 import { TraumaFloorComponent } from './components/trauma-floor/trauma-floor.component';
 import { FloorsComponent } from './components/floors/floors.component';
-
+import { ForumPostComponent } from './components/forum-post/forum-post.component'
 export const routes: Routes = [
   {path: "",  redirectTo: "login", pathMatch: "full"},
   {path: "registration", component: RegistrationComponent},
@@ -45,7 +45,8 @@ export const routes: Routes = [
   {path: 'emergency', component: EmergencyFloorComponent},
   {path: 'trauma', component: TraumaFloorComponent},
   {path: 'physical', component: PtFloorComponent},
-  {path: 'floors', component: FloorsComponent}
+  {path: 'floors', component: FloorsComponent},
+  {path: 'forum', component: ForumPostComponent}
 
 ];
 

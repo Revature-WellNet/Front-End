@@ -43,8 +43,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { WellnetLogoComponent } from './wellnet-logo/wellnet-logo.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FloorsComponent } from './components/floors/floors.component';
-
-
+import { ForumPostComponent } from './components/forum-post/forum-post.component';
+import { PostComponent } from './components/post/post.component'
 
 @NgModule({
   declarations: [
@@ -71,8 +71,9 @@ import { FloorsComponent } from './components/floors/floors.component';
     MainFloorComponent,
     PtFloorComponent,
     TraumaFloorComponent,
-    FloorsComponent
-
+    FloorsComponent,
+    ForumPostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
