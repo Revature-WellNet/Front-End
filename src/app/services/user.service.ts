@@ -19,15 +19,13 @@ export class UserService {
   getUser(id : string){
     //right now the backend takes an int. need to change that after we talk with login
     return this.http.get<User>('http://localhost:8099/wellnet/user/'+id);
-
   }
 
   createOrUpdateUser(user : User){
    // console.log(user);
    // console.log(typeof User);
 
-   return this.http.put<User>('http://localhost:8099/wellnet/user/updateprofile', user).subscribe((response : any) => {console.log(response)});
-
+    return this.http.put<User>('http://localhost:8081/wellnet/user/updateprofile', user).subscribe((response : any) => {console.log(response)});
   }
 
 }

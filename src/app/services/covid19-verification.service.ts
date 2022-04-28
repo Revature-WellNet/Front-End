@@ -10,7 +10,6 @@ export class Covid19VerificationService {
 
   public serverUrl:string = 'http://localhost:8099/wellnet';
 
-
   constructor(private http: HttpClient) { }
 
   submitFormServ(cv:Covid19VerificationModel):Observable<Object>{
